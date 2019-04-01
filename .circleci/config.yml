@@ -1,74 +1,41 @@
-version: 2
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: monachus/hugo
 
+version: 2.1
 jobs:
-  checkout_code:
-    docker:
-      - image: circleci/golang:1.8
-    working_directory: ~/hugo
+  deploy:
+    <<: *defaults
     steps:
       - checkout
-      - save_cache:
-          key: hugo-cache-{{ epoch }}
-          paths:
-            - ~/hugo
-  build:
-    docker:
-      - image: felicianotech/docker-hugo:latest
-    working_directory: ~/hugo
-    steps:
-      - restore_cache:
-          key: hugo-cache
+      - run: pwd
+      - run: echo $USERNAME
       - run:
-          command: |
-            mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+          name: Print the Current Time
+          command: date
       - run:
-          command: |
-            git submodule sync
-            git submodule update --init
+          name: Hugo Version Check
+          command: hugo version
+      - run: rm -rf public
       - run:
-          command:
-            git clone https://github.com/himanoa/testament public
+          name: Git Clone
+          command: git clone --depth 1 https://himanoa:$GITHUB_TOKEN@github.com/himanoa/testament public
       - run:
-          command:
-            rm -rf public/*
-      - run:
-          command:
-            sudo cp /usr/share/zoneinfo/Japan /etc/localtime
-      - run:
-          command:
-            hugo
-      - save_cache:
-          key: hugo-cache-public-{{ epoch }}
-          paths:
-            - ~/hugo/public
-
-  deploy:
-    machine:
-      enabled: true
-    working_directory: ~/hugo/public
-    steps:
-      - restore_cache:
-          key: hugo-cache-public
-      - run:
-          command: |
-            mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
-            git config --global user.name himanoa
-            git config --global user.email matsunoappy@gmail.com
-            git add --all
-            git commit -m "${CIRCLE_BRANCH} (Circle CI)"
-            git push git@github.com:himanoa/testament
+          name: Hugo Build
+          command: hugo --minify
+      - run: cd public && pwd
+      - run: cd public && git config user.email "matsunoappy@gmail.com"
+      - run: cd public && git config user.name "himanoa"
+      - run: cd public && git add -A
+      - run: cd public && git commit -m "deploy from CI"
+      - run: cd public && git push origin master
 
 workflows:
-  version: 2
-  build_and_deploy:
+  version: 2.1
+  build:
     jobs:
-      - checkout_code
-      - build:
-          requires:
-            - checkout_code
       - deploy:
           filters:
             branches:
               only: master
-          requires:
-            - build
