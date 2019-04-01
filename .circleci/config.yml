@@ -13,7 +13,7 @@ jobs:
             - ~/hugo
   build:
     docker:
-      - image: circleci/golang:1.8
+      - image: felicianotech/docker-hugo:latest
     working_directory: ~/hugo
     steps:
       - restore_cache:
@@ -23,7 +23,6 @@ jobs:
             mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
             git submodule sync
             git submodule update --init
-            go get github.com/gohugoio/hugo
             git clone https://github.com/himanoa/testament public
             rm -rf public/*
             sudo cp /usr/share/zoneinfo/Japan /etc/localtime
