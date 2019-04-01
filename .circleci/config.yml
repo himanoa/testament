@@ -28,7 +28,7 @@ jobs:
       - run: cd public && git config user.email "matsunoappy@gmail.com"
       - run: cd public && git config user.name "himanoa"
       - run: cd public && git add -A
-      - run: cd public && git commit -m "deploy from CI"
+      - run: cd public && git commit -m "[ci-skip] deploy from CI"
       - run: cd public && git push origin master
 
 workflows:
