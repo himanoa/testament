@@ -1,0 +1,64 @@
+version: 2
+
+jobs:
+  checkout_code:
+    docker:
+      - image: circleci/golang:1.8
+    working_directory: ~/hugo
+    steps:
+      - checkout
+      - save_cache:
+          key: hugo-cache-{{ epoch }}
+          paths:
+            - ~/hugo
+  build:
+    docker:
+      - image: circleci/golang:1.8
+    working_directory: ~/hugo
+    steps:
+      - restore_cache:
+          key: hugo-cache
+      - run:
+          command: |
+            git submodule sync
+            git submodule update --init
+            go get github.com/gohugoio/hugo
+            git clone https://github.com/himanoa/testament public
+            rm -rf public/*
+            sudo cp /usr/share/zoneinfo/Japan /etc/localtime
+            hugo
+      - save_cache:
+          key: hugo-cache-public-{{ epoch }}
+          paths:
+            - ~/hugo/public
+
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/hugo/public
+    steps:
+      - restore_cache:
+          key: hugo-cache-public
+      - run:
+          command: |
+            git config --global user.name himanoa
+            git config --global user.email matsunoappy@gmail.com
+            git add --all
+            git commit -m "${CIRCLE_BRANCH} (Circle CI)"
+            git push git@github.com:himanoa/testament
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - checkout_code
+      - build:
+          requires:
+            - checkout_code
+      - deploy:
+          filters:
+            branches:
+              only: master
+          requires:
+            - textlint
+            - build
