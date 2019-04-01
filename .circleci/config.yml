@@ -20,6 +20,7 @@ jobs:
           key: hugo-cache
       - run:
           command: |
+            mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
             git submodule sync
             git submodule update --init
             go get github.com/gohugoio/hugo
