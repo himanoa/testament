@@ -6,6 +6,6 @@ paginate = 5
 theme = "aether"
 
 [params]
-brand = "aether"
+brand = "Testament"
 description = "aether Hugo theme for blogs"
 bgimg = "img/ignasi_pattern_s.png"
