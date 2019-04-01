@@ -1,0 +1,3 @@
+[submodule "themes/aether"]
+	path = themes/aether
+	url = git@github.com:himanoa/aether.git
