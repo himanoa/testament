@@ -21,11 +21,21 @@ jobs:
       - run:
           command: |
             mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+      - run:
+          command: |
             git submodule sync
             git submodule update --init
+      - run:
+          command:
             git clone https://github.com/himanoa/testament public
+      - run:
+          command:
             rm -rf public/*
+      - run:
+          command:
             sudo cp /usr/share/zoneinfo/Japan /etc/localtime
+      - run:
+          command:
             hugo
       - save_cache:
           key: hugo-cache-public-{{ epoch }}
@@ -41,6 +51,7 @@ jobs:
           key: hugo-cache-public
       - run:
           command: |
+            mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
             git config --global user.name himanoa
             git config --global user.email matsunoappy@gmail.com
             git add --all
