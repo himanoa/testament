@@ -8,9 +8,6 @@ jobs:
   deploy:
     <<: *defaults
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "c3:75:55:31:72:4f:8e:87:94:b3:f8:22:4a:1e:94:f9"
       - checkout
       - run: pwd
       - run: echo $USERNAME
@@ -25,6 +22,9 @@ jobs:
           name: Hugo Build
           command: hugo --minify
       - run:  pwd && ls
+      - add_ssh_keys:
+          fingerprints:
+            - "c3:75:55:31:72:4f:8e:87:94:b3:f8:22:4a:1e:94:f9"
       - run:  git config user.email "matsunoappy@gmail.com"
       - run:  git config user.name "himanoa"
       - run:  git add -A
