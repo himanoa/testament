@@ -8,6 +8,9 @@ jobs:
   deploy:
     <<: *defaults
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "c3:75:55:31:72:4f:8e:87:94:b3:f8:22:4a:1e:94:f9"
       - checkout
       - run: pwd
       - run: echo $USERNAME
