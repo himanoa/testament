@@ -10,7 +10,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "c3:75:55:31:72:4f:8e:87:94:b3:f8:22:4a:1e:94:f9"
+            - "05:af:db:e0:d3:4a:a7:c8:92:d4:68:cb:5a:8b:ca:a8"
       - checkout
       - run: pwd
       - run: echo $USERNAME
