@@ -1,5 +1,7 @@
 # Testament
 
+[![CircleCI](https://circleci.com/gh/himanoa/testament.svg?style=svg)](https://circleci.com/gh/himanoa/testament)
+
 https://blog.himanoa.net 用のリポジトリです。
 
 ## Installation
