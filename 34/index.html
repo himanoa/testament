@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>SPAにおけるOpen ID Connect認証 &middot; 遺言書</title>
+  <meta name="description" content="&lt;p&gt;サーバーサイドとクライアントサイド両方とも実装する機運が出てきたのでそれぞれの役割を整理するためにシーケンス図を書いた。 Googleって書いてあるところはOAuthプロバイダーなら何でも置き替えられるはず&lt;/p&gt;
+
+&lt;p&gt;間違ってたら教えてくれ&lt;/p&gt;
+
+&lt;p&gt;&lt;img " />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="&lt;p&gt;サーバーサイドとクライアントサイド両方とも実装する機運が出てきたのでそれぞれの役割を整理するためにシーケンス図を書いた。 Googleって書いてあるところはOAuthプロバイダーなら何でも置き替えられるはず&lt;/p&gt;
+
+&lt;p&gt;間違ってたら教えてくれ&lt;/p&gt;
+
+&lt;p&gt;&lt;img ">
+  <meta property="og:image" content="default.jpg">
+  <meta property="twitter:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/34/" >
+  <meta property="og:title" content="SPAにおけるOpen ID Connect認証 &middot; 遺言書" >
+  <meta property="twitter:title" content="SPAにおけるOpen ID Connect認証 &middot; 遺言書" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link href="https://blog.himanoa.net/css/xcode.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">SPAにおけるOpen ID Connect認証</h1>
+          <p class="post-date">Posted <time datetime="2018-08-21">Aug 21, 2018</time></p>
+        </header>
+        
+        <p>サーバーサイドとクライアントサイド両方とも実装する機運が出てきたのでそれぞれの役割を整理するためにシーケンス図を書いた。 Googleって書いてあるところはOAuthプロバイダーなら何でも置き替えられるはず</p>
+
+<p>間違ってたら教えてくれ</p>
+
+<p><img src="https://i.imgur.com/vge7sUy.png" alt="sequence" /></p>
+
+<p>追記:
+とりあえずシーケンス図が書けたのでAPIサーバーに求められている機構を実装した。curlで試しているのと、SPAのガワが存在していないため一旦セッションに入れたりstateの検証するのは省いた。</p>
+
+<pre><code>const { createHash } = require(&quot;crypto&quot;);
+const url = require(&quot;url&quot;);
+
+const express = require(&quot;express&quot;);
+const bp = require(&quot;body-parser&quot;);
+const axios = require(&quot;axios&quot;);
+const jwt = require(&quot;jwt-simple&quot;);
+
+const secret = require(&quot;./secret.json&quot;);
+
+const app = express();
+app.use(bp.json());
+
+const salt = &quot;hakatanosalt&quot;;
+
+app.get(&quot;/oauth/callback&quot;, (req, res) =&gt; {
+  console.log(
+    JSON.stringify({
+      code: req.query.code,
+      state: req.query.state
+    })
+  );
+  res.send(&quot;ok&quot;);
+});
+
+app.get(&quot;/oauth/google/login&quot;, function(req, res) {
+  const state = createHash(&quot;sha256&quot;)
+    .update(`${salt}${Math.random()}${+new Date()}`)
+    .digest(&quot;hex&quot;);
+  const params = new url.URLSearchParams({
+    response_type: &quot;code&quot;,
+    client_id: secret.clientId,
+    redirect_uri: &quot;https://localhost:3000/oauth/callback&quot;,
+    scope: &quot;profile&quot;,
+    state
+  });
+  // ここでstateをセッションに格納するなりしよう
+  res.redirect(
+    303,
+    `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`
+  );
+});
+
+app.post(&quot;/oauth/google/authorize&quot;, (req, res) =&gt; {
+  // curlで確認しているためセッションが確認つかえないので一旦スキップ。本番環境で運用する場合は必ずstateの検証をやること
+  // if (state !== req.body.state) {
+  //   res.send(400);
+  // }
+  console.log(&quot;poe&quot;);
+  auth(req)
+    .then(a =&gt; {
+      res.send(&quot;a&quot;);
+    })
+    .catch(err =&gt; {
+      console.dir(err);
+      res.send(&quot;err&quot;);
+    });
+});
+
+const decodeBase64 = str =&gt; Buffer.from(str, &quot;base64&quot;).toString(&quot;utf8&quot;);
+async function auth(req) {
+  const idToken = (await axios.post(secret.tokenUrl, {
+    client_id: secret.clientId,
+    client_secret: secret.clientSecret,
+    redirect_uri: &quot;https://localhost:3000/oauth/callback&quot;,
+    grant_type: &quot;authorization_code&quot;,
+    code: req.body.code
+  })).data.id_token;
+  const segments = idToken.split(&quot;.&quot;) || &quot;&quot;;
+  if (segments.length &lt;= 2) {
+    return Promise.reject(&quot;segmentの長さおかしい&quot;);
+  }
+  const envelope = JSON.parse(decodeBase64(segments[0]));
+  if (envelope.kid === undefined) {
+    return Promise.reject(&quot;kid?&quot;);
+  }
+  const payload = JSON.parse(decodeBase64(segments[1]));
+
+  console.dir(envelope.kid);
+  const certs = (await axios.get(&quot;https://www.googleapis.com/oauth2/v3/certs&quot;))
+    .data;
+  const key = certs.keys.find(val =&gt; val.kid === envelope.kid);
+  console.dir(jwt.decode(idToken, key.n, key.alg));
+  return &quot;&quot;;
+}
+
+app.listen(3000, function() {
+  console.log(&quot;Example app listening on port 3000!&quot;);
+});
+</code></pre>
+
+        <section class="section">
+  <h2>欲求ボタン</h2>
+  <div class="sns-buttons">
+    <a class="sns" href="http://twitter.com/intent/tweet?url=https%3a%2f%2fblog.himanoa.net%2f34%2f&text=SPA%e3%81%ab%e3%81%8a%e3%81%91%e3%82%8bOpen%20ID%20Connect%e8%aa%8d%e8%a8%bc" target="_blank" title="Tweet"><i class="fab fa-twitter fa-2x"></i></a>
+    <a class="sns" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.himanoa.net%2f34%2f&t=SPA%e3%81%ab%e3%81%8a%e3%81%91%e3%82%8bOpen%20ID%20Connect%e8%aa%8d%e8%a8%bc" target="_blank" title="Facebook"><i class="fab fa-facebook fa-2x"></i></a>
+    <a class="sns" href="http://getpocket.com/edit?url=https%3a%2f%2fblog.himanoa.net%2f34%2f&title=SPA%e3%81%ab%e3%81%8a%e3%81%91%e3%82%8bOpen%20ID%20Connect%e8%aa%8d%e8%a8%bc" target="_blank" title="pocket"><i class="fab fa-get-pocket fa-2x"></i></a>
+  </div>
+</section>
+
+      </article>
+      
+    </main>
+  </body>
+</html>

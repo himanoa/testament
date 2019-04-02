@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+	<meta name="generator" content="Hugo 0.54.0" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>遺言書</title>
+  <meta name="description" content="" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="">
+  <meta property="og:image" content="default.jpg">
+  <meta property="twitter:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/" >
+  <meta property="og:title" content="遺言書" >
+  <meta property="twitter:title" content="遺言書" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link href="https://blog.himanoa.net/css/xcode.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" href="https://blog.himanoa.net/index.xml" title="遺言書" />
+  
+  
+</head>
+
+  <body class="list-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="card-container side-gutter">
+      <header class="list-header">
+        <p class="list-header-subtext"></p>
+        <h1 class="list-header-title"></h1>
+      </header>
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/23/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">xrandrコマンドで解像度を弄る</h2>
+    <p class="card-text lineclamp">ThinkPad X1Carbonを購入してから早4カ月経過しました。
+スペック的には不満がないんですが、解像度がおおきすぎて文字が小さくてつらいという問題があったので解像度を下げたくなったのでやった。
+XWindowManagerでやっているので以下のコマンドで解像度を設定できる
+&gt;&gt;&gt; xrandr --output eDP-1 --mode 1920x1080  以上
+X1Carbonリッチに2560*1440のモデルを買ったけどフォント小さくて1920*1080で運用したら丁度よくて宝の持ち腐れになってしまった
+&mdash; himanoa.tsx (@h1manoa) March 20, 2018 </p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-03-20">Mar 20, 2018</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/22/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">Nの末路</h2>
+    <p class="card-text lineclamp">ゆるキャンみて心がアになってる
+&mdash; ? 2/25~郡山帰省 (@KlmSyr) February 24, 2018 うわああああああ
+&mdash; ? 2/25~郡山帰省 (@KlmSyr) February 24, 2018 俺だって俺だって！！！！！
+&mdash; ? 2/25~郡山帰省 (@KlmSyr) February 24, 2018 俺だって！！！
+&mdash; ? 2/25~郡山帰省 (@KlmSyr) February 24, 2018 人生で自分が何かしらの理由で捨ててきた物を上手く表現できてるアニメにハマる傾向があって例えばゆるキャン△は、普通の高校生活っていうんですけど
+&mdash; prettierに脳を破壊されてしまったプログラマー (@h1manoa) 2018年2月14日 微妙に拗せて終わってしまった心に染みるアニメ ゆるキャン△</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-02-24">Feb 24, 2018</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/21/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">私的TypeScriptいろいろまとめ</h2>
+    <p class="card-text lineclamp">flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。
+webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。
+筋悪い箇所があったらTwitterかはてブのコメントで頼む
+tsconfig.json { &quot;compilerOptions&quot;: { &quot;target&quot;: &quot;es5&quot;, &quot;module&quot;: &quot;commonjs&quot;, &quot;moduleResolution&quot;: &quot;node&quot;, &quot;emitDecoratorMetadata&quot;: true, &quot;experimentalDecorators&quot;: true, &quot;declaration&quot;: false, &quot;noImplicitAny&quot;: false, &quot;noImplicitReturns&quot;: false, &quot;removeComments&quot;: true, &quot;strictNullChecks&quot;: false, &quot;outDir&quot;: &quot;build&quot;, &quot;lib&quot;: [ &quot;es6&quot;, &quot;es7&quot;, &quot;dom&quot; ] }, &quot;exclude&quot;: [ &quot;dist&quot;, &quot;build&quot;, &quot;node_modules&quot; ] }  moduleをcommonjsにしてしまったけどwebpackでの最適化の都合を考えると esModuleInterop の方がいいかも
+strictNullChecks は依存で壊れがちらしいのでオフにしている…オンにしたい…
+webpack.config.js const path = require(&quot;path&quot;); const ENV = process.env.NODE_ENV || &quot;development&quot;; const DEV_PORT = process.env.PORT || 4444; const webpack = require(&quot;webpack&quot;); const CleanWebpackPlugin = require(&quot;clean-webpack-plugin&quot;); const HtmlWebpackPlugin = require(&quot;html-webpack-plugin&quot;); const ExtractTextPlugin = require(&quot;extract-text-webpack-plugin&quot;); module.</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-02-22">Feb 22, 2018</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/19/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">Windows Subsystem for Linuxで開発環境を整えた</h2>
+    <p class="card-text lineclamp">WSLあらかた満足した pic.twitter.com/y9LBA797Qg
+&mdash; Internet Subscriber (@h1manoa) January 30, 2018 ndenv とか pyenv とか rbenv とか tmux とか fish とか neovim とか fzf とか色々動いたし、True Color出せるということもわかったので、まぁ常用はできるんじゃないですかね？といった所。常用するかどうかは知らん。まだ課題点もいろいろあるし。
+導入 WSLチュートリアルがあるので これ通りやった。 https://github.com/QMonkey/wsl-tutorial
+XWindowSystemが必要なアプリケーションを使う予定がないならXLaunch入れたりとかはしなくていいとは思う
+あとは普通のUbuntuなので必要なアプリケーションをインストールしていくだけ。
+僕の環境は多分大体以下のコマンドで再現できると思う
+sudo apt-get install software-properties-common sudo apt-add-repository ppa:fish-shell/release-2 sudo add-apt-repository ppa:neovim-ppa/unstable sudo apt-get update &amp;&amp; sudo apt-get install neovim fish tmux go git build-essential openssl libssl-dev libbz2-dev libreadline-dev libsqlite-dev gcc python-build git clone https://github.com/sstephenson/rbenv.git ~/.rbenv git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build git clone https://github.</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-02-09">Feb 9, 2018</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/20/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">WSLでクリップボードを共有する</h2>
+    <p class="card-text lineclamp">Windows Subsystem for Linuxで開発環境を整えた の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに入ってくれないのが結構ストレスになったのでそれの解消をします。
+Windowsにはclip.exeというソフトウェアが搭載されており、これを使うことでWSLからWindowsのクリップボードに文字列を入れることができます
+echo &quot;:innocent:&quot; | clip.exe # wsl Terminal上でShift + Insert :innocent:  ただ、このソフトウェア単体だとクリップボードから文字列を取り出すことができないのと、文字列の最後に改行コードが入るらしく(余計なことしやがって)つらいので別のアプローチでやります
+先にやっておくこと  https://github.com/equalsraf/win32yank/releases から win32yank-x64.zipをダウンロードしてきて展開 展開して出てきたwin32yank.exeを WSL上でecho $PATHして列挙されたディレクトリのいずれかに配置  win32yankの使い方は clip.exe と大体同じで以下のように使う
+echo &quot;poepoe&quot; | win32yank.exe -i win32yank.exe -o poepoe  念のためWindows上で任意のテキストボックスでCtrl+vして貼り付けられるか確認しておくと良いかもしれない。
+Neovimからwin32yank.exeを使う さてここまでできたのなら、Neovimから yでヤンク、pで貼り付けるみたいなことをできるようにしたい。
+過去の記憶からNeovimでLinuxのクリップボードと連携した時に xsel に依存していた覚えがあった。
+また、丁度手元にNeovimのソースコードがあったのでそこから検索して(最悪書き換えてビルドすればよい)どうすればいいかを模索した
+cd ~/src/github.com/neovim/neovim git grep xsel runtime/autoload/provider/clipboard.vim:&quot; When caching is enabled, store the jobid of the xclip/xsel process keeping runtime/autoload/provider/clipboard.vim: elseif exists('$DISPLAY') &amp;&amp; executable('xsel') &amp;&amp; s:cmd_ok('xsel -o -b') runtime/autoload/provider/clipboard.</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-01-31">Jan 31, 2018</time></p>
+      
+    </div>
+  </article>
+</a>
+
+    </main>
+    <nav class="pagination-nav side-padding">
+      <a href="https://blog.himanoa.net/page/3/" class="pagination-newer">&lt; Newer Posts</a>
+      <a href="https://blog.himanoa.net/page/5/" class="pagination-older">Older Posts &gt;</a>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script src="https://blog.himanoa.net/js/core.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+  </body>
+</html>
