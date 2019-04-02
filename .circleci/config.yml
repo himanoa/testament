@@ -19,17 +19,14 @@ jobs:
           command: hugo version
       - run: rm -rf public
       - run:
-          name: Git Clone
-          command: git clone --depth 1 https://himanoa:$GITHUB_TOKEN@github.com/himanoa/testament public
-      - run:
           name: Hugo Build
           command: hugo --minify
-      - run: cd public && pwd && ls
-      - run: cd public && git config user.email "matsunoappy@gmail.com"
-      - run: cd public && git config user.name "himanoa"
-      - run: cd public && git add -A
-      - run: cd public && git commit --allow-empty -m "[ci skip] deploy from CI"
-      - run: cd public && git push origin master
+      - run:  pwd && ls
+      - run:  git config user.email "matsunoappy@gmail.com"
+      - run:  git config user.name "himanoa"
+      - run:  git add -A
+      - run:  git commit --allow-empty -m "[ci skip] deploy from CI"
+      - run:  git push origin master
 
 workflows:
   version: 2.1
