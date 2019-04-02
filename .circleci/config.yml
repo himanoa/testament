@@ -26,8 +26,7 @@ jobs:
       - run:  git config user.name "himanoa"
       - run:  git add -A
       - run:  git commit --allow-empty -m "[ci skip] deploy from CI"
-      - run:  git remote add upstream https://${GITHUB_ACCESS_TOKEN}@github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
-      - run : git push upstream ${CIRCLE_BRANCH}:${CIRCLE_BRANCH}
+      - run : git push origin master
 
 workflows:
   version: 2.1
