@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>遺言書</title><link>https://blog.himanoa.net/</link><description>Recent content on 遺言書</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 03 Apr 2019 00:46:15 +0900</lastBuildDate><atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml"/><item><title>ブログ復旧しました</title><link>https://blog.himanoa.net/39/</link><pubDate>Wed, 03 Apr 2019 00:46:15 +0900</pubDate><guid>https://blog.himanoa.net/39/</guid><description>Railsの手入れ面倒になってきたのでブログを再構築しました。時代はhugoです。よろしくお願いします。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>遺言書</title><link>https://blog.himanoa.net/</link><description>Recent content on 遺言書</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 03 Apr 2019 01:43:30 +0900</lastBuildDate><atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml"/><item><title>2019-04-02(ニート歴2日目)</title><link>https://blog.himanoa.net/40/</link><pubDate>Wed, 03 Apr 2019 01:43:30 +0900</pubDate><guid>https://blog.himanoa.net/40/</guid><description>やったこと ブログの移行 Rails→hugo
+CircleCI入門 ひたすらキャッチアップしつつこのブログのデプロイ環境を構築していた。
+CircleCIがデフォルトで用意してくれる秘密鍵と公開鍵がReadOnlyだということに気が付かずずっとgit push origin HEADがコンテナ内から通らないなぁとか思ってたりしたので結構ハマった。
+完走した感想ですが、設定ファイルをyamlで書かなくちゃいけないのがどうしてもストレスで(これは前使ってたTravisCIもそう)、正直手続き的に設定ファイルを書きたい気持ちが強い。なんでyamlが嫌いなのかというと、テキストエディタがまともなインデントをしてくれないのがストレスになっているからである。
+CIの出来はともかく設定ファイルの書き易さだけで見るなら個人的にはJenkinsのJenkinsfile(groovy)が一番書き安く読み易いし複雑なことも表現しやすいと思ってる。
+ある程度複雑な設定にyamlやJSONを使うのは向いていないと考えていて、そういうのはRubyの内部DSLだったり軽量なスクリプト言語でやれるといいよなと考えてる。
+似たような理由でAnsibleも嫌いでItamaeの方が僕にとってはやさしいツールだなぁと感じる。
+himanoa/aether hugo使うならベースにしやすいブログ用テーマを選んで改造していくのが良さそうと感じたのでフォークして色とかを調節したり、シェアボタンを置いたりとかした。
+色とかを調節するだけでもだいぶ雰囲気がガラっと変わって感動しています。今年はデザイン学習とかにも力を入れていきたいと思っているけど、はたして時間はあるのだろうか
+選考面接を受けた 今も着実に貯蓄は底に向かって消費されていて、いつまでもニートのままというわけにもいかないので、就活ってやつをやっている。
+今日は以前カジュアル面談行った中で一番興味を持てて、かつ金も一番貰えそうな企業の採用面接を受けにいった。
+正直こういう採用面接って採用担当者のエンジニアと雑談していい時間になっていることが多くて今回もそうだったんだけど手応えみたいなのがまったくよくわからない。
+一番仕事をしたい企業だったので受かると嬉しい……
+できなかったこと メール返信 変に気合が必要な作業を後回しにしがちで、悪癖が出ていますね
+家賃の支払い グゥ~~~~
+あしたやること メールの返信 2通
+Laravelの入門 Docker内でいい感じに開発環境整うところまですらできてないのでまずはそこ。 次点でチュートリアルの完遂
+家賃の支払い お金が飛んでく恐怖に震えて眠ります
+飲み会 いかなきゃ。
+aetherのhugoのminify機構を使ってくれるPRを出す パッチ…パッチはいりませんか…？</description></item><item><title>ブログ復旧しました</title><link>https://blog.himanoa.net/39/</link><pubDate>Wed, 03 Apr 2019 00:46:15 +0900</pubDate><guid>https://blog.himanoa.net/39/</guid><description>Railsの手入れ面倒になってきたのでブログを再構築しました。時代はhugoです。よろしくお願いします。
 重大な連絡 前述の都合上feedのURLがhttps://blog.himanoa.net/rss から https://blog.himanoa.net/feed.xml に変更されました。お手数ですが変更の方をよろしくお願いします。
 インフラとか GitHubにpush→CircleCI→gh-pages で自動で反映される仕組みにしました。選定したDockerコンテナがおかしくてpushできなかったりsshの設定がだめだったりいろいろあって50commit程時間がかかりましたが、実現できました。とてもうれしい
 hugo theme aetherをフォークしてhimanoa/aetherにしました。色とかかなり弄ったり、hugoのminify機構を使ってCSSをminifyしてくれる形に修正した。前者はまだしも後者のパッチは独立させてPR送りたい。
