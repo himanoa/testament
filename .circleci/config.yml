@@ -16,10 +16,10 @@ jobs:
           command: echo "$(hugo version)"
       - checkout
       - run:
-        name: git submodule initialize
-        command: |
-          git submodule init
-          git submodule update
+          name: git submodule initialize
+          command: |
+            git submodule init
+            git submodule update
       - run:
           name: Building blog pages
           command: |
