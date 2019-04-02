@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Hugo Build
           command: hugo --minify
-      - run: cd public && pwd
+      - run: cd public && pwd && ls
       - run: cd public && git config user.email "matsunoappy@gmail.com"
       - run: cd public && git config user.name "himanoa"
       - run: cd public && git add -A
