@@ -22,7 +22,7 @@ jobs:
             cp public/index.xml public/feed.xml
       - add_ssh_keys:
           fingerprints:
-            - "f8:a1:03:29:9f:5f:86:44:8e:10:17:5b:f9:20:37:1c"
+            - "fb:57:17:42:ad:d1:ce:16:4c:a9:86:2f:92:15:d9:32"
       - deploy:
           name: Deploy to GitHub Pages
           command: ./.circleci/deploy.sh
