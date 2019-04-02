@@ -28,7 +28,7 @@ jobs:
       - run:  git config user.email "matsunoappy@gmail.com"
       - run:  git config user.name "himanoa"
       - run:  git add -A
-      - run:  git remove add upstream git@github.com:${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}.git
+      - run:  git remote add upstream git@github.com:${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}.git
       - run:  git commit --allow-empty -m "[ci skip] deploy from CI"
       - run:  git push upstream master
 
