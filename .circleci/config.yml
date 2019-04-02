@@ -22,9 +22,6 @@ jobs:
           name: Hugo Build
           command: hugo --minify
       - run:  pwd && ls
-      - add_ssh_keys:
-          fingerprints:
-            - "fb:57:17:42:ad:d1:ce:16:4c:a9:86:2f:92:15:d9:32"
       - run:  git config user.email "matsunoappy@gmail.com"
       - run:  git config user.name "himanoa"
       - run:  git add -A
