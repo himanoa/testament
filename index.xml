@@ -5,10 +5,23 @@
     <link>https://blog.himanoa.net/</link>
     <description>Recent content on 遺言書</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 02 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 03 Apr 2019 00:46:15 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ブログ復旧しました</title>
+      <link>https://blog.himanoa.net/39/</link>
+      <pubDate>Wed, 03 Apr 2019 00:46:15 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/39/</guid>
+      <description>Railsの手入れ面倒になってきたのでブログを再構築しました。時代はhugoです。よろしくお願いします。
+重大な連絡 前述の都合上feedのURLがhttps://blog.himanoa.net/rss から https://blog.himanoa.net/feed.xml に変更されました。お手数ですが変更の方をよろしくお願いします。
+インフラとか GitHubにpush→CircleCI→gh-pages で自動で反映される仕組みにしました。選定したDockerコンテナがおかしくてpushできなかったりsshの設定がだめだったりいろいろあって50commit程時間がかかりましたが、実現できました。とてもうれしい
+hugo theme aetherをフォークしてhimanoa/aetherにしました。色とかかなり弄ったり、hugoのminify機構を使ってCSSをminifyしてくれる形に修正した。前者はまだしも後者のパッチは独立させてPR送りたい。
+Railsやめた理由とか アプリケーションのメンテするモチベーションが消えたから。鯖もメンテしないといけないし。近いうちにgh-pagesに移行する見込みはあったんだけど、手付かずだったんで鯖のSSL証明書が切れたタイミングで移行するかなーーーみたいな気持ちになった。</description>
+    </item>
     
     <item>
       <title>エラーレポート</title>
