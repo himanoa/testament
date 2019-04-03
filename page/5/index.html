@@ -37,6 +37,23 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/21/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">私的TypeScriptいろいろまとめ</h2>
+    <p class="card-text lineclamp">flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。
+webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。
+筋悪い箇所があったらTwitterかはてブのコメントで頼む
+tsconfig.json { &quot;compilerOptions&quot;: { &quot;target&quot;: &quot;es5&quot;, &quot;module&quot;: &quot;commonjs&quot;, &quot;moduleResolution&quot;: &quot;node&quot;, &quot;emitDecoratorMetadata&quot;: true, &quot;experimentalDecorators&quot;: true, &quot;declaration&quot;: false, &quot;noImplicitAny&quot;: false, &quot;noImplicitReturns&quot;: false, &quot;removeComments&quot;: true, &quot;strictNullChecks&quot;: false, &quot;outDir&quot;: &quot;build&quot;, &quot;lib&quot;: [ &quot;es6&quot;, &quot;es7&quot;, &quot;dom&quot; ] }, &quot;exclude&quot;: [ &quot;dist&quot;, &quot;build&quot;, &quot;node_modules&quot; ] }  moduleをcommonjsにしてしまったけどwebpackでの最適化の都合を考えると esModuleInterop の方がいいかも
+strictNullChecks は依存で壊れがちらしいのでオフにしている…オンにしたい…
+webpack.config.js const path = require(&quot;path&quot;); const ENV = process.env.NODE_ENV || &quot;development&quot;; const DEV_PORT = process.env.PORT || 4444; const webpack = require(&quot;webpack&quot;); const CleanWebpackPlugin = require(&quot;clean-webpack-plugin&quot;); const HtmlWebpackPlugin = require(&quot;html-webpack-plugin&quot;); const ExtractTextPlugin = require(&quot;extract-text-webpack-plugin&quot;); module.</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-02-22">Feb 22, 2018</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/19/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -118,18 +135,6 @@ vimtutorをやりましょう。vimtutorはvimでの効率的なテキスト操�
 &mdash; Internet Subscriber (@h1manoa) 2018年1月29日 おーーーーーーーーーーーーっっほいっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっwWWWWWWWWWWWWWWWWWWWWWWWWWwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 &mdash; Internet Subscriber (@h1manoa) 2018年1月29日 いつもの 飲みにいくぞ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!etcご用があったら Twitter まで。 Twitterもってないマンはさすがにいないと思うけど matsunoappy@gmail.com まで連絡くだしゃい。正直こっちはあんま見てないけど
 誕生日プレゼントマジで頼む!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! http://amzn.asia/5dZqBma</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-01-30">Jan 30, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/17/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">asdadsasdasdasd</h2>
-    <p class="card-text lineclamp">飲みに行くぞ!!</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-01-30">Jan 30, 2018</time></p>
       
