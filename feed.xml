@@ -23,6 +23,16 @@ AetherへのPR 出した
 できなかったこと 飲み会 日付の認識が曖昧で実は違う日だった
 あした(今日)やること Laravel入門 飲み会</description>
     </item><item>
+      <title>Repositoryパターンの破綻</title>
+      <link>https://blog.himanoa.net/43/</link>
+      <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/43/</guid>
+      <description>風呂でRepositoryパターンについて考えてたけどあれを上手く適用するには集約をちゃんと考えてやる必要が確実にある。
+想定していた集約が破綻するとRepositoryパターンだけで取得と永続化用のコードを書くのは依存性解決とか集約を跨ぐトランザクションとかが出てきてしんどくなる。
+そこで便利なのがCQRSになるんだけど、トランザクションの関係でRepositoryのコードをコピペする必要が出てきたりするとコード変更による影響箇所が正しく判別しにくくなるので、そことのトレードオフですね…
+ってポエムを書こうとしたらTwitterだと文字数オーバーになった</description>
+    </item><item>
       <title>gitの管理対象外のファイルをまとめて消す方法</title>
       <link>https://blog.himanoa.net/41/</link>
       <pubDate>Wed, 03 Apr 2019 17:43:01 +0900</pubDate>
@@ -67,15 +77,6 @@ aetherのhugoのminify機構を使ってくれるPRを出す パッチ…パッ�
 インフラとか GitHubにpush→CircleCI→gh-pages で自動で反映される仕組みにしました。選定したDockerコンテナがおかしくてpushできなかったりsshの設定がだめだったりいろいろあって50commit程時間がかかりましたが、実現できました。とてもうれしい
 hugo theme aetherをフォークしてhimanoa/aetherにしました。色とかかなり弄ったり、hugoのminify機構を使ってCSSをminifyしてくれる形に修正した。前者はまだしも後者のパッチは独立させてPR送りたい。
 Railsやめた理由とか アプリケーションのメンテするモチベーションが消えたから。鯖もメンテしないといけないし。近いうちにgh-pagesに移行する見込みはあったんだけど、手付かずだったんで鯖のSSL証明書が切れたタイミングで移行するかなーーーみたいな気持ちになった。</description>
-    </item><item>
-      <title>エラーレポート</title>
-      <link>https://blog.himanoa.net/38/</link>
-      <pubDate>Sat, 02 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/38/</guid>
-      <description>風呂に3時間入っていた。思考は何時もの長風呂タイムと同じで自分の人生の足りない物、今後理想を実現するためのロードマップと現在の状態の乖離についてまとめなおしていた。
-スタックトレースを紛失してしまったので実行中の状態の詳細は不明だが特定のロジックパターンを遂行していた時に突然過呼吸が発生し、顔面が痺れていて鮮明に誰かに気づいて欲しい状態になったことを覚えている。
-2-3分この状態が続いた後ふと鏡を覗いたら自分の顔が平常時の顔だったことを確認して症状を回復した。</description>
     </item>
   </channel>
 </rss>

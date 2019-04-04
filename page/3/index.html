@@ -37,6 +37,24 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/33/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">RustでMarkdown to Htmlを試してみる</h2>
+    <p class="card-text lineclamp">有給を取って、ここ最近新しい事を始められてなかったことを思い出したので前からやりたかったRustに入門をしました。 んで、まぁいつも通りブログシステムでも書いてみるかなぁとか思ってRocket触ってDBまでアクセスしてInsert流す所までは普通にできたので、とりあえず次はMarkdownをパースしてhtmlに変換するやつでも書こうかなと思ったのでやってみることに。
+ライブラリを物色してみるとpulldown-cmarkというやつが人気そうなので雑にインストールして使ってみることにしました:smile:
+インストール Rustの環境構築は一旦省いて、以下のコマンドでパッケージを切って依存関係にpulldown-cmarkを入れていきます。
+$ cargo new --bin pulldown_cmark_playground $ cd pulldown_cmark_playground $ cat 'pulldown-cmark = &quot;0.1.2&quot;' &gt;&gt; Cargo.toml $ cargo build  cargo buildした時に依存関係にあるpulldown-cmarkが落ちてきてビルドされます。エコシステムがしっかりしていて完全に便利。文明の息吹を感じろ。
+htmlに変換してみる というわけでライブラリを使う準備が整ったのでさっそくMarkdownをhtmlに変換してみる。 GitHubのREADME.mdにはサンプルコードらしき物が書いていないが、ドキュメントの方にはちゃんと書いてあるのでそちらを参照しよう。大体以下のコードになります。
+extern crate pulldown_cmark; use pulldown_cmark::{html, Parser}; fn main() { let markdown_str = r#&quot;# Hello 人間は愚かな生物。 [俺のブログ](https://blog.himanoa.net) &quot;#; let parser = Parser::new(markdown_str); let mut html_buf = String::new(); html::push_html(&amp;mut html_buf, parser); println!(&quot;{}&quot;, html_buf); }  $ cargo run で実行してみると以下の結果が出力されます。
+&lt;h1&gt;Hello&lt;/h1&gt; &lt;p&gt;人間は愚かな生物。&lt;/p&gt; &lt;p&gt;&lt;a href=&quot;https://blog.</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-08-20">Aug 20, 2018</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/32/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -113,25 +131,6 @@ DL版https://t.co/64HnvYHuflhttps://t.co/DSjXp16BYG
 今日もハースで9連敗した</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-07-15">Jul 15, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/28/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">意図しないターゲットに対してバズった時にどこまでサポートするか</h2>
-    <p class="card-text lineclamp">これからネタプロダクトで一発当てる(ここでの一発当てるはTwitterでRTされてチヤホヤされるの意)のを狙ってる人向けの個人の見解です。
-正直求められているのはコマンド一発で立ちあがって良しなに動いてくれる物ではなくて、ブラウザからワンクリックで呼べる手段(ただこれは我々がホスティングしてインフラ費用を払わないといけない点がつらい)か誰でもわかる詳細なマニュアル(開始地点が絞れずエラーハンドリングどうする)なきがします
-&mdash; ひまのあ????@1日目 西め07a (@h1manoa) July 3, 2018 ぶっちゃけDiscordBotはバズることそこそこ予想できてたので公開のしかた間違ったなぁとも思っていて、ちゃんとゼロから動かせる資料の記事でも付けとくべきだったっていうのはある
-&mdash; ひまのあ????@1日目 西め07a (@h1manoa) 2018年7月3日 ただまぁそれと同時にあれできない人がDiscordBot運用するのは危険なのではという気持ちもあるので
-&mdash; ひまのあ????@1日目 西め07a (@h1manoa) July 3, 2018 まぁうまく人々が魅力を持って動かしたいと思ってくれるかわからん物に対して気合を入れすぎるのはあまりにもコスパがわるいので、利用者側の腕力に頼って腕力ないならやるなで蹴るっていうのはやり方として正しいと思いますけどね
-&mdash; ひまのあ????@1日目 西め07a (@h1manoa) July 3, 2018 無料で動作保証 + コンサルティングまでやるのは個人開発正直モチベ下ると思う
-&mdash; ひまのあ????@1日目 西め07a (@h1manoa) July 3, 2018 絵は他人の環境で動くかどうかの冪等性まで考えなくていいよなって思ったけど他人の環境でどう見えてるかみたいなのに拘って色使ってる人に殺される
-&mdash; ひまのあ????@1日目 西め07a (@h1manoa) July 3, 2018 </p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-07-03">Jul 3, 2018</time></p>
       
     </div>
   </article>
