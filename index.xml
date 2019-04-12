@@ -5,11 +5,31 @@
     <link>https://blog.himanoa.net/</link>
     <description>Recent content on 遺言書</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 04 Apr 2019 18:25:42 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 12 Apr 2019 19:41:28 +0900</lastBuildDate>
     
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>自分専用のブックマークサービスを作り始めた</title>
+      <link>https://blog.himanoa.net/44/</link>
+      <pubDate>Fri, 12 Apr 2019 19:41:28 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/44/</guid>
+      <description>はてなブックマークでブックマークするたびにブコメを見てしまい心が厳しくなってしまっていたので、年末に脱はてブ活動をしました。その結果Pocketが便利でPocketを使っているのですが、コメントができなかったりと不便を感じていたりする。
+Pocketの全文検索とか便利なんですけどこれははてブにはないし、そうなると自作するしかない。
+というわけでタイトルのブックマークサービスを作り始めたに繋がる。
+作り始めて何も動いてないので(CRUDの口だけ書いた)成果発表もないのだが、まぁ最近の近況報告的な感じで備忘録として記録しておこうと思う。
+コンセプト コメントができる Pocketになくてはてブにはある機能。自分のコメントベースで検索したい気持ちがPocketを使い始めてから強くなってきた。半分くらいこれのために自作したいと思っているやつ
+ページをスクレイピングしといて全文検索できる Pocketにあるやつ。便利。全文検索に使う情報が増えるという意味でもアドがある
+はてブextension的な感じでChromeからワンクリックで登録 必須。ないとブックマークしないのが分かり切っているので絶対に作る。
+どうやって実現しようかは考え中で、静的な登録用ページをFirebase Hostingでホスティングしてchrome extension内のpopupからiframeで呼び出すとかを考えている。
+ChromeExtension有識者が居たら相談させてくれると助かります。
+WebHook Publisherになれる 最初はTwitter連携でもいいかなと思ったんだけど、webhook喋れたらコード書くだけで何にでも連携できるじゃんという事に気づいたのでこれも実装したい
+技術スタック TypeScript + Firebase(Hosting, Firestore, Functions)でやっている。一人でやる分にはインフラコストが一番低い気がするのでこの構成。
+Firestoreを触るのが完全に初めてなんだが、まぁCRUD程度までは普通に実装できた。全文検索をどうするかは曖昧だがalgoliaを使えば上手く行くのではという感じ。
+なんでお一人様用なのか お金貰ってるわけじゃないのにスケールアウトとか認証とか考えたくないっていうのが根底にある。あと自分のインフラ的なアプリケーションを他人が使ったがために落ちる、みたいな可能性を減らしたい。
+GitHubでOSSにしてもいいかなと思ったけどコミットログに.firebasercが載ってしまっていて、削除するのがダルいという話があってOSSにする気持ちはなくなってきた。コード見たいとかそういう声があれば乗り気になるかもしれない</description>
+    </item><item>
       <title>Repositoryパターンの破綻</title>
       <link>https://blog.himanoa.net/43/</link>
       <pubDate>Thu, 04 Apr 2019 18:25:42 +0900</pubDate>
@@ -66,17 +86,6 @@ Laravelの入門 Docker内でいい感じに開発環境整うところまです
 家賃の支払い お金が飛んでく恐怖に震えて眠ります
 飲み会 いかなきゃ。
 aetherのhugoのminify機構を使ってくれるPRを出す パッチ…パッチはいりませんか…？</description>
-    </item><item>
-      <title>ブログ復旧しました</title>
-      <link>https://blog.himanoa.net/39/</link>
-      <pubDate>Wed, 03 Apr 2019 00:46:15 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/39/</guid>
-      <description>Railsの手入れ面倒になってきたのでブログを再構築しました。時代はhugoです。よろしくお願いします。
-重大な連絡 前述の都合上feedのURLがhttps://blog.himanoa.net/rss から https://blog.himanoa.net/feed.xml に変更されました。お手数ですが変更の方をよろしくお願いします。
-インフラとか GitHubにpush→CircleCI→gh-pages で自動で反映される仕組みにしました。選定したDockerコンテナがおかしくてpushできなかったりsshの設定がだめだったりいろいろあって50commit程時間がかかりましたが、実現できました。とてもうれしい
-hugo theme aetherをフォークしてhimanoa/aetherにしました。色とかかなり弄ったり、hugoのminify機構を使ってCSSをminifyしてくれる形に修正した。前者はまだしも後者のパッチは独立させてPR送りたい。
-Railsやめた理由とか アプリケーションのメンテするモチベーションが消えたから。鯖もメンテしないといけないし。近いうちにgh-pagesに移行する見込みはあったんだけど、手付かずだったんで鯖のSSL証明書が切れたタイミングで移行するかなーーーみたいな気持ちになった。</description>
     </item>
   </channel>
 </rss>
