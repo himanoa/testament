@@ -7,8 +7,9 @@ https://blog.himanoa.net 用のリポジトリです。
 ## Installation
 
 1. brew install hugo
-2. hugo serve
-3. http://localhost:1313 を開く
+2. git submodule init
+3. hugo serve
+4. http://localhost:1313 を開く
 
 ## Contributing
 
