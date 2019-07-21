@@ -114,15 +114,12 @@ module.exports = config
 
 <p>とりあえずstyle-loaderとcss-loader入れれば解決するかなと大体当たりがついたので、インターネット上で似た事例がないかだけ一旦調査してみたところ、MSが作ってる専用のwebpack-pluginを使えばいいということがわかった。</p>
 
-<ol>
-<li>以下のコマンドで専用のプラグインと必要なloaderを入れる</li>
-</ol>
+<p>1 以下のコマンドで専用のプラグインと必要なloaderを入れる</p>
 
-<p><code>yarn add --dev monaco-editor-webpack-plugin css-loader style-loader</code></p>
+<pre><code>yarn add --dev monaco-editor-webpack-plugin css-loader style-loader
+</code></pre>
 
-<ol>
-<li><code>webpack.config.js</code> に先程いれたプラグインとloaderを使うように変更</li>
-</ol>
+<p>2 <code>webpack.config.js</code> に先程いれたプラグインとloaderを使うように変更</p>
 
 <pre><code class="language-javascript">const path = require('path')
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
