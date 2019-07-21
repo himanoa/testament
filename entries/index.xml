@@ -16,7 +16,7 @@
       
       <guid>https://blog.himanoa.net/entries/48/</guid>
       <description>問題 monaco-editorを以下のようなloader設定とplugin設定でバンドルしようとしたらハマった。
-const path = require(&#39;path&#39;) const config = { externals: [&amp;quot;electron&amp;quot;], target: &amp;quot;electron-renderer&amp;quot;, entry: &amp;quot;./src/renderer/index.tsx&amp;quot;, plugins: [] //←重要, output: { path: path.join(__dirname, &amp;quot;dist&amp;quot;), filename: &amp;quot;renderer.js&amp;quot; }, module: { rules: [ //←重要 { test: /.tsx$/, exclude: /node_modules/, loader: &amp;quot;babel-loader&amp;quot; }, ] } } module.exports = config  エラー内容はこんなかんじで 下部分で重要そうな問題だけコピペしてきた
+const path = require(&#39;path&#39;) const config = { externals: [&amp;quot;electron&amp;quot;], target: &amp;quot;electron-renderer&amp;quot;, entry: &amp;quot;./src/renderer/index.tsx&amp;quot;, plugins: [], //←重要, output: { path: path.join(__dirname, &amp;quot;dist&amp;quot;), filename: &amp;quot;renderer.js&amp;quot; }, module: { rules: [ //←重要 { test: /.tsx$/, exclude: /node_modules/, loader: &amp;quot;babel-loader&amp;quot; }, ] } } module.exports = config  エラー内容はこんなかんじで 下部分で重要そうな問題だけコピペしてきた
  ERROR in ./node_modules/monaco-editor/esm/vs/editor/contrib/find/findWidget.css 8:0 Module parse failed: Unexpected token (8:0) You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file.</description>
     </item><item>
       <title>pre-orderで走破する木構造を書いた</title>

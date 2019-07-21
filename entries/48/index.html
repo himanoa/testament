@@ -53,7 +53,7 @@ const config = {
   externals: [&quot;electron&quot;],
   target: &quot;electron-renderer&quot;,
   entry: &quot;./src/renderer/index.tsx&quot;,
-  plugins: [] //←重要,
+  plugins: [], //←重要,
   output: {
     path: path.join(__dirname, &quot;dist&quot;),
     filename: &quot;renderer.js&quot;
@@ -126,7 +126,7 @@ const config = {
   externals: [&quot;electron&quot;],
   target: &quot;electron-renderer&quot;,
   entry: &quot;./src/renderer/index.tsx&quot;,
-  plugins: [new MonacoWebpackPlugin()] //←重要,
+  plugins: [new MonacoWebpackPlugin()], //←重要,
   output: {
     path: path.join(__dirname, &quot;dist&quot;),
     filename: &quot;renderer.js&quot;
