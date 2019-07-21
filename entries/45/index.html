@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>aleで.prettierrc.*が存在する時のみprettierをする設定 &middot; 遺言書</title>
+  <meta name="description" content="&lt;p&gt;どうでもいい設定シリーズ。&lt;/p&gt;
+
+&lt;p&gt;自分がやる(Java|Type)Scriptプロジェクトは全部prettier使いたいけど、他人のプロジェクトではprettierを動作させたない場合がある。&lt;/p&gt;
+
+&lt;p&gt;AtomだったりVSCodeだとprettierrcの" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/entries/45/" >
+  <meta property="og:title" content="aleで.prettierrc.*が存在する時のみprettierをする設定 &middot; 遺言書" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link href="https://blog.himanoa.net/css/xcode.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">aleで.prettierrc.*が存在する時のみprettierをする設定</h1>
+          <p class="post-date">Posted <time datetime="2019-04-14">Apr 14, 2019</time></p>
+        </header>
+        
+        <p>どうでもいい設定シリーズ。</p>
+
+<p>自分がやる(Java|Type)Scriptプロジェクトは全部prettier使いたいけど、他人のプロジェクトではprettierを動作させたない場合がある。</p>
+
+<p>AtomだったりVSCodeだとprettierrcの有無でprettierをかけたりかけなかったりしてくれるんだが、ale + Neovimの構成だと自分で設定を書かないとうまくやってくれない。</p>
+
+<p>んでその設定なんですけど僕はこうしてますってやつです。</p>
+
+<pre><code class="language-vimscript">let l:is_active = 0
+let l:prettierrcs = [&quot;.prettierrc&quot;, &quot;.prettierrc.toml&quot;, &quot;.prettierrc.config.js&quot;, &quot;.prettierrc.js&quot;]
+for item in l:prettierrcs
+  let l:is_active = l:is_active + filereadable(item)
+endfor
+let g:ale_fixers = {
+      \ 'javascript': ['eslint'],
+      \ 'typescript': ['eslint'],
+      \ 'vue': ['eslint']
+      \ }
+let g:ale_fix_on_save = 1
+if l:is_active &gt; 0
+  call insert(g:ale_fixers.javascript, &quot;prettier&quot;)
+  call insert(g:ale_fixers.typescript, &quot;prettier&quot;)
+  call insert(g:ale_fixers.vue, &quot;prettier&quot;)
+endif
+</code></pre>
+
+<p><a href="https://prettier.io/docs/en/configuration.html">ここ</a> を見るとわかるんですけど、package.jsonにconfigが書かれる場合もあるのだが、それに関しては未対応。</p>
+
+<p>vimscript jsonソリューションを募集しています</p>
+
+        <section class="section">
+  <h2>欲求ボタン</h2>
+  <div class="sns-buttons">
+    <a class="sns" href="http://twitter.com/intent/tweet?url=https%3a%2f%2fblog.himanoa.net%2fentries%2f45%2f&text=ale%e3%81%a7.prettierrc.%2a%e3%81%8c%e5%ad%98%e5%9c%a8%e3%81%99%e3%82%8b%e6%99%82%e3%81%ae%e3%81%bfprettier%e3%82%92%e3%81%99%e3%82%8b%e8%a8%ad%e5%ae%9a" target="_blank" title="Tweet"><i class="fab fa-twitter fa-2x"></i></a>
+    <a class="sns" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.himanoa.net%2fentries%2f45%2f&t=ale%e3%81%a7.prettierrc.%2a%e3%81%8c%e5%ad%98%e5%9c%a8%e3%81%99%e3%82%8b%e6%99%82%e3%81%ae%e3%81%bfprettier%e3%82%92%e3%81%99%e3%82%8b%e8%a8%ad%e5%ae%9a" target="_blank" title="Facebook"><i class="fab fa-facebook fa-2x"></i></a>
+    <a class="sns" href="http://getpocket.com/edit?url=https%3a%2f%2fblog.himanoa.net%2fentries%2f45%2f&title=ale%e3%81%a7.prettierrc.%2a%e3%81%8c%e5%ad%98%e5%9c%a8%e3%81%99%e3%82%8b%e6%99%82%e3%81%ae%e3%81%bfprettier%e3%82%92%e3%81%99%e3%82%8b%e8%a8%ad%e5%ae%9a" target="_blank" title="pocket"><i class="fab fa-get-pocket fa-2x"></i></a>
+  </div>
+</section>
+
+      </article>
+      
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script src="https://blog.himanoa.net/js/core.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+  </body>
+</html>

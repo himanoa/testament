@@ -11,19 +11,19 @@
     
     <item>
       <title>monaco-editorをwebpackでバンドルする</title>
-      <link>https://blog.himanoa.net/48/</link>
+      <link>https://blog.himanoa.net/entries/48/</link>
       <pubDate>Mon, 22 Jul 2019 06:48:01 +0900</pubDate>
       
-      <guid>https://blog.himanoa.net/48/</guid>
+      <guid>https://blog.himanoa.net/entries/48/</guid>
       <description>問題 monaco-editorを以下のようなloader設定とplugin設定でバンドルしようとしたらハマった。
 const path = require(&#39;path&#39;) const const config = { externals: [&amp;quot;electron&amp;quot;], target: &amp;quot;electron-renderer&amp;quot;, entry: &amp;quot;./src/renderer/index.tsx&amp;quot;, plugins: [] //←重要, output: { path: path.join(__dirname, &amp;quot;dist&amp;quot;), filename: &amp;quot;renderer.js&amp;quot; }, module: { rules: [ //←重要 { test: /.tsx$/, exclude: /node_modules/, loader: &amp;quot;babel-loader&amp;quot; }, ] } } module.exports = config  エラー内容はこんなかんじで 下部分で重要そうな問題だけコピペしてきた
  ERROR in ./node_modules/monaco-editor/esm/vs/editor/contrib/find/findWidget.css 8:0 Module parse failed: Unexpected token (8:0) You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file.</description>
     </item><item>
       <title>pre-orderで走破する木構造を書いた</title>
-      <link>https://blog.himanoa.net/47/</link>
+      <link>https://blog.himanoa.net/entries/47/</link>
       <pubDate>Sat, 20 Jul 2019 19:27:08 +0900</pubDate>
       
-      <guid>https://blog.himanoa.net/47/</guid>
+      <guid>https://blog.himanoa.net/entries/47/</guid>
       <description>動機 人はまれに木構造を書きたくなるときがあって、ついにそれを発症したので植林活動に手を染めてみることにしました。
 嘘です。本当は某所でビヘイビアツリーなるものを知ってしまったので、原理を知るために実装したかった。
 最近 lintとかtypescriptとかでASTでなんやかんやするの流行ってるし木を自作できたらいろいろ幅が聞くだろうなぁ（妄想）と思って木構造と走破するやつをつくった。
@@ -32,10 +32,10 @@ const path = require(&#39;path&#39;) const const config = { externals: [&amp;quo
 leftとrightがあるし実質北上双葉。双葉の双葉はどーれだ</description>
     </item><item>
       <title>転職してました</title>
-      <link>https://blog.himanoa.net/46/</link>
+      <link>https://blog.himanoa.net/entries/46/</link>
       <pubDate>Fri, 28 Jun 2019 23:28:27 +0900</pubDate>
       
-      <guid>https://blog.himanoa.net/46/</guid>
+      <guid>https://blog.himanoa.net/entries/46/</guid>
       <description>Twitterで仕事やめた時ワイワイ騒いでたので今更なんですけど、3月末で株式会社ドワンゴとの契約終了して、株式会社A1Aに転職しました。
 退職理由とかインターネットに書くのは面白くないんで、聞きたい人は酒にでも誘ってください
 最近ライバロリさんの動画にハマってるのでリスペクトして終ろうと思います
@@ -43,10 +43,10 @@ leftとrightがあるし実質北上双葉。双葉の双葉はどーれだ</des
  </description>
     </item><item>
       <title>aleで.prettierrc.*が存在する時のみprettierをする設定</title>
-      <link>https://blog.himanoa.net/45/</link>
+      <link>https://blog.himanoa.net/entries/45/</link>
       <pubDate>Sun, 14 Apr 2019 11:34:38 +0900</pubDate>
       
-      <guid>https://blog.himanoa.net/45/</guid>
+      <guid>https://blog.himanoa.net/entries/45/</guid>
       <description>どうでもいい設定シリーズ。
 自分がやる(Java|Type)Scriptプロジェクトは全部prettier使いたいけど、他人のプロジェクトではprettierを動作させたない場合がある。
 AtomだったりVSCodeだとprettierrcの有無でprettierをかけたりかけなかったりしてくれるんだが、ale + Neovimの構成だと自分で設定を書かないとうまくやってくれない。
@@ -55,10 +55,10 @@ let l:is_active = 0 let l:prettierrcs = [&amp;quot;.prettierrc&amp;quot;, &amp;q
 vimscript jsonソリューションを募集しています</description>
     </item><item>
       <title>自分専用のブックマークサービスを作り始めた</title>
-      <link>https://blog.himanoa.net/44/</link>
+      <link>https://blog.himanoa.net/entries/44/</link>
       <pubDate>Fri, 12 Apr 2019 19:41:28 +0900</pubDate>
       
-      <guid>https://blog.himanoa.net/44/</guid>
+      <guid>https://blog.himanoa.net/entries/44/</guid>
       <description>はてなブックマークでブックマークするたびにブコメを見てしまい心が厳しくなってしまっていたので、年末に脱はてブ活動をしました。その結果Pocketが便利でPocketを使っているのですが、コメントができなかったりと不便を感じていたりする。
 Pocketの全文検索とか便利なんですけどこれははてブにはないし、そうなると自作するしかない。
 というわけでタイトルのブックマークサービスを作り始めたに繋がる。

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>himanoa.netを開通させたぞ！！！！ &middot; 遺言書</title>
+  <meta name="description" content="
+
+&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net&#34;&gt;https://blog.himanoa.net&lt;/a&gt; はあるのに &lt;a href=&#34;https://himanoa.net&#34;&gt;https://himanoa.net&lt;/a&gt; がないのはおかしいよね" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/entries/13/" >
+  <meta property="og:title" content="himanoa.netを開通させたぞ！！！！ &middot; 遺言書" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link href="https://blog.himanoa.net/css/xcode.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">himanoa.netを開通させたぞ！！！！</h1>
+          <p class="post-date">Posted <time datetime="2017-12-23">Dec 23, 2017</time></p>
+        </header>
+        
+        
+
+<p><a href="https://blog.himanoa.net">https://blog.himanoa.net</a> はあるのに <a href="https://himanoa.net">https://himanoa.net</a> がないのはおかしいよねっていう指摘を受けて5億年くらい経ったんですが、僕に紹介する自己が存在しなかったのと、CSSとか書けないし置くプロダクトもないしなぁとか思って恥ずかしさから作ってなかった自己紹介サイトを早朝の4時間くらいで作りました。</p>
+
+<p>サイトデザインは色を適当なパレットから拾ってきて、あーでもないこーでもないしながらちょっと色見調整してCSSに落とし込むみたいな、コンポーネント指向とかとも無縁な感じで組んでみたんですけど、僕がCSS書いたにしては、モバイルでもちゃんと見れるようになったしそれっぽいデザインになったなぁといった感じで自画自賛できるくらいの出来なのでみんな見てくれーーーーーーーー</p>
+
+<p>これだけだと記事にしては何も面白くないのでデザインからデプロイするまでに得た知見とかを載せて締めます。</p>
+
+<h2 id="見てる画面の解像度に合わせてdivの高さを調節する">見てる画面の解像度に合わせてdivの高さを調節する。</h2>
+
+<p><a href="https://himanoa.net">https://himanoa.net</a> の白い部分は、スクロールしない限り高さをブラウザの描画サイズになるようになっています。</p>
+
+<p>JavaScriptで <code>window.innerHeight</code> をCSSに適用させとけばいきそうみたいな感じで目論んでいたのですが、いろいろ調べてみたところCSSにはvhという単位が存在し　これを用いると「ブラウザのサイズに依存せずに画面のどれくらいの高さを占めるか」といった感覚で単位を当てることができます。</p>
+
+<p>なので、先程のJavaScriptでうんたらかんたらせずとも <code>height: 100vh</code> とだけ書いとけばどの環境でも意図した高さになりレスポンシブも実現できるという分けです。便利</p>
+
+<h2 id="flexbox">Flexbox</h2>
+
+<p>スキル欄のタグがブラウザのサイズがめっちゃ小さくなってもいい感じに並んでくれるのはFlexboxを用いてます。</p>
+
+<p>Flexboxを用いると要素を規則的に並べるのが非常に楽になりました。折り返しの設定や並び方の設定などがいじれるのがよさです。</p>
+
+<p>また、従来のfloatレイアウトに比べてclearfixを気にしなくていいのも嬉しいです。</p>
+
+<h2 id="netlifyが神">netlifyが神</h2>
+
+<p>ちょっと前に騒がれてたnetlifyがデプロイ先として僕の要件をクリアしていたのでここでホスティングしています。</p>
+
+<p>GitHubのリポジトリを見てくれるのでpushに応じて自動でビルドしてページを更新してくれるので、サイト管理も楽なのが良かったです。</p>
+
+<p>あとはどこのディレクトリをドキュメントルートにするかもnetlify側で決められるのでgithub pagesと違い、gh-pagesみたいな余計なブランチを生やさなくてもいいのとhttps対応がクリック一回でできるのもよかったです。</p>
+
+        <section class="section">
+  <h2>欲求ボタン</h2>
+  <div class="sns-buttons">
+    <a class="sns" href="http://twitter.com/intent/tweet?url=https%3a%2f%2fblog.himanoa.net%2fentries%2f13%2f&text=himanoa.net%e3%82%92%e9%96%8b%e9%80%9a%e3%81%95%e3%81%9b%e3%81%9f%e3%81%9e%ef%bc%81%ef%bc%81%ef%bc%81%ef%bc%81" target="_blank" title="Tweet"><i class="fab fa-twitter fa-2x"></i></a>
+    <a class="sns" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.himanoa.net%2fentries%2f13%2f&t=himanoa.net%e3%82%92%e9%96%8b%e9%80%9a%e3%81%95%e3%81%9b%e3%81%9f%e3%81%9e%ef%bc%81%ef%bc%81%ef%bc%81%ef%bc%81" target="_blank" title="Facebook"><i class="fab fa-facebook fa-2x"></i></a>
+    <a class="sns" href="http://getpocket.com/edit?url=https%3a%2f%2fblog.himanoa.net%2fentries%2f13%2f&title=himanoa.net%e3%82%92%e9%96%8b%e9%80%9a%e3%81%95%e3%81%9b%e3%81%9f%e3%81%9e%ef%bc%81%ef%bc%81%ef%bc%81%ef%bc%81" target="_blank" title="pocket"><i class="fab fa-get-pocket fa-2x"></i></a>
+  </div>
+</section>
+
+      </article>
+      
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script src="https://blog.himanoa.net/js/core.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+  </body>
+</html>

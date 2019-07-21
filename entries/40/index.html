@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>2019-04-02(ニート歴2日目) &middot; 遺言書</title>
+  <meta name="description" content="
+
+&lt;h2 id=&#34;やったこと&#34;&gt;やったこと&lt;/h2&gt;
+
+&lt;h3 id=&#34;ブログの移行&#34;&gt;ブログの移行&lt;/h3&gt;
+
+&lt;p&gt;Rails→hugo&lt;/p&gt;
+
+&lt;h4 id=&#34;circleci入門&#34;&gt;CircleCI入門&lt;/h4&gt;
+
+&lt;p&gt;ひたすらキャッチアップしつつこのブログのデプロ" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/entries/40/" >
+  <meta property="og:title" content="2019-04-02(ニート歴2日目) &middot; 遺言書" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link href="https://blog.himanoa.net/css/xcode.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">2019-04-02(ニート歴2日目)</h1>
+          <p class="post-date">Posted <time datetime="2019-04-03">Apr 3, 2019</time></p>
+        </header>
+        
+        
+
+<h2 id="やったこと">やったこと</h2>
+
+<h3 id="ブログの移行">ブログの移行</h3>
+
+<p>Rails→hugo</p>
+
+<h4 id="circleci入門">CircleCI入門</h4>
+
+<p>ひたすらキャッチアップしつつこのブログのデプロイ環境を構築していた。</p>
+
+<p>CircleCIがデフォルトで用意してくれる秘密鍵と公開鍵がReadOnlyだということに気が付かずずっとgit push origin HEADがコンテナ内から通らないなぁとか思ってたりしたので結構ハマった。</p>
+
+<p>完走した感想ですが、設定ファイルをyamlで書かなくちゃいけないのがどうしてもストレスで(これは前使ってたTravisCIもそう)、正直手続き的に設定ファイルを書きたい気持ちが強い。なんでyamlが嫌いなのかというと、テキストエディタがまともなインデントをしてくれないのがストレスになっているからである。</p>
+
+<p>CIの出来はともかく設定ファイルの書き易さだけで見るなら個人的にはJenkinsのJenkinsfile(groovy)が一番書き安く読み易いし複雑なことも表現しやすいと思ってる。</p>
+
+<p>ある程度複雑な設定にyamlやJSONを使うのは向いていないと考えていて、そういうのはRubyの内部DSLだったり軽量なスクリプト言語でやれるといいよなと考えてる。</p>
+
+<p>似たような理由でAnsibleも嫌いでItamaeの方が僕にとってはやさしいツールだなぁと感じる。</p>
+
+<h4 id="himanoa-aether-https-github-com-himanoa-aether"><a href="https://github.com/himanoa/aether">himanoa/aether</a></h4>
+
+<p>hugo使うならベースにしやすいブログ用テーマを選んで改造していくのが良さそうと感じたのでフォークして色とかを調節したり、シェアボタンを置いたりとかした。</p>
+
+<p>色とかを調節するだけでもだいぶ雰囲気がガラっと変わって感動しています。今年はデザイン学習とかにも力を入れていきたいと思っているけど、はたして時間はあるのだろうか</p>
+
+<h4 id="選考面接を受けた">選考面接を受けた</h4>
+
+<p>今も着実に貯蓄は底に向かって消費されていて、いつまでもニートのままというわけにもいかないので、就活ってやつをやっている。</p>
+
+<p>今日は以前カジュアル面談行った中で一番興味を持てて、かつ金も一番貰えそうな企業の採用面接を受けにいった。</p>
+
+<p>正直こういう採用面接って採用担当者のエンジニアと雑談していい時間になっていることが多くて今回もそうだったんだけど手応えみたいなのがまったくよくわからない。</p>
+
+<p>一番仕事をしたい企業だったので受かると嬉しい……</p>
+
+<h2 id="できなかったこと">できなかったこと</h2>
+
+<h3 id="メール返信">メール返信</h3>
+
+<p>変に気合が必要な作業を後回しにしがちで、悪癖が出ていますね</p>
+
+<h3 id="家賃の支払い">家賃の支払い</h3>
+
+<p>グゥ~~~~</p>
+
+<h2 id="あしたやること">あしたやること</h2>
+
+<h3 id="メールの返信">メールの返信</h3>
+
+<p>2通</p>
+
+<h3 id="laravelの入門">Laravelの入門</h3>
+
+<p>Docker内でいい感じに開発環境整うところまですらできてないのでまずはそこ。
+次点でチュートリアルの完遂</p>
+
+<h3 id="家賃の支払い-1">家賃の支払い</h3>
+
+<p>お金が飛んでく恐怖に震えて眠ります</p>
+
+<h3 id="飲み会">飲み会</h3>
+
+<p>いかなきゃ。</p>
+
+<h3 id="aetherのhugoのminify機構を使ってくれるprを出す">aetherのhugoのminify機構を使ってくれるPRを出す</h3>
+
+<p>パッチ…パッチはいりませんか…？</p>
+
+        <section class="section">
+  <h2>欲求ボタン</h2>
+  <div class="sns-buttons">
+    <a class="sns" href="http://twitter.com/intent/tweet?url=https%3a%2f%2fblog.himanoa.net%2fentries%2f40%2f&text=2019-04-02%28%e3%83%8b%e3%83%bc%e3%83%88%e6%ad%b42%e6%97%a5%e7%9b%ae%29" target="_blank" title="Tweet"><i class="fab fa-twitter fa-2x"></i></a>
+    <a class="sns" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.himanoa.net%2fentries%2f40%2f&t=2019-04-02%28%e3%83%8b%e3%83%bc%e3%83%88%e6%ad%b42%e6%97%a5%e7%9b%ae%29" target="_blank" title="Facebook"><i class="fab fa-facebook fa-2x"></i></a>
+    <a class="sns" href="http://getpocket.com/edit?url=https%3a%2f%2fblog.himanoa.net%2fentries%2f40%2f&title=2019-04-02%28%e3%83%8b%e3%83%bc%e3%83%88%e6%ad%b42%e6%97%a5%e7%9b%ae%29" target="_blank" title="pocket"><i class="fab fa-get-pocket fa-2x"></i></a>
+  </div>
+</section>
+
+      </article>
+      
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script src="https://blog.himanoa.net/js/core.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+  </body>
+</html>
