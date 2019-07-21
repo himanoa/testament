@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.himanoa.net/48/</loc>
+    <lastmod>2019-07-22T06:48:01+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.himanoa.net/47/</loc>
     <lastmod>2019-07-20T19:27:08+09:00</lastmod>
   </url>
@@ -249,7 +254,7 @@
   
   <url>
     <loc>https://blog.himanoa.net/</loc>
-    <lastmod>2019-07-20T19:27:08+09:00</lastmod>
+    <lastmod>2019-07-22T06:48:01+09:00</lastmod>
     <priority>0</priority>
   </url>
   

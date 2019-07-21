@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>monaco-editorをwebpackでバンドルする &middot; 遺言書</title>
+  <meta name="description" content="
+
+&lt;h2 id=&#34;問題&#34;&gt;問題&lt;/h2&gt;
+
+&lt;p&gt;monaco-editorを以下のようなloader設定とplugin設定でバンドルしようとしたらハマった。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const path = re" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/48/" >
+  <meta property="og:title" content="monaco-editorをwebpackでバンドルする &middot; 遺言書" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link href="https://blog.himanoa.net/css/xcode.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">monaco-editorをwebpackでバンドルする</h1>
+          <p class="post-date">Posted <time datetime="2019-07-22">Jul 22, 2019</time></p>
+        </header>
+        
+        
+
+<h2 id="問題">問題</h2>
+
+<p>monaco-editorを以下のようなloader設定とplugin設定でバンドルしようとしたらハマった。</p>
+
+<pre><code class="language-javascript">const path = require('path')
+const
+const config = {
+  externals: [&quot;electron&quot;],
+  target: &quot;electron-renderer&quot;,
+  entry: &quot;./src/renderer/index.tsx&quot;,
+  plugins: [] //←重要,
+  output: {
+    path: path.join(__dirname, &quot;dist&quot;),
+    filename: &quot;renderer.js&quot;
+  },
+  module: {
+    rules: [ //←重要
+      {
+        test: /.tsx$/,
+        exclude: /node_modules/,
+        loader: &quot;babel-loader&quot;
+      },
+    ]
+  }
+}
+
+module.exports = config
+</code></pre>
+
+<p>エラー内容はこんなかんじで 下部分で重要そうな問題だけコピペしてきた</p>
+
+<pre><code>    ERROR in ./node_modules/monaco-editor/esm/vs/editor/contrib/find/findWidget.css 8:0
+    Module parse failed: Unexpected token (8:0)
+    You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+    | /* Checkbox */
+    |
+    &gt; .monaco-checkbox .label {
+    |   width: 12px;
+    |   height: 12px;
+     @ ./node_modules/monaco-editor/esm/vs/editor/contrib/find/findWidget.js 18:0-26
+     @ ./node_modules/monaco-editor/esm/vs/editor/contrib/find/findController.js
+     @ ./node_modules/monaco-editor/esm/vs/editor/editor.all.js
+     @ ./node_modules/monaco-editor/esm/vs/editor/edcore.main.js
+     @ ./node_modules/monaco-editor/esm/vs/editor/editor.main.js
+     @ ./src/renderer/components/monaco-editor.tsx
+     @ ./src/renderer/index.tsx
+
+    ERROR in ./node_modules/monaco-editor/esm/vs/editor/contrib/gotoError/media/gotoErrorWidget.css 8:0
+    Module parse failed: Unexpected token (8:0)
+    You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+    | /* marker zone */
+    |
+    &gt; .monaco-editor .peekview-widget .head .peekview-title .icon.warning {
+    |   background: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTYgMTYiIGhlaWdodD0iMTYiIHdpZHRoPSIxNiI+PHBhdGggZmlsbD0iI0Y2RjZGNiIgZD0iTTcuNSAyTDIgMTJsMiAyaDlsMi0yTDkuNSAyeiIvPjxwYXRoIGQ9Ik05IDNIOGwtNC41IDkgMSAxaDhsMS0xTDkgM3ptMCA5SDh2LTFoMXYxem0wLTJIOFY2aDF2NHoiIGZpbGw9IiNmYzAiLz48cGF0aCBkPSJNOSAxMEg4VjZoMXY0em0wIDFIOHYxaDF2LTF6Ii8+PC9zdmc+&quot;) center center no-repeat;
+    | }
+     @ ./node_modules/monaco-editor/esm/vs/editor/contrib/gotoError/gotoErrorWidget.js 18:0-37
+     @ ./node_modules/monaco-editor/esm/vs/editor/contrib/gotoError/gotoError.js
+     @ ./node_modules/monaco-editor/esm/vs/editor/editor.all.js
+     @ ./node_modules/monaco-editor/esm/vs/editor/edcore.main.js
+     @ ./node_modules/monaco-editor/esm/vs/editor/editor.main.js
+     @ ./src/renderer/components/monaco-editor.tsx
+     @ ./src/renderer/index.tsx
+</code></pre>
+
+<p>CSS読み込もうとしたけど、僕の書いてるwebpack.config.jsにstyle-loader系の記述が入ってなくて、依存関係を解決しようとしたときにcssにぶち当たって死んでそうな雰囲気。</p>
+
+<h2 id="解決">解決</h2>
+
+<p>とりあえずstyle-loaderとcss-loader入れれば解決するかなと大体当たりがついたので、インターネット上で似た事例がないかだけ一旦調査してみたところ、MSが作ってる専用のwebpack-pluginを使えばいいということがわかった。</p>
+
+<ol>
+<li>以下のコマンドで専用のプラグインと必要なloaderを入れる</li>
+</ol>
+
+<p><code>yarn add --dev monaco-editor-webpack-plugin css-loader style-loader</code></p>
+
+<ol>
+<li><code>webpack.config.js</code> に先程いれたプラグインとloaderを使うように変更</li>
+</ol>
+
+<pre><code class="language-javascript">const path = require('path')
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const config = {
+  externals: [&quot;electron&quot;],
+  target: &quot;electron-renderer&quot;,
+  entry: &quot;./src/renderer/index.tsx&quot;,
+  plugins: [new MonacoWebpackPlugin()] //←重要,
+  output: {
+    path: path.join(__dirname, &quot;dist&quot;),
+    filename: &quot;renderer.js&quot;
+  },
+  module: {
+    rules: [ //←重要
+      {
+        test: /.tsx$/,
+        exclude: /node_modules/,
+        loader: &quot;babel-loader&quot;
+      },
+      {
+        // 追加されたシリーズ
+        test: /\.css$/,
+        use: [&quot;css-loader&quot;, &quot;style-loader&quot;]
+      }
+    ]
+  }
+}
+
+module.exports = config
+</code></pre>
+
+<p>これでビルドが通るようになったのでよかったね。</p>
+
+<h2 id="参考文献">参考文献</h2>
+
+<ul>
+<li><a href="https://github.com/Microsoft/monaco-editor/blob/master/docs/integrate-esm.md">https://github.com/microsoft/monaco-editor/blob/master/docs/integrate-esm.md</a></li>
+<li><a href="https://github.com/microsoft/monaco-editor-webpack-plugin">microsoft/monaco-editor-webpack-plugin: Webpack plugin for the Monaco Editor</a></li>
+</ul>
+
+        <section class="section">
+  <h2>欲求ボタン</h2>
+  <div class="sns-buttons">
+    <a class="sns" href="http://twitter.com/intent/tweet?url=https%3a%2f%2fblog.himanoa.net%2f48%2f&text=monaco-editor%e3%82%92webpack%e3%81%a7%e3%83%90%e3%83%b3%e3%83%89%e3%83%ab%e3%81%99%e3%82%8b" target="_blank" title="Tweet"><i class="fab fa-twitter fa-2x"></i></a>
+    <a class="sns" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.himanoa.net%2f48%2f&t=monaco-editor%e3%82%92webpack%e3%81%a7%e3%83%90%e3%83%b3%e3%83%89%e3%83%ab%e3%81%99%e3%82%8b" target="_blank" title="Facebook"><i class="fab fa-facebook fa-2x"></i></a>
+    <a class="sns" href="http://getpocket.com/edit?url=https%3a%2f%2fblog.himanoa.net%2f48%2f&title=monaco-editor%e3%82%92webpack%e3%81%a7%e3%83%90%e3%83%b3%e3%83%89%e3%83%ab%e3%81%99%e3%82%8b" target="_blank" title="pocket"><i class="fab fa-get-pocket fa-2x"></i></a>
+  </div>
+</section>
+
+      </article>
+      
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script src="https://blog.himanoa.net/js/core.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+  </body>
+</html>
