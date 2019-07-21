@@ -42,7 +42,7 @@
   <article class="card-body">
     <h2 class="card-title">monaco-editorをwebpackでバンドルする</h2>
     <p class="card-text lineclamp">問題 monaco-editorを以下のようなloader設定とplugin設定でバンドルしようとしたらハマった。
-const path = require('path') const const config = { externals: [&quot;electron&quot;], target: &quot;electron-renderer&quot;, entry: &quot;./src/renderer/index.tsx&quot;, plugins: [] //←重要, output: { path: path.join(__dirname, &quot;dist&quot;), filename: &quot;renderer.js&quot; }, module: { rules: [ //←重要 { test: /.tsx$/, exclude: /node_modules/, loader: &quot;babel-loader&quot; }, ] } } module.exports = config  エラー内容はこんなかんじで 下部分で重要そうな問題だけコピペしてきた
+const path = require('path') const config = { externals: [&quot;electron&quot;], target: &quot;electron-renderer&quot;, entry: &quot;./src/renderer/index.tsx&quot;, plugins: [] //←重要, output: { path: path.join(__dirname, &quot;dist&quot;), filename: &quot;renderer.js&quot; }, module: { rules: [ //←重要 { test: /.tsx$/, exclude: /node_modules/, loader: &quot;babel-loader&quot; }, ] } } module.exports = config  エラー内容はこんなかんじで 下部分で重要そうな問題だけコピペしてきた
  ERROR in ./node_modules/monaco-editor/esm/vs/editor/contrib/find/findWidget.css 8:0 Module parse failed: Unexpected token (8:0) You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file.</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-07-22">Jul 22, 2019</time></p>
