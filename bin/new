@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-ls content/*.md -l | wc -l | awk '{print $1 + 1}' | xargs -I "{}" hugo new {}.md
+ls content/entries/*.md -l | wc -l | awk '{print $1 + 1}' | xargs -I "{}" hugo new entries/{}.md
