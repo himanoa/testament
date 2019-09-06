@@ -37,6 +37,26 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/entries/20/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">WSLでクリップボードを共有する</h2>
+    <p class="card-text lineclamp">Windows Subsystem for Linuxで開発環境を整えた の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに入ってくれないのが結構ストレスになったのでそれの解消をします。
+Windowsにはclip.exeというソフトウェアが搭載されており、これを使うことでWSLからWindowsのクリップボードに文字列を入れることができます
+echo &quot;:innocent:&quot; | clip.exe # wsl Terminal上でShift + Insert :innocent:  ただ、このソフトウェア単体だとクリップボードから文字列を取り出すことができないのと、文字列の最後に改行コードが入るらしく(余計なことしやがって)つらいので別のアプローチでやります
+先にやっておくこと  https://github.com/equalsraf/win32yank/releases から win32yank-x64.zipをダウンロードしてきて展開 展開して出てきたwin32yank.exeを WSL上でecho $PATHして列挙されたディレクトリのいずれかに配置  win32yankの使い方は clip.exe と大体同じで以下のように使う
+echo &quot;poepoe&quot; | win32yank.exe -i win32yank.exe -o poepoe  念のためWindows上で任意のテキストボックスでCtrl+vして貼り付けられるか確認しておくと良いかもしれない。
+Neovimからwin32yank.exeを使う さてここまでできたのなら、Neovimから yでヤンク、pで貼り付けるみたいなことをできるようにしたい。
+過去の記憶からNeovimでLinuxのクリップボードと連携した時に xsel に依存していた覚えがあった。
+また、丁度手元にNeovimのソースコードがあったのでそこから検索して(最悪書き換えてビルドすればよい)どうすればいいかを模索した
+cd ~/src/github.com/neovim/neovim git grep xsel runtime/autoload/provider/clipboard.vim:&quot; When caching is enabled, store the jobid of the xclip/xsel process keeping runtime/autoload/provider/clipboard.vim: elseif exists('$DISPLAY') &amp;&amp; executable('xsel') &amp;&amp; s:cmd_ok('xsel -o -b') runtime/autoload/provider/clipboard.</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-01-31">Jan 31, 2018</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/entries/12/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -110,27 +130,6 @@ vimtutorをやりましょう。vimtutorはvimでの効率的なテキスト操�
 やっていき ブログの進捗が出たので神</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-01-25">Jan 25, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/16/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">ニコ生でプログラミング配信がしたかった</h2>
-    <p class="card-text lineclamp">とりあえず環境構築して2枠くらい配信してたんだけど、おもったよりうまくいかなかった?
-最強の環境を作った pic.twitter.com/3OjjTG2xUq
-&mdash; 50killほ○ (@h1manoa) January 15, 2018 やりたかったこと  Facerigでかわいさ VOICEROID2 + ゆかりねっとでかわいさ Atomプラグインを作りたかった  現実  Facerigかわいかったけどあんまうごかなかったしあれ トーク力が低い ぼやきをうまく認識できなくて終始日本語を喋れてなかった コードの進捗がわるい 放送終了してるのに気づかない コメント  なんかボロボロな出来でした。まぁ見てる人もコメントに困る内容だったよね。 雑に放送環境を作成してやってみたけどやっぱりコメント読み上げとかは必要だと思う。あと自動で次の枠とるやつ。 ぼやきのやつは致命的なんですけど。これはどうしようもないですね。僕が琴葉葵をやめるしかない
-つーかあのかわいいやつどうやってるの 最強の環境を作った pic.twitter.com/3OjjTG2xUq
-&mdash; 50killほ○ (@h1manoa) January 15, 2018 これのことなんだけど構成図見てもらった方が理解しやすいと思うのでそっちをまず
-世界観です pic.twitter.com/s8eTiFmhDL
-&mdash; 50killほ○ (@h1manoa) January 15, 2018 配信はOBSでやっていてChromeRemoteDesktop経由でUbuntuマシンの画面をキャプチャしてFacerigのっけて配信してるだけ。琴葉葵さんボイスでしゃべってるのはゆかりねっとで認識させてライン入力にボイロの出力食わせて、そいつをOBSに食わせるみたいな感じ。だれでもできますね。
-ハマりどころとしては、Chromeのハードウェアレンダリング切らないとobsでキャプチャしても真っ黒になってしまうので切ること。 まともな配信環境整えたらリベンジしたいね
-屍超えていきたい人に向けてなんですけど、プログラミングしながらトークするのはやっぱり修羅だと思うのでコメントが勝手に賑わってくれるようなシステム作るのは考えた方がいいし、集中切れた時にコメント視るくらいになると進捗すると思う。基本的にコードが話題になることは少ないので、事前にブログに書きたかったエモい話とかで盛り上れるといいかもしれない。とにかく空気感作ってくのが大事
-お題としてはゲームとかWebサイト作るとかだと見栄えもいいのでそういうテーマの方がやりやすいと思った。あとは慣れないことすると調べてる時間が長くなりがちなので放送時間は長くやることを前提としてやったほうがいいですね。これは間違いない。</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-01-15">Jan 15, 2018</time></p>
       
     </div>
   </article>
