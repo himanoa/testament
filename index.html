@@ -41,6 +41,26 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/entries/50/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">gitをより便利にするsubcommand集を作った</h2>
+    <p class="card-text lineclamp">gitにはsubcommandという仕組みが存在していて、パスが通ったディレクトリに+xなgit-xxxファイルを置いておくと、git xxx で呼び出せる仕組みが存在します
+具体例を上げると ~/bin/ にパスが通ってるとして、~/bin/git-wip が存在したなら 任意のgitディレクトリで git wip で ~/bin/git-wip が呼び出せます。
+さもgitのpluginのような顔をしていますが、別にプラグインだから専用のAPIにアクセスできるみたいなことはありません。
+個人的にはgitの操作で結構ワンライナーでかけるけど毎回書くのに気合が必要なやつをラップするコマンドをサブコマンドとして管理すると便利だったりします。
+たとえばリポジトリ内でgrepした結果を置換する git grep -l Foo | xargs sed -i '' -e &quot;/Foo/Bar/g&quot; をサブコマンドとして実装するとかです。
+やっと本題に戻りますが、これらのサブコマンド集を実装してリポジトリとして公開しました! himanoa/git-subcommands
+インストール himanoa/git-subcommands は以下のツールに依存しています。
+ bash python  3.x推奨  git   git clone https://github.com/himanoa/git-subcommands ~/git-subcommands PATHを ~/git-subcommands/src に通す  zshとかbashを使っているなら export PATH=~/git-subcommands/src:$PATH とかでいいのでは？   インストールが完了したら以下のセクションのサブコマンドがそれぞれ動作できるようになるはずです！
+実装したコマンド git-replace リポジトリ内の特定の文字列を置換する いつも git gre -l Foo | xargs sed -i '' -e &quot;/Foo/Bar/&quot; とか書いてた実装ですね。これをこのサブコマンドを用いることで以下のスニペットまで短縮できます</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2019-09-10">Sep 10, 2019</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/entries/49/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -99,23 +119,6 @@ leftとrightがあるし実質北上双葉。双葉の双葉はどーれだ</p>
  </p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-06-28">Jun 28, 2019</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/45/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">aleで.prettierrc.*が存在する時のみprettierをする設定</h2>
-    <p class="card-text lineclamp">どうでもいい設定シリーズ。
-自分がやる(Java|Type)Scriptプロジェクトは全部prettier使いたいけど、他人のプロジェクトではprettierを動作させたない場合がある。
-AtomだったりVSCodeだとprettierrcの有無でprettierをかけたりかけなかったりしてくれるんだが、ale + Neovimの構成だと自分で設定を書かないとうまくやってくれない。
-んでその設定なんですけど僕はこうしてますってやつです。
-let l:is_active = 0 let l:prettierrcs = [&quot;.prettierrc&quot;, &quot;.prettierrc.toml&quot;, &quot;.prettierrc.config.js&quot;, &quot;.prettierrc.js&quot;] for item in l:prettierrcs let l:is_active = l:is_active + filereadable(item) endfor let g:ale_fixers = { \ 'javascript': ['eslint'], \ 'typescript': ['eslint'], \ 'vue': ['eslint'] \ } let g:ale_fix_on_save = 1 if l:is_active &gt; 0 call insert(g:ale_fixers.javascript, &quot;prettier&quot;) call insert(g:ale_fixers.typescript, &quot;prettier&quot;) call insert(g:ale_fixers.vue, &quot;prettier&quot;) endif  ここ を見るとわかるんですけど、package.jsonにconfigが書かれる場合もあるのだが、それに関しては未対応。
-vimscript jsonソリューションを募集しています</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2019-04-14">Apr 14, 2019</time></p>
       
     </div>
   </article>
