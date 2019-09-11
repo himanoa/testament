@@ -40,6 +40,26 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/entries/6/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">動画を作らない人のための琴葉姉妹活用法</h2>
+    <p class="card-text lineclamp">VOICEROID2 琴葉 茜・葵を買って実況動画を作るぞ!!!!!!!!!!!!!!!! という気持ちになったのはいいんですが、動画制作周りのエコシステムがかなり気合が必要で気持ちがなくなってしまったり、 そもそも最近ゲームを楽しめなくなったりしてしまって琴葉姉妹をインストールしたけど全然起動しなくなってしまった人向けの活用方法を紹介します。?
+⚡️ 着メロにする これはだれでも思いつく(ほんとうか?)方法なのだがメールの着信音にするとか電話の着信音にするっていう話ですね。喋らせたいボイスを雑に作ってスマホに放り込んで設定するだけなのでかなりお手軽に耳が幸せになるハックですね。 ただ会社とかで琴葉姉妹が喋ると周りの皆さんの目が冷くなったりする職場だと運用に注意したほうがいいかもしれません。 まぁ 愛 でカバーできる猛者なら常にミュートにしなくて問題ないですね。
+⏰ 目覚しボイスにする これは上の項目の応用ですね。作り方は同じですね。音源を作ってスマホにぶちこんで目覚し時計アプリで設定するだけですね。 朝の目覚しが美少女の声になるので実質 めざましマネージャー アスナ になって便利ですね。 しかも自分の好きなボイスで起こしてもらえるので無限に夢が膨らんで 便利ですね。 折角だし目覚しアプリごと作ればランダムでボイスを再生したり、その日の天気や時間に応じてボイスを変えたりとかもできるので積極的にプログラミングしていきましょう? おまけなんですけど、exVOICEに「おはよう」といったボイスが存在するので手軽で便利ですね。
+♪ Mikutterの効果音を取っかえる Linux向けのTwitterクライアントがあります。このクライアントはふぁぼやRTといった動作の通知音を設定できます。効果音のリソースを琴葉姉妹のボイスに置き替えればいいわけですね。 これであなたもふぁぼられるたびに琴葉姉妹がふぁぼって囁いてきてRTされる度にRetweetって葵ちゃんが囁いてくれて、リプライが飛んでくる度に茜ちゃんが囁いてくれる、まるで楽園みたいなTwitter生活が約束されるというわけですね。やったぜ。
+? Scalaのコンパイル終了にフックすることによってコンパイル中にTwitterを見る Scalaのコンパイル遅いですよね。待ってる間にカップラーメンは食べれますし、コマンドの終了をターミナルと睨みっこしながら待ち時間を過すのはシャクという物です。 もっとエキサイトなコーディングライフを送るべきです。
+え?Scala書かない? 熟成したRailsProjectのRSpecを全てのパターンで流すと長い時間を有しますよね?。そういったやつです。 コマンドの終了時にVOICEROIDの音声を流すことで、コマンドが終了するまでの時間でTwitterができますね!便利だ。 え?どうやってやるかわからない?以下にfishでの実装例を記述していきます。
+~/.config/fish/config.fish function hook_command_end --on-event fish_postexec # MacOSX Sierra set -x success_voice $HOME/Music/success.wav set -x fail_voice $HOME/Music/fail.wav if test $status -eq 0 afplay $success_voice &amp; else afplay $fail_voice &amp; end end  これでコマンド成功時に成功の音声を流す、失敗の時は失敗の音声を流す機能の実装ができました。
+ただ、これだけだとlsコマンドを実行しただけで琴葉姉妹が喋りだすので、実行時間がある程度長い場合はみたいな分岐を作ったり、再生されるボイスをランダムでピックするように実装したりすると実用性が高い琴葉姉妹になるでしょう
+? 小説家になろうを食わせてSS聞きながしする 長文を自分の目で読むのはめんどうですね。大好きな百合SSでも仕事中では摂取できないのはつらいことです。 しかし、このVOICEROID2があれば仕事中に耳から百合を摂取することが可能!</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2017-10-01">Oct 1, 2017</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/entries/7/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -121,24 +141,11 @@ TODO  React ReduxでいいかんじSPA管理画面 ↑を実現するためのAP
     </div>
   </article>
 </a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/1/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">ブログはじめました</h2>
-    <p class="card-text lineclamp"> なんかドメイン切れたりしてでモチベ切れてしまって手を付けてなかったんですけど、ブログ書きたくなったのではじめました報告です。
-人間 </p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2017-09-12">Sep 12, 2017</time></p>
-      
-    </div>
-  </article>
-</a>
 
     </main>
     <nav class="pagination-nav side-padding">
       <a href="https://blog.himanoa.net/entries/page/9/" class="pagination-newer">&lt; Newer Posts</a>
-      
+      <a href="https://blog.himanoa.net/entries/page/11/" class="pagination-older">Older Posts &gt;</a>
     </nav>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>

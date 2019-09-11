@@ -40,6 +40,18 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/entries/36/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">テスト記事</h2>
+    <p class="card-text lineclamp">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2019-01-26">Jan 26, 2019</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/entries/35/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -113,27 +125,6 @@ DL版https://t.co/64HnvYHuflhttps://t.co/DSjXp16BYG
 味方が有能なので味方と一緒に飛ぶ事を心がける事でこの変はなんとかなったりする。あと母艦が出てくるミッションは困ったら母艦の上空をグルグル回ったりしとけば敵が勝手に死ぬ。この変はエースコンバットよりどうやって飛ぶかを考えさせられるゲームだった。</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-08-16">Aug 16, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/31/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">Python &#43; Firebase RealtimeDBでDiscordBotを作った感想</h2>
-    <p class="card-text lineclamp">Vの者の配信をしてたら放送のリンクをDiscordに自動で投稿してくれる感じのDiscordBotを書きましたhttps://t.co/xKtgGYRJ7w から各位のDiscordServerに登録できます!
-簡易的なDiscordBotの作り方について書いた本を本日のコミックマーケット 西め07a にて販売するので、そちらもよろしくお願いします pic.twitter.com/EmHfRv9b0g
-&mdash; ひまのあ??? (@h1manoa) 2018年8月9日 これの話です。
-これの裏側はPython3.6 + Firebase RealtimeDB + GAE(Flexible Enviroment)になっています。
-今回はRealtime Databsaeを使った感想について書いていきます
-そもそもなぜReatimeDBを？ 人間がデプロイしないで自分のサーバーに追加できるDiscordBotを組みたかったので何かしらに永続化する必要がある。 RDBMSで何か遊ぶことには慣れてるので、本当はRDBMSを使いたかったのだが、無料で使える or もしくはコスパがよろしいプランが存在しなかったので、NosqlなFirebase Realtime DBを採用したみたいな経緯でした。
-よかった話 安い 日のデータ通信量がわかれば月のデータ通信量もなんとなくわかるのでわかるんですが、安いのは個人のホビーとしてはポイントがたかい。 僕のユースケースだと無料枠に収まりそうなのでよかった
-見えるものが動くまでのサイクルがはやい。 テーブル設計しなくても適当にDatabaseに実データが入れられたり、リアルタイム同期してくれるため動くものを作るまでのサイクルはめちゃくちゃ簡略化できる。
-しんどかった話 flattenなスキーマ設計 RealtimeDBはスキーマレスだが開発を効率的にやるためにはやはりスキーマはあったほうがいいと思っているのでアプリケーションコード上でやった。 RealtimeDBはあるテーブルのデータを一覧で取得してくるとその子要素も全部取得してしまうため、データが増えてくるとpayloadは巨大化するしコストも増えていくので、flattenに設計していく必要があるのだがそうすると今度は削除や書き込み時に複数のエンドポイントを更新しないといけなくなるため、漏れが発生するとすぐに破綻するのが大変だった。
-そもそもFirestoreを選定しなかった理由 まだベータ版だったのと良さげなAPIClientがなかったため今回は敬遠した。が今度試してみたいですね</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-08-11">Aug 11, 2018</time></p>
       
     </div>
   </article>
