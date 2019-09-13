@@ -30,7 +30,7 @@
 やっと本題に戻りますが、これらのサブコマンド集を実装してリポジトリとして公開しました! himanoa/git-subcommands
 インストール himanoa/git-subcommands は以下のツールに依存しています。
  bash python  3.x推奨  git   git clone https://github.com/himanoa/git-subcommands ~/git-subcommands PATHを ~/git-subcommands/src に通す  zshとかbashを使っているなら export PATH=~/git-subcommands/src:$PATH とかでいいのでは？   インストールが完了したら以下のセクションのサブコマンドがそれぞれ動作できるようになるはずです！
-実装したコマンド git-replace リポジトリ内の特定の文字列を置換する いつも git gre -l Foo | xargs sed -i &#39;&#39; -e &amp;quot;/Foo/Bar/&amp;quot; とか書いてた実装ですね。これをこのサブコマンドを用いることで以下のスニペットまで短縮できます</description>
+実装したコマンド git-replace リポジトリ内の特定の文字列を置換する いつも git grep -l Foo | xargs sed -i &#39;&#39; -e &amp;quot;/Foo/Bar/&amp;quot; とか書いてた実装ですね。これをこのサブコマンドを用いることで以下のスニペットまで短縮できます</description>
     </item><item>
       <title>RSSリーダーとの付き合い方</title>
       <link>https://blog.himanoa.net/entries/49/</link>

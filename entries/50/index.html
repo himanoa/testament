@@ -95,7 +95,7 @@
 
 <h3 id="git-replace-リポジトリ内の特定の文字列を置換する-https-github-com-himanoa-git-subcommands-blob-master-src-git-strreplace"><a href="https://github.com/himanoa/git-subcommands/blob/master/src/git-strreplace">git-replace リポジトリ内の特定の文字列を置換する</a></h3>
 
-<p>いつも <code>git gre -l Foo | xargs sed -i '' -e &quot;/Foo/Bar/&quot;</code> とか書いてた実装ですね。これをこのサブコマンドを用いることで以下のスニペットまで短縮できます</p>
+<p>いつも <code>git grep -l Foo | xargs sed -i '' -e &quot;/Foo/Bar/&quot;</code> とか書いてた実装ですね。これをこのサブコマンドを用いることで以下のスニペットまで短縮できます</p>
 
 <pre><code>$ git strreplace Foo Bar
 </code></pre>
