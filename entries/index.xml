@@ -5,11 +5,25 @@
     <link>https://blog.himanoa.net/entries/</link>
     <description>Recent content in Entries on 遺言書</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 25 Oct 2019 21:55:37 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 26 Oct 2019 20:09:49 +0900</lastBuildDate>
     
         <atom:link href="https://blog.himanoa.net/entries/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>ghqで管理されたディレクトリ構造でディレクトリを作ってgit initまでしてくれるツールを作った</title>
+      <link>https://blog.himanoa.net/entries/53/</link>
+      <pubDate>Sat, 26 Oct 2019 20:09:49 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/entries/53/</guid>
+      <description>手元のマシンでリポジトリを管理するときにghqを使うと勝手に統一感あるディレクトリ構成でリポジトリ管理してくれるので便利です。
+しかし、自分でリポジトリを作ってなにかを開始する機会が多いと mkdir ~/src/github.com/himanoa/foobarを毎回入力する必要がありちょっと不便です。
+リポジトリ名を入力したらよしなにディレクトリを作って欲しいと思ってたので、勉強がてらにRustで簡単なCLIツールを作りました。 mkrepo
+インストール方法 macOS用にhomebrew用の整備とかArchLinux向けにAURパッケージを公開しているわけではないので、インストールには cargo が必要です。
+次のコマンドでインストールすることができます
+cargo install mkrepo
+また、mkrepoは.gitconfigに特定のkey-value構造が存在していることに依存しています。そのため ~/.gitconfigに次のような記述を追加する必要があります
+[user] name=&amp;quot;あなたのなまえ&amp;quot; [ghq] root=&amp;quot;~/src&amp;quot; [mkrepo] service=&amp;quot;github.com&amp;quot;  つかいかた Make project directory for ghq style. 0.0.1 USAGE: mkrepo [FLAGS] [OPTIONS] &amp;lt;repository&amp;gt; FLAGS: -d dru run -h, --help Prints help information -V, --version Prints version information OPTIONS: -a, --author &amp;lt;author&amp;gt; repository author name -m &amp;lt;first_commit_message&amp;gt; first_commit_message name -s, --service &amp;lt;service&amp;gt; service name ARGS: &amp;lt;repository&amp;gt; Repository name  mkrepo foobar とかやると src/github.</description>
+    </item><item>
       <title>物理の単位を落としてしまうと</title>
       <link>https://blog.himanoa.net/entries/52/</link>
       <pubDate>Fri, 25 Oct 2019 21:55:37 +0900</pubDate>
@@ -53,15 +67,6 @@
  クラウド同期  どこまでフィードに既読をつけたかなどをデバイス間で自動同期してくれる  フィードのグループ化 あとで見る  feedlyには備え付けられているけどTwitterで流れてきて後で見たいリンクなども一元管理したいため、Pocketを使っている   feedlyもベターではあるがベストではない感じがしていて、また自作したいなと考えている。とはいえ、巡回どうするかとか面倒見なくちゃいけない物が多くてなんとなく優先度低い
 今まで使っていたツールの遍歴  Opera feedly Slack nadeshiko  YQLが爆発して動かなくなった  feedly  運用方法 以下のライフサイクルで運用している。閲覧できなかった物に関しては縁がなかったということで既読つけてる。
  朝起きてfeedlyを見て気になる記事をPocketのあとで見るに突っ込んでおく  寝坊した時は出社して余裕がある時間に眺める 時間の許す限りやる。見れなかった情報に関してはスルーする  風呂入ってる時とか寝落ちするまでの間にスマートフォンでPocketに突っ込んだやつを読んでいく  今後やりたいこと: Pocketに突っ込んだ記事だけ選定してブログに自動でポストしてニュースフィードみたいにしたら便利かも  週の終わりに見れなかった情報を全部既読つける  今後やりたいこと: crontab回して自動で既読つけたい   </description>
-    </item><item>
-      <title>monaco-editorをwebpackでバンドルする</title>
-      <link>https://blog.himanoa.net/entries/48/</link>
-      <pubDate>Mon, 22 Jul 2019 06:48:01 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/entries/48/</guid>
-      <description>問題 monaco-editorを以下のようなloader設定とplugin設定でバンドルしようとしたらハマった。
-const path = require(&#39;path&#39;) const config = { externals: [&amp;quot;electron&amp;quot;], target: &amp;quot;electron-renderer&amp;quot;, entry: &amp;quot;./src/renderer/index.tsx&amp;quot;, plugins: [], //←重要, output: { path: path.join(__dirname, &amp;quot;dist&amp;quot;), filename: &amp;quot;renderer.js&amp;quot; }, module: { rules: [ //←重要 { test: /.tsx$/, exclude: /node_modules/, loader: &amp;quot;babel-loader&amp;quot; }, ] } } module.exports = config  エラー内容はこんなかんじで 下部分で重要そうな問題だけコピペしてきた
- ERROR in ./node_modules/monaco-editor/esm/vs/editor/contrib/find/findWidget.css 8:0 Module parse failed: Unexpected token (8:0) You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file.</description>
     </item>
   </channel>
 </rss>
