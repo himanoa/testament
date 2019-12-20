@@ -40,6 +40,22 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/entries/39/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">ブログ復旧しました</h2>
+    <p class="card-text lineclamp">Railsの手入れ面倒になってきたのでブログを再構築しました。時代はhugoです。よろしくお願いします。
+重大な連絡 前述の都合上feedのURLがhttps://blog.himanoa.net/rss から https://blog.himanoa.net/feed.xml に変更されました。お手数ですが変更の方をよろしくお願いします。
+インフラとか GitHubにpush→CircleCI→gh-pages で自動で反映される仕組みにしました。選定したDockerコンテナがおかしくてpushできなかったりsshの設定がだめだったりいろいろあって50commit程時間がかかりましたが、実現できました。とてもうれしい
+hugo theme aetherをフォークしてhimanoa/aetherにしました。色とかかなり弄ったり、hugoのminify機構を使ってCSSをminifyしてくれる形に修正した。前者はまだしも後者のパッチは独立させてPR送りたい。
+Railsやめた理由とか アプリケーションのメンテするモチベーションが消えたから。鯖もメンテしないといけないし。近いうちにgh-pagesに移行する見込みはあったんだけど、手付かずだったんで鯖のSSL証明書が切れたタイミングで移行するかなーーーみたいな気持ちになった。</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2019-04-03">Apr 3, 2019</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/entries/38/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -113,21 +129,6 @@ pub enum Foo { Foo1, Foo2, Foo3, Foo4 } Foo::from_str(&quot;Foo1&quot;) // -&gt;
 use std::str::FromStr; use std::str::FromStr; pub enum Foo { Foo1, Foo2, Foo3 } impl FromStr for Foo { type Err = &amp;'static str; fn from_str(s: &amp;str) -&gt; Result&lt;Self, Self::Err&gt; { match s { &quot;Foo1&quot; =&gt; Ok(Foo::Foo1), &quot;Foo2&quot; =&gt; Ok(Foo::Foo2), &quot;Foo3&quot; =&gt; Ok(Foo::Foo3), _ =&gt; Err(&quot;Error&quot;) } } } Foo::from_str(&quot;Foo1&quot;) // Ok(Foo::Foo1) Foo::from_str(&quot;Foo1sadasd&quot;) // Err(&quot;Error&quot;)  もちろんFromStrはトレイトなのでenum以外にも適用可能なので、任意の型を文字列から生成したい時にはこの方法を使いましょう。</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-08-30">Aug 30, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/34/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">SPAにおけるOpen ID Connect認証</h2>
-    <p class="card-text lineclamp">サーバーサイドとクライアントサイド両方とも実装する機運が出てきたのでそれぞれの役割を整理するためにシーケンス図を書いた。 Googleって書いてあるところはOAuthプロバイダーなら何でも置き替えられるはず
-間違ってたら教えてくれ
-追記: とりあえずシーケンス図が書けたのでAPIサーバーに求められている機構を実装した。curlで試しているのと、SPAのガワが存在していないため一旦セッションに入れたりstateの検証するのは省いた。
-const { createHash } = require(&quot;crypto&quot;); const url = require(&quot;url&quot;); const express = require(&quot;express&quot;); const bp = require(&quot;body-parser&quot;); const axios = require(&quot;axios&quot;); const jwt = require(&quot;jwt-simple&quot;); const secret = require(&quot;./secret.json&quot;); const app = express(); app.use(bp.json()); const salt = &quot;hakatanosalt&quot;; app.get(&quot;/oauth/callback&quot;, (req, res) =&gt; { console.log( JSON.stringify({ code: req.query.code, state: req.query.state }) ); res.send(&quot;ok&quot;); }); app.get(&quot;/oauth/google/login&quot;, function(req, res) { const state = createHash(&quot;sha256&quot;) .update(`${salt}${Math.random()}${+new Date()}`) .digest(&quot;hex&quot;); const params = new url.</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-08-21">Aug 21, 2018</time></p>
       
     </div>
   </article>
