@@ -41,6 +41,37 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/entries/40/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">2019-04-02(ニート歴2日目)</h2>
+    <p class="card-text lineclamp">やったこと ブログの移行 Rails→hugo
+CircleCI入門 ひたすらキャッチアップしつつこのブログのデプロイ環境を構築していた。
+CircleCIがデフォルトで用意してくれる秘密鍵と公開鍵がReadOnlyだということに気が付かずずっとgit push origin HEADがコンテナ内から通らないなぁとか思ってたりしたので結構ハマった。
+完走した感想ですが、設定ファイルをyamlで書かなくちゃいけないのがどうしてもストレスで(これは前使ってたTravisCIもそう)、正直手続き的に設定ファイルを書きたい気持ちが強い。なんでyamlが嫌いなのかというと、テキストエディタがまともなインデントをしてくれないのがストレスになっているからである。
+CIの出来はともかく設定ファイルの書き易さだけで見るなら個人的にはJenkinsのJenkinsfile(groovy)が一番書き安く読み易いし複雑なことも表現しやすいと思ってる。
+ある程度複雑な設定にyamlやJSONを使うのは向いていないと考えていて、そういうのはRubyの内部DSLだったり軽量なスクリプト言語でやれるといいよなと考えてる。
+似たような理由でAnsibleも嫌いでItamaeの方が僕にとってはやさしいツールだなぁと感じる。
+himanoa/aether hugo使うならベースにしやすいブログ用テーマを選んで改造していくのが良さそうと感じたのでフォークして色とかを調節したり、シェアボタンを置いたりとかした。
+色とかを調節するだけでもだいぶ雰囲気がガラっと変わって感動しています。今年はデザイン学習とかにも力を入れていきたいと思っているけど、はたして時間はあるのだろうか
+選考面接を受けた 今も着実に貯蓄は底に向かって消費されていて、いつまでもニートのままというわけにもいかないので、就活ってやつをやっている。
+今日は以前カジュアル面談行った中で一番興味を持てて、かつ金も一番貰えそうな企業の採用面接を受けにいった。
+正直こういう採用面接って採用担当者のエンジニアと雑談していい時間になっていることが多くて今回もそうだったんだけど手応えみたいなのがまったくよくわからない。
+一番仕事をしたい企業だったので受かると嬉しい……
+できなかったこと メール返信 変に気合が必要な作業を後回しにしがちで、悪癖が出ていますね
+家賃の支払い グゥ~~~~
+あしたやること メールの返信 2通
+Laravelの入門 Docker内でいい感じに開発環境整うところまですらできてないのでまずはそこ。 次点でチュートリアルの完遂
+家賃の支払い お金が飛んでく恐怖に震えて眠ります
+飲み会 いかなきゃ。
+aetherのhugoのminify機構を使ってくれるPRを出す パッチ…パッチはいりませんか…？</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2019-04-03">Apr 3, 2019</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/entries/39/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -116,20 +147,6 @@ VTuber 名取さなさんが好き。
     <p class="card-text lineclamp">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-01-26">Jan 26, 2019</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/35/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">RustでEnumを文字列(文字列slice)から生成したい</h2>
-    <p class="card-text lineclamp">Rustを書いていると自分で定義したEnumを文字列から生成したくなる時がある。コード例で示すとこんな感じ
-pub enum Foo { Foo1, Foo2, Foo3, Foo4 } Foo::from_str(&quot;Foo1&quot;) // -&gt; Foo::Foo1  こんな時は標準ライブラリに入っている、std::str::FromStr トレイトを実装してやるとうまいこといくし、他の似たような挙動をする型と一緒に扱えたりして便利で作法的にも良い。例は以下の通り
-use std::str::FromStr; use std::str::FromStr; pub enum Foo { Foo1, Foo2, Foo3 } impl FromStr for Foo { type Err = &amp;'static str; fn from_str(s: &amp;str) -&gt; Result&lt;Self, Self::Err&gt; { match s { &quot;Foo1&quot; =&gt; Ok(Foo::Foo1), &quot;Foo2&quot; =&gt; Ok(Foo::Foo2), &quot;Foo3&quot; =&gt; Ok(Foo::Foo3), _ =&gt; Err(&quot;Error&quot;) } } } Foo::from_str(&quot;Foo1&quot;) // Ok(Foo::Foo1) Foo::from_str(&quot;Foo1sadasd&quot;) // Err(&quot;Error&quot;)  もちろんFromStrはトレイトなのでenum以外にも適用可能なので、任意の型を文字列から生成したい時にはこの方法を使いましょう。</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-08-30">Aug 30, 2018</time></p>
       
     </div>
   </article>
