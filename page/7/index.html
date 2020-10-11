@@ -41,6 +41,25 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/entries/28/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">意図しないターゲットに対してバズった時にどこまでサポートするか</h2>
+    <p class="card-text lineclamp">これからネタプロダクトで一発当てる(ここでの一発当てるはTwitterでRTされてチヤホヤされるの意)のを狙ってる人向けの個人の見解です。
+正直求められているのはコマンド一発で立ちあがって良しなに動いてくれる物ではなくて、ブラウザからワンクリックで呼べる手段(ただこれは我々がホスティングしてインフラ費用を払わないといけない点がつらい)か誰でもわかる詳細なマニュアル(開始地点が絞れずエラーハンドリングどうする)なきがします
+&mdash; ひまのあ????@1日目 西め07a (@h1manoa) July 3, 2018 ぶっちゃけDiscordBotはバズることそこそこ予想できてたので公開のしかた間違ったなぁとも思っていて、ちゃんとゼロから動かせる資料の記事でも付けとくべきだったっていうのはある
+&mdash; ひまのあ????@1日目 西め07a (@h1manoa) 2018年7月3日 ただまぁそれと同時にあれできない人がDiscordBot運用するのは危険なのではという気持ちもあるので
+&mdash; ひまのあ????@1日目 西め07a (@h1manoa) July 3, 2018 まぁうまく人々が魅力を持って動かしたいと思ってくれるかわからん物に対して気合を入れすぎるのはあまりにもコスパがわるいので、利用者側の腕力に頼って腕力ないならやるなで蹴るっていうのはやり方として正しいと思いますけどね
+&mdash; ひまのあ????@1日目 西め07a (@h1manoa) July 3, 2018 無料で動作保証 + コンサルティングまでやるのは個人開発正直モチベ下ると思う
+&mdash; ひまのあ????@1日目 西め07a (@h1manoa) July 3, 2018 絵は他人の環境で動くかどうかの冪等性まで考えなくていいよなって思ったけど他人の環境でどう見えてるかみたいなのに拘って色使ってる人に殺される
+&mdash; ひまのあ????@1日目 西め07a (@h1manoa) July 3, 2018 </p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-07-03">Jul 3, 2018</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/entries/27/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -116,23 +135,6 @@ DiscordのBotの方ですがさなボタンの更新に追従する機能だっ�
 Ubuntu メリット  UbuntuServerのノウハウが生きる(aptの使い方だとか) インストールしたらハードウェアのこと考えなくてもとりあえず動く WindowManagerに関してもとりあえずデフォルトでGNOMEが入るので悩まないのがいい  デメリット  aptで入ってくるパッケージのバージョンが古い  例えばtmuxは未だに2.5が入ってくる  最初から色々入っており小さくないので壊れた時(Archに比べて)直しにくい バージョン上げるのが大変  Arch メリット  ローリングリリースなので普段からパッケージを更新しとけばバージョンを上げるのが大変といったことがない Ubuntuより新しいパッケージが入ってくるのが早い 充実したAURとyaourt  Git repositoryからHEADを直接インストールできたりと柔軟性がある  最初は殆ど何も入ってないのでUbuntuに比べて壊れた時に直しやすい  ArchWikiが優秀というのはある   デメリット  ハードウェアのドライバどれいれるかとか調べないといけない  初回だけとはいえそういうところで消耗したくない…  Ubuntuに比べてアップデートが頻繁でたまに壊れたりする  んで僕がUbuntuを選択した理由なんだけど、これは単純でハードウェアのドライバ周りで消耗したくなかったからです。</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-03-21">Mar 21, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/23/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">xrandrコマンドで解像度を弄る</h2>
-    <p class="card-text lineclamp">ThinkPad X1Carbonを購入してから早4カ月経過しました。
-スペック的には不満がないんですが、解像度がおおきすぎて文字が小さくてつらいという問題があったので解像度を下げたくなったのでやった。
-XWindowManagerでやっているので以下のコマンドで解像度を設定できる
-&gt;&gt;&gt; xrandr --output eDP-1 --mode 1920x1080  以上
-X1Carbonリッチに2560*1440のモデルを買ったけどフォント小さくて1920*1080で運用したら丁度よくて宝の持ち腐れになってしまった
-&mdash; himanoa.tsx (@h1manoa) March 20, 2018 </p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-03-20">Mar 20, 2018</time></p>
       
     </div>
   </article>

@@ -40,6 +40,25 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/entries/53/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">ghqで管理されたディレクトリ構造でディレクトリを作ってgit initまでしてくれるツールを作った</h2>
+    <p class="card-text lineclamp">手元のマシンでリポジトリを管理するときにghqを使うと勝手に統一感あるディレクトリ構成でリポジトリ管理してくれるので便利です。
+しかし、自分でリポジトリを作ってなにかを開始する機会が多いと mkdir ~/src/github.com/himanoa/foobarを毎回入力する必要がありちょっと不便です。
+リポジトリ名を入力したらよしなにディレクトリを作って欲しいと思ってたので、勉強がてらにRustで簡単なCLIツールを作りました。 mkrepo
+インストール方法 macOS用にhomebrew用の整備とかArchLinux向けにAURパッケージを公開しているわけではないので、インストールには cargo が必要です。
+次のコマンドでインストールすることができます
+cargo install mkrepo
+また、mkrepoは.gitconfigに特定のkey-value構造が存在していることに依存しています。そのため ~/.gitconfigに次のような記述を追加する必要があります
+[user] name=&quot;あなたのなまえ&quot; [ghq] root=&quot;~/src&quot; [mkrepo] service=&quot;github.com&quot;  つかいかた Make project directory for ghq style. 0.0.1 USAGE: mkrepo [FLAGS] [OPTIONS] &lt;repository&gt; FLAGS: -d dru run -h, --help Prints help information -V, --version Prints version information OPTIONS: -a, --author &lt;author&gt; repository author name -m &lt;first_commit_message&gt; first_commit_message name -s, --service &lt;service&gt; service name ARGS: &lt;repository&gt; Repository name  mkrepo foobar とかやると src/github.</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2019-10-26">Oct 26, 2019</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/entries/52/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -99,20 +118,6 @@
  朝起きてfeedlyを見て気になる記事をPocketのあとで見るに突っ込んでおく  寝坊した時は出社して余裕がある時間に眺める 時間の許す限りやる。見れなかった情報に関してはスルーする  風呂入ってる時とか寝落ちするまでの間にスマートフォンでPocketに突っ込んだやつを読んでいく  今後やりたいこと: Pocketに突っ込んだ記事だけ選定してブログに自動でポストしてニュースフィードみたいにしたら便利かも  週の終わりに見れなかった情報を全部既読つける  今後やりたいこと: crontab回して自動で既読つけたい   </p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-09-07">Sep 7, 2019</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/48/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">monaco-editorをwebpackでバンドルする</h2>
-    <p class="card-text lineclamp">問題 monaco-editorを以下のようなloader設定とplugin設定でバンドルしようとしたらハマった。
-const path = require('path') const config = { externals: [&quot;electron&quot;], target: &quot;electron-renderer&quot;, entry: &quot;./src/renderer/index.tsx&quot;, plugins: [], //←重要, output: { path: path.join(__dirname, &quot;dist&quot;), filename: &quot;renderer.js&quot; }, module: { rules: [ //←重要 { test: /.tsx$/, exclude: /node_modules/, loader: &quot;babel-loader&quot; }, ] } } module.exports = config  エラー内容はこんなかんじで 下部分で重要そうな問題だけコピペしてきた
- ERROR in ./node_modules/monaco-editor/esm/vs/editor/contrib/find/findWidget.css 8:0 Module parse failed: Unexpected token (8:0) You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file.</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2019-07-22">Jul 22, 2019</time></p>
       
     </div>
   </article>
