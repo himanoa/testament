@@ -15,9 +15,9 @@
       <pubDate>Sun, 11 Oct 2020 15:33:21 +0900</pubDate>
       
       <guid>https://blog.himanoa.net/entries/58/</guid>
-      <description> つくったやつ https://github.com/himanoa/goshiteki
+      <description>つくったやつ https://github.com/himanoa/goshiteki
 動機  GitHub上でコードレビューしてると見れるdiffに限界があり、適切なコードレビューができないことがおおい  手元でコード動かせないし、レビューした結果自分の指摘でコードが動くかも保証できない  vimでいい感じにdiffとかみたいので、いい感じの環境を作った→https://blog.jez.io/cli-code-review/ コードコメントしにGitHub開くのが面倒 vimからレビューコメントを書ければいいのでは？(天才的アイデア)←いまここ  今後 実用上不便だったらやるけど、実際やるかどうかわからん
- vimからレビューコメントが見えないのでなんとかしたい  signとfloating windowを使えばいいかんじになるんでは？  やばすぎ実装を直したい Document書きたい  シンプルだしgif見れば完全に使い方理解できるしいらんのでは？みたいな甘えがある   </description>
+ vimからレビューコメントが見えないのでなんとかしたい  signとfloating windowを使えばいいかんじになるんでは？  やばすぎ実装を直したい Document書きたい  シンプルだしgif見れば完全に使い方理解できるしいらんのでは？みたいな甘えがある   どうでもいいんですが、自分で作ったPRに対してApproveできなくて、その辺の動作確認ができていないし早く平日来てほしい。でもやっぱりFF14やりたいので休日でいいや</description>
     </item><item>
       <title>コンピューターとプログラミングと僕</title>
       <link>https://blog.himanoa.net/entries/57/</link>
