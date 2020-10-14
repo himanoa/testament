@@ -40,6 +40,20 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/entries/35/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">RustでEnumを文字列(文字列slice)から生成したい</h2>
+    <p class="card-text lineclamp">Rustを書いていると自分で定義したEnumを文字列から生成したくなる時がある。コード例で示すとこんな感じ
+pub enum Foo { Foo1, Foo2, Foo3, Foo4 } Foo::from_str(&quot;Foo1&quot;) // -&gt; Foo::Foo1  こんな時は標準ライブラリに入っている、std::str::FromStr トレイトを実装してやるとうまいこといくし、他の似たような挙動をする型と一緒に扱えたりして便利で作法的にも良い。例は以下の通り
+use std::str::FromStr; use std::str::FromStr; pub enum Foo { Foo1, Foo2, Foo3 } impl FromStr for Foo { type Err = &amp;'static str; fn from_str(s: &amp;str) -&gt; Result&lt;Self, Self::Err&gt; { match s { &quot;Foo1&quot; =&gt; Ok(Foo::Foo1), &quot;Foo2&quot; =&gt; Ok(Foo::Foo2), &quot;Foo3&quot; =&gt; Ok(Foo::Foo3), _ =&gt; Err(&quot;Error&quot;) } } } Foo::from_str(&quot;Foo1&quot;) // Ok(Foo::Foo1) Foo::from_str(&quot;Foo1sadasd&quot;) // Err(&quot;Error&quot;)  もちろんFromStrはトレイトなのでenum以外にも適用可能なので、任意の型を文字列から生成したい時にはこの方法を使いましょう。</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-08-30">Aug 30, 2018</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/entries/34/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -120,21 +134,6 @@ DL版https://t.co/64HnvYHuflhttps://t.co/DSjXp16BYG
 そもそもFirestoreを選定しなかった理由 まだベータ版だったのと良さげなAPIClientがなかったため今回は敬遠した。が今度試してみたいですね</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-08-11">Aug 11, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/30/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">Hearthstoneランク15いった</h2>
-    <p class="card-text lineclamp">初心者を脱したのでよかったですね。
-はい。初めてここまできました pic.twitter.com/p6U3VdV3Q8
-&mdash; ひまのあ@1日目 西め07a (@h1manoa) 2018年7月28日 滑りこめたのでよかった。月末は弱い人がおおいきがする。最高16で16~18をいったり来たりしてたんだがたまたま、奇数パラがメタと噛みあって連勝ボーナス混みで4-1(記憶ちがいあるかも)で15はいった。
-今月主に回してたデッキは 奇数パラディン 奇数ローグ ミラクルローグ で途中9連敗を二回したりでマウス投げたりしてたがまぁ自己ベスト更新できてよかったですね、みたいなところ。このランク帯までは、デッキパワーたかいデッキでメタが噛みあってる時間帯にどれだけしゃぶり尽せるかみたいなところなのでデッキパワーつよいデッキを使えるかみたいなのがでかいとおもう。</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-07-28">Jul 28, 2018</time></p>
       
     </div>
   </article>
