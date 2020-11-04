@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-ls content/entries/*.md -l | wc -l | awk '{print $1 + 1}' | xargs -I "{}" hugo new entries/{}.md
+function testament_open() {
+  touch_erb blog content/entries/$1.md && $EDITOR content/entries/$1.md
+}
+new_id=ls content/entries/*.md -l | wc -l | awk '{print $1 + 1}'
+
+testament_open new_id
