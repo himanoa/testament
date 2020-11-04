@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.himanoa.net/entries/62/</loc>
+    <lastmod>2020-11-05T03:06:10+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.himanoa.net/entries/61/</loc>
     <lastmod>2020-11-05T02:11:50+09:00</lastmod>
   </url>
@@ -314,7 +319,7 @@
   
   <url>
     <loc>https://blog.himanoa.net/entries/</loc>
-    <lastmod>2020-11-05T02:11:50+09:00</lastmod>
+    <lastmod>2020-11-05T03:06:10+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -325,7 +330,7 @@
   
   <url>
     <loc>https://blog.himanoa.net/</loc>
-    <lastmod>2020-11-05T02:11:50+09:00</lastmod>
+    <lastmod>2020-11-05T03:06:10+09:00</lastmod>
     <priority>0</priority>
   </url>
   
