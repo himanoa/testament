@@ -40,6 +40,20 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/entries/48/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">monaco-editorをwebpackでバンドルする</h2>
+    <p class="card-text lineclamp">問題 monaco-editorを以下のようなloader設定とplugin設定でバンドルしようとしたらハマった。
+const path = require('path') const config = { externals: [&quot;electron&quot;], target: &quot;electron-renderer&quot;, entry: &quot;./src/renderer/index.tsx&quot;, plugins: [], //←重要, output: { path: path.join(__dirname, &quot;dist&quot;), filename: &quot;renderer.js&quot; }, module: { rules: [ //←重要 { test: /.tsx$/, exclude: /node_modules/, loader: &quot;babel-loader&quot; }, ] } } module.exports = config  エラー内容はこんなかんじで 下部分で重要そうな問題だけコピペしてきた
+ ERROR in ./node_modules/monaco-editor/esm/vs/editor/contrib/find/findWidget.css 8:0 Module parse failed: Unexpected token (8:0) You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file.</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2019-07-22">Jul 22, 2019</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/entries/47/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -110,21 +124,6 @@ Firestoreを触るのが完全に初めてなんだが、まぁCRUD程度まで�
 GitHubでOSSにしてもいいかなと思ったけどコミットログに.firebasercが載ってしまっていて、削除するのがダルいという話があってOSSにする気持ちはなくなってきた。コード見たいとかそういう声があれば乗り気になるかもしれない</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-04-12">Apr 12, 2019</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/43/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">Repositoryパターンの破綻</h2>
-    <p class="card-text lineclamp">風呂でRepositoryパターンについて考えてたけどあれを上手く適用するには集約をちゃんと考えてやる必要が確実にある。
-想定していた集約が破綻するとRepositoryパターンだけで取得と永続化用のコードを書くのは依存性解決とか集約を跨ぐトランザクションとかが出てきてしんどくなる。
-そこで便利なのがCQRSになるんだけど、トランザクションの関係でRepositoryのコードをコピペする必要が出てきたりするとコード変更による影響箇所が正しく判別しにくくなるので、そことのトレードオフですね…
-ってポエムを書こうとしたらTwitterだと文字数オーバーになった</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2019-04-04">Apr 4, 2019</time></p>
       
     </div>
   </article>
