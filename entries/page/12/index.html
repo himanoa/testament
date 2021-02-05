@@ -40,6 +40,30 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/entries/10/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">ThinkPadX1Carbon 5th にUbuntu17.10を入れる</h2>
+    <p class="card-text lineclamp"> 情報が散らばっててたので作業ログをまとめます。最近まとめブログみたいなことしかしてないなこれ。
+セキュアブート無効化 Windowsをセットアップして再起動したらコントロールパネルを開き、&lt;ハードウェアとサウンド&gt;→&lt;電源プランの選択&gt;から、高速スタートアップを有効にする(推奨)のチェックを外す。(非アクティブ状態の場合は詳細情報をクリックするといじれるようになると思います
+Ubuntu USBブート後 トラックパッドが効かなくてカーソルの操作ができないと思うのでできるようにします。
+Winキー押してterminalと入力してEnterを押すとTerminal Emulatorが開くので以下のコマンドを手で入力して実行します
+sudo modprobe -r psmouse sudo modprobe psmouse proto=imps  トラックポイントが操作できるようになると思うのであとは普通にインストール
+インストール終了後のSSDからの再起動後 ログイン画面で歯車マークをクリックしUbuntu on Xorgを選択する。 Ubuntu 17.10からWaylandが採用されたが日本語入力が不可能なのとバグが多数あるためとりあえず無効化しておく
+grub.cfgを弄ってトラックパッドが効くようにする インストール時は無理やりなんとかしたが、このままだと起動するたびに上記のコマンドでトラックポイントの有効化をしないといけない。 それはだるいので、ブートローダーの設定を弄って解決する。
+以下のコマンドを実行
+sudo vim /etc/default/grub
+１１行目を以下に書き換え
+GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash psmouse.proto=imps
+書き換えたらgrubのconfigを適用させたいので sudo update-grub を実行する
+ホームディレクトリのディレクトリ名の英語化 LANG=C xdg-user-dirs-gtk-update  </p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2017-12-05">Dec 5, 2017</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/entries/9/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -166,28 +190,6 @@ Neovim-dot-app(+NeovimのTerminalEmulator)を試す 次にObjC + Cocoa実装のG
 iTerm2高機能で便利だけど描画遅いので皆さんもGPUレンダリングを信じてalacrittyを使いましょうまる</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2017-09-28">Sep 28, 2017</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/4/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">2017年9月15日 はれ</h2>
-    <p class="card-text lineclamp">日誌 朝起きて会社に行った。昨日からやけに疲れていたので寝坊を決めてしまって最悪だった。
-仕事はまぁ普通に順調だったのだが、昨日振られたタスクが思ったより重めで大変で残業を決めてしまったのだが何とか終わってよかったですねといったところ。
-一日中仕事しているとブログに書けることが少なくて辛い。日誌ブログからは方向性変えて行こうか検討している
-寝て起きたら北海道に行かなくてはいけないのですが、こんな時間まで起きてて大丈夫なのだろうか。とりあえず空港までの移動時間と飛行機の中では睡眠をしていこうと思う
-内定 貰えて10/1から労働することになった。今も労働してる所の内定なので別に特段変わったことは起きない。まぁ給与上がるのでアドですねといった感じ。
-正直サレジオ退学してからここまで物事がすんなり行き続けてるのが心配で、そろそろ神様から見放される頃だなぁとか思っててエントリの仕方もあまりにもひどい(メールの名義がひまのあだったり、深夜テンションで自己PR書いたり)ので落ちてもまぁしょうがないよねとか思ってたんだけどすんなり内定取れてしまった。「本当に世の中を舐めて生きてるな」って言われても何も言い返せない人生だなといった感じ。
-万に一つの可能性 として実力で選ばれてるんだったら光栄だなぁと思っている。まぁ実力で選ばれたとしても、適当にダラダラ生きてると実力が相対的に無になってしまうので、運で選ばれたとしてもそうでないにしても精進しなければいけないことは変わらないが。
-やっていく気持ち Google音声認識API -&gt; ドコモのなんか人っぽい会話できるやつ -&gt; VOICEROID2 -&gt; サウンド再生みたいな雑なあれしたい
-&mdash; 数字 (@h1manoa) 2017年9月14日 音声認識で僕の声を文字列にしてドコモのすごいやつに食わせて会話結果みたいな文章を召喚してボイロに食わせて自動再生したいっていう話です
-&mdash; 数字 (@h1manoa) 2017年9月14日 みたいなのをやっていきたいなぁって思ってる。とりあえずマイク録音して自分の声だけ抽出する機構を作ってるところ。
-ブログもいろいろまだ不完全なので北海道でいろいろ完成させていくつもり</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2017-09-15">Sep 15, 2017</time></p>
       
     </div>
   </article>
