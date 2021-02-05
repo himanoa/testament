@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const { basename, extname } = require('path');
 
-const metadataRegexp = /^\{[\s\S]+\}/.compile()
+const metadataRegexp = /^\{[^}]+\}\n/;
 
 (async () => {
   const contents = await fs.readdir("./content/");
@@ -11,13 +11,15 @@ const metadataRegexp = /^\{[\s\S]+\}/.compile()
       const txt = await fs.readFile(`./content/${fileName}`, {encoding: 'utf8'} )
       const metadataSection = txt.match(metadataRegexp)
 
-      if(metadataSection.length <= 0) {
+      if(metadataSection === null) {
         console.log(`メタデータがないニャン ${fileName}`)
         return Promise.resolve()
       }
 
+      console.dir(metadataSection[0])
+      const m = JSON.parse(metadataSection[0])
       const alias = [`/entries/${basename(fileName, extname(fileName))}`]
-      const metadata = {...JSON.parse(metadataSection[0]), alias}
+      const metadata = { ...m, alias }
 
       const replacedTxt = txt.replace(metadataRegexp, JSON.stringify(metadata))
       return await fs.writeFile(`./content/${fileName}`, replacedTxt)
