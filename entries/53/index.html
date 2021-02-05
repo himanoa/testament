@@ -5,28 +5,19 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>ghqで管理されたディレクトリ構造でディレクトリを作ってgit initまでしてくれるツールを作った &middot; 遺言書</title>
-  <meta name="description" content="
-
-&lt;p&gt;手元のマシンでリポジトリを管理するときに&lt;a href=&#34;https://github.com/motemen/ghq&#34;&gt;ghq&lt;/a&gt;を使うと勝手に統一感あるディレクトリ構成でリポジトリ管理してくれるので便利です。&lt;/p&gt;
-
-&lt;p&gt;しかし、自分でリポジトリを作ってなに" />
+  <meta name="description" content="&lt;p&gt;手元のマシンでリポジトリを管理するときに&lt;a href=&#34;https://github.com/motemen/ghq&#34;&gt;ghq&lt;/a&gt;を使うと勝手に統一感あるディレクトリ構成でリポジトリ管理してくれるので便利です。&lt;/p&gt;
+&lt;p&gt;しかし、自分でリポジトリを作ってなにかを開" />
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary">
   <meta property="twitter:title" content="ghqで管理されたディレクトリ構造でディレクトリを作ってgit initまでしてくれるツールを作った &middot; 遺言書" >
-  <meta property="twitter:description" content="
-
-&lt;p&gt;手元のマシンでリポジトリを管理するときに&lt;a href=&#34;https://github.com/motemen/ghq&#34;&gt;ghq&lt;/a&gt;を使うと勝手に統一感あるディレクトリ構成でリポジトリ管理してくれるので便利です。&lt;/p&gt;
-
-&lt;p&gt;しかし、自分でリポジトリを作ってなに" />
+  <meta property="twitter:description" content="&lt;p&gt;手元のマシンでリポジトリを管理するときに&lt;a href=&#34;https://github.com/motemen/ghq&#34;&gt;ghq&lt;/a&gt;を使うと勝手に統一感あるディレクトリ構成でリポジトリ管理してくれるので便利です。&lt;/p&gt;
+&lt;p&gt;しかし、自分でリポジトリを作ってなにかを開" />
   <meta property="twittere:url" content="https://blog.himanoa.net/entries/53/" >
   <meta property="og:image" content="default.jpg">
   <meta property="og:url" content="https://blog.himanoa.net/entries/53/" >
   <meta property="og:title" content="ghqで管理されたディレクトリ構造でディレクトリを作ってgit initまでしてくれるツールを作った &middot; 遺言書" >
-  <meta property="og:description" content="
-
-&lt;p&gt;手元のマシンでリポジトリを管理するときに&lt;a href=&#34;https://github.com/motemen/ghq&#34;&gt;ghq&lt;/a&gt;を使うと勝手に統一感あるディレクトリ構成でリポジトリ管理してくれるので便利です。&lt;/p&gt;
-
-&lt;p&gt;しかし、自分でリポジトリを作ってなに" />
+  <meta property="og:description" content="&lt;p&gt;手元のマシンでリポジトリを管理するときに&lt;a href=&#34;https://github.com/motemen/ghq&#34;&gt;ghq&lt;/a&gt;を使うと勝手に統一感あるディレクトリ構成でリポジトリ管理してくれるので便利です。&lt;/p&gt;
+&lt;p&gt;しかし、自分でリポジトリを作ってなにかを開" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   
@@ -52,34 +43,21 @@
           <p class="post-date">Posted <time datetime="2019-10-26">Oct 26, 2019</time></p>
         </header>
         
-        
-
-<p>手元のマシンでリポジトリを管理するときに<a href="https://github.com/motemen/ghq">ghq</a>を使うと勝手に統一感あるディレクトリ構成でリポジトリ管理してくれるので便利です。</p>
-
+        <p>手元のマシンでリポジトリを管理するときに<a href="https://github.com/motemen/ghq">ghq</a>を使うと勝手に統一感あるディレクトリ構成でリポジトリ管理してくれるので便利です。</p>
 <p>しかし、自分でリポジトリを作ってなにかを開始する機会が多いと <code>mkdir ~/src/github.com/himanoa/foobar</code>を毎回入力する必要がありちょっと不便です。</p>
-
 <p>リポジトリ名を入力したらよしなにディレクトリを作って欲しいと思ってたので、勉強がてらにRustで簡単なCLIツールを作りました。 <a href="https://github.com/himanoa/mkrepo">mkrepo</a></p>
-
 <h2 id="インストール方法">インストール方法</h2>
-
 <p>macOS用にhomebrew用の整備とかArchLinux向けにAURパッケージを公開しているわけではないので、インストールには <code>cargo</code> が必要です。</p>
-
 <p>次のコマンドでインストールすることができます</p>
-
 <p><code>cargo install mkrepo</code></p>
-
 <p>また、mkrepoは.gitconfigに特定のkey-value構造が存在していることに依存しています。そのため <code>~/.gitconfig</code>に次のような記述を追加する必要があります</p>
-
-<pre><code class="language-toml">[user]
-name=&quot;あなたのなまえ&quot;
-[ghq]
-root=&quot;~/src&quot;
-[mkrepo]
-service=&quot;github.com&quot;
-</code></pre>
-
-<h2 id="つかいかた">つかいかた</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">user</span>]
+<span style="color:#a6e22e">name</span>=<span style="color:#e6db74">&#34;あなたのなまえ&#34;</span>
+[<span style="color:#a6e22e">ghq</span>]
+<span style="color:#a6e22e">root</span>=<span style="color:#e6db74">&#34;~/src&#34;</span>
+[<span style="color:#a6e22e">mkrepo</span>]
+<span style="color:#a6e22e">service</span>=<span style="color:#e6db74">&#34;github.com&#34;</span>
+</code></pre></div><h2 id="つかいかた">つかいかた</h2>
 <pre><code>Make project directory for ghq style. 0.0.1
 
 USAGE:
@@ -98,18 +76,11 @@ OPTIONS:
 ARGS:
     &lt;repository&gt;    Repository name
 
-</code></pre>
-
-<p><code>mkrepo foobar</code> とかやると <code>src/github.com/himanoa/foobar</code>が生成されて <code>mkrepo -a himanoa-sandbox foobar</code> すると <code>src/github.com/himanoa-sandbox/foobar</code> が生成される形です。<code>github.com</code>が使えない企業戦士向けに <code>mkrepo -s corp.repo foobar</code> とかやると <code>src/corp.repo/himanoa/foobar</code>が生成されます。便利ですね。</p>
-
+</code></pre><p><code>mkrepo foobar</code> とかやると <code>src/github.com/himanoa/foobar</code>が生成されて <code>mkrepo -a himanoa-sandbox foobar</code> すると <code>src/github.com/himanoa-sandbox/foobar</code> が生成される形です。<code>github.com</code>が使えない企業戦士向けに <code>mkrepo -s corp.repo foobar</code> とかやると <code>src/corp.repo/himanoa/foobar</code>が生成されます。便利ですね。</p>
 <h3 id="オワオワリに">オワオワリに</h3>
-
 <p>一年前にRustでWebApp書くのに挫折していて、それからあんまり書かなくなってしまった言語だったのですが、パターンマッチや<code>if let</code>など書き味がよくいい言語だなぁといった感想でした。</p>
-
 <p>でもやっぱりコンパイルエラーの解決だったりテストしやすい設計みたいなのを意識しだすと結構難しくて、<a href="https://github.com/himanoa/himanoa/issues/16">https://github.com/himanoa/himanoa/issues/16</a> みたいなのを用意して、モチベーションが低下しないようにコードを書いてました。</p>
-
 <p>今回は<code>dry-run</code>を実行できるようにすれば自然とテストしやすい設計になるはずだ、と思いこんで事前に実行するコマンドの型のVecを生成する関数と、コマンドのVecを引数にとってシーケンシャルに実行していくアーキテクチャでやってみたのですが、これはあんまりうまく行かなかったです。</p>
-
 <p>I/Oが絡む処理を実行する過程で、条件分岐などして実行するコマンドを変更したくなるパターンが発生してしまうと、コマンドビルダーでI/Oしないといけなくなってしまい、コマンドビルダーを純粋に保ってテストを書きたいのに、I/Oに依存しなくちゃいけなくなって辛かったです。</p>
 
       </article>

@@ -47,7 +47,7 @@
     <p class="card-text lineclamp">サーバーサイドとクライアントサイド両方とも実装する機運が出てきたのでそれぞれの役割を整理するためにシーケンス図を書いた。 Googleって書いてあるところはOAuthプロバイダーなら何でも置き替えられるはず
 間違ってたら教えてくれ
 追記: とりあえずシーケンス図が書けたのでAPIサーバーに求められている機構を実装した。curlで試しているのと、SPAのガワが存在していないため一旦セッションに入れたりstateの検証するのは省いた。
-const { createHash } = require(&quot;crypto&quot;); const url = require(&quot;url&quot;); const express = require(&quot;express&quot;); const bp = require(&quot;body-parser&quot;); const axios = require(&quot;axios&quot;); const jwt = require(&quot;jwt-simple&quot;); const secret = require(&quot;./secret.json&quot;); const app = express(); app.use(bp.json()); const salt = &quot;hakatanosalt&quot;; app.get(&quot;/oauth/callback&quot;, (req, res) =&gt; { console.log( JSON.stringify({ code: req.query.code, state: req.query.state }) ); res.send(&quot;ok&quot;); }); app.get(&quot;/oauth/google/login&quot;, function(req, res) { const state = createHash(&quot;sha256&quot;) .update(`${salt}${Math.random()}${+new Date()}`) .digest(&quot;hex&quot;); const params = new url.</p>
+const { createHash } = require(&quot;crypto&quot;);const url = require(&quot;url&quot;);const express = require(&quot;express&quot;);const bp = require(&quot;body-parser&quot;);const axios = require(&quot;axios&quot;);const jwt = require(&quot;jwt-simple&quot;);const secret = require(&quot;./secret.json&quot;);const app = express();app.use(bp.json());const salt = &quot;hakatanosalt&quot;;app.get(&quot;/oauth/callback&quot;, (req, res) =&gt; {console.log(JSON.stringify({code: req.query.code,state: req.query.state}));res.send(&quot;ok&quot;);});app.get(&quot;/oauth/google/login&quot;, function(req, res) {const state = createHash(&quot;sha256&quot;).update(`${salt}${Math.random()}${+new Date()}`).digest(&quot;hex&quot;);const params = new url.</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-08-21">Aug 21, 2018</time></p>
       
@@ -62,10 +62,10 @@ const { createHash } = require(&quot;crypto&quot;); const url = require(&quot;ur
     <p class="card-text lineclamp">有給を取って、ここ最近新しい事を始められてなかったことを思い出したので前からやりたかったRustに入門をしました。 んで、まぁいつも通りブログシステムでも書いてみるかなぁとか思ってRocket触ってDBまでアクセスしてInsert流す所までは普通にできたので、とりあえず次はMarkdownをパースしてhtmlに変換するやつでも書こうかなと思ったのでやってみることに。
 ライブラリを物色してみるとpulldown-cmarkというやつが人気そうなので雑にインストールして使ってみることにしました:smile:
 インストール Rustの環境構築は一旦省いて、以下のコマンドでパッケージを切って依存関係にpulldown-cmarkを入れていきます。
-$ cargo new --bin pulldown_cmark_playground $ cd pulldown_cmark_playground $ cat 'pulldown-cmark = &quot;0.1.2&quot;' &gt;&gt; Cargo.toml $ cargo build  cargo buildした時に依存関係にあるpulldown-cmarkが落ちてきてビルドされます。エコシステムがしっかりしていて完全に便利。文明の息吹を感じろ。
+$ cargo new --bin pulldown_cmark_playground$ cd pulldown_cmark_playground$ cat 'pulldown-cmark = &quot;0.1.2&quot;' &gt;&gt; Cargo.toml$ cargo buildcargo buildした時に依存関係にあるpulldown-cmarkが落ちてきてビルドされます。エコシステムがしっかりしていて完全に便利。文明の息吹を感じろ。
 htmlに変換してみる というわけでライブラリを使う準備が整ったのでさっそくMarkdownをhtmlに変換してみる。 GitHubのREADME.mdにはサンプルコードらしき物が書いていないが、ドキュメントの方にはちゃんと書いてあるのでそちらを参照しよう。大体以下のコードになります。
-extern crate pulldown_cmark; use pulldown_cmark::{html, Parser}; fn main() { let markdown_str = r#&quot;# Hello 人間は愚かな生物。 [俺のブログ](https://blog.himanoa.net) &quot;#; let parser = Parser::new(markdown_str); let mut html_buf = String::new(); html::push_html(&amp;mut html_buf, parser); println!(&quot;{}&quot;, html_buf); }  $ cargo run で実行してみると以下の結果が出力されます。
-&lt;h1&gt;Hello&lt;/h1&gt; &lt;p&gt;人間は愚かな生物。&lt;/p&gt; &lt;p&gt;&lt;a href=&quot;https://blog.</p>
+extern crate pulldown_cmark;use pulldown_cmark::{html, Parser};fn main() {let markdown_str = r#&quot;# Hello人間は愚かな生物。[俺のブログ](https://blog.himanoa.net)&quot;#;let parser = Parser::new(markdown_str);let mut html_buf = String::new();html::push_html(&amp;mut html_buf, parser);println!(&quot;{}&quot;, html_buf);}$ cargo run で実行してみると以下の結果が出力されます。
+&lt;h1&gt;Hello&lt;/h1&gt;&lt;p&gt;人間は愚かな生物。&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://blog.himanoa.net&quot;&gt;俺のブログ&lt;/a&gt;&lt;/p&gt;普通にhtmlに変換されていますね。やったぜ mutableな変数の参照を引数で渡して、渡した引数に結果が代入されるっていうのがすごい気持ち悪いのですが、多分戻り値で受けるとコピーのオーバーヘッドが発生するからこうなってるのでしょう。わからない…Rust詳しい人教えてくれ…。</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-08-20">Aug 20, 2018</time></p>
       
@@ -79,15 +79,7 @@ extern crate pulldown_cmark; use pulldown_cmark::{html, Parser}; fn main() { let
     <h2 class="card-title">EFFY one of unreasonable &#34;if&#34; をクリアした</h2>
     <p class="card-text lineclamp">Vertical Strilke Endless Challenge を作ったサークルProject ICKX さん の第一作である所の EFFY one of unreasonable &ldquo;if&rdquo; をNormalでクリアしたのでそれの感想を書く。ネタバレもある。たぶん
 どんなゲームかというと、フライトシューティング(エースコンバット的な)で敵をバッタバッタと撃墜していく感じ。主人公機には専用の装備とかわいい戦術A.Iがついており、専用の装備で超起動したりめっちゃ加速できたりする
-ご購入はこちら！
-パッケージ版
-COMIC ZINhttps://t.co/WKPjxpppJF
-AKIBA HOBBYhttps://t.co/wQJnz6YRzt
-げっちゅ屋https://t.co/QaLL4oMm3b
-※2018/8/7現在、上記以外で新品の委託先はありません
-DL版https://t.co/64HnvYHuflhttps://t.co/DSjXp16BYG
-メロンブックスDLhttps://t.co/fusq0riFJK
-&mdash; EFFY開発チーム (@effy_staffs) 2018年8月6日 ストーリー 民間軍事企業のテストパイロットをやっていたと思ったら敵が襲いかかってきたので、振りかかる火の粉を払ってたらいつの間にかに戦争になっていた。上司は無茶なミッションばっか頼んでくるしこれからわたし、どうなっちゃうのー！？みたいな感じ。主人公が男なのでこれからわたし、どうなっちゃうのー！？ではないが。
+ストーリー 民間軍事企業のテストパイロットをやっていたと思ったら敵が襲いかかってきたので、振りかかる火の粉を払ってたらいつの間にかに戦争になっていた。上司は無茶なミッションばっか頼んでくるしこれからわたし、どうなっちゃうのー！？みたいな感じ。主人公が男なのでこれからわたし、どうなっちゃうのー！？ではないが。
 驚きのフルボイス ゲーム中のセリフがフルボイスになっていて神、難易度が高いというのもあるが、レーダーみたり機銃のレティクルみたりでセリフ追ってプレイしていられないのでフルボイスなのは嬉しい。シナリオの把握がしやすい
 頻繁にキャラクターが喋ってるのでテキスト量も膨大な感じがするんだがしっかりボイスが付いててすごいと思った。
 あと味方のモブが主人公ワッショイしてくれる演出もすき。オタクは自己肯定観がひくいので
@@ -108,9 +100,7 @@ DL版https://t.co/64HnvYHuflhttps://t.co/DSjXp16BYG
     
   <article class="card-body">
     <h2 class="card-title">Python &#43; Firebase RealtimeDBでDiscordBotを作った感想</h2>
-    <p class="card-text lineclamp">Vの者の配信をしてたら放送のリンクをDiscordに自動で投稿してくれる感じのDiscordBotを書きましたhttps://t.co/xKtgGYRJ7w から各位のDiscordServerに登録できます!
-簡易的なDiscordBotの作り方について書いた本を本日のコミックマーケット 西め07a にて販売するので、そちらもよろしくお願いします pic.twitter.com/EmHfRv9b0g
-&mdash; ひまのあ??? (@h1manoa) 2018年8月9日 これの話です。
+    <p class="card-text lineclamp">これの話です。
 これの裏側はPython3.6 + Firebase RealtimeDB + GAE(Flexible Enviroment)になっています。
 今回はRealtime Databsaeを使った感想について書いていきます
 そもそもなぜReatimeDBを？ 人間がデプロイしないで自分のサーバーに追加できるDiscordBotを組みたかったので何かしらに永続化する必要がある。 RDBMSで何か遊ぶことには慣れてるので、本当はRDBMSを使いたかったのだが、無料で使える or もしくはコスパがよろしいプランが存在しなかったので、NosqlなFirebase Realtime DBを採用したみたいな経緯でした。
@@ -130,8 +120,7 @@ DL版https://t.co/64HnvYHuflhttps://t.co/DSjXp16BYG
   <article class="card-body">
     <h2 class="card-title">Hearthstoneランク15いった</h2>
     <p class="card-text lineclamp">初心者を脱したのでよかったですね。
-はい。初めてここまできました pic.twitter.com/p6U3VdV3Q8
-&mdash; ひまのあ@1日目 西め07a (@h1manoa) 2018年7月28日 滑りこめたのでよかった。月末は弱い人がおおいきがする。最高16で16~18をいったり来たりしてたんだがたまたま、奇数パラがメタと噛みあって連勝ボーナス混みで4-1(記憶ちがいあるかも)で15はいった。
+滑りこめたのでよかった。月末は弱い人がおおいきがする。最高16で16~18をいったり来たりしてたんだがたまたま、奇数パラがメタと噛みあって連勝ボーナス混みで4-1(記憶ちがいあるかも)で15はいった。
 今月主に回してたデッキは 奇数パラディン 奇数ローグ ミラクルローグ で途中9連敗を二回したりでマウス投げたりしてたがまぁ自己ベスト更新できてよかったですね、みたいなところ。このランク帯までは、デッキパワーたかいデッキでメタが噛みあってる時間帯にどれだけしゃぶり尽せるかみたいなところなのでデッキパワーつよいデッキを使えるかみたいなのがでかいとおもう。</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-07-28">Jul 28, 2018</time></p>

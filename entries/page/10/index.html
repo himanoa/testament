@@ -46,13 +46,13 @@
     <h2 class="card-title">WSLでクリップボードを共有する</h2>
     <p class="card-text lineclamp">Windows Subsystem for Linuxで開発環境を整えた の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに入ってくれないのが結構ストレスになったのでそれの解消をします。
 Windowsにはclip.exeというソフトウェアが搭載されており、これを使うことでWSLからWindowsのクリップボードに文字列を入れることができます
-echo &quot;:innocent:&quot; | clip.exe # wsl Terminal上でShift + Insert :innocent:  ただ、このソフトウェア単体だとクリップボードから文字列を取り出すことができないのと、文字列の最後に改行コードが入るらしく(余計なことしやがって)つらいので別のアプローチでやります
+echo &quot;:innocent:&quot; | clip.exe# wsl Terminal上でShift + Insert:innocent:ただ、このソフトウェア単体だとクリップボードから文字列を取り出すことができないのと、文字列の最後に改行コードが入るらしく(余計なことしやがって)つらいので別のアプローチでやります
 先にやっておくこと  https://github.com/equalsraf/win32yank/releases から win32yank-x64.zipをダウンロードしてきて展開 展開して出てきたwin32yank.exeを WSL上でecho $PATHして列挙されたディレクトリのいずれかに配置  win32yankの使い方は clip.exe と大体同じで以下のように使う
-echo &quot;poepoe&quot; | win32yank.exe -i win32yank.exe -o poepoe  念のためWindows上で任意のテキストボックスでCtrl+vして貼り付けられるか確認しておくと良いかもしれない。
+echo &quot;poepoe&quot; | win32yank.exe -iwin32yank.exe -opoepoe念のためWindows上で任意のテキストボックスでCtrl+vして貼り付けられるか確認しておくと良いかもしれない。
 Neovimからwin32yank.exeを使う さてここまでできたのなら、Neovimから yでヤンク、pで貼り付けるみたいなことをできるようにしたい。
 過去の記憶からNeovimでLinuxのクリップボードと連携した時に xsel に依存していた覚えがあった。
 また、丁度手元にNeovimのソースコードがあったのでそこから検索して(最悪書き換えてビルドすればよい)どうすればいいかを模索した
-cd ~/src/github.com/neovim/neovim git grep xsel runtime/autoload/provider/clipboard.vim:&quot; When caching is enabled, store the jobid of the xclip/xsel process keeping runtime/autoload/provider/clipboard.vim: elseif exists('$DISPLAY') &amp;&amp; executable('xsel') &amp;&amp; s:cmd_ok('xsel -o -b') runtime/autoload/provider/clipboard.</p>
+cd ~/src/github.com/neovim/neovimgit grep xselruntime/autoload/provider/clipboard.vim:&quot; When caching is enabled, store the jobid of the xclip/xsel process keepingruntime/autoload/provider/clipboard.vim: elseif exists('$DISPLAY') &amp;&amp; executable('xsel') &amp;&amp; s:cmd_ok('xsel -o -b')runtime/autoload/provider/clipboard.</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-01-31">Jan 31, 2018</time></p>
       
@@ -90,18 +90,14 @@ vimtutorをやりましょう。vimtutorはvimでの効率的なテキスト操�
   <article class="card-body">
     <h2 class="card-title">20歳になりました</h2>
     <p class="card-text lineclamp">20170130で20歳になりました。酒が飲めて便利な年齢ですね。 20歳と言えば
-20歳童貞とかマジで悲しい
-&mdash; 孤高のラトリンログ (@UeNhMrzZ4gwj5Kq) 2018年1月28日 といった年齢なんですが当方はダメでしたね。来世に期待といったところ。
+といった年齢なんですが当方はダメでしたね。来世に期待といったところ。
 20歳ってMMOの最初のレベルキャップのイメージがあって、いろいろエンドコンテンツが開放されてくイメージがあったんですけど、以外となんともないですね。
 酒 人生の先輩に酒の限界値を知っておくべきといわれたので、会社休んでストロングゼロ DRYでベンチマークをしていた。(やったのは日付回った瞬間からなので過去形)
-結論ファーストで行くと 吐いたやつ pic.twitter.com/zRq01AQIcP
-&mdash; Internet Subscriber (@h1manoa) 2018年1月30日
+結論ファーストで行くと
 が限界で3缶飲むと var_dump(食った物) することになるということがわかった。
 イキりオタク的な事を書くと1缶は余裕なんですけど2缶目は大体vimの操作ができなくなって3缶目は言動が終わる。
 あとガチで悪酔い中にやったゴッドフィールドが面白かったのでゴッドフィールド神ゲーだと思った(本当か？)
-確実に酔っていて、つまみたべるまえに「ご飯を食べるまえにはいただきますっていうんですお」とかいいながら爆笑している
-&mdash; Internet Subscriber (@h1manoa) 2018年1月29日 おーーーーーーーーーーーーっっほいっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっwWWWWWWWWWWWWWWWWWWWWWWWWWwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-&mdash; Internet Subscriber (@h1manoa) 2018年1月29日 いつもの 飲みにいくぞ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!etcご用があったら Twitter まで。 Twitterもってないマンはさすがにいないと思うけど matsunoappy@gmail.com まで連絡くだしゃい。正直こっちはあんま見てないけど
+いつもの 飲みにいくぞ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!etcご用があったら Twitter まで。 Twitterもってないマンはさすがにいないと思うけど matsunoappy@gmail.com まで連絡くだしゃい。正直こっちはあんま見てないけど
 誕生日プレゼントマジで頼む!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! http://amzn.asia/5dZqBma</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-01-30">Jan 30, 2018</time></p>

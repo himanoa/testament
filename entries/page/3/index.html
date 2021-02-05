@@ -54,7 +54,7 @@
 まぁ地球のことはさておき、この価値観に至った経緯はこうだ。
 前職の経営が危うくなってクビになりそうだったからうざかったので、次の職が決まるのを待たず1ヵ月だけニートになった。
 ゲームに明るい皆さんならわかると思うのだが、リソースを稼ぐ手段を失った持久戦ゲームはジリ貧になって負ける。負けるのはうざいし腹が立つ。だから勝ちたい。勝つために必要な手段は主に次の2つだ
- 新たなリソースの回復手段を作る 相手のリソース、もしくは回復手段に大打撃を与えて、ジリ貧ゲームで相手のほうが先に死にゆくようなプランを実行する  もしかして: 「崩し」   無職期間中、人生においての明確な敵を崩す手段を見つけられなかったので負けないために俺は新たなリソースの回復手段作ることにした。転職活動というやつだ。
+ 新たなリソースの回復手段を作る 相手のリソース、もしくは回復手段に大打撃を与えて、ジリ貧ゲームで相手のほうが先に死にゆくようなプランを実行する  もしかして: 「崩し」    無職期間中、人生においての明確な敵を崩す手段を見つけられなかったので負けないために俺は新たなリソースの回復手段作ることにした。転職活動というやつだ。
 人生は運ゲなので運がよく、弊社に入社することができ、時間というリソースと引き換えに金を得ることに成功した。交換で成り立っているので本当にリソースを稼げてるかはわからないが、ニート期間中に比べて遥かに長い間延命しているので、前よりアドは稼げているはずだ。
 経緯はここまで
 なんやかんだで現職についた。転職してとても驚いたことがあって、金以外に何かを成すことや謎の成分目的だったりで仕事をしている人たちがいてとてもびっくりした。
@@ -82,7 +82,7 @@
 次のコマンドでインストールすることができます
 cargo install mkrepo
 また、mkrepoは.gitconfigに特定のkey-value構造が存在していることに依存しています。そのため ~/.gitconfigに次のような記述を追加する必要があります
-[user] name=&quot;あなたのなまえ&quot; [ghq] root=&quot;~/src&quot; [mkrepo] service=&quot;github.com&quot;  つかいかた Make project directory for ghq style. 0.0.1 USAGE: mkrepo [FLAGS] [OPTIONS] &lt;repository&gt; FLAGS: -d dru run -h, --help Prints help information -V, --version Prints version information OPTIONS: -a, --author &lt;author&gt; repository author name -m &lt;first_commit_message&gt; first_commit_message name -s, --service &lt;service&gt; service name ARGS: &lt;repository&gt; Repository name  mkrepo foobar とかやると src/github.</p>
+[user] name=&#34;あなたのなまえ&#34; [ghq] root=&#34;~/src&#34; [mkrepo] service=&#34;github.com&#34; つかいかた Make project directory for ghq style. 0.0.1 USAGE: mkrepo [FLAGS] [OPTIONS] &lt;repository&gt; FLAGS: -d dru run -h, --help Prints help information -V, --version Prints version information OPTIONS: -a, --author &lt;author&gt; repository author name -m &lt;first_commit_message&gt; first_commit_message name -s, --service &lt;service&gt; service name ARGS: &lt;repository&gt; Repository name mkrepo foobar とかやると src/github.</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-10-26">Oct 26, 2019</time></p>
       
@@ -95,8 +95,6 @@ cargo install mkrepo
   <article class="card-body">
     <h2 class="card-title">物理の単位を落としてしまうと</h2>
     <p class="card-text lineclamp">えー、物理の単位をー落としてしまうとー、将来、モニタのレストアームをつけうときにーあー、とても、つけるのがー困難にーなってしまう。
-レストアームかったら机がスロープになってて取り付けれなくて泣いてる…なんかいい方法ないですか pic.twitter.com/9SxwuYQCDG
-&mdash; 名前 (@h1manoa) October 25, 2019 
 なので物理の単位を落とさないように皆さんちゃんと勉強しましょう
 あと自分の机の規格を知らずに雑にアーム買うのもやめましょう</p>
     <div class="card-subtext muted-text">
@@ -129,7 +127,7 @@ cargo install mkrepo
 たとえばリポジトリ内でgrepした結果を置換する git grep -l Foo | xargs sed -i '' -e &quot;/Foo/Bar/g&quot; をサブコマンドとして実装するとかです。
 やっと本題に戻りますが、これらのサブコマンド集を実装してリポジトリとして公開しました! himanoa/git-subcommands
 インストール himanoa/git-subcommands は以下のツールに依存しています。
- bash python  3.x推奨  git   git clone https://github.com/himanoa/git-subcommands ~/git-subcommands PATHを ~/git-subcommands/src に通す  zshとかbashを使っているなら export PATH=~/git-subcommands/src:$PATH とかでいいのでは？   インストールが完了したら以下のセクションのサブコマンドがそれぞれ動作できるようになるはずです！
+ bash python  3.x推奨   git   git clone https://github.com/himanoa/git-subcommands ~/git-subcommands PATHを ~/git-subcommands/src に通す zshとかbashを使っているなら export PATH=~/git-subcommands/src:$PATH とかでいいのでは？  インストールが完了したら以下のセクションのサブコマンドがそれぞれ動作できるようになるはずです！
 実装したコマンド git-replace リポジトリ内の特定の文字列を置換する いつも git grep -l Foo | xargs sed -i '' -e &quot;/Foo/Bar/&quot; とか書いてた実装ですね。これをこのサブコマンドを用いることで以下のスニペットまで短縮できます</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-09-10">Sep 10, 2019</time></p>

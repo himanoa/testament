@@ -5,22 +5,16 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>himanoa.netを開通させたぞ！！！！ &middot; 遺言書</title>
-  <meta name="description" content="
-
-&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net&#34;&gt;https://blog.himanoa.net&lt;/a&gt; はあるのに &lt;a href=&#34;https://himanoa.net&#34;&gt;https://himanoa.net&lt;/a&gt; がないのはおかしいよね" />
+  <meta name="description" content="&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net&#34;&gt;https://blog.himanoa.net&lt;/a&gt; はあるのに &lt;a href=&#34;https://himanoa.net&#34;&gt;https://himanoa.net&lt;/a&gt; がないのはおかしいよねって" />
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary">
   <meta property="twitter:title" content="himanoa.netを開通させたぞ！！！！ &middot; 遺言書" >
-  <meta property="twitter:description" content="
-
-&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net&#34;&gt;https://blog.himanoa.net&lt;/a&gt; はあるのに &lt;a href=&#34;https://himanoa.net&#34;&gt;https://himanoa.net&lt;/a&gt; がないのはおかしいよね" />
+  <meta property="twitter:description" content="&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net&#34;&gt;https://blog.himanoa.net&lt;/a&gt; はあるのに &lt;a href=&#34;https://himanoa.net&#34;&gt;https://himanoa.net&lt;/a&gt; がないのはおかしいよねって" />
   <meta property="twittere:url" content="https://blog.himanoa.net/entries/13/" >
   <meta property="og:image" content="default.jpg">
   <meta property="og:url" content="https://blog.himanoa.net/entries/13/" >
   <meta property="og:title" content="himanoa.netを開通させたぞ！！！！ &middot; 遺言書" >
-  <meta property="og:description" content="
-
-&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net&#34;&gt;https://blog.himanoa.net&lt;/a&gt; はあるのに &lt;a href=&#34;https://himanoa.net&#34;&gt;https://himanoa.net&lt;/a&gt; がないのはおかしいよね" />
+  <meta property="og:description" content="&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net&#34;&gt;https://blog.himanoa.net&lt;/a&gt; はあるのに &lt;a href=&#34;https://himanoa.net&#34;&gt;https://himanoa.net&lt;/a&gt; がないのはおかしいよねって" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   
@@ -46,36 +40,20 @@
           <p class="post-date">Posted <time datetime="2017-12-23">Dec 23, 2017</time></p>
         </header>
         
-        
-
-<p><a href="https://blog.himanoa.net">https://blog.himanoa.net</a> はあるのに <a href="https://himanoa.net">https://himanoa.net</a> がないのはおかしいよねっていう指摘を受けて5億年くらい経ったんですが、僕に紹介する自己が存在しなかったのと、CSSとか書けないし置くプロダクトもないしなぁとか思って恥ずかしさから作ってなかった自己紹介サイトを早朝の4時間くらいで作りました。</p>
-
+        <p><a href="https://blog.himanoa.net">https://blog.himanoa.net</a> はあるのに <a href="https://himanoa.net">https://himanoa.net</a> がないのはおかしいよねっていう指摘を受けて5億年くらい経ったんですが、僕に紹介する自己が存在しなかったのと、CSSとか書けないし置くプロダクトもないしなぁとか思って恥ずかしさから作ってなかった自己紹介サイトを早朝の4時間くらいで作りました。</p>
 <p>サイトデザインは色を適当なパレットから拾ってきて、あーでもないこーでもないしながらちょっと色見調整してCSSに落とし込むみたいな、コンポーネント指向とかとも無縁な感じで組んでみたんですけど、僕がCSS書いたにしては、モバイルでもちゃんと見れるようになったしそれっぽいデザインになったなぁといった感じで自画自賛できるくらいの出来なのでみんな見てくれーーーーーーーー</p>
-
 <p>これだけだと記事にしては何も面白くないのでデザインからデプロイするまでに得た知見とかを載せて締めます。</p>
-
 <h2 id="見てる画面の解像度に合わせてdivの高さを調節する">見てる画面の解像度に合わせてdivの高さを調節する。</h2>
-
 <p><a href="https://himanoa.net">https://himanoa.net</a> の白い部分は、スクロールしない限り高さをブラウザの描画サイズになるようになっています。</p>
-
 <p>JavaScriptで <code>window.innerHeight</code> をCSSに適用させとけばいきそうみたいな感じで目論んでいたのですが、いろいろ調べてみたところCSSにはvhという単位が存在し　これを用いると「ブラウザのサイズに依存せずに画面のどれくらいの高さを占めるか」といった感覚で単位を当てることができます。</p>
-
 <p>なので、先程のJavaScriptでうんたらかんたらせずとも <code>height: 100vh</code> とだけ書いとけばどの環境でも意図した高さになりレスポンシブも実現できるという分けです。便利</p>
-
 <h2 id="flexbox">Flexbox</h2>
-
 <p>スキル欄のタグがブラウザのサイズがめっちゃ小さくなってもいい感じに並んでくれるのはFlexboxを用いてます。</p>
-
 <p>Flexboxを用いると要素を規則的に並べるのが非常に楽になりました。折り返しの設定や並び方の設定などがいじれるのがよさです。</p>
-
 <p>また、従来のfloatレイアウトに比べてclearfixを気にしなくていいのも嬉しいです。</p>
-
 <h2 id="netlifyが神">netlifyが神</h2>
-
 <p>ちょっと前に騒がれてたnetlifyがデプロイ先として僕の要件をクリアしていたのでここでホスティングしています。</p>
-
 <p>GitHubのリポジトリを見てくれるのでpushに応じて自動でビルドしてページを更新してくれるので、サイト管理も楽なのが良かったです。</p>
-
 <p>あとはどこのディレクトリをドキュメントルートにするかもnetlify側で決められるのでgithub pagesと違い、gh-pagesみたいな余計なブランチを生やさなくてもいいのとhttps対応がクリック一回でできるのもよかったです。</p>
 
       </article>

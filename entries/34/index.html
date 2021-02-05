@@ -6,27 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>SPAにおけるOpen ID Connect認証 &middot; 遺言書</title>
   <meta name="description" content="&lt;p&gt;サーバーサイドとクライアントサイド両方とも実装する機運が出てきたのでそれぞれの役割を整理するためにシーケンス図を書いた。 Googleって書いてあるところはOAuthプロバイダーなら何でも置き替えられるはず&lt;/p&gt;
-
 &lt;p&gt;間違ってたら教えてくれ&lt;/p&gt;
-
-&lt;p&gt;&lt;img " />
+&lt;p&gt;&lt;img sr" />
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary">
   <meta property="twitter:title" content="SPAにおけるOpen ID Connect認証 &middot; 遺言書" >
   <meta property="twitter:description" content="&lt;p&gt;サーバーサイドとクライアントサイド両方とも実装する機運が出てきたのでそれぞれの役割を整理するためにシーケンス図を書いた。 Googleって書いてあるところはOAuthプロバイダーなら何でも置き替えられるはず&lt;/p&gt;
-
 &lt;p&gt;間違ってたら教えてくれ&lt;/p&gt;
-
-&lt;p&gt;&lt;img " />
+&lt;p&gt;&lt;img sr" />
   <meta property="twittere:url" content="https://blog.himanoa.net/entries/34/" >
   <meta property="og:image" content="default.jpg">
   <meta property="og:url" content="https://blog.himanoa.net/entries/34/" >
   <meta property="og:title" content="SPAにおけるOpen ID Connect認証 &middot; 遺言書" >
   <meta property="og:description" content="&lt;p&gt;サーバーサイドとクライアントサイド両方とも実装する機運が出てきたのでそれぞれの役割を整理するためにシーケンス図を書いた。 Googleって書いてあるところはOAuthプロバイダーなら何でも置き替えられるはず&lt;/p&gt;
-
 &lt;p&gt;間違ってたら教えてくれ&lt;/p&gt;
-
-&lt;p&gt;&lt;img " />
+&lt;p&gt;&lt;img sr" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   
@@ -53,14 +47,10 @@
         </header>
         
         <p>サーバーサイドとクライアントサイド両方とも実装する機運が出てきたのでそれぞれの役割を整理するためにシーケンス図を書いた。 Googleって書いてあるところはOAuthプロバイダーなら何でも置き替えられるはず</p>
-
 <p>間違ってたら教えてくれ</p>
-
-<p><img src="https://i.imgur.com/vge7sUy.png" alt="sequence" /></p>
-
+<p><img src="https://i.imgur.com/vge7sUy.png" alt="sequence"></p>
 <p>追記:
 とりあえずシーケンス図が書けたのでAPIサーバーに求められている機構を実装した。curlで試しているのと、SPAのガワが存在していないため一旦セッションに入れたりstateの検証するのは省いた。</p>
-
 <pre><code>const { createHash } = require(&quot;crypto&quot;);
 const url = require(&quot;url&quot;);
 
@@ -151,7 +141,6 @@ app.listen(3000, function() {
   console.log(&quot;Example app listening on port 3000!&quot;);
 });
 </code></pre>
-
       </article>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>

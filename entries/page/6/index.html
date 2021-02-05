@@ -125,8 +125,8 @@ VTuber 名取さなさんが好き。
   <article class="card-body">
     <h2 class="card-title">RustでEnumを文字列(文字列slice)から生成したい</h2>
     <p class="card-text lineclamp">Rustを書いていると自分で定義したEnumを文字列から生成したくなる時がある。コード例で示すとこんな感じ
-pub enum Foo { Foo1, Foo2, Foo3, Foo4 } Foo::from_str(&quot;Foo1&quot;) // -&gt; Foo::Foo1  こんな時は標準ライブラリに入っている、std::str::FromStr トレイトを実装してやるとうまいこといくし、他の似たような挙動をする型と一緒に扱えたりして便利で作法的にも良い。例は以下の通り
-use std::str::FromStr; use std::str::FromStr; pub enum Foo { Foo1, Foo2, Foo3 } impl FromStr for Foo { type Err = &amp;'static str; fn from_str(s: &amp;str) -&gt; Result&lt;Self, Self::Err&gt; { match s { &quot;Foo1&quot; =&gt; Ok(Foo::Foo1), &quot;Foo2&quot; =&gt; Ok(Foo::Foo2), &quot;Foo3&quot; =&gt; Ok(Foo::Foo3), _ =&gt; Err(&quot;Error&quot;) } } } Foo::from_str(&quot;Foo1&quot;) // Ok(Foo::Foo1) Foo::from_str(&quot;Foo1sadasd&quot;) // Err(&quot;Error&quot;)  もちろんFromStrはトレイトなのでenum以外にも適用可能なので、任意の型を文字列から生成したい時にはこの方法を使いましょう。</p>
+pub enum Foo {Foo1,Foo2,Foo3,Foo4}Foo::from_str(&quot;Foo1&quot;) // -&gt; Foo::Foo1こんな時は標準ライブラリに入っている、std::str::FromStr トレイトを実装してやるとうまいこといくし、他の似たような挙動をする型と一緒に扱えたりして便利で作法的にも良い。例は以下の通り
+use std::str::FromStr;use std::str::FromStr;pub enum Foo {Foo1,Foo2,Foo3}impl FromStr for Foo {type Err = &amp;'static str;fn from_str(s: &amp;str) -&gt; Result&lt;Self, Self::Err&gt; {match s {&quot;Foo1&quot; =&gt; Ok(Foo::Foo1),&quot;Foo2&quot; =&gt; Ok(Foo::Foo2),&quot;Foo3&quot; =&gt; Ok(Foo::Foo3),_ =&gt; Err(&quot;Error&quot;)}}}Foo::from_str(&quot;Foo1&quot;) // Ok(Foo::Foo1)Foo::from_str(&quot;Foo1sadasd&quot;) // Err(&quot;Error&quot;)もちろんFromStrはトレイトなのでenum以外にも適用可能なので、任意の型を文字列から生成したい時にはこの方法を使いましょう。</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-08-30">Aug 30, 2018</time></p>
       

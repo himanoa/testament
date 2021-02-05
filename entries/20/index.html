@@ -5,22 +5,16 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>WSLでクリップボードを共有する &middot; 遺言書</title>
-  <meta name="description" content="
-
-&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net/entries/19&#34;&gt;Windows Subsystem for Linuxで開発環境を整えた&lt;/a&gt; の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボー" />
+  <meta name="description" content="&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net/entries/19&#34;&gt;Windows Subsystem for Linuxで開発環境を整えた&lt;/a&gt; の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに" />
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary">
   <meta property="twitter:title" content="WSLでクリップボードを共有する &middot; 遺言書" >
-  <meta property="twitter:description" content="
-
-&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net/entries/19&#34;&gt;Windows Subsystem for Linuxで開発環境を整えた&lt;/a&gt; の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボー" />
+  <meta property="twitter:description" content="&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net/entries/19&#34;&gt;Windows Subsystem for Linuxで開発環境を整えた&lt;/a&gt; の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに" />
   <meta property="twittere:url" content="https://blog.himanoa.net/entries/20/" >
   <meta property="og:image" content="default.jpg">
   <meta property="og:url" content="https://blog.himanoa.net/entries/20/" >
   <meta property="og:title" content="WSLでクリップボードを共有する &middot; 遺言書" >
-  <meta property="og:description" content="
-
-&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net/entries/19&#34;&gt;Windows Subsystem for Linuxで開発環境を整えた&lt;/a&gt; の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボー" />
+  <meta property="og:description" content="&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net/entries/19&#34;&gt;Windows Subsystem for Linuxで開発環境を整えた&lt;/a&gt; の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   
@@ -46,46 +40,29 @@
           <p class="post-date">Posted <time datetime="2018-01-31">Jan 31, 2018</time></p>
         </header>
         
-        
-
-<p><a href="https://blog.himanoa.net/entries/19">Windows Subsystem for Linuxで開発環境を整えた</a> の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに入ってくれないのが結構ストレスになったのでそれの解消をします。</p>
-
+        <p><a href="https://blog.himanoa.net/entries/19">Windows Subsystem for Linuxで開発環境を整えた</a> の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに入ってくれないのが結構ストレスになったのでそれの解消をします。</p>
 <p>Windowsにはclip.exeというソフトウェアが搭載されており、これを使うことでWSLからWindowsのクリップボードに文字列を入れることができます</p>
-
 <pre><code>echo &quot;:innocent:&quot; | clip.exe
 
 # wsl Terminal上でShift + Insert
 :innocent:
 
-</code></pre>
-
-<p>ただ、このソフトウェア単体だとクリップボードから文字列を取り出すことができないのと、文字列の最後に改行コードが入るらしく(余計なことしやがって)つらいので別のアプローチでやります</p>
-
+</code></pre><p>ただ、このソフトウェア単体だとクリップボードから文字列を取り出すことができないのと、文字列の最後に改行コードが入るらしく(余計なことしやがって)つらいので別のアプローチでやります</p>
 <h2 id="先にやっておくこと">先にやっておくこと</h2>
-
 <ol>
 <li><a href="https://github.com/equalsraf/win32yank/releases">https://github.com/equalsraf/win32yank/releases</a> から win32yank-x64.zipをダウンロードしてきて展開</li>
 <li>展開して出てきたwin32yank.exeを WSL上で<code>echo $PATH</code>して列挙されたディレクトリのいずれかに配置</li>
 </ol>
-
 <p>win32yankの使い方は clip.exe と大体同じで以下のように使う</p>
-
 <pre><code>echo &quot;poepoe&quot; | win32yank.exe -i
 
 win32yank.exe -o
 poepoe
-</code></pre>
-
-<p>念のためWindows上で任意のテキストボックスでCtrl+vして貼り付けられるか確認しておくと良いかもしれない。</p>
-
-<h2 id="neovimからwin32yank-exeを使う">Neovimからwin32yank.exeを使う</h2>
-
+</code></pre><p>念のためWindows上で任意のテキストボックスでCtrl+vして貼り付けられるか確認しておくと良いかもしれない。</p>
+<h2 id="neovimからwin32yankexeを使う">Neovimからwin32yank.exeを使う</h2>
 <p>さてここまでできたのなら、Neovimから yでヤンク、pで貼り付けるみたいなことをできるようにしたい。</p>
-
 <p>過去の記憶からNeovimでLinuxのクリップボードと連携した時に xsel に依存していた覚えがあった。</p>
-
 <p>また、丁度手元にNeovimのソースコードがあったのでそこから検索して(最悪書き換えてビルドすればよい)どうすればいいかを模索した</p>
-
 <pre><code>cd ~/src/github.com/neovim/neovim
 git grep xsel
 runtime/autoload/provider/clipboard.vim:&quot; When caching is enabled, store the jobid of the xclip/xsel process keeping
@@ -97,12 +74,8 @@ runtime/autoload/provider/clipboard.vim:    let s:paste['*'] = 'xsel -o -p'
 runtime/autoload/provider/clipboard.vim:    return 'xsel'
 runtime/doc/provider.txt:  - xsel (if $DISPLAY is set)
 
-</code></pre>
-
-<p>なんか普通に設定方法がドキュメントに書いてありそうなので、調べてみたところg:clipboardを弄ることにより変更できるみたいだった。</p>
-
+</code></pre><p>なんか普通に設定方法がドキュメントに書いてありそうなので、調べてみたところg:clipboardを弄ることにより変更できるみたいだった。</p>
 <p>以下のように変更した</p>
-
 <pre><code>let g:clipboard = {
       \   'name': 'myClipboard',
       \   'copy': {
@@ -115,17 +88,11 @@ runtime/doc/provider.txt:  - xsel (if $DISPLAY is set)
       \   },
       \   'cache_enabled': 1,
       \ }
-</code></pre>
-
-<p>さてこのままだと、マルチプラットフォーム対応として怪しいのでもうちょっと工夫をする。</p>
-
+</code></pre><p>さてこのままだと、マルチプラットフォーム対応として怪しいのでもうちょっと工夫をする。</p>
 <p>WSLの <code>uname -a</code> は特殊になっており、普通のUbuntuとは表示が違うことを利用して判定をする</p>
-
 <pre><code>uname -a
 Linux HOSTNAME 4.4.0-43-Microsoft #1-Microsoft Wed Dec 31 14:42:53 PST 2014 x86\_64 x86\_64 x86\_64 GNU/Linux
-</code></pre>
-
-<pre><code>if system('uname -a | grep Microsoft') != &quot;&quot;
+</code></pre><pre><code>if system('uname -a | grep Microsoft') != &quot;&quot;
   let g:clipboard = {
         \   'name': 'myClipboard',
         \   'copy': {
@@ -139,17 +106,10 @@ Linux HOSTNAME 4.4.0-43-Microsoft #1-Microsoft Wed Dec 31 14:42:53 PST 2014 x86\
         \   'cache_enabled': 1,
         \ }
 endif
-</code></pre>
-
-<h2 id="tmuxからwin32yankを使う">tmuxからwin32yankを使う</h2>
-
+</code></pre><h2 id="tmuxからwin32yankを使う">tmuxからwin32yankを使う</h2>
 <p>vi-mode使ってること前提。</p>
-
 <pre><code>if-shell 'test &quot;$(uname -a | grep Microsoft)&quot; != &quot;&quot;'  bind-key -t vi-copy Enter copy-pipe &quot;cat | win32yank.exe -i&quot;
-</code></pre>
-
-<h2 id="まとめ">まとめ</h2>
-
+</code></pre><h2 id="まとめ">まとめ</h2>
 <p>WSLでもクリップボード共有できて嬉しいですね。多分これで常用できると思います</p>
 
       </article>

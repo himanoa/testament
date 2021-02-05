@@ -1,9 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>https://blog.himanoa.net/entries/64/</loc>
+    <lastmod>2021-02-06T07:31:26+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.himanoa.net/entries/</loc>
+    <lastmod>2021-02-06T07:31:26+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.himanoa.net/</loc>
     <lastmod>2021-02-06T07:31:26+09:00</lastmod>
   </url>
   
@@ -324,24 +334,10 @@
   
   <url>
     <loc>https://blog.himanoa.net/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.himanoa.net/entries/</loc>
-    <lastmod>2021-02-06T07:31:26+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.himanoa.net/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.himanoa.net/</loc>
-    <lastmod>2021-02-06T07:31:26+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
 </urlset>

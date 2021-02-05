@@ -5,34 +5,22 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>ThinkPadX1Carbon 5th にUbuntu17.10を入れる &middot; 遺言書</title>
-  <meta name="description" content="
-
-&lt;p&gt;情報が散らばっててたので作業ログをまとめます。最近まとめブログみたいなことしかしてないなこれ。&lt;/p&gt;
-
+  <meta name="description" content="&lt;p&gt;情報が散らばっててたので作業ログをまとめます。最近まとめブログみたいなことしかしてないなこれ。&lt;/p&gt;
 &lt;h2 id=&#34;セキュアブート無効化&#34;&gt;セキュアブート無効化&lt;/h2&gt;
-
-&lt;p&gt;Windowsをセットアップして再起動したらコントロールパネルを開き、&amp;lt;ハード" />
+&lt;p&gt;Windowsをセットアップして再起動したらコントロールパネルを開き、&amp;lt;ハードウェアと" />
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary">
   <meta property="twitter:title" content="ThinkPadX1Carbon 5th にUbuntu17.10を入れる &middot; 遺言書" >
-  <meta property="twitter:description" content="
-
-&lt;p&gt;情報が散らばっててたので作業ログをまとめます。最近まとめブログみたいなことしかしてないなこれ。&lt;/p&gt;
-
+  <meta property="twitter:description" content="&lt;p&gt;情報が散らばっててたので作業ログをまとめます。最近まとめブログみたいなことしかしてないなこれ。&lt;/p&gt;
 &lt;h2 id=&#34;セキュアブート無効化&#34;&gt;セキュアブート無効化&lt;/h2&gt;
-
-&lt;p&gt;Windowsをセットアップして再起動したらコントロールパネルを開き、&amp;lt;ハード" />
+&lt;p&gt;Windowsをセットアップして再起動したらコントロールパネルを開き、&amp;lt;ハードウェアと" />
   <meta property="twittere:url" content="https://blog.himanoa.net/entries/10/" >
   <meta property="og:image" content="default.jpg">
   <meta property="og:url" content="https://blog.himanoa.net/entries/10/" >
   <meta property="og:title" content="ThinkPadX1Carbon 5th にUbuntu17.10を入れる &middot; 遺言書" >
-  <meta property="og:description" content="
-
-&lt;p&gt;情報が散らばっててたので作業ログをまとめます。最近まとめブログみたいなことしかしてないなこれ。&lt;/p&gt;
-
+  <meta property="og:description" content="&lt;p&gt;情報が散らばっててたので作業ログをまとめます。最近まとめブログみたいなことしかしてないなこれ。&lt;/p&gt;
 &lt;h2 id=&#34;セキュアブート無効化&#34;&gt;セキュアブート無効化&lt;/h2&gt;
-
-&lt;p&gt;Windowsをセットアップして再起動したらコントロールパネルを開き、&amp;lt;ハード" />
+&lt;p&gt;Windowsをセットアップして再起動したらコントロールパネルを開き、&amp;lt;ハードウェアと" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   
@@ -58,51 +46,29 @@
           <p class="post-date">Posted <time datetime="2017-12-05">Dec 5, 2017</time></p>
         </header>
         
-        
-
-<p>情報が散らばっててたので作業ログをまとめます。最近まとめブログみたいなことしかしてないなこれ。</p>
-
+        <p>情報が散らばっててたので作業ログをまとめます。最近まとめブログみたいなことしかしてないなこれ。</p>
 <h2 id="セキュアブート無効化">セキュアブート無効化</h2>
-
 <p>Windowsをセットアップして再起動したらコントロールパネルを開き、&lt;ハードウェアとサウンド&gt;→&lt;電源プランの選択&gt;から、高速スタートアップを有効にする(推奨)のチェックを外す。(非アクティブ状態の場合は詳細情報をクリックするといじれるようになると思います</p>
-
 <h2 id="ubuntu-usbブート後">Ubuntu USBブート後</h2>
-
 <p>トラックパッドが効かなくてカーソルの操作ができないと思うのでできるようにします。</p>
-
 <p>Winキー押してterminalと入力してEnterを押すとTerminal Emulatorが開くので以下のコマンドを手で入力して実行します</p>
-
 <pre><code>sudo modprobe -r psmouse
 sudo modprobe psmouse proto=imps
-</code></pre>
-
-<p>トラックポイントが操作できるようになると思うのであとは普通にインストール</p>
-
+</code></pre><p>トラックポイントが操作できるようになると思うのであとは普通にインストール</p>
 <h2 id="インストール終了後のssdからの再起動後">インストール終了後のSSDからの再起動後</h2>
-
 <p>ログイン画面で歯車マークをクリックしUbuntu on Xorgを選択する。
 Ubuntu 17.10からWaylandが採用されたが日本語入力が不可能なのとバグが多数あるためとりあえず無効化しておく</p>
-
-<h2 id="grub-cfgを弄ってトラックパッドが効くようにする">grub.cfgを弄ってトラックパッドが効くようにする</h2>
-
+<h2 id="grubcfgを弄ってトラックパッドが効くようにする">grub.cfgを弄ってトラックパッドが効くようにする</h2>
 <p>インストール時は無理やりなんとかしたが、このままだと起動するたびに上記のコマンドでトラックポイントの有効化をしないといけない。
 それはだるいので、ブートローダーの設定を弄って解決する。</p>
-
 <p>以下のコマンドを実行</p>
-
 <p><code>sudo vim /etc/default/grub</code></p>
-
 <p>１１行目を以下に書き換え</p>
-
 <p><code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash psmouse.proto=imps</code></p>
-
 <p>書き換えたらgrubのconfigを適用させたいので <code>sudo update-grub</code> を実行する</p>
-
 <h2 id="ホームディレクトリのディレクトリ名の英語化">ホームディレクトリのディレクトリ名の英語化</h2>
-
 <pre><code>LANG=C xdg-user-dirs-gtk-update
 </code></pre>
-
       </article>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
