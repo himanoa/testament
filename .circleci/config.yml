@@ -10,10 +10,10 @@ jobs:
     steps:
       - run:
           name: Update enviroment
-          command: apk update && apk add git
+          command: apt-get update && apt-get install git
       - run:
           name: Install asciidoctor 
-          command: apk add asciidoctor
+          command: apt-get install asciidoctor
       - run:
           name: Hugo version
           command: echo "$(hugo version)"
