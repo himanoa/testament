@@ -1,0 +1,81 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>遺言書</title>
+    <link>https://blog.himanoa.net/</link>
+    <description>Recent content on 遺言書</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+        <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>WSLでクリップボードを共有する</title>
+      <link>https://blog.himanoa.net/20/</link>
+      <pubDate>Wed, 31 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/20/</guid>
+      <description>Windows Subsystem for Linuxで開発環境を整えた の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに入ってくれないのが結構ストレスになったのでそれの解消をします。
+Windowsにはclip.exeというソフトウェアが搭載されており、これを使うことでWSLからWindowsのクリップボードに文字列を入れることができます
+echo &amp;quot;:innocent:&amp;quot; | clip.exe# wsl Terminal上でShift + Insert:innocent:ただ、このソフトウェア単体だとクリップボードから文字列を取り出すことができないのと、文字列の最後に改行コードが入るらしく(余計なことしやがって)つらいので別のアプローチでやります
+先にやっておくこと  https://github.com/equalsraf/win32yank/releases から win32yank-x64.zipをダウンロードしてきて展開 展開して出てきたwin32yank.exeを WSL上でecho $PATHして列挙されたディレクトリのいずれかに配置  win32yankの使い方は clip.exe と大体同じで以下のように使う
+echo &amp;quot;poepoe&amp;quot; | win32yank.exe -iwin32yank.exe -opoepoe念のためWindows上で任意のテキストボックスでCtrl+vして貼り付けられるか確認しておくと良いかもしれない。
+Neovimからwin32yank.exeを使う さてここまでできたのなら、Neovimから yでヤンク、pで貼り付けるみたいなことをできるようにしたい。
+過去の記憶からNeovimでLinuxのクリップボードと連携した時に xsel に依存していた覚えがあった。
+また、丁度手元にNeovimのソースコードがあったのでそこから検索して(最悪書き換えてビルドすればよい)どうすればいいかを模索した
+cd ~/src/github.com/neovim/neovimgit grep xselruntime/autoload/provider/clipboard.vim:&amp;quot; When caching is enabled, store the jobid of the xclip/xsel process keepingruntime/autoload/provider/clipboard.vim: elseif exists(&#39;$DISPLAY&#39;) &amp;amp;&amp;amp; executable(&#39;xsel&#39;) &amp;amp;&amp;amp; s:cmd_ok(&#39;xsel -o -b&#39;)runtime/autoload/provider/clipboard.</description>
+    </item><item>
+      <title>正しい(Neo)Vimのやめ方</title>
+      <link>https://blog.himanoa.net/12/</link>
+      <pubDate>Wed, 31 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/12/</guid>
+      <description>この記事はN高 Advent Calendar 2017の記事です。N高要素がないどころが本人が卒業生です。
+やめた理由としては、今年の春にN高を卒業したということで頭文字がNだったのと、vimscript書きたくなくなってきたのと、vimconf2017でのt9mdさんのvmp: the most ambitious vim emulator - Qiitaを効いた結果やめられそうな気がしたからです。
+AtomはJavaScriptでplugin書けるので便利ですね。
+Vimの沼 大体主な理由は以下の通りだと思います
+ vimscriptに恋をしてしまった 秘伝のconfigファイルでキーバインドを染め上げてしまった  僕は2つめに該当していたが色々不満が出てきたのですが、いい加減vimrc管理するのに疲れてきたのと、色々vimの使い方が変わり vimrc からキーバインド設定が消えてきたところでvimconf2017でvmpを知って「これでも生きて行けそう」感が出てきたので移行しました。
+Atomへ移行してからはvmpを入れたのとlinterとgit-plus入れただけで対して弄ってないので、そこに至るまでの軌跡について書いて行こうと思います
+キーバインド設定を減らしていく vimのキーバインド設定を減らしていく方法として素のvimを使うのがおすすめです。がPluginなどを入れて開発している人は素のvimでは生産性が落ちてしまうことでしょう。
+vimtutorをやりましょう。vimtutorはvimでの効率的なテキスト操作方法を手になじませてくれます。機能を覚え尽くす勢いでやりましょう。
+ここで知らなかった便利機能をオレオレキーバインドでオーバーライドしてるのだったら自然とキーマッピングの設定がが消えていくことでしょう。
+もっと便利にVimを使えるようになる Vim幼稚園からVim小学校へ - Qiita
+↑の記事も詳しくvimの機能について記述してあります。ここに書いてあることを無意識に使えるようになる頃にはキーマッピングの設定もだいぶ少なくなってくる頃でしょう。
+別のエディタを入れる ここまで来たらもう一息です。別のエディタをインストールしてvimキーバインドを提供してくれるプラグインを入れるだけでもだいぶ快適にテキスト編集できるはずです。この際にvimを完全にアンインストールしないで、いざってときは使えるようにしとくと便利でしょう。
+移行してよかったこと  Rubyのハイライトが体感軽くなった気がする JSでハックできて便利 git-plusが便利 MarkdownPreview、使わないでMarkdown書いてること多かったし今も使ってないんですけど Markdownで斜体と太文字のシンタックスがわからなくなったときに便利  我慢してるけど本当につらいこと  C-z rspec(別に任意のコマンドでもいい) fg の一連のコンボ技ができなくなったこと 正規表現 ノーマルモードでq:が出来なくなったこと(exコマンドをvmp-ex-command使ってるがvimに比べて貧弱なこと) タブとペインの包含関係が逆になったのがつらい バッファという概念がないこと  Vimのキーバインドを他のエディタで使ってるの卒業できてないのでは？ …
+追伸: 2018/01/31 ダメでした。上記の方法でVimを卒業したつもりになっていましたが気づいたらNeovimを使っています。</description>
+    </item><item>
+      <title>20歳になりました</title>
+      <link>https://blog.himanoa.net/18/</link>
+      <pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/18/</guid>
+      <description>20170130で20歳になりました。酒が飲めて便利な年齢ですね。 20歳と言えば
+といった年齢なんですが当方はダメでしたね。来世に期待といったところ。
+20歳ってMMOの最初のレベルキャップのイメージがあって、いろいろエンドコンテンツが開放されてくイメージがあったんですけど、以外となんともないですね。
+酒 人生の先輩に酒の限界値を知っておくべきといわれたので、会社休んでストロングゼロ DRYでベンチマークをしていた。(やったのは日付回った瞬間からなので過去形)
+結論ファーストで行くと
+が限界で3缶飲むと var_dump(食った物) することになるということがわかった。
+イキりオタク的な事を書くと1缶は余裕なんですけど2缶目は大体vimの操作ができなくなって3缶目は言動が終わる。
+あとガチで悪酔い中にやったゴッドフィールドが面白かったのでゴッドフィールド神ゲーだと思った(本当か？)
+いつもの 飲みにいくぞ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!etcご用があったら Twitter まで。 Twitterもってないマンはさすがにいないと思うけど matsunoappy@gmail.com まで連絡くだしゃい。正直こっちはあんま見てないけど
+誕生日プレゼントマジで頼む!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! http://amzn.asia/5dZqBma</description>
+    </item><item>
+      <title>asdadsasdasdasd</title>
+      <link>https://blog.himanoa.net/17/</link>
+      <pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/17/</guid>
+      <description>飲みに行くぞ!!</description>
+    </item><item>
+      <title>2017年9月16日 くもりだったりはれだったりくもりだったり</title>
+      <link>https://blog.himanoa.net/5/</link>
+      <pubDate>Thu, 25 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/5/</guid>
+      <description>日誌 今日から家族で北海道に来ている。
+朝7:00に家を出て、車で空港に行って昼から飛行機に乗って1400くらいに新千歳空港に到着みたいな感じ。 で、そこから薄野で御飯食べてアパホテルに泊っている感じの世界観です
+すすきのは初めて来たんですけど人が少ない渋谷みたいだなぁといった感想でした。
+今は深夜ですがこのサイトのSEOを改善したりTwitterしたりとかなり適当な感じですごしています
+やっていき ブログの進捗が出たので神</description>
+    </item>
+  </channel>
+</rss>

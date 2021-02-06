@@ -5,18 +5,22 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>私的TypeScriptいろいろまとめ &middot; 遺言書</title>
-  <meta name="description" content="
-
-&lt;p&gt;flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。&lt;/p&gt;
-
+  <meta name="description" content="&lt;p&gt;flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。&lt;/p&gt;
 &lt;p&gt;webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。&lt;/p&gt;
-
-&lt;p&gt;筋悪い箇所があ" />
+&lt;p&gt;筋悪い箇所があったらT" />
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="私的TypeScriptいろいろまとめ &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;p&gt;flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。&lt;/p&gt;
+&lt;p&gt;webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。&lt;/p&gt;
+&lt;p&gt;筋悪い箇所があったらT" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/21/" >
   <meta property="og:image" content="default.jpg">
   <meta property="og:url" content="https://blog.himanoa.net/21/" >
   <meta property="og:title" content="私的TypeScriptいろいろまとめ &middot; 遺言書" >
+  <meta property="og:description" content="&lt;p&gt;flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。&lt;/p&gt;
+&lt;p&gt;webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。&lt;/p&gt;
+&lt;p&gt;筋悪い箇所があったらT" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   
@@ -42,16 +46,10 @@
           <p class="post-date">Posted <time datetime="2018-02-22">Feb 22, 2018</time></p>
         </header>
         
-        
-
-<p>flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。</p>
-
+        <p>flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。</p>
 <p>webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。</p>
-
 <p>筋悪い箇所があったらTwitterかはてブのコメントで頼む</p>
-
-<h2 id="tsconfig-json">tsconfig.json</h2>
-
+<h2 id="tsconfigjson">tsconfig.json</h2>
 <pre><code>{
   &quot;compilerOptions&quot;: {
     &quot;target&quot;: &quot;es5&quot;,
@@ -78,14 +76,9 @@
   ]
 }
 
-</code></pre>
-
-<p>moduleをcommonjsにしてしまったけどwebpackでの最適化の都合を考えると  <code>esModuleInterop</code> の方がいいかも</p>
-
+</code></pre><p>moduleをcommonjsにしてしまったけどwebpackでの最適化の都合を考えると  <code>esModuleInterop</code> の方がいいかも</p>
 <p><code>strictNullChecks</code> は依存で壊れがちらしいのでオフにしている…オンにしたい…</p>
-
-<h2 id="webpack-config-js">webpack.config.js</h2>
-
+<h2 id="webpackconfigjs">webpack.config.js</h2>
 <pre><code>const path = require(&quot;path&quot;);
 const ENV = process.env.NODE_ENV || &quot;development&quot;;
 const DEV_PORT = process.env.PORT || 4444;
@@ -140,30 +133,13 @@ module.exports = [
     ]
   }
 ];
-</code></pre>
-
-<p>baseは<a href="https://github.com/himanoa/shimarin">しまりん</a>で使っていたやつのbabel周りをts-loaderにしたのと、CSSを抜いただけ</p>
-
+</code></pre><p>baseは<a href="https://github.com/himanoa/shimarin">しまりん</a>で使っていたやつのbabel周りをts-loaderにしたのと、CSSを抜いただけ</p>
 <h2 id="型定義ファイルを落す方法">型定義ファイルを落す方法</h2>
-
 <p>npmのtypesパッケージを使うのが主流らしい。以下の通りにやるとreactの型定義ファイルが手に入る</p>
-
 <pre><code>yarn add --dev @types/react
-</code></pre>
-
-<p>devDependenciesに入れるべきか否かの意味合いの判断が取れないのがつらい</p>
-
-        <section class="section">
-  <h2>欲求ボタン</h2>
-  <div class="sns-buttons">
-    <a class="sns" href="http://twitter.com/intent/tweet?url=https%3a%2f%2fblog.himanoa.net%2f21%2f&text=%e7%a7%81%e7%9a%84TypeScript%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e3%81%be%e3%81%a8%e3%82%81" target="_blank" title="Tweet"><i class="fab fa-twitter fa-2x"></i></a>
-    <a class="sns" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.himanoa.net%2f21%2f&t=%e7%a7%81%e7%9a%84TypeScript%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e3%81%be%e3%81%a8%e3%82%81" target="_blank" title="Facebook"><i class="fab fa-facebook fa-2x"></i></a>
-    <a class="sns" href="http://getpocket.com/edit?url=https%3a%2f%2fblog.himanoa.net%2f21%2f&title=%e7%a7%81%e7%9a%84TypeScript%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e3%81%be%e3%81%a8%e3%82%81" target="_blank" title="pocket"><i class="fab fa-get-pocket fa-2x"></i></a>
-  </div>
-</section>
+</code></pre><p>devDependenciesに入れるべきか否かの意味合いの判断が取れないのがつらい</p>
 
       </article>
-      
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
@@ -173,5 +149,7 @@ module.exports = [
 <script>
   hljs.initHighlightingOnLoad();
 </script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
   </body>
 </html>

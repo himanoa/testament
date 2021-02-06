@@ -1,68 +1,0 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Entries - 遺言書</title>
-    <link>https://blog.himanoa.net/entries/</link>
-    <description>Recent content in Entries on 遺言書</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 06 Feb 2021 07:31:26 +0900</lastBuildDate>
-    
-        <atom:link href="https://blog.himanoa.net/entries/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>Linux デスクトップ環境 2018</title>
-      <link>https://blog.himanoa.net/entries/24/</link>
-      <pubDate>Wed, 21 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/entries/24/</guid>
-      <description>元々macOSがあまり好きではなくUbuntuなりArchLinuxで開発したいという気持ちがあり、かといってMacBookにLinux入れたくなかった。
-ついに新しいラップトップをかったので、Linuxで開発環境を構築して運用しているよって話です。
-ブログ書く意気込みとしては Linux デスクトップ環境 2017 - k0kubun&amp;rsquo;s blog に影響されている感じです
-コンセプトは自分が使いやすい(設定を弄りやすい。GUI含めて細かい所まで弄りやすい)です。
-そもそもmacOSのどういうところが嫌いなの？ UNIX互換な環境が欲しいならMacで十分じゃないの？っていう人は多いと思うので僕がmacOSに対して感じている不満に付いてまとめます。
- Window Manager  同一のアプリケーションを二つのウィンドウで起動している時(Chromeの「新しいウィンドウで開く」) Command + Tabで片方のウィンドウしか選択できない ショートカットキーだけでカレントウィンドウのワークスペース移動ができない Window Managerに自由がない(好みのWindow Managerに差し替えられない)   ターミナルエミュレーター  まともな速度でレンダリングできてTrueColor出せて日本語入力できるターミナルエミュレーターが存在しない(iTerm2はレンダリング遅い)   macOSのアップデートが信用できない セットアップ時にxcode抱き合せセットをダウンロードさせられるのがつらい  現在のLinuxデスクトップ環境 ディストリビューション プログラマが開発環境を作るなら、Arch Linux vs Ubuntuみたいな所だと思うが僕はUbuntuを選択しました。
-理由については後述するとしてさきに二つのディストリのメリデメを挙げようと思います。
-Ubuntu メリット  UbuntuServerのノウハウが生きる(aptの使い方だとか) インストールしたらハードウェアのこと考えなくてもとりあえず動く WindowManagerに関してもとりあえずデフォルトでGNOMEが入るので悩まないのがいい  デメリット  aptで入ってくるパッケージのバージョンが古い  例えばtmuxは未だに2.5が入ってくる   最初から色々入っており小さくないので壊れた時(Archに比べて)直しにくい バージョン上げるのが大変  Arch メリット  ローリングリリースなので普段からパッケージを更新しとけばバージョンを上げるのが大変といったことがない Ubuntuより新しいパッケージが入ってくるのが早い 充実したAURとyaourt  Git repositoryからHEADを直接インストールできたりと柔軟性がある   最初は殆ど何も入ってないのでUbuntuに比べて壊れた時に直しやすい  ArchWikiが優秀というのはある    デメリット  ハードウェアのドライバどれいれるかとか調べないといけない  初回だけとはいえそういうところで消耗したくない…   Ubuntuに比べてアップデートが頻繁でたまに壊れたりする  んで僕がUbuntuを選択した理由なんだけど、これは単純でハードウェアのドライバ周りで消耗したくなかったからです。</description>
-    </item><item>
-      <title>xrandrコマンドで解像度を弄る</title>
-      <link>https://blog.himanoa.net/entries/23/</link>
-      <pubDate>Tue, 20 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/entries/23/</guid>
-      <description>ThinkPad X1Carbonを購入してから早4カ月経過しました。
-スペック的には不満がないんですが、解像度がおおきすぎて文字が小さくてつらいという問題があったので解像度を下げたくなったのでやった。
-XWindowManagerでやっているので以下のコマンドで解像度を設定できる
-&amp;gt;&amp;gt;&amp;gt; xrandr --output eDP-1 --mode 1920x1080以上</description>
-    </item><item>
-      <title>Nの末路</title>
-      <link>https://blog.himanoa.net/entries/22/</link>
-      <pubDate>Sat, 24 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/entries/22/</guid>
-      <description>微妙に拗せて終わってしまった心に染みるアニメ ゆるキャン△</description>
-    </item><item>
-      <title>私的TypeScriptいろいろまとめ</title>
-      <link>https://blog.himanoa.net/entries/21/</link>
-      <pubDate>Thu, 22 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/entries/21/</guid>
-      <description>flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。
-webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。
-筋悪い箇所があったらTwitterかはてブのコメントで頼む
-tsconfig.json {&amp;quot;compilerOptions&amp;quot;: {&amp;quot;target&amp;quot;: &amp;quot;es5&amp;quot;,&amp;quot;module&amp;quot;: &amp;quot;commonjs&amp;quot;,&amp;quot;moduleResolution&amp;quot;: &amp;quot;node&amp;quot;,&amp;quot;emitDecoratorMetadata&amp;quot;: true,&amp;quot;experimentalDecorators&amp;quot;: true,&amp;quot;declaration&amp;quot;: false,&amp;quot;noImplicitAny&amp;quot;: false,&amp;quot;noImplicitReturns&amp;quot;: false,&amp;quot;removeComments&amp;quot;: true,&amp;quot;strictNullChecks&amp;quot;: false,&amp;quot;outDir&amp;quot;: &amp;quot;build&amp;quot;,&amp;quot;lib&amp;quot;: [&amp;quot;es6&amp;quot;,&amp;quot;es7&amp;quot;,&amp;quot;dom&amp;quot;]},&amp;quot;exclude&amp;quot;: [&amp;quot;dist&amp;quot;,&amp;quot;build&amp;quot;,&amp;quot;node_modules&amp;quot;]}moduleをcommonjsにしてしまったけどwebpackでの最適化の都合を考えると esModuleInterop の方がいいかも
-strictNullChecks は依存で壊れがちらしいのでオフにしている…オンにしたい…
-webpack.config.js const path = require(&amp;quot;path&amp;quot;);const ENV = process.env.NODE_ENV || &amp;quot;development&amp;quot;;const DEV_PORT = process.env.PORT || 4444;const webpack = require(&amp;quot;webpack&amp;quot;);const CleanWebpackPlugin = require(&amp;quot;clean-webpack-plugin&amp;quot;);const HtmlWebpackPlugin = require(&amp;quot;html-webpack-plugin&amp;quot;);const ExtractTextPlugin = require(&amp;quot;extract-text-webpack-plugin&amp;quot;);module.</description>
-    </item><item>
-      <title>Windows Subsystem for Linuxで開発環境を整えた</title>
-      <link>https://blog.himanoa.net/entries/19/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/entries/19/</guid>
-      <description>ndenv とか pyenv とか rbenv とか tmux とか fish とか neovim とか fzf とか色々動いたし、True Color出せるということもわかったので、まぁ常用はできるんじゃないですかね？といった所。常用するかどうかは知らん。まだ課題点もいろいろあるし。
-導入 WSLチュートリアルがあるので これ通りやった。 https://github.com/QMonkey/wsl-tutorial
-XWindowSystemが必要なアプリケーションを使う予定がないならXLaunch入れたりとかはしなくていいとは思う
-あとは普通のUbuntuなので必要なアプリケーションをインストールしていくだけ。
-僕の環境は多分大体以下のコマンドで再現できると思う
-sudo apt-get install software-properties-commonsudo apt-add-repository ppa:fish-shell/release-2sudo add-apt-repository ppa:neovim-ppa/unstablesudo apt-get update &amp;amp;&amp;amp; sudo apt-get install neovim fish tmux go git build-essential openssl libssl-dev libbz2-dev libreadline-dev libsqlite-dev gcc python-buildgit clone https://github.com/sstephenson/rbenv.git ~/.rbenvgit clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-buildgit clone https://github.com/riywo/ndenv ~/.ndenvgit clone https://github.com/riywo/node-build.git ~/.ndenv/plugins/node-buildgit clone https://github.</description>
-    </item>
-  </channel>
-</rss>

@@ -1,1 +1,81 @@
-<!DOCTYPE html><html><head><title>https://blog.himanoa.net/entries/44/</title><link rel="canonical" href="https://blog.himanoa.net/entries/44/"/><meta name="robots" content="noindex"><meta charset="utf-8" /><meta http-equiv="refresh" content="0; url=https://blog.himanoa.net/entries/44/" /></head></html>
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>自分専用のブックマークサービスを作り始めた &middot; 遺言書</title>
+  <meta name="description" content="&lt;p&gt;はてなブックマークでブックマークするたびにブコメを見てしまい心が厳しくなってしまっていたので、年末に脱はてブ活動をしました。その結果Pocketが便利でPocketを使っているのですが、コメントができなかったりと不便を感じていたりする。&lt;/p&gt;
+&lt;p&gt;Pocketの全文検索" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="自分専用のブックマークサービスを作り始めた &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;p&gt;はてなブックマークでブックマークするたびにブコメを見てしまい心が厳しくなってしまっていたので、年末に脱はてブ活動をしました。その結果Pocketが便利でPocketを使っているのですが、コメントができなかったりと不便を感じていたりする。&lt;/p&gt;
+&lt;p&gt;Pocketの全文検索" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/44/" >
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/44/" >
+  <meta property="og:title" content="自分専用のブックマークサービスを作り始めた &middot; 遺言書" >
+  <meta property="og:description" content="&lt;p&gt;はてなブックマークでブックマークするたびにブコメを見てしまい心が厳しくなってしまっていたので、年末に脱はてブ活動をしました。その結果Pocketが便利でPocketを使っているのですが、コメントができなかったりと不便を感じていたりする。&lt;/p&gt;
+&lt;p&gt;Pocketの全文検索" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link href="https://blog.himanoa.net/css/xcode.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">自分専用のブックマークサービスを作り始めた</h1>
+          <p class="post-date">Posted <time datetime="2019-04-12">Apr 12, 2019</time></p>
+        </header>
+        
+        <p>はてなブックマークでブックマークするたびにブコメを見てしまい心が厳しくなってしまっていたので、年末に脱はてブ活動をしました。その結果Pocketが便利でPocketを使っているのですが、コメントができなかったりと不便を感じていたりする。</p>
+<p>Pocketの全文検索とか便利なんですけどこれははてブにはないし、そうなると自作するしかない。</p>
+<p>というわけでタイトルのブックマークサービスを作り始めたに繋がる。</p>
+<p>作り始めて何も動いてないので(CRの口だけ書いた)成果発表もないのだが、まぁ最近の近況報告的な感じで備忘録として記録しておこうと思う。</p>
+<h2 id="コンセプト">コンセプト</h2>
+<h3 id="コメントができる">コメントができる</h3>
+<p>Pocketになくてはてブにはある機能。自分のコメントベースで検索したい気持ちがPocketを使い始めてから強くなってきた。半分くらいこれのために自作したいと思っているやつ</p>
+<h3 id="ページをスクレイピングしといて全文検索できる">ページをスクレイピングしといて全文検索できる</h3>
+<p>Pocketにあるやつ。便利。全文検索に使う情報が増えるという意味でもアドがある</p>
+<h3 id="はてブextension的な感じでchromeからワンクリックで登録">はてブextension的な感じでChromeからワンクリックで登録</h3>
+<p>必須。ないとブックマークしないのが分かり切っているので絶対に作る。</p>
+<p>どうやって実現しようかは考え中で、静的な登録用ページをFirebase Hostingでホスティングしてchrome extension内のpopupからiframeで呼び出すとかを考えている。</p>
+<p>ChromeExtension有識者が居たら相談させてくれると助かります。</p>
+<h3 id="webhook-publisherになれる">WebHook Publisherになれる</h3>
+<p>最初はTwitter連携でもいいかなと思ったんだけど、webhook喋れたらコード書くだけで何にでも連携できるじゃんという事に気づいたのでこれも実装したい</p>
+<h2 id="技術スタック">技術スタック</h2>
+<p>TypeScript + Firebase(Hosting, Firestore, Functions)でやっている。一人でやる分にはインフラコストが一番低い気がするのでこの構成。</p>
+<p>Firestoreを触るのが完全に初めてなんだが、まぁCRUD程度までは普通に実装できた。全文検索をどうするかは曖昧だがalgoliaを使えば上手く行くのではという感じ。</p>
+<h2 id="なんでお一人様用なのか">なんでお一人様用なのか</h2>
+<p>お金貰ってるわけじゃないのにスケールアウトとか認証とか考えたくないっていうのが根底にある。あと自分のインフラ的なアプリケーションを他人が使ったがために落ちる、みたいな可能性を減らしたい。</p>
+<p>GitHubでOSSにしてもいいかなと思ったけどコミットログに.firebasercが載ってしまっていて、削除するのがダルいという話があってOSSにする気持ちはなくなってきた。コード見たいとかそういう声があれば乗り気になるかもしれない</p>
+
+      </article>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script src="https://blog.himanoa.net/js/core.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  </body>
+</html>

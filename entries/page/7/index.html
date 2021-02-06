@@ -1,148 +1,0 @@
-<!DOCTYPE html>
-<html lang="" dir="ltr">
-  <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Entries &middot; 遺言書</title>
-  <meta name="description" content="" />
-  <meta property="og:type" content="article">
-  <meta name="twitter:card" content="summary">
-  <meta property="twitter:title" content="Entries &middot; 遺言書" >
-  <meta property="twitter:description" content="" />
-  <meta property="twittere:url" content="https://blog.himanoa.net/entries/" >
-  <meta property="og:image" content="default.jpg">
-  <meta property="og:url" content="https://blog.himanoa.net/entries/" >
-  <meta property="og:title" content="Entries &middot; 遺言書" >
-  <meta property="og:description" content="" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
-  
-  
-  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
-  <link href="https://blog.himanoa.net/css/xcode.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <link rel="alternate" type="application/rss+xml" href="https://blog.himanoa.net/entries/index.xml" title="遺言書" />
-  
-  
-</head>
-
-  <body class="list-body">
-    <nav class="nav-bar side-padding">
-  <div class="nav-bar-inside">
-    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
-  </div>
-</nav>
-
-    <main class="card-container side-gutter">
-      <header class="list-header">
-        <p class="list-header-subtext"></p>
-        <h1 class="list-header-title"></h1>
-      </header>
-      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/34/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">SPAにおけるOpen ID Connect認証</h2>
-    <p class="card-text lineclamp">サーバーサイドとクライアントサイド両方とも実装する機運が出てきたのでそれぞれの役割を整理するためにシーケンス図を書いた。 Googleって書いてあるところはOAuthプロバイダーなら何でも置き替えられるはず
-間違ってたら教えてくれ
-追記: とりあえずシーケンス図が書けたのでAPIサーバーに求められている機構を実装した。curlで試しているのと、SPAのガワが存在していないため一旦セッションに入れたりstateの検証するのは省いた。
-const { createHash } = require(&quot;crypto&quot;);const url = require(&quot;url&quot;);const express = require(&quot;express&quot;);const bp = require(&quot;body-parser&quot;);const axios = require(&quot;axios&quot;);const jwt = require(&quot;jwt-simple&quot;);const secret = require(&quot;./secret.json&quot;);const app = express();app.use(bp.json());const salt = &quot;hakatanosalt&quot;;app.get(&quot;/oauth/callback&quot;, (req, res) =&gt; {console.log(JSON.stringify({code: req.query.code,state: req.query.state}));res.send(&quot;ok&quot;);});app.get(&quot;/oauth/google/login&quot;, function(req, res) {const state = createHash(&quot;sha256&quot;).update(`${salt}${Math.random()}${+new Date()}`).digest(&quot;hex&quot;);const params = new url.</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-08-21">Aug 21, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/33/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">RustでMarkdown to Htmlを試してみる</h2>
-    <p class="card-text lineclamp">有給を取って、ここ最近新しい事を始められてなかったことを思い出したので前からやりたかったRustに入門をしました。 んで、まぁいつも通りブログシステムでも書いてみるかなぁとか思ってRocket触ってDBまでアクセスしてInsert流す所までは普通にできたので、とりあえず次はMarkdownをパースしてhtmlに変換するやつでも書こうかなと思ったのでやってみることに。
-ライブラリを物色してみるとpulldown-cmarkというやつが人気そうなので雑にインストールして使ってみることにしました:smile:
-インストール Rustの環境構築は一旦省いて、以下のコマンドでパッケージを切って依存関係にpulldown-cmarkを入れていきます。
-$ cargo new --bin pulldown_cmark_playground$ cd pulldown_cmark_playground$ cat 'pulldown-cmark = &quot;0.1.2&quot;' &gt;&gt; Cargo.toml$ cargo buildcargo buildした時に依存関係にあるpulldown-cmarkが落ちてきてビルドされます。エコシステムがしっかりしていて完全に便利。文明の息吹を感じろ。
-htmlに変換してみる というわけでライブラリを使う準備が整ったのでさっそくMarkdownをhtmlに変換してみる。 GitHubのREADME.mdにはサンプルコードらしき物が書いていないが、ドキュメントの方にはちゃんと書いてあるのでそちらを参照しよう。大体以下のコードになります。
-extern crate pulldown_cmark;use pulldown_cmark::{html, Parser};fn main() {let markdown_str = r#&quot;# Hello人間は愚かな生物。[俺のブログ](https://blog.himanoa.net)&quot;#;let parser = Parser::new(markdown_str);let mut html_buf = String::new();html::push_html(&amp;mut html_buf, parser);println!(&quot;{}&quot;, html_buf);}$ cargo run で実行してみると以下の結果が出力されます。
-&lt;h1&gt;Hello&lt;/h1&gt;&lt;p&gt;人間は愚かな生物。&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://blog.himanoa.net&quot;&gt;俺のブログ&lt;/a&gt;&lt;/p&gt;普通にhtmlに変換されていますね。やったぜ mutableな変数の参照を引数で渡して、渡した引数に結果が代入されるっていうのがすごい気持ち悪いのですが、多分戻り値で受けるとコピーのオーバーヘッドが発生するからこうなってるのでしょう。わからない…Rust詳しい人教えてくれ…。</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-08-20">Aug 20, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/32/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">EFFY one of unreasonable &#34;if&#34; をクリアした</h2>
-    <p class="card-text lineclamp">Vertical Strilke Endless Challenge を作ったサークルProject ICKX さん の第一作である所の EFFY one of unreasonable &ldquo;if&rdquo; をNormalでクリアしたのでそれの感想を書く。ネタバレもある。たぶん
-どんなゲームかというと、フライトシューティング(エースコンバット的な)で敵をバッタバッタと撃墜していく感じ。主人公機には専用の装備とかわいい戦術A.Iがついており、専用の装備で超起動したりめっちゃ加速できたりする
-ストーリー 民間軍事企業のテストパイロットをやっていたと思ったら敵が襲いかかってきたので、振りかかる火の粉を払ってたらいつの間にかに戦争になっていた。上司は無茶なミッションばっか頼んでくるしこれからわたし、どうなっちゃうのー！？みたいな感じ。主人公が男なのでこれからわたし、どうなっちゃうのー！？ではないが。
-驚きのフルボイス ゲーム中のセリフがフルボイスになっていて神、難易度が高いというのもあるが、レーダーみたり機銃のレティクルみたりでセリフ追ってプレイしていられないのでフルボイスなのは嬉しい。シナリオの把握がしやすい
-頻繁にキャラクターが喋ってるのでテキスト量も膨大な感じがするんだがしっかりボイスが付いててすごいと思った。
-あと味方のモブが主人公ワッショイしてくれる演出もすき。オタクは自己肯定観がひくいので
-機載AIのエフィーがかわいい 機体の性能が高いところに由来するのか妙に自信家なところとか、被弾しまくると落ち込んだりするところがかわいい。
-セリフからドヤ顔が浮かぶ…
-「わたしを使って　彼らを斃して」だとか「勝てない筈がないのです」とか、こうプレイヤーを奮起させるセリフをバシバシ言ってくのが僕的にはスコポイントでした。
-エースコンバット ACE余裕じゃなんとかならない難易度 まじで難しい。エースコンバットはかなり得意なゲームなんですけどEasyでも死んだ箇所があったくらいには難しかった。Normalはやばいですね。難しいポイント攻略するのにかなり時間がかかった。敵が物量の暴力で攻めてくるのもあるんだけどエースコンバットよりも攻撃をよくするイメージがついた。全部俺が撃墜してやるぜーなんてやると一瞬で蒸発したりする。
-攻略のコツとか まずは全部自分でなんとかするという気持ちを殺すことです。敵がおおいのでミサイルいっぱいあっても足りなかったりする。
-味方が有能なので味方と一緒に飛ぶ事を心がける事でこの変はなんとかなったりする。あと母艦が出てくるミッションは困ったら母艦の上空をグルグル回ったりしとけば敵が勝手に死ぬ。この変はエースコンバットよりどうやって飛ぶかを考えさせられるゲームだった。</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-08-16">Aug 16, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/31/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">Python &#43; Firebase RealtimeDBでDiscordBotを作った感想</h2>
-    <p class="card-text lineclamp">これの話です。
-これの裏側はPython3.6 + Firebase RealtimeDB + GAE(Flexible Enviroment)になっています。
-今回はRealtime Databsaeを使った感想について書いていきます
-そもそもなぜReatimeDBを？ 人間がデプロイしないで自分のサーバーに追加できるDiscordBotを組みたかったので何かしらに永続化する必要がある。 RDBMSで何か遊ぶことには慣れてるので、本当はRDBMSを使いたかったのだが、無料で使える or もしくはコスパがよろしいプランが存在しなかったので、NosqlなFirebase Realtime DBを採用したみたいな経緯でした。
-よかった話 安い 日のデータ通信量がわかれば月のデータ通信量もなんとなくわかるのでわかるんですが、安いのは個人のホビーとしてはポイントがたかい。 僕のユースケースだと無料枠に収まりそうなのでよかった
-見えるものが動くまでのサイクルがはやい。 テーブル設計しなくても適当にDatabaseに実データが入れられたり、リアルタイム同期してくれるため動くものを作るまでのサイクルはめちゃくちゃ簡略化できる。
-しんどかった話 flattenなスキーマ設計 RealtimeDBはスキーマレスだが開発を効率的にやるためにはやはりスキーマはあったほうがいいと思っているのでアプリケーションコード上でやった。 RealtimeDBはあるテーブルのデータを一覧で取得してくるとその子要素も全部取得してしまうため、データが増えてくるとpayloadは巨大化するしコストも増えていくので、flattenに設計していく必要があるのだがそうすると今度は削除や書き込み時に複数のエンドポイントを更新しないといけなくなるため、漏れが発生するとすぐに破綻するのが大変だった。
-そもそもFirestoreを選定しなかった理由 まだベータ版だったのと良さげなAPIClientがなかったため今回は敬遠した。が今度試してみたいですね</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-08-11">Aug 11, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/entries/30/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">Hearthstoneランク15いった</h2>
-    <p class="card-text lineclamp">初心者を脱したのでよかったですね。
-滑りこめたのでよかった。月末は弱い人がおおいきがする。最高16で16~18をいったり来たりしてたんだがたまたま、奇数パラがメタと噛みあって連勝ボーナス混みで4-1(記憶ちがいあるかも)で15はいった。
-今月主に回してたデッキは 奇数パラディン 奇数ローグ ミラクルローグ で途中9連敗を二回したりでマウス投げたりしてたがまぁ自己ベスト更新できてよかったですね、みたいなところ。このランク帯までは、デッキパワーたかいデッキでメタが噛みあってる時間帯にどれだけしゃぶり尽せるかみたいなところなのでデッキパワーつよいデッキを使えるかみたいなのがでかいとおもう。</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-07-28">Jul 28, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-
-    </main>
-    <nav class="pagination-nav side-padding">
-      <a href="https://blog.himanoa.net/entries/page/6/" class="pagination-newer">&lt; Newer Posts</a>
-      <a href="https://blog.himanoa.net/entries/page/8/" class="pagination-older">Older Posts &gt;</a>
-    </nav>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
-    onload="renderMathInElement(document.body);"></script>
-<script src="https://blog.himanoa.net/js/core.js"></script>
-<script>
-  hljs.initHighlightingOnLoad();
-</script>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-  </body>
-</html>

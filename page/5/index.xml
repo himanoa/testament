@@ -1,0 +1,89 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>遺言書</title>
+    <link>https://blog.himanoa.net/</link>
+    <description>Recent content on 遺言書</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+        <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>自分専用のブックマークサービスを作り始めた</title>
+      <link>https://blog.himanoa.net/44/</link>
+      <pubDate>Fri, 12 Apr 2019 19:41:28 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/44/</guid>
+      <description>はてなブックマークでブックマークするたびにブコメを見てしまい心が厳しくなってしまっていたので、年末に脱はてブ活動をしました。その結果Pocketが便利でPocketを使っているのですが、コメントができなかったりと不便を感じていたりする。
+Pocketの全文検索とか便利なんですけどこれははてブにはないし、そうなると自作するしかない。
+というわけでタイトルのブックマークサービスを作り始めたに繋がる。
+作り始めて何も動いてないので(CRの口だけ書いた)成果発表もないのだが、まぁ最近の近況報告的な感じで備忘録として記録しておこうと思う。
+コンセプト コメントができる Pocketになくてはてブにはある機能。自分のコメントベースで検索したい気持ちがPocketを使い始めてから強くなってきた。半分くらいこれのために自作したいと思っているやつ
+ページをスクレイピングしといて全文検索できる Pocketにあるやつ。便利。全文検索に使う情報が増えるという意味でもアドがある
+はてブextension的な感じでChromeからワンクリックで登録 必須。ないとブックマークしないのが分かり切っているので絶対に作る。
+どうやって実現しようかは考え中で、静的な登録用ページをFirebase Hostingでホスティングしてchrome extension内のpopupからiframeで呼び出すとかを考えている。
+ChromeExtension有識者が居たら相談させてくれると助かります。
+WebHook Publisherになれる 最初はTwitter連携でもいいかなと思ったんだけど、webhook喋れたらコード書くだけで何にでも連携できるじゃんという事に気づいたのでこれも実装したい
+技術スタック TypeScript + Firebase(Hosting, Firestore, Functions)でやっている。一人でやる分にはインフラコストが一番低い気がするのでこの構成。
+Firestoreを触るのが完全に初めてなんだが、まぁCRUD程度までは普通に実装できた。全文検索をどうするかは曖昧だがalgoliaを使えば上手く行くのではという感じ。
+なんでお一人様用なのか お金貰ってるわけじゃないのにスケールアウトとか認証とか考えたくないっていうのが根底にある。あと自分のインフラ的なアプリケーションを他人が使ったがために落ちる、みたいな可能性を減らしたい。
+GitHubでOSSにしてもいいかなと思ったけどコミットログに.firebasercが載ってしまっていて、削除するのがダルいという話があってOSSにする気持ちはなくなってきた。コード見たいとかそういう声があれば乗り気になるかもしれない</description>
+    </item><item>
+      <title>Repositoryパターンの破綻</title>
+      <link>https://blog.himanoa.net/43/</link>
+      <pubDate>Thu, 04 Apr 2019 18:25:42 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/43/</guid>
+      <description>風呂でRepositoryパターンについて考えてたけどあれを上手く適用するには集約をちゃんと考えてやる必要が確実にある。
+想定していた集約が破綻するとRepositoryパターンだけで取得と永続化用のコードを書くのは依存性解決とか集約を跨ぐトランザクションとかが出てきてしんどくなる。
+そこで便利なのがCQRSになるんだけど、トランザクションの関係でRepositoryのコードをコピペする必要が出てきたりするとコード変更による影響箇所が正しく判別しにくくなるので、そことのトレードオフですね…
+ってポエムを書こうとしたらTwitterだと文字数オーバーになった</description>
+    </item><item>
+      <title>2019-04-03(ニート歴3日目)</title>
+      <link>https://blog.himanoa.net/42/</link>
+      <pubDate>Thu, 04 Apr 2019 13:13:42 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/42/</guid>
+      <description>生活習慣を整えたくて早く寝て早く起きたんだけど、書くの忘れてたので何をやったかを忘れる前に書いておく
+やったこと 家賃の支払い 家計にダメージ。
+Laravel環境生成 動かすところまでは来た。チュートリアルは手付かず。こういう動かすのに多大な時間がかかるやつきらい。
+AetherへのPR 出した
+メール返信 やった
+できなかったこと 飲み会 日付の認識が曖昧で実は違う日だった
+あした(今日)やること Laravel入門 飲み会</description>
+    </item><item>
+      <title>gitの管理対象外のファイルをまとめて消す方法</title>
+      <link>https://blog.himanoa.net/41/</link>
+      <pubDate>Wed, 03 Apr 2019 17:43:01 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/41/</guid>
+      <description>今までは awk を駆使して gst -s | awk &#39;/??/{print $2}&#39; | xargs rm -rf とか書いてたけど実は git clean -fdx で良いということに気づいた。
+git clean を用いるとdry-run的なこともできるのでこちらの方が便利</description>
+    </item><item>
+      <title>2019-04-02(ニート歴2日目)</title>
+      <link>https://blog.himanoa.net/40/</link>
+      <pubDate>Wed, 03 Apr 2019 01:43:30 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/40/</guid>
+      <description>やったこと ブログの移行 Rails→hugo
+CircleCI入門 ひたすらキャッチアップしつつこのブログのデプロイ環境を構築していた。
+CircleCIがデフォルトで用意してくれる秘密鍵と公開鍵がReadOnlyだということに気が付かずずっとgit push origin HEADがコンテナ内から通らないなぁとか思ってたりしたので結構ハマった。
+完走した感想ですが、設定ファイルをyamlで書かなくちゃいけないのがどうしてもストレスで(これは前使ってたTravisCIもそう)、正直手続き的に設定ファイルを書きたい気持ちが強い。なんでyamlが嫌いなのかというと、テキストエディタがまともなインデントをしてくれないのがストレスになっているからである。
+CIの出来はともかく設定ファイルの書き易さだけで見るなら個人的にはJenkinsのJenkinsfile(groovy)が一番書き安く読み易いし複雑なことも表現しやすいと思ってる。
+ある程度複雑な設定にyamlやJSONを使うのは向いていないと考えていて、そういうのはRubyの内部DSLだったり軽量なスクリプト言語でやれるといいよなと考えてる。
+似たような理由でAnsibleも嫌いでItamaeの方が僕にとってはやさしいツールだなぁと感じる。
+himanoa/aether hugo使うならベースにしやすいブログ用テーマを選んで改造していくのが良さそうと感じたのでフォークして色とかを調節したり、シェアボタンを置いたりとかした。
+色とかを調節するだけでもだいぶ雰囲気がガラっと変わって感動しています。今年はデザイン学習とかにも力を入れていきたいと思っているけど、はたして時間はあるのだろうか
+選考面接を受けた 今も着実に貯蓄は底に向かって消費されていて、いつまでもニートのままというわけにもいかないので、就活ってやつをやっている。
+今日は以前カジュアル面談行った中で一番興味を持てて、かつ金も一番貰えそうな企業の採用面接を受けにいった。
+正直こういう採用面接って採用担当者のエンジニアと雑談していい時間になっていることが多くて今回もそうだったんだけど手応えみたいなのがまったくよくわからない。
+一番仕事をしたい企業だったので受かると嬉しい……
+できなかったこと メール返信 変に気合が必要な作業を後回しにしがちで、悪癖が出ていますね
+家賃の支払い グゥ~~~~
+あしたやること メールの返信 2通
+Laravelの入門 Docker内でいい感じに開発環境整うところまですらできてないのでまずはそこ。 次点でチュートリアルの完遂
+家賃の支払い お金が飛んでく恐怖に震えて眠ります
+飲み会 いかなきゃ。
+aetherのhugoのminify機構を使ってくれるPRを出す パッチ…パッチはいりませんか…？</description>
+    </item>
+  </channel>
+</rss>

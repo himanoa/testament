@@ -5,14 +5,25 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Python &#43; Firebase RealtimeDBでDiscordBotを作った感想 &middot; 遺言書</title>
-  <meta name="description" content="
-
-&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;Vの者の配信をしてたら放送のリンクをDiscordに自動で投稿してくれる感じのDiscordBotを書きました&lt;a href=&#34;ht" />
+  <meta name="description" content="&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;これの話です。&lt;/p&gt;
+&lt;p&gt;これの裏側はPython3.6 &#43; Firebase RealtimeDB &#43; GAE(Flexible Enviroment)になっています。&lt;/p&gt;
+&lt;p&gt;今回はRealtime Data" />
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="Python &#43; Firebase RealtimeDBでDiscordBotを作った感想 &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;これの話です。&lt;/p&gt;
+&lt;p&gt;これの裏側はPython3.6 &#43; Firebase RealtimeDB &#43; GAE(Flexible Enviroment)になっています。&lt;/p&gt;
+&lt;p&gt;今回はRealtime Data" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/31/" >
   <meta property="og:image" content="default.jpg">
   <meta property="og:url" content="https://blog.himanoa.net/31/" >
   <meta property="og:title" content="Python &#43; Firebase RealtimeDBでDiscordBotを作った感想 &middot; 遺言書" >
+  <meta property="og:description" content="&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;これの話です。&lt;/p&gt;
+&lt;p&gt;これの裏側はPython3.6 &#43; Firebase RealtimeDB &#43; GAE(Flexible Enviroment)になっています。&lt;/p&gt;
+&lt;p&gt;今回はRealtime Data" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   
@@ -38,54 +49,27 @@
           <p class="post-date">Posted <time datetime="2018-08-11">Aug 11, 2018</time></p>
         </header>
         
-        
-
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">Vの者の配信をしてたら放送のリンクをDiscordに自動で投稿してくれる感じのDiscordBotを書きました<a href="https://t.co/xKtgGYRJ7w">https://t.co/xKtgGYRJ7w</a> から各位のDiscordServerに登録できます!<br>簡易的なDiscordBotの作り方について書いた本を本日のコミックマーケット 西め07a にて販売するので、そちらもよろしくお願いします <a href="https://t.co/EmHfRv9b0g">pic.twitter.com/EmHfRv9b0g</a></p>&mdash; ひまのあ??? (@h1manoa) <a href="https://twitter.com/h1manoa/status/1027651954971828225?ref_src=twsrc%5Etfw">2018年8月9日</a></blockquote>
-
+        <!-- raw HTML omitted -->
 <p>これの話です。</p>
-
 <p>これの裏側はPython3.6 + Firebase RealtimeDB + GAE(Flexible Enviroment)になっています。</p>
-
 <p>今回はRealtime Databsaeを使った感想について書いていきます</p>
-
 <h2 id="そもそもなぜreatimedbを">そもそもなぜReatimeDBを？</h2>
-
 <p>人間がデプロイしないで自分のサーバーに追加できるDiscordBotを組みたかったので何かしらに永続化する必要がある。
 RDBMSで何か遊ぶことには慣れてるので、本当はRDBMSを使いたかったのだが、無料で使える or もしくはコスパがよろしいプランが存在しなかったので、NosqlなFirebase Realtime DBを採用したみたいな経緯でした。</p>
-
 <h2 id="よかった話">よかった話</h2>
-
 <h3 id="安い">安い</h3>
-
 <p>日のデータ通信量がわかれば月のデータ通信量もなんとなくわかるのでわかるんですが、安いのは個人のホビーとしてはポイントがたかい。
 僕のユースケースだと無料枠に収まりそうなのでよかった</p>
-
 <h3 id="見えるものが動くまでのサイクルがはやい">見えるものが動くまでのサイクルがはやい。</h3>
-
 <p>テーブル設計しなくても適当にDatabaseに実データが入れられたり、リアルタイム同期してくれるため動くものを作るまでのサイクルはめちゃくちゃ簡略化できる。</p>
-
 <h2 id="しんどかった話">しんどかった話</h2>
-
 <h3 id="flattenなスキーマ設計">flattenなスキーマ設計</h3>
-
 <p>RealtimeDBはスキーマレスだが開発を効率的にやるためにはやはりスキーマはあったほうがいいと思っているのでアプリケーションコード上でやった。
 RealtimeDBはあるテーブルのデータを一覧で取得してくるとその子要素も全部取得してしまうため、データが増えてくるとpayloadは巨大化するしコストも増えていくので、flattenに設計していく必要があるのだがそうすると今度は削除や書き込み時に複数のエンドポイントを更新しないといけなくなるため、漏れが発生するとすぐに破綻するのが大変だった。</p>
-
 <h2 id="そもそもfirestoreを選定しなかった理由">そもそもFirestoreを選定しなかった理由</h2>
-
 <p>まだベータ版だったのと良さげなAPIClientがなかったため今回は敬遠した。が今度試してみたいですね</p>
 
-        <section class="section">
-  <h2>欲求ボタン</h2>
-  <div class="sns-buttons">
-    <a class="sns" href="http://twitter.com/intent/tweet?url=https%3a%2f%2fblog.himanoa.net%2f31%2f&text=Python%20%2b%20Firebase%20RealtimeDB%e3%81%a7DiscordBot%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%9f%e6%84%9f%e6%83%b3" target="_blank" title="Tweet"><i class="fab fa-twitter fa-2x"></i></a>
-    <a class="sns" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.himanoa.net%2f31%2f&t=Python%20%2b%20Firebase%20RealtimeDB%e3%81%a7DiscordBot%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%9f%e6%84%9f%e6%83%b3" target="_blank" title="Facebook"><i class="fab fa-facebook fa-2x"></i></a>
-    <a class="sns" href="http://getpocket.com/edit?url=https%3a%2f%2fblog.himanoa.net%2f31%2f&title=Python%20%2b%20Firebase%20RealtimeDB%e3%81%a7DiscordBot%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%9f%e6%84%9f%e6%83%b3" target="_blank" title="pocket"><i class="fab fa-get-pocket fa-2x"></i></a>
-  </div>
-</section>
-
       </article>
-      
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
@@ -95,5 +79,7 @@ RealtimeDBはあるテーブルのデータを一覧で取得してくるとそ�
 <script>
   hljs.initHighlightingOnLoad();
 </script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
   </body>
 </html>
