@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>ブログのURL構造を変更した &middot; 遺言書</title>
+  <meta name="description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;hugoのversionを上げたら &lt;a href=&#34;https://blog.himanoa.net&#34;&gt;blog.himanoa.net&lt;/a&gt; が entries/って記事を表示しはじめて壊れてしまっていたので、conte" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="ブログのURL構造を変更した &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;hugoのversionを上げたら &lt;a href=&#34;https://blog.himanoa.net&#34;&gt;blog.himanoa.net&lt;/a&gt; が entries/って記事を表示しはじめて壊れてしまっていたので、conte" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/65/" >
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/65/" >
+  <meta property="og:title" content="ブログのURL構造を変更した &middot; 遺言書" >
+  <meta property="og:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;hugoのversionを上げたら &lt;a href=&#34;https://blog.himanoa.net&#34;&gt;blog.himanoa.net&lt;/a&gt; が entries/って記事を表示しはじめて壊れてしまっていたので、conte" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link href="https://blog.himanoa.net/css/xcode.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">ブログのURL構造を変更した</h1>
+          <p class="post-date">Posted <time datetime="2021-02-06">Feb 6, 2021</time></p>
+        </header>
+        
+        <div class="paragraph">
+<p>hugoのversionを上げたら <a href="https://blog.himanoa.net">blog.himanoa.net</a> が entries/って記事を表示しはじめて壊れてしまっていたので、content配下のディレクトリ構造を変更した。</p>
+</div>
+<div class="paragraph">
+<p>しかし、content以下のディレクトリ構造を変えるとビルドした後の記事のURLも変わってしまう。</p>
+</div>
+<div class="paragraph">
+<p>URLが変わってしまうと、過去のリンクが壊れてしまってつらいつらいなので、過去のURLを踏んできたときは今のURLにリダイレクトするようにした。</p>
+</div>
+<div class="paragraph">
+<p>ここではその作業ログを残す</p>
+</div>
+<div class="sect1">
+<h2 id="_hugoでのリダイレクトの貼り方">Hugoでのリダイレクトの貼り方</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>hugoにはFront Matterという仕組みが存在し、ここに決められた形式のメタデータを書くことができる。</p>
+</div>
+<div class="paragraph">
+<p>ここにリダイレクト元となるパスを記述することでリダイレクトを実現することができる。</p>
+</div>
+<div class="paragraph">
+<p>詳細は<a href="https://gohugo.io/content-management/front-matter/#predefined">公式ドキュメント</a>を参照するべし</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_作業手順">作業手順</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>content/entries以下のファイルをcontent/に移動 <a href="https://github.com/himanoa/testament/commit/15a468c55a5d65c64de67f68d51110bb3dca21a4">15a468c</a></p>
+</li>
+<li>
+<p>既存の記事内のFront Matterの形式を揃える</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>hugo convert toJSON --unsafe</code> を実行することでcontent配下のFront matterを一括変換できる <a href="https://github.com/himanoa/testament/commit/cf5bfc5f2686b08654a008c3a94a1272b5a1078c">cf5bfc5</a></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>記事ファイルの内部を開いてFront Matter部分だけ抜き出して置換するJavaScriptを書いて実行する <a href="https://github.com/himanoa/testament/commit/c5a942b259f6d93820a7e0a5560edc9a9b3bbdf1">c5a942b</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>コードは<a href="https://github.com/himanoa/testament/blob/master/bin/add-alias.js">こちら</a></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><code>git push</code> してデプロイされたら動作確認する</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+      </article>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script src="https://blog.himanoa.net/js/core.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  </body>
+</html>

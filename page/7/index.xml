@@ -8,6 +8,15 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>RustでEnumを文字列(文字列slice)から生成したい</title>
+      <link>https://blog.himanoa.net/35/</link>
+      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/35/</guid>
+      <description>Rustを書いていると自分で定義したEnumを文字列から生成したくなる時がある。コード例で示すとこんな感じ
+pub enum Foo {Foo1,Foo2,Foo3,Foo4}Foo::from_str(&amp;quot;Foo1&amp;quot;) // -&amp;gt; Foo::Foo1こんな時は標準ライブラリに入っている、std::str::FromStr トレイトを実装してやるとうまいこといくし、他の似たような挙動をする型と一緒に扱えたりして便利で作法的にも良い。例は以下の通り
+use std::str::FromStr;use std::str::FromStr;pub enum Foo {Foo1,Foo2,Foo3}impl FromStr for Foo {type Err = &amp;amp;&#39;static str;fn from_str(s: &amp;amp;str) -&amp;gt; Result&amp;lt;Self, Self::Err&amp;gt; {match s {&amp;quot;Foo1&amp;quot; =&amp;gt; Ok(Foo::Foo1),&amp;quot;Foo2&amp;quot; =&amp;gt; Ok(Foo::Foo2),&amp;quot;Foo3&amp;quot; =&amp;gt; Ok(Foo::Foo3),_ =&amp;gt; Err(&amp;quot;Error&amp;quot;)}}}Foo::from_str(&amp;quot;Foo1&amp;quot;) // Ok(Foo::Foo1)Foo::from_str(&amp;quot;Foo1sadasd&amp;quot;) // Err(&amp;quot;Error&amp;quot;)もちろんFromStrはトレイトなのでenum以外にも適用可能なので、任意の型を文字列から生成したい時にはこの方法を使いましょう。</description>
+    </item><item>
       <title>SPAにおけるOpen ID Connect認証</title>
       <link>https://blog.himanoa.net/34/</link>
       <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
@@ -62,15 +71,6 @@ extern crate pulldown_cmark;use pulldown_cmark::{html, Parser};fn main() {let
 見えるものが動くまでのサイクルがはやい。 テーブル設計しなくても適当にDatabaseに実データが入れられたり、リアルタイム同期してくれるため動くものを作るまでのサイクルはめちゃくちゃ簡略化できる。
 しんどかった話 flattenなスキーマ設計 RealtimeDBはスキーマレスだが開発を効率的にやるためにはやはりスキーマはあったほうがいいと思っているのでアプリケーションコード上でやった。 RealtimeDBはあるテーブルのデータを一覧で取得してくるとその子要素も全部取得してしまうため、データが増えてくるとpayloadは巨大化するしコストも増えていくので、flattenに設計していく必要があるのだがそうすると今度は削除や書き込み時に複数のエンドポイントを更新しないといけなくなるため、漏れが発生するとすぐに破綻するのが大変だった。
 そもそもFirestoreを選定しなかった理由 まだベータ版だったのと良さげなAPIClientがなかったため今回は敬遠した。が今度試してみたいですね</description>
-    </item><item>
-      <title>Hearthstoneランク15いった</title>
-      <link>https://blog.himanoa.net/30/</link>
-      <pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/30/</guid>
-      <description>初心者を脱したのでよかったですね。
-滑りこめたのでよかった。月末は弱い人がおおいきがする。最高16で16~18をいったり来たりしてたんだがたまたま、奇数パラがメタと噛みあって連勝ボーナス混みで4-1(記憶ちがいあるかも)で15はいった。
-今月主に回してたデッキは 奇数パラディン 奇数ローグ ミラクルローグ で途中9連敗を二回したりでマウス投げたりしてたがまぁ自己ベスト更新できてよかったですね、みたいなところ。このランク帯までは、デッキパワーたかいデッキでメタが噛みあってる時間帯にどれだけしゃぶり尽せるかみたいなところなのでデッキパワーつよいデッキを使えるかみたいなのがでかいとおもう。</description>
     </item>
   </channel>
 </rss>

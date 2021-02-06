@@ -8,6 +8,13 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>夏コミ当選しました</title>
+      <link>https://blog.himanoa.net/25/</link>
+      <pubDate>Sat, 09 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/25/</guid>
+      <description>当選しました。まだ何書くか確定してないのですががんばりますので各位来てくれ</description>
+    </item><item>
       <title>Linux デスクトップ環境 2018</title>
       <link>https://blog.himanoa.net/24/</link>
       <pubDate>Wed, 21 Mar 2018 00:00:00 +0000</pubDate>
@@ -50,18 +57,6 @@ webpackでとりあえずproduction用とその他でsourcemapを出し分けで
 tsconfig.json {&amp;quot;compilerOptions&amp;quot;: {&amp;quot;target&amp;quot;: &amp;quot;es5&amp;quot;,&amp;quot;module&amp;quot;: &amp;quot;commonjs&amp;quot;,&amp;quot;moduleResolution&amp;quot;: &amp;quot;node&amp;quot;,&amp;quot;emitDecoratorMetadata&amp;quot;: true,&amp;quot;experimentalDecorators&amp;quot;: true,&amp;quot;declaration&amp;quot;: false,&amp;quot;noImplicitAny&amp;quot;: false,&amp;quot;noImplicitReturns&amp;quot;: false,&amp;quot;removeComments&amp;quot;: true,&amp;quot;strictNullChecks&amp;quot;: false,&amp;quot;outDir&amp;quot;: &amp;quot;build&amp;quot;,&amp;quot;lib&amp;quot;: [&amp;quot;es6&amp;quot;,&amp;quot;es7&amp;quot;,&amp;quot;dom&amp;quot;]},&amp;quot;exclude&amp;quot;: [&amp;quot;dist&amp;quot;,&amp;quot;build&amp;quot;,&amp;quot;node_modules&amp;quot;]}moduleをcommonjsにしてしまったけどwebpackでの最適化の都合を考えると esModuleInterop の方がいいかも
 strictNullChecks は依存で壊れがちらしいのでオフにしている…オンにしたい…
 webpack.config.js const path = require(&amp;quot;path&amp;quot;);const ENV = process.env.NODE_ENV || &amp;quot;development&amp;quot;;const DEV_PORT = process.env.PORT || 4444;const webpack = require(&amp;quot;webpack&amp;quot;);const CleanWebpackPlugin = require(&amp;quot;clean-webpack-plugin&amp;quot;);const HtmlWebpackPlugin = require(&amp;quot;html-webpack-plugin&amp;quot;);const ExtractTextPlugin = require(&amp;quot;extract-text-webpack-plugin&amp;quot;);module.</description>
-    </item><item>
-      <title>Windows Subsystem for Linuxで開発環境を整えた</title>
-      <link>https://blog.himanoa.net/19/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/19/</guid>
-      <description>ndenv とか pyenv とか rbenv とか tmux とか fish とか neovim とか fzf とか色々動いたし、True Color出せるということもわかったので、まぁ常用はできるんじゃないですかね？といった所。常用するかどうかは知らん。まだ課題点もいろいろあるし。
-導入 WSLチュートリアルがあるので これ通りやった。 https://github.com/QMonkey/wsl-tutorial
-XWindowSystemが必要なアプリケーションを使う予定がないならXLaunch入れたりとかはしなくていいとは思う
-あとは普通のUbuntuなので必要なアプリケーションをインストールしていくだけ。
-僕の環境は多分大体以下のコマンドで再現できると思う
-sudo apt-get install software-properties-commonsudo apt-add-repository ppa:fish-shell/release-2sudo add-apt-repository ppa:neovim-ppa/unstablesudo apt-get update &amp;amp;&amp;amp; sudo apt-get install neovim fish tmux go git build-essential openssl libssl-dev libbz2-dev libreadline-dev libsqlite-dev gcc python-buildgit clone https://github.com/sstephenson/rbenv.git ~/.rbenvgit clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-buildgit clone https://github.com/riywo/ndenv ~/.ndenvgit clone https://github.com/riywo/node-build.git ~/.ndenv/plugins/node-buildgit clone https://github.</description>
     </item>
   </channel>
 </rss>

@@ -41,6 +41,21 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/55/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">おれはもうだめだ</h2>
+    <p class="card-text lineclamp">最近どんどん頭が悪くなっているような気がしていて辛い、主に自覚する瞬間はポケモンの初手の出し負けと仕事中です。
+多分頭の良さでは1年前が一番ピークだった気がするけど、ここ1ヵ月で露骨に頭が悪くなっている。
+今日起きたとき体調が最悪で死にかけてたんで、会社を休んでたんですけど頭がよかったらこんなことにはなっていなかった気がする。
+この調子で頭悪くなり続けると3ヵ月後には何も考えられない人間になっている気がする。だれかおれをたすけてくれ</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2019-12-26">Dec 26, 2019</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/54/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -112,26 +127,6 @@ cargo install mkrepo
     <p class="card-text lineclamp">モンスターハンターワールドで効率よく金冠をコンプしたい</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-09-11">Sep 11, 2019</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/50/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">gitをより便利にするsubcommand集を作った</h2>
-    <p class="card-text lineclamp">gitにはsubcommandという仕組みが存在していて、パスが通ったディレクトリに+xなgit-xxxファイルを置いておくと、git xxx で呼び出せる仕組みが存在します
-具体例を上げると ~/bin/ にパスが通ってるとして、~/bin/git-wip が存在したなら 任意のgitディレクトリで git wip で ~/bin/git-wip が呼び出せます。
-さもgitのpluginのような顔をしていますが、別にプラグインだから専用のAPIにアクセスできるみたいなことはありません。
-個人的にはgitの操作で結構ワンライナーでかけるけど毎回書くのに気合が必要なやつをラップするコマンドをサブコマンドとして管理すると便利だったりします。
-たとえばリポジトリ内でgrepした結果を置換する git grep -l Foo | xargs sed -i '' -e &quot;/Foo/Bar/g&quot; をサブコマンドとして実装するとかです。
-やっと本題に戻りますが、これらのサブコマンド集を実装してリポジトリとして公開しました! himanoa/git-subcommands
-インストール himanoa/git-subcommands は以下のツールに依存しています。
- bash python  3.x推奨   git   git clone https://github.com/himanoa/git-subcommands ~/git-subcommands PATHを ~/git-subcommands/src に通す zshとかbashを使っているなら export PATH=~/git-subcommands/src:$PATH とかでいいのでは？  インストールが完了したら以下のセクションのサブコマンドがそれぞれ動作できるようになるはずです！
-実装したコマンド git-replace リポジトリ内の特定の文字列を置換する いつも git grep -l Foo | xargs sed -i '' -e &quot;/Foo/Bar/&quot; とか書いてた実装ですね。これをこのサブコマンドを用いることで以下のスニペットまで短縮できます</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2019-09-10">Sep 10, 2019</time></p>
       
     </div>
   </article>
