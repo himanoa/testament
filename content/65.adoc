@@ -1,0 +1,32 @@
+---
+title: "ブログのURL構造を変更した"
+date: 2021-02-06T09:12:08+09:00 
+draft: false
+author: himanoa
+---
+
+
+hugoのversionを上げたら link:https://blog.himanoa.net[blog.himanoa.net] が entries/って記事を表示しはじめて壊れてしまっていたので、content配下のディレクトリ構造を変更した。
+
+しかし、content以下のディレクトリ構造を変えるとビルドした後の記事のURLも変わってしまう。
+
+URLが変わってしまうと、過去のリンクが壊れてしまってつらいつらいなので、過去のURLを踏んできたときは今のURLにリダイレクトするようにした。
+
+ここではその作業ログを残す
+
+== Hugoでのリダイレクトの貼り方
+
+hugoにはFront Matterという仕組みが存在し、ここに決められた形式のメタデータを書くことができる。
+
+ここにリダイレクト元となるパスを記述することでリダイレクトを実現することができる。
+
+詳細はlink:https://gohugo.io/content-management/front-matter/#predefined[公式ドキュメント]を参照するべし
+
+== 作業手順
+
+. content/entries以下のファイルをcontent/に移動 link:https://github.com/himanoa/testament/commit/15a468c55a5d65c64de67f68d51110bb3dca21a4[15a468c]
+. 既存の記事内のFront Matterの形式を揃える
+.. `hugo convert toJSON --unsafe` を実行することでcontent配下のFront matterを一括変換できる link:https://github.com/himanoa/testament/commit/cf5bfc5f2686b08654a008c3a94a1272b5a1078c[cf5bfc5]
+. 記事ファイルの内部を開いてFront Matter部分だけ抜き出して置換するJavaScriptを書いて実行する link:https://github.com/himanoa/testament/commit/c5a942b259f6d93820a7e0a5560edc9a9b3bbdf1[c5a942b]
+.. コードはlink:https://github.com/himanoa/testament/blob/master/bin/add-alias.js[こちら]
+. `git push` してデプロイされたら動作確認する
