@@ -1,4 +1,10 @@
-{"author":"himanoa","date":"2021-02-06T07:31:26+09:00","draft":false,"title":"Blogをasciidocで書いてみた","alias":["/entries/64"]}
+{
+   "author": "himanoa",
+   "date": "2021-02-06T07:31:26+09:00",
+   "draft": false,
+   "title": "Blogをasciidocで書いてみた"
+}
+
 Hugoはasciidocもサポートしてるみたいで、表現力が微妙に足りないmarkdownじゃなくてasciidocを試験的に使ってみるテスト
 
 めっっちゃ話は飛ぶんですが、下の画像はエデン共鳴ノーマルのクリア記念撮影のスクショです。どうでもいいですね
