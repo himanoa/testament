@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 function testament_open() {
-  touch_erb blog content/entries/$1.adoc && $EDITOR content/entries/$1.adoc
+  touch_erb blog content/$1.adoc && $EDITOR content/$1.adoc
 }
-new_id=$(ls content/entries/*.{md,adoc} -l | wc -l | awk '{print $1 + 1}')
+new_id=$(ls content/*.{md,adoc} -l | wc -l | awk '{print $1 + 1}')
 
 testament_open $new_id
