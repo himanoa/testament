@@ -41,6 +41,29 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/13/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">himanoa.netを開通させたぞ！！！！</h2>
+    <p class="card-text lineclamp">https://blog.himanoa.net はあるのに https://himanoa.net がないのはおかしいよねっていう指摘を受けて5億年くらい経ったんですが、僕に紹介する自己が存在しなかったのと、CSSとか書けないし置くプロダクトもないしなぁとか思って恥ずかしさから作ってなかった自己紹介サイトを早朝の4時間くらいで作りました。
+サイトデザインは色を適当なパレットから拾ってきて、あーでもないこーでもないしながらちょっと色見調整してCSSに落とし込むみたいな、コンポーネント指向とかとも無縁な感じで組んでみたんですけど、僕がCSS書いたにしては、モバイルでもちゃんと見れるようになったしそれっぽいデザインになったなぁといった感じで自画自賛できるくらいの出来なのでみんな見てくれーーーーーーーー
+これだけだと記事にしては何も面白くないのでデザインからデプロイするまでに得た知見とかを載せて締めます。
+見てる画面の解像度に合わせてdivの高さを調節する。 https://himanoa.net の白い部分は、スクロールしない限り高さをブラウザの描画サイズになるようになっています。
+JavaScriptで window.innerHeight をCSSに適用させとけばいきそうみたいな感じで目論んでいたのですが、いろいろ調べてみたところCSSにはvhという単位が存在し　これを用いると「ブラウザのサイズに依存せずに画面のどれくらいの高さを占めるか」といった感覚で単位を当てることができます。
+なので、先程のJavaScriptでうんたらかんたらせずとも height: 100vh とだけ書いとけばどの環境でも意図した高さになりレスポンシブも実現できるという分けです。便利
+Flexbox スキル欄のタグがブラウザのサイズがめっちゃ小さくなってもいい感じに並んでくれるのはFlexboxを用いてます。
+Flexboxを用いると要素を規則的に並べるのが非常に楽になりました。折り返しの設定や並び方の設定などがいじれるのがよさです。
+また、従来のfloatレイアウトに比べてclearfixを気にしなくていいのも嬉しいです。
+netlifyが神 ちょっと前に騒がれてたnetlifyがデプロイ先として僕の要件をクリアしていたのでここでホスティングしています。
+GitHubのリポジトリを見てくれるのでpushに応じて自動でビルドしてページを更新してくれるので、サイト管理も楽なのが良かったです。
+あとはどこのディレクトリをドキュメントルートにするかもnetlify側で決められるのでgithub pagesと違い、gh-pagesみたいな余計なブランチを生やさなくてもいいのとhttps対応がクリック一回でできるのもよかったです。</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2017-12-23">Dec 23, 2017</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/11/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -164,26 +187,6 @@ Haskell入門を買った Haskell入門 関数型プログラミング言語の�
 ゲームも下手になってきてて最近ほんとうにやる気がでない。最近まで界隈で流行ってるゲームとしてPUBGをやってたんですけど、自分が地雷な立ち回りしてるっていう自覚を持ちながらゲームするのって本当につらいしストレス溜る。 地力上げるためにソロで練習したりとかもしてるんですけど、まったく上達しないストレスが募ってアンインストールしてしまった。何もできないし続かない自分にイライラする日常から解放されたいし早くこの地獄のような世の中から解放されて、来世は石とかがいいですね。</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2017-10-08">Oct 8, 2017</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/6/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">動画を作らない人のための琴葉姉妹活用法</h2>
-    <p class="card-text lineclamp">VOICEROID2 琴葉 茜・葵を買って実況動画を作るぞ!!!!!!!!!!!!!!!! という気持ちになったのはいいんですが、動画制作周りのエコシステムがかなり気合が必要で気持ちがなくなってしまったり、 そもそも最近ゲームを楽しめなくなったりしてしまって琴葉姉妹をインストールしたけど全然起動しなくなってしまった人向けの活用方法を紹介します。?
-⚡️ 着メロにする これはだれでも思いつく(ほんとうか?)方法なのだがメールの着信音にするとか電話の着信音にするっていう話ですね。喋らせたいボイスを雑に作ってスマホに放り込んで設定するだけなのでかなりお手軽に耳が幸せになるハックですね。 ただ会社とかで琴葉姉妹が喋ると周りの皆さんの目が冷くなったりする職場だと運用に注意したほうがいいかもしれません。 まぁ 愛 でカバーできる猛者なら常にミュートにしなくて問題ないですね。
-⏰ 目覚しボイスにする これは上の項目の応用ですね。作り方は同じですね。音源を作ってスマホにぶちこんで目覚し時計アプリで設定するだけですね。 朝の目覚しが美少女の声になるので実質 めざましマネージャー アスナ になって便利ですね。 しかも自分の好きなボイスで起こしてもらえるので無限に夢が膨らんで 便利ですね。 折角だし目覚しアプリごと作ればランダムでボイスを再生したり、その日の天気や時間に応じてボイスを変えたりとかもできるので積極的にプログラミングしていきましょう? おまけなんですけど、exVOICEに「おはよう」といったボイスが存在するので手軽で便利ですね。
-♪ Mikutterの効果音を取っかえる Linux向けのTwitterクライアントがあります。このクライアントはふぁぼやRTといった動作の通知音を設定できます。効果音のリソースを琴葉姉妹のボイスに置き替えればいいわけですね。 これであなたもふぁぼられるたびに琴葉姉妹がふぁぼって囁いてきてRTされる度にRetweetって葵ちゃんが囁いてくれて、リプライが飛んでくる度に茜ちゃんが囁いてくれる、まるで楽園みたいなTwitter生活が約束されるというわけですね。やったぜ。
-? Scalaのコンパイル終了にフックすることによってコンパイル中にTwitterを見る Scalaのコンパイル遅いですよね。待ってる間にカップラーメンは食べれますし、コマンドの終了をターミナルと睨みっこしながら待ち時間を過すのはシャクという物です。 もっとエキサイトなコーディングライフを送るべきです。
-え?Scala書かない? 熟成したRailsProjectのRSpecを全てのパターンで流すと長い時間を有しますよね?。そういったやつです。 コマンドの終了時にVOICEROIDの音声を流すことで、コマンドが終了するまでの時間でTwitterができますね!便利だ。 え?どうやってやるかわからない?以下にfishでの実装例を記述していきます。
-~/.config/fish/config.fishfunction hook_command_end --on-event fish_postexec# MacOSX Sierraset -x success_voice $HOME/Music/success.wavset -x fail_voice $HOME/Music/fail.wavif test $status -eq 0afplay $success_voice &amp;elseafplay $fail_voice &amp;endend これでコマンド成功時に成功の音声を流す、失敗の時は失敗の音声を流す機能の実装ができました。
-ただ、これだけだとlsコマンドを実行しただけで琴葉姉妹が喋りだすので、実行時間がある程度長い場合はみたいな分岐を作ったり、再生されるボイスをランダムでピックするように実装したりすると実用性が高い琴葉姉妹になるでしょう
-? 小説家になろうを食わせてSS聞きながしする 長文を自分の目で読むのはめんどうですね。大好きな百合SSでも仕事中では摂取できないのはつらいことです。 しかし、このVOICEROID2があれば仕事中に耳から百合を摂取することが可能!</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2017-10-01">Oct 1, 2017</time></p>
       
     </div>
   </article>
