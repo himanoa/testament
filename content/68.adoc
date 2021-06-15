@@ -53,7 +53,8 @@ export const useWillBeMounted: UseWillBeMounted = (effect) => {
 }
 ----
 
-みたいなのを作って、 `eslint` ルールで `useEffect` を↑を使う形に置換する `autifixer` を書けば機械的にできそうだなあとおもった。
+みたいなのを作って、 `eslint` ルールで +
+`useEffect` を↑を使う形に置換する `autifixer` を書けば機械的にできそうだなあとおもった。
 
 Automatic batchingに関しては一つのハンドラで複数回 `setState` するようなハンドラや状態は筋が悪いのでは？と考えていて、これが入っても別にあんまり便利ではないのでは？とおもった
 
