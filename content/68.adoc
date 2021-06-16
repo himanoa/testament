@@ -46,10 +46,12 @@ type UseWillBeMounted = (effect: () => OnUnmounted) => void
 export const useWillBeMounted: UseWillBeMounted = (effect) => {
   const effectRef = useRef<boolean>(false)
 
-  if(effectRef.current === false) {
-    effectRef.current = true
-    return effect()
-  }
+  useEffect(() => {
+    if(effectRef.current === false) {
+      effectRef.current = true
+      return effect()
+    }
+  }, [])
 }
 ----
 
