@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>HugoでもがんばればGatsbyみたいなことできるんでは？ &middot; 遺言書</title>
+  <meta name="description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;今日は読みにくい文章を書くことによって人類の脳味噌を破壊しまーーーすw&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;blog.ojisan.io とか random.taguch.dev みたい" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="HugoでもがんばればGatsbyみたいなことできるんでは？ &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;今日は読みにくい文章を書くことによって人類の脳味噌を破壊しまーーーすw&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;blog.ojisan.io とか random.taguch.dev みたい" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/69/" >
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/69/" >
+  <meta property="og:title" content="HugoでもがんばればGatsbyみたいなことできるんでは？ &middot; 遺言書" >
+  <meta property="og:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;今日は読みにくい文章を書くことによって人類の脳味噌を破壊しまーーーすw&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;blog.ojisan.io とか random.taguch.dev みたい" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">HugoでもがんばればGatsbyみたいなことできるんでは？</h1>
+          <p class="post-date">Posted <time datetime="2021-07-02">Jul 2, 2021</time></p>
+        </header>
+        
+        <div class="paragraph">
+<p>今日は読みにくい文章を書くことによって人類の脳味噌を破壊しまーーーすw</p>
+</div>
+<div class="paragraph">
+<p>blog.ojisan.io とか random.taguch.dev みたいなgatsbyのSSRやNextJSのSSRでできたサイトは一覧ページの回覧が早くていいですよね。羨しいです。僕も亜音速の世界で生きたい(!?!?!?)</p>
+</div>
+<div class="paragraph">
+<p>しかし絶対にサーバーは持ちたくないので、最初のレンダリングはビルドしたHTMLが降ってきて、そこからJSでReactがマウントされてSPAになってページ遷移が最高の速度を人類に提供するサンタクロース(!?)になりたいです。</p>
+</div>
+<div class="paragraph">
+<p>ここでよく考えてみると、実はSSGしてmetaタグとかを作るのは記事の個別のページでよく、一覧ページにそういうメタ情報を付ける必要はあんまりないことに気づいちゃいました。</p>
+</div>
+<div class="paragraph">
+<p>つまり次の二つのフローをうまく動かすことができるSPAアプリケーションを作れば、hugoのまま最高の記事一覧ページ体験をプレゼントすることができるわけですね</p>
+</div>
+<div class="sect1">
+<h2 id="_フロー1_最初に個別ページにアクセスがくる編">フロー1 最初に個別ページにアクセスがくる編</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>回覧者がサイトに <code>blog.himanoa.net</code> にアクセスする</p>
+</li>
+<li>
+<p>GitHub Pagesが <a href="https://github.com/himanoa/testament/blob/gh-pages/68/index.html" class="bare">https://github.com/himanoa/testament/blob/gh-pages/68/index.html</a> 返してブラウザに表示させる</p>
+</li>
+<li>
+<p>回覧者がサイト内導線を踏んで一覧ページにアクセスする</p>
+</li>
+<li>
+<p>GitHub Pagesが唐突に一覧ページの顔をしたSPAを返す</p>
+</li>
+<li>
+<p>回覧者がSPA上で記事のリンクをクリックする</p>
+</li>
+<li>
+<p>prefetchされたJSONをSPAが返して記事ページを表示する！！！！</p>
+</li>
+<li>
+<p>卍 閃光の世界へようこそ 卍</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_フロー2_最初に記事一覧ページにくる場合">フロー2 最初に記事一覧ページにくる場合</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>GitHub Pagesが唐突に一覧ページの顔をしたSPAを返す</p>
+</li>
+<li>
+<p>回覧者がSPA上で記事のリンクをクリックする</p>
+</li>
+<li>
+<p>prefetchされたJSONをSPAが返して記事ページを表示する！！！！</p>
+</li>
+<li>
+<p>卍 閃光の世界へようこそ 卍</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>これはhugoのtheme機能をつかえばちょっとしたあとはちょっとした設定で実現できそうなのでそのうちやりたいですね。俺のブログ回覧者も閃光の世界に誘いたいぜ～～～～～～～～～～～～～</p>
+</div>
+</div>
+</div>
+
+        <a href="http://clap.webclap.com/clap.php?id=himanoa" target="_blank" onclick="window.open('http://clap.webclap.com/clap.php?id=himanoa','webclap','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes');return false;">拍手ボタン</a>
+      </article>
+    </main>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  </body>
+</html>

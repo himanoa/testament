@@ -42,6 +42,20 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/58/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">goshitekiというvimからGitHubのPull-Requestに対してコードレビューできるプラグインを作った</h2>
+    <p class="card-text lineclamp">つくったやつ https://github.com/himanoa/goshiteki
+動機  GitHub上でコードレビューしてると見れるdiffに限界があり、適切なコードレビューができないことがおおい 手元でコード動かせないし、レビューした結果自分の指摘でコードが動くかも保証できない vimでいい感じにdiffとかみたいので、いい感じの環境を作った→https://blog.jez.io/cli-code-review/ コードコメントしにGitHub開くのが面倒 vimからレビューコメントを書ければいいのでは？(天才的アイデア)←いまここ  今後 実用上不便だったらやるけど、実際やるかどうかわからん
+ vimからレビューコメントが見えないのでなんとかしたい  signとfloating windowを使えばいいかんじになるんでは？   やばすぎ実装を直したい Document書きたい  シンプルだしgif見れば完全に使い方理解できるしいらんのでは？みたいな甘えがある    どうでもいいんですが、自分で作ったPRに対してApproveできなくて、その辺の動作確認ができていないし早く平日来てほしい。でもやっぱりFF14やりたいので休日でいいや</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2020-10-11">Oct 11, 2020</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/57/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -146,25 +160,6 @@ Vue.jsなどのモダンなUIフレームワークの使い方や利便生やJav
 そいえば最近上司に「他人が成果を出してくることに期待して仕事をするのは二流」みたいなことを言われた。FPSでもきゃりーできなきゃ戦績は上がらないし、ポケモンも6割勝たないとゴミなのでそういう考えは社会にでも適用できるんだなぁって思った。</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-12-21">Dec 21, 2019</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/53/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">ghqで管理されたディレクトリ構造でディレクトリを作ってgit initまでしてくれるツールを作った</h2>
-    <p class="card-text lineclamp">手元のマシンでリポジトリを管理するときにghqを使うと勝手に統一感あるディレクトリ構成でリポジトリ管理してくれるので便利です。
-しかし、自分でリポジトリを作ってなにかを開始する機会が多いと mkdir ~/src/github.com/himanoa/foobarを毎回入力する必要がありちょっと不便です。
-リポジトリ名を入力したらよしなにディレクトリを作って欲しいと思ってたので、勉強がてらにRustで簡単なCLIツールを作りました。 mkrepo
-インストール方法 macOS用にhomebrew用の整備とかArchLinux向けにAURパッケージを公開しているわけではないので、インストールには cargo が必要です。
-次のコマンドでインストールすることができます
-cargo install mkrepo
-また、mkrepoは.gitconfigに特定のkey-value構造が存在していることに依存しています。そのため ~/.gitconfigに次のような記述を追加する必要があります
-[user] name=&#34;あなたのなまえ&#34; [ghq] root=&#34;~/src&#34; [mkrepo] service=&#34;github.com&#34; つかいかた Make project directory for ghq style. 0.0.1 USAGE: mkrepo [FLAGS] [OPTIONS] &lt;repository&gt; FLAGS: -d dru run -h, --help Prints help information -V, --version Prints version information OPTIONS: -a, --author &lt;author&gt; repository author name -m &lt;first_commit_message&gt; first_commit_message name -s, --service &lt;service&gt; service name ARGS: &lt;repository&gt; Repository name mkrepo foobar とかやると src/github.</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2019-10-26">Oct 26, 2019</time></p>
       
     </div>
   </article>
