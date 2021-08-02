@@ -1,0 +1,21 @@
+---
+title: "TypeScript備忘録(関数の実行時に推論を確定させるテク)"
+date: 2021-08-02T17:23:58+09:00 
+draft: false
+author: himanoa
+---
+
+
+```typescript
+type UseSelectorBuilder<T, S> = () => (selector: (state: T) => S) => S
+```
+
+みたいな型が存在した時にSelectorBuilderではTまでの型を確定してSはbuilderの戻り値を呼び出した時に型を確定させたい場合どう書けばいいか
+
+答えはこう
+
+```typescript
+type UseSelectorBuilder<T, S> = ()  => <S>(selectlor: (state: T) => S) => S
+```
+
+よかったですね
