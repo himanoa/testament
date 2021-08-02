@@ -8,6 +8,16 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>SPAにおけるOpen ID Connect認証</title>
+      <link>https://blog.himanoa.net/34/</link>
+      <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/34/</guid>
+      <description>サーバーサイドとクライアントサイド両方とも実装する機運が出てきたのでそれぞれの役割を整理するためにシーケンス図を書いた。 Googleって書いてあるところはOAuthプロバイダーなら何でも置き替えられるはず
+間違ってたら教えてくれ
+追記: とりあえずシーケンス図が書けたのでAPIサーバーに求められている機構を実装した。curlで試しているのと、SPAのガワが存在していないため一旦セッションに入れたりstateの検証するのは省いた。
+const { createHash } = require(&amp;quot;crypto&amp;quot;);const url = require(&amp;quot;url&amp;quot;);const express = require(&amp;quot;express&amp;quot;);const bp = require(&amp;quot;body-parser&amp;quot;);const axios = require(&amp;quot;axios&amp;quot;);const jwt = require(&amp;quot;jwt-simple&amp;quot;);const secret = require(&amp;quot;./secret.json&amp;quot;);const app = express();app.use(bp.json());const salt = &amp;quot;hakatanosalt&amp;quot;;app.get(&amp;quot;/oauth/callback&amp;quot;, (req, res) =&amp;gt; {console.log(JSON.stringify({code: req.query.code,state: req.query.state}));res.send(&amp;quot;ok&amp;quot;);});app.get(&amp;quot;/oauth/google/login&amp;quot;, function(req, res) {const state = createHash(&amp;quot;sha256&amp;quot;).update(`${salt}${Math.random()}${+new Date()}`).digest(&amp;quot;hex&amp;quot;);const params = new url.</description>
+    </item><item>
       <title>RustでMarkdown to Htmlを試してみる</title>
       <link>https://blog.himanoa.net/33/</link>
       <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
@@ -61,15 +71,6 @@ extern crate pulldown_cmark;use pulldown_cmark::{html, Parser};fn main() {let
       <description>初心者を脱したのでよかったですね。
 滑りこめたのでよかった。月末は弱い人がおおいきがする。最高16で16~18をいったり来たりしてたんだがたまたま、奇数パラがメタと噛みあって連勝ボーナス混みで4-1(記憶ちがいあるかも)で15はいった。
 今月主に回してたデッキは 奇数パラディン 奇数ローグ ミラクルローグ で途中9連敗を二回したりでマウス投げたりしてたがまぁ自己ベスト更新できてよかったですね、みたいなところ。このランク帯までは、デッキパワーたかいデッキでメタが噛みあってる時間帯にどれだけしゃぶり尽せるかみたいなところなのでデッキパワーつよいデッキを使えるかみたいなのがでかいとおもう。</description>
-    </item><item>
-      <title>ストレスコントロール</title>
-      <link>https://blog.himanoa.net/29/</link>
-      <pubDate>Sun, 15 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/29/</guid>
-      <description>単純に苦手。
-負な出来事が起こると愚直に不安にもなるしストレスが来るし何しろイライラするし機嫌もわるくなる
-今日もハースで9連敗した</description>
     </item>
   </channel>
 </rss>

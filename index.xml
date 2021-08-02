@@ -8,6 +8,16 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>TypeScript備忘録(関数の実行時に推論を確定させるテク)</title>
+      <link>https://blog.himanoa.net/70/</link>
+      <pubDate>Mon, 02 Aug 2021 17:23:58 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/70/</guid>
+      <description>type UseSelectorBuilder&amp;lt;T, S&amp;gt; = () =&amp;gt; (selector: (state: T) =&amp;gt; S) =&amp;gt; S   みたいな型が存在した時にSelectorBuilderではTまでの型を確定してSはbuilderの戻り値を呼び出した時に型を確定させたい場合どう書けばいいか
+ 答えはこう
+ type UseSelectorBuilder&amp;lt;T, S&amp;gt; = () =&amp;gt; &amp;lt;S&amp;gt;(selectlor: (state: T) =&amp;gt; S) =&amp;gt; S   よかったですね
+ </description>
+    </item><item>
       <title>HugoでもがんばればGatsbyみたいなことできるんでは？</title>
       <link>https://blog.himanoa.net/69/</link>
       <pubDate>Fri, 02 Jul 2021 01:54:31 +0900</pubDate>
@@ -93,15 +103,6 @@
  コードはこちら
      git push してデプロイされたら動作確認する
      </description>
-    </item><item>
-      <title>Blogをasciidocで書いてみた</title>
-      <link>https://blog.himanoa.net/64/</link>
-      <pubDate>Sat, 06 Feb 2021 07:31:26 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/64/</guid>
-      <description>Hugoはasciidocもサポートしてるみたいで、表現力が微妙に足りないmarkdownじゃなくてasciidocを試験的に使ってみるテスト
- めっっちゃ話は飛ぶんですが、下の画像はエデン共鳴ノーマルのクリア記念撮影のスクショです。どうでもいいですね
-   </description>
     </item>
   </channel>
 </rss>

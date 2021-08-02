@@ -8,6 +8,17 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>RSSリーダーとの付き合い方</title>
+      <link>https://blog.himanoa.net/49/</link>
+      <pubDate>Sat, 07 Sep 2019 02:19:36 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/49/</guid>
+      <description>この記事はどうやって普段RSSリーダーを運用して情報を収集しているのかを言語化したものです
+使っているRSSリーダー 今使っているのはFeedlyだが、 正直何でもいいと思う。ただ、以下の特徴を抑えてるリーダーがあると便利。
+ クラウド同期  どこまでフィードに既読をつけたかなどをデバイス間で自動同期してくれる   フィードのグループ化 あとで見る  feedlyには備え付けられているけどTwitterで流れてきて後で見たいリンクなども一元管理したいため、Pocketを使っている    feedlyもベターではあるがベストではない感じがしていて、また自作したいなと考えている。とはいえ、巡回どうするかとか面倒見なくちゃいけない物が多くてなんとなく優先度低い
+今まで使っていたツールの遍歴  Opera feedly Slack nadeshiko  YQLが爆発して動かなくなった   feedly  運用方法 以下のライフサイクルで運用している。閲覧できなかった物に関しては縁がなかったということで既読つけてる。
+ 朝起きてfeedlyを見て気になる記事をPocketのあとで見るに突っ込んでおく   寝坊した時は出社して余裕がある時間に眺める 時間の許す限りやる。見れなかった情報に関してはスルーする  風呂入ってる時とか寝落ちするまでの間にスマートフォンでPocketに突っ込んだやつを読んでいく   今後やりたいこと: Pocketに突っ込んだ記事だけ選定してブログに自動でポストしてニュースフィードみたいにしたら便利かも  週の終わりに見れなかった情報を全部既読つける   今後やりたいこと: crontab回して自動で既読つけたい  </description>
+    </item><item>
       <title>monaco-editorをwebpackでバンドルする</title>
       <link>https://blog.himanoa.net/48/</link>
       <pubDate>Mon, 22 Jul 2019 06:48:01 +0900</pubDate>
@@ -50,26 +61,6 @@ AtomだったりVSCodeだとprettierrcの有無でprettierをかけたりかけ�
 んでその設定なんですけど僕はこうしてますってやつです。
 let l:is_active = 0 let l:prettierrcs = [&amp;quot;.prettierrc&amp;quot;, &amp;quot;.prettierrc.toml&amp;quot;, &amp;quot;.prettierrc.config.js&amp;quot;, &amp;quot;.prettierrc.js&amp;quot;] for item in l:prettierrcs let l:is_active = l:is_active + filereadable(item) endfor let g:ale_fixers = { \ &#39;javascript&#39;: [&#39;eslint&#39;], \ &#39;typescript&#39;: [&#39;eslint&#39;], \ &#39;vue&#39;: [&#39;eslint&#39;] \ } let g:ale_fix_on_save = 1 if l:is_active &amp;gt; 0 call insert(g:ale_fixers.javascript, &amp;quot;prettier&amp;quot;) call insert(g:ale_fixers.typescript, &amp;quot;prettier&amp;quot;) call insert(g:ale_fixers.vue, &amp;quot;prettier&amp;quot;) endif ここ を見るとわかるんですけど、package.jsonにconfigが書かれる場合もあるのだが、それに関しては未対応。
 vimscript jsonソリューションを募集しています</description>
-    </item><item>
-      <title>自分専用のブックマークサービスを作り始めた</title>
-      <link>https://blog.himanoa.net/44/</link>
-      <pubDate>Fri, 12 Apr 2019 19:41:28 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/44/</guid>
-      <description>はてなブックマークでブックマークするたびにブコメを見てしまい心が厳しくなってしまっていたので、年末に脱はてブ活動をしました。その結果Pocketが便利でPocketを使っているのですが、コメントができなかったりと不便を感じていたりする。
-Pocketの全文検索とか便利なんですけどこれははてブにはないし、そうなると自作するしかない。
-というわけでタイトルのブックマークサービスを作り始めたに繋がる。
-作り始めて何も動いてないので(CRの口だけ書いた)成果発表もないのだが、まぁ最近の近況報告的な感じで備忘録として記録しておこうと思う。
-コンセプト コメントができる Pocketになくてはてブにはある機能。自分のコメントベースで検索したい気持ちがPocketを使い始めてから強くなってきた。半分くらいこれのために自作したいと思っているやつ
-ページをスクレイピングしといて全文検索できる Pocketにあるやつ。便利。全文検索に使う情報が増えるという意味でもアドがある
-はてブextension的な感じでChromeからワンクリックで登録 必須。ないとブックマークしないのが分かり切っているので絶対に作る。
-どうやって実現しようかは考え中で、静的な登録用ページをFirebase Hostingでホスティングしてchrome extension内のpopupからiframeで呼び出すとかを考えている。
-ChromeExtension有識者が居たら相談させてくれると助かります。
-WebHook Publisherになれる 最初はTwitter連携でもいいかなと思ったんだけど、webhook喋れたらコード書くだけで何にでも連携できるじゃんという事に気づいたのでこれも実装したい
-技術スタック TypeScript + Firebase(Hosting, Firestore, Functions)でやっている。一人でやる分にはインフラコストが一番低い気がするのでこの構成。
-Firestoreを触るのが完全に初めてなんだが、まぁCRUD程度までは普通に実装できた。全文検索をどうするかは曖昧だがalgoliaを使えば上手く行くのではという感じ。
-なんでお一人様用なのか お金貰ってるわけじゃないのにスケールアウトとか認証とか考えたくないっていうのが根底にある。あと自分のインフラ的なアプリケーションを他人が使ったがために落ちる、みたいな可能性を減らしたい。
-GitHubでOSSにしてもいいかなと思ったけどコミットログに.firebasercが載ってしまっていて、削除するのがダルいという話があってOSSにする気持ちはなくなってきた。コード見たいとかそういう声があれば乗り気になるかもしれない</description>
     </item>
   </channel>
 </rss>
