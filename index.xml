@@ -8,6 +8,29 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>連休の始まり</title>
+      <link>https://blog.himanoa.net/71/</link>
+      <pubDate>Sat, 21 Aug 2021 04:53:58 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/71/</guid>
+      <description>遅めの5連休を取ったので今日から連休スタートです。せめて連休中は毎日日記を書いていきたいところ
+ 今日やったこと   労働
+  職場の人にいい感じの小さいRustツールを教えてもらったのでパッチ書いた
+  ゴミ捨て
+  オクトパストラベラー
+  プリムロゼの二章だけ
+        今日やりたいこと   生活の修復
+  部屋の掃除
+  ゴミ捨て
+  風呂掃除
+     プログラミング
+  旅団世界の戦闘シミュレータ
+  なんか良さげなOSSみつけてパッチ投げたい
+        その他 せっかく5連休を手に入れたのはいいですが、日程だけとりあえず抑えた感じで何も予定がないし、コロナが最強に流行ってるので旅行とかもいけないしでやること不足気味ですね。
+ k8sのクラスタでもVPS上に建築するって言って全く手つけてなかったのえやれるといいなーっていま思ってます
+ あと、風呂からブログかけたら便利だろうなとおもって、iPadからブログを書けるようにしてるんですが、意外とiPadって文字書きやすいですね。仕事で使ってるラップトップよりタイピング体験がいい気さえしています。
+   </description>
+    </item><item>
       <title>TypeScript備忘録(関数の実行時に推論を確定させるテク)</title>
       <link>https://blog.himanoa.net/70/</link>
       <pubDate>Mon, 02 Aug 2021 17:23:58 +0900</pubDate>
@@ -83,26 +106,6 @@
  Reactつかえて例外周りがまともなプログラミング言語っていうのも思い付かないしどうしようかなあってなってる。ReasonMLとかどうなんだろう
    WSL2 土曜にぶっ壊して sudo の user password すら通らなくなったので、コードとconfigのバックアップだけとって、ArchWSLの再インストールをした
  .config/ を展開 direnv と asdf と neovim とRustのtoolchain入れたら開発できるくらいには回復したので、環境構築楽でいいなあとおもった</description>
-    </item><item>
-      <title>ブログのURL構造を変更した</title>
-      <link>https://blog.himanoa.net/65/</link>
-      <pubDate>Sat, 06 Feb 2021 09:12:08 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/65/</guid>
-      <description>hugoのversionを上げたら blog.himanoa.net が entries/って記事を表示しはじめて壊れてしまっていたので、content配下のディレクトリ構造を変更した。
- しかし、content以下のディレクトリ構造を変えるとビルドした後の記事のURLも変わってしまう。
- URLが変わってしまうと、過去のリンクが壊れてしまってつらいつらいなので、過去のURLを踏んできたときは今のURLにリダイレクトするようにした。
- ここではその作業ログを残す
- Hugoでのリダイレクトの貼り方 hugoにはFront Matterという仕組みが存在し、ここに決められた形式のメタデータを書くことができる。
- ここにリダイレクト元となるパスを記述することでリダイレクトを実現することができる。
- 詳細は公式ドキュメントを参照するべし
-   作業手順  content/entries以下のファイルをcontent/に移動 15a468c
-  既存の記事内のFront Matterの形式を揃える
- hugo convert toJSON --unsafe を実行することでcontent配下のFront matterを一括変換できる cf5bfc5
-     記事ファイルの内部を開いてFront Matter部分だけ抜き出して置換するJavaScriptを書いて実行する c5a942b
- コードはこちら
-     git push してデプロイされたら動作確認する
-     </description>
     </item>
   </channel>
 </rss>
