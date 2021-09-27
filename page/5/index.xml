@@ -8,6 +8,13 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>MHWで効率良くクラウンをコンプしたい</title>
+      <link>https://blog.himanoa.net/51/</link>
+      <pubDate>Wed, 11 Sep 2019 22:29:02 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/51/</guid>
+      <description>モンスターハンターワールドで効率よく金冠をコンプしたい</description>
+    </item><item>
       <title>gitをより便利にするsubcommand集を作った</title>
       <link>https://blog.himanoa.net/50/</link>
       <pubDate>Tue, 10 Sep 2019 02:19:08 +0900</pubDate>
@@ -54,16 +61,6 @@ const path = require(&amp;#39;path&amp;#39;) const config = { externals: [&amp;#
 実装 https://github.com/himanoa-sandbox/hayashi/commit/a165b76b773edc699fb5d2a53d947e9afae3a9bc
 意識したこと  こういうシンプルなやつはTDDの素振りに良いので意識しながら書いた  commitには現れてないけどイテレータープロトコルを満たす普通の関数で最初書いてた ジェネレーターで書き直したくなった。 このときにテストがあったので壊さずリファクタリングできた。   ハマったときはgistに投げてTwitterで助けを求めた  しかし だれも こなかった。 自分を信じて自分でなおしました 俺は神    感想した感想 たのしかったです！（幼稚園生並感)。ていうか走破処理ってこんなに短くかけるものだったのね。もっと複雑でだるいものかとおもってたわ
 leftとrightがあるし実質北上双葉。双葉の双葉はどーれだ</description>
-    </item><item>
-      <title>転職してました</title>
-      <link>https://blog.himanoa.net/46/</link>
-      <pubDate>Fri, 28 Jun 2019 23:28:27 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/46/</guid>
-      <description>Twitterで仕事やめた時ワイワイ騒いでたので今更なんですけど、3月末で株式会社ドワンゴとの契約終了して、株式会社A1Aに転職しました。
-退職理由とかインターネットに書くのは面白くないんで、聞きたい人は酒にでも誘ってください
-最近ライバロリさんの動画にハマってるのでリスペクトして終ろうと思います
-株式会社ドワンゴ、契約　オワオワリでぇ〜〜〜す</description>
     </item>
   </channel>
 </rss>
