@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Markdownでrails generatorみたいなのを作れるツールを作った &middot; 遺言書</title>
+  <meta name="description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;開発中にアーキテクチャに乗った開発していくにつれて、テストだったり実装だったりをいつも同じような記述やディレクトリ構造に配置すること、多々あるとおもいます。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="Markdownでrails generatorみたいなのを作れるツールを作った &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;開発中にアーキテクチャに乗った開発していくにつれて、テストだったり実装だったりをいつも同じような記述やディレクトリ構造に配置すること、多々あるとおもいます。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/74/" >
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/74/" >
+  <meta property="og:title" content="Markdownでrails generatorみたいなのを作れるツールを作った &middot; 遺言書" >
+  <meta property="og:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;開発中にアーキテクチャに乗った開発していくにつれて、テストだったり実装だったりをいつも同じような記述やディレクトリ構造に配置すること、多々あるとおもいます。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">Markdownでrails generatorみたいなのを作れるツールを作った</h1>
+          <p class="post-date">Posted <time datetime="2021-10-27">Oct 27, 2021</time></p>
+        </header>
+        
+        <div class="paragraph">
+<p>開発中にアーキテクチャに乗った開発していくにつれて、テストだったり実装だったりをいつも同じような記述やディレクトリ構造に配置すること、多々あるとおもいます。</p>
+</div>
+<div class="paragraph">
+<p>そういった時に他のファイルをコピペして開発するのだと、実装を消したりコピペ元特有の名前を置換する作業が発生して面倒です。</p>
+</div>
+<div class="paragraph">
+<p>とくにコピペミスやディレクトリの作成ミスなどで他の部分と若干命名がずれる、みたいなのが発生すると開発体験が最悪です。</p>
+</div>
+<div class="paragraph">
+<p>Ruby on Railsではこのような問題を <code>rails generate</code> でソースコードの雛形を複数ファイルをまとめて作ることによって解決しています。</p>
+</div>
+<div class="paragraph">
+<p>この解決方法は結構体験がよいので、今回はどのプロジェクトでも違和感なしに <code>rails generate</code> を実現できるようなツール <a href="https://github.com/himanoa/mdmg">mdmg</a> を作成しました!</p>
+</div>
+<div class="sect1">
+<h2 id="_インストール方法">インストール方法</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>AURやhomebrew用のあれこれをやるのが面倒だったので、もう適当です。
+cargoコマンドが使える人は <code>cargo install mdmg</code> でインストールできます。
+cargoがない人は <a href="https://github.com/himanoa/mdmg/releases/tag/v0.1.1" class="bare">https://github.com/himanoa/mdmg/releases/tag/v0.1.1</a> からお好きなプラットフォーム向けのassetsをダウンロードして、中のmdmgをパスが通ってるところに配置してください。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_シンプルな使い方">シンプルな使い方</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>プロジェクトディレクトリで <code>mdmg setup</code> を実行すると .mdmgディレクトリが生成されます。</p>
+</div>
+<div class="paragraph">
+<p>mdmgコマンドは .mdmgディレクトリ内のMarkdownを基にscaffolding計画を決めるツールなので、次のようなmdmgテンプレートを <code>.mdmg/source.md</code> に配置しましょう</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-markdown" data-lang="markdown">---
+## src/{{identify}}.ts</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">export const {{camel_case identify}} = () =&gt; {
+  throw new Error(&#34;not implemented&#34;)
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_srcidentify_test_ts">src/{{identify}}.test.ts</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">import { {{camel_case identify}} } from &#39;./{identify}&#39;
+
+describe(&#34;#{{camel_case identify}}&#34;, () =&gt; {
+  describe(&#34;異常系&#34;, () =&gt; {
+
+  })
+
+  describe(&#34;正常系&#34;, () =&gt; {
+
+  })
+})</code></pre>
+</div>
+</div>
+<hr/>
+<div class="paragraph">
+<p>作成したプランを基に実行するのは次のコマンドでできます!</p>
+</div>
+<div class="paragraph">
+<p><code>mdmg generate source fetchGitHubToken</code></p>
+</div>
+<div class="paragraph">
+<p>プランのテンプレート内の`{{identify}}`がfetchGitHubTokenに置換されて、h2見出しのディレクトリとファイル名にcodeblockが出力されて保存されます</p>
+</div>
+<div class="paragraph">
+<p>また <code>mdmg generate</code> は -d オプションでdry-runすることができるので、テンプレートを書いてる時に有効活用すると良いでしょう</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_特徴">特徴</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ほぼREADME.mdに書いてあることの詳細解説です</p>
+</div>
+<div class="sect2">
+<h3 id="_markdownでscaffoldの計画書を記述できる">Markdownでscaffoldの計画書を記述できる</h3>
+<div class="paragraph">
+<p><code>rails generate</code> では generatorを自作するためにはRubyスクリプトを書きますが、mdmgはhandlebars templateが使えるmarkdownを採用しました。</p>
+</div>
+<div class="paragraph">
+<p>Rubyスクリプトとmarkdownでの計画書記述の優劣は次の通りです
+- (優) markdownはcodeblockを使えるのでGitHub上でsyntax highlightが効く
+- (劣) スクリプトではないので環境変数などによってファイルを作ったり作らなかったりみたいな分岐を表現できない</p>
+</div>
+<div class="paragraph">
+<p>このmarkdownでscaffoldの計画書を記述することができる、というアイデアは <a href="scaffdog"></a><a href="https://github.com/cats-oss/scaffdog" class="bare">https://github.com/cats-oss/scaffdog</a> で採用されていて、とても良かったので概ねパクってきました。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ランタイム依存がない">ランタイム依存がない</h3>
+<div class="paragraph">
+<p><a href="scaffdog"></a><a href="https://github.com/cats-oss/scaffdog" class="bare">https://github.com/cats-oss/scaffdog</a> は優れたプロダクトなのですが、動作させるのにNodejsが必要です。</p>
+</div>
+<div class="paragraph">
+<p>そのためNodejsだったりフロントエンド開発以外のプロジェクトで採用するのにはちょっと気合が必要です。</p>
+</div>
+<div class="paragraph">
+<p>mdmgではその点を解消するためにシングルバイナリで動作するのを目指しました。そのためソースコードをRustで記述しています</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_interactive_shellを使わない">interactive shellを使わない</h3>
+<div class="paragraph">
+<p>僕がscaffdogで微妙だとおもったポイントを改善しました。</p>
+</div>
+<div class="paragraph">
+<p>scaffdogではscaffoldingするためにインタラクティブシェルを使う必要があり、エディタプラグインやshellscriptからscaffoldingを実行しようとすると標準出力に媚を売るような煩雑なコードを書く必要が出てきます。</p>
+</div>
+<div class="paragraph">
+<p>mdmgではinteractive shellを使わないで済むようにコマンドライン一つを入力に取るだけのシンプルなインターフェースで実装しました。</p>
+</div>
+<div class="paragraph">
+<p>しかしこれでは複数の入力を受けて、テンプレートでそれぞれ展開したい場合に困るので環境変数を展開できるhelperを使えるようにしています。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_今後の野望">今後の野望</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>dry-runを実行できるようにしたので、生成したtemplateにeslintやtscを適用して、生成されたファイルが適切な実装になっているかチェックできるようにしたい</p>
+</li>
+<li>
+<p>GitHubActionでmdmgにテンプレートに変更があった場合dry-runしてコメントに投げるやつとか欲しいですね。</p>
+</li>
+<li>
+<p>とにかく自分が関わってるプロジェクトにねじこみたい</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_作った感想">作った感想</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>RustでCLIツール作るのも、習作だったりOSSだったりワンショットのスクリプトなどで作ってきたのもあって、他のコードに比べてかなり熟れてきたなあと感じました。</p>
+</div>
+<div class="paragraph">
+<p>今回はあんまりチャレンジングなことはしてないですが、FS使うテストはfeature_flagを有効化した時のみテストが走るなど、仕事でRust書く時に有用そうなテクニックの練習とかをやってみました。ある程度どうやればいいかわかってきたのでマクロで記述を簡素化したりとかしたいですね。</p>
+</div>
+<div class="paragraph">
+<p>あとはscaffdogはめちゃくちゃいいツールですが、自分に挙動が合わない点もおおくモンニョリしてた部分もあったので、自作することによってそういった点を解消できたのでとても気持ちよかったです。</p>
+</div>
+<div class="paragraph">
+<p>mkrepoと同じように汎用性が高く長く使えるツールだとおもうので、機能追加したりとしっかり面倒を見ていきたいですね</p>
+</div>
+</div>
+</div>
+
+        <a href="http://clap.webclap.com/clap.php?id=himanoa" target="_blank" onclick="window.open('http://clap.webclap.com/clap.php?id=himanoa','webclap','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes');return false;">拍手ボタン</a>
+      </article>
+    </main>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  </body>
+</html>
