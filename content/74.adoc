@@ -1,0 +1,110 @@
+---
+title: "Markdownでrails generatorみたいなのを作れるツールを作った"
+date: 2021-10-27T03:27:48+09:00 
+draft: false
+author: himanoa
+---
+
+開発中にアーキテクチャに乗った開発していくにつれて、テストだったり実装だったりをいつも同じような記述やディレクトリ構造に配置すること、多々あるとおもいます。
+
+そういった時に他のファイルをコピペして開発するのだと、実装を消したりコピペ元特有の名前を置換する作業が発生して面倒です。
+
+とくにコピペミスやディレクトリの作成ミスなどで他の部分と若干命名がずれる、みたいなのが発生すると開発体験が最悪です。
+
+Ruby on Railsではこのような問題を `rails generate` でソースコードの雛形を複数ファイルをまとめて作ることによって解決しています。
+
+この解決方法は結構体験がよいので、今回はどのプロジェクトでも違和感なしに `rails generate` を実現できるようなツール link:https://github.com/himanoa/mdmg[mdmg] を作成しました!
+
+== インストール方法
+
+AURやhomebrew用のあれこれをやるのが面倒だったので、もう適当です。
+cargoコマンドが使える人は `cargo install mdmg` でインストールできます。
+cargoがない人は https://github.com/himanoa/mdmg/releases/tag/v0.1.1 からお好きなプラットフォーム向けのassetsをダウンロードして、中のmdmgをパスが通ってるところに配置してください。
+
+== シンプルな使い方
+
+プロジェクトディレクトリで `mdmg setup` を実行すると .mdmgディレクトリが生成されます。
+
+mdmgコマンドは .mdmgディレクトリ内のMarkdownを基にscaffolding計画を決めるツールなので、次のようなmdmgテンプレートを `.mdmg/source.md` に配置しましょう
+
+[source,markdown]
+---
+## src/{{identify}}.ts
+
+```typescript
+export const {{camel_case identify}} = () => {
+  throw new Error("not implemented")
+}
+```
+
+## src/{{identify}}.test.ts
+```typescript
+import { {{camel_case identify}} } from './{identify}'
+
+describe("#{{camel_case identify}}", () => {
+  describe("異常系", () => {
+
+  })
+
+  describe("正常系", () => {
+
+  })
+})
+```
+---
+
+作成したプランを基に実行するのは次のコマンドでできます!
+
+`mdmg generate source fetchGitHubToken`
+
+プランのテンプレート内の`{{identify}}`がfetchGitHubTokenに置換されて、h2見出しのディレクトリとファイル名にcodeblockが出力されて保存されます
+
+また `mdmg generate` は -d オプションでdry-runすることができるので、テンプレートを書いてる時に有効活用すると良いでしょう
+
+== 特徴
+
+ほぼREADME.mdに書いてあることの詳細解説です
+
+=== Markdownでscaffoldの計画書を記述できる
+
+`rails generate` では generatorを自作するためにはRubyスクリプトを書きますが、mdmgはhandlebars templateが使えるmarkdownを採用しました。
+
+Rubyスクリプトとmarkdownでの計画書記述の優劣は次の通りです
+- (優) markdownはcodeblockを使えるのでGitHub上でsyntax highlightが効く
+- (劣) スクリプトではないので環境変数などによってファイルを作ったり作らなかったりみたいな分岐を表現できない
+
+このmarkdownでscaffoldの計画書を記述することができる、というアイデアは link:scaffdog[https://github.com/cats-oss/scaffdog] で採用されていて、とても良かったので概ねパクってきました。
+
+=== ランタイム依存がない
+
+link:scaffdog[https://github.com/cats-oss/scaffdog] は優れたプロダクトなのですが、動作させるのにNodejsが必要です。
+
+そのためNodejsだったりフロントエンド開発以外のプロジェクトで採用するのにはちょっと気合が必要です。
+
+mdmgではその点を解消するためにシングルバイナリで動作するのを目指しました。そのためソースコードをRustで記述しています
+
+=== interactive shellを使わない
+
+僕がscaffdogで微妙だとおもったポイントを改善しました。
+
+scaffdogではscaffoldingするためにインタラクティブシェルを使う必要があり、エディタプラグインやshellscriptからscaffoldingを実行しようとすると標準出力に媚を売るような煩雑なコードを書く必要が出てきます。
+
+mdmgではinteractive shellを使わないで済むようにコマンドライン一つを入力に取るだけのシンプルなインターフェースで実装しました。
+
+しかしこれでは複数の入力を受けて、テンプレートでそれぞれ展開したい場合に困るので環境変数を展開できるhelperを使えるようにしています。
+
+== 今後の野望
+
+- dry-runを実行できるようにしたので、生成したtemplateにeslintやtscを適用して、生成されたファイルが適切な実装になっているかチェックできるようにしたい
+- GitHubActionでmdmgにテンプレートに変更があった場合dry-runしてコメントに投げるやつとか欲しいですね。
+- とにかく自分が関わってるプロジェクトにねじこみたい
+
+== 作った感想
+
+RustでCLIツール作るのも、習作だったりOSSだったりワンショットのスクリプトなどで作ってきたのもあって、他のコードに比べてかなり熟れてきたなあと感じました。
+
+今回はあんまりチャレンジングなことはしてないですが、FS使うテストはfeature_flagを有効化した時のみテストが走るなど、仕事でRust書く時に有用そうなテクニックの練習とかをやってみました。ある程度どうやればいいかわかってきたのでマクロで記述を簡素化したりとかしたいですね。
+
+あとはscaffdogはめちゃくちゃいいツールですが、自分に挙動が合わない点もおおくモンニョリしてた部分もあったので、自作することによってそういった点を解消できたのでとても気持ちよかったです。
+
+mkrepoと同じように汎用性が高く長く使えるツールだとおもうので、機能追加したりとしっかり面倒を見ていきたいですね
