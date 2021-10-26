@@ -1,5 +1,5 @@
 ---
-title: "Markdownでrails generatorみたいなのを作れるツールを作った"
+title: "Markdownでrails generateみたいなのを作れるツールを作った"
 date: 2021-10-27T03:27:48+09:00 
 draft: false
 author: himanoa
