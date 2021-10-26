@@ -17,11 +17,17 @@
  そういった時に他のファイルをコピペして開発するのだと、実装を消したりコピペ元特有の名前を置換する作業が発生して面倒です。
  とくにコピペミスやディレクトリの作成ミスなどで他の部分と若干命名がずれる、みたいなのが発生すると開発体験が最悪です。
  Ruby on Railsではこのような問題を rails generate でソースコードの雛形を複数ファイルをまとめて作ることによって解決しています。
- この解決方法は結構体験がよいので、今回はどのプロジェクトでも違和感なしに rails generate を実現できるようなツール mdmg を作成しました!
+ この解決方法は結構開発体験がよいので、今回はどのプロジェクトでも違和感なしに rails generate を実現できるようなツール mdmg を作成しました!
  インストール方法 AURやhomebrew用のあれこれをやるのが面倒だったので、もう適当です。 cargoコマンドが使える人は cargo install mdmg でインストールできます。 cargoがない人は https://github.com/himanoa/mdmg/releases/tag/v0.1.1 からお好きなプラットフォーム向けのassetsをダウンロードして、中のmdmgをパスが通ってるところに配置してください。
    シンプルな使い方 プロジェクトディレクトリで mdmg setup を実行すると .mdmgディレクトリが生成されます。
  mdmgコマンドは .mdmgディレクトリ内のMarkdownを基にscaffolding計画を決めるツールなので、次のようなmdmgテンプレートを .mdmg/source.md に配置しましょう
- --- ## src/{{identify}}.ts   export const {{camel_case identify}} = () =&amp;gt; { throw new Error(&amp;#34;not implemented&amp;#34;) }     src/{{identify}}.test.ts import { {{camel_case identify}} } from &amp;#39;.</description>
+ https://gist.github.com/himanoa/9b716e16fa421c523150b00114a186ed
+ 作成したプランを基に実行するのは次のコマンドでできます!
+ mdmg generate source fetchGitHubToken
+ プランのテンプレート内の {{identify}} がfetchGitHubTokenに置換されて、h2見出しのディレクトリとファイル名にcodeblockが出力されて保存されます
+ また mdmg generate は -d オプションでdry-runすることができるので、テンプレートを書いてる時に有効活用すると良いでしょう
+   特徴 ほぼREADME.mdに書いてあることの詳細解説です
+ Markdownでscaffoldの計画書を記述できる rails generate では generatorを自作するためにはRubyスクリプトを書きますが、mdmgはhandlebars templateが使えるmarkdownを採用しました。</description>
     </item><item>
       <title>やめたい人生2021</title>
       <link>https://blog.himanoa.net/73/</link>

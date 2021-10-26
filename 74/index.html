@@ -63,7 +63,7 @@
 <p>Ruby on Railsではこのような問題を <code>rails generate</code> でソースコードの雛形を複数ファイルをまとめて作ることによって解決しています。</p>
 </div>
 <div class="paragraph">
-<p>この解決方法は結構体験がよいので、今回はどのプロジェクトでも違和感なしに <code>rails generate</code> を実現できるようなツール <a href="https://github.com/himanoa/mdmg">mdmg</a> を作成しました!</p>
+<p>この解決方法は結構開発体験がよいので、今回はどのプロジェクトでも違和感なしに <code>rails generate</code> を実現できるようなツール <a href="https://github.com/himanoa/mdmg">mdmg</a> を作成しました!</p>
 </div>
 <div class="sect1">
 <h2 id="_インストール方法">インストール方法</h2>
@@ -84,40 +84,9 @@ cargoがない人は <a href="https://github.com/himanoa/mdmg/releases/tag/v0.1.
 <div class="paragraph">
 <p>mdmgコマンドは .mdmgディレクトリ内のMarkdownを基にscaffolding計画を決めるツールなので、次のようなmdmgテンプレートを <code>.mdmg/source.md</code> に配置しましょう</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-markdown" data-lang="markdown">---
-## src/{{identify}}.ts</code></pre>
+<div class="paragraph">
+<p><a href="https://gist.github.com/himanoa/9b716e16fa421c523150b00114a186ed" class="bare">https://gist.github.com/himanoa/9b716e16fa421c523150b00114a186ed</a></p>
 </div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-typescript" data-lang="typescript">export const {{camel_case identify}} = () =&gt; {
-  throw new Error(&#34;not implemented&#34;)
-}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_srcidentify_test_ts">src/{{identify}}.test.ts</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-typescript" data-lang="typescript">import { {{camel_case identify}} } from &#39;./{identify}&#39;
-
-describe(&#34;#{{camel_case identify}}&#34;, () =&gt; {
-  describe(&#34;異常系&#34;, () =&gt; {
-
-  })
-
-  describe(&#34;正常系&#34;, () =&gt; {
-
-  })
-})</code></pre>
-</div>
-</div>
-<hr/>
 <div class="paragraph">
 <p>作成したプランを基に実行するのは次のコマンドでできます!</p>
 </div>
@@ -125,7 +94,7 @@ describe(&#34;#{{camel_case identify}}&#34;, () =&gt; {
 <p><code>mdmg generate source fetchGitHubToken</code></p>
 </div>
 <div class="paragraph">
-<p>プランのテンプレート内の`{{identify}}`がfetchGitHubTokenに置換されて、h2見出しのディレクトリとファイル名にcodeblockが出力されて保存されます</p>
+<p>プランのテンプレート内の <code>{{identify}}</code> がfetchGitHubTokenに置換されて、h2見出しのディレクトリとファイル名にcodeblockが出力されて保存されます</p>
 </div>
 <div class="paragraph">
 <p>また <code>mdmg generate</code> は -d オプションでdry-runすることができるので、テンプレートを書いてる時に有効活用すると良いでしょう</p>
@@ -170,7 +139,7 @@ describe(&#34;#{{camel_case identify}}&#34;, () =&gt; {
 <p>僕がscaffdogで微妙だとおもったポイントを改善しました。</p>
 </div>
 <div class="paragraph">
-<p>scaffdogではscaffoldingするためにインタラクティブシェルを使う必要があり、エディタプラグインやshellscriptからscaffoldingを実行しようとすると標準出力に媚を売るような煩雑なコードを書く必要が出てきます。</p>
+<p>scaffdogではscaffoldingするためにインタラクティブシェルを使う必要があり、エディタプラグインやshellscriptからscaffoldingを実行しようとするとinteractive shellに媚を売るような煩雑なコードを書く必要が出てきます。</p>
 </div>
 <div class="paragraph">
 <p>mdmgではinteractive shellを使わないで済むようにコマンドライン一つを入力に取るだけのシンプルなインターフェースで実装しました。</p>
