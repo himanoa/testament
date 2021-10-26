@@ -13,7 +13,7 @@ author: himanoa
 
 Ruby on Railsではこのような問題を `rails generate` でソースコードの雛形を複数ファイルをまとめて作ることによって解決しています。
 
-この解決方法は結構体験がよいので、今回はどのプロジェクトでも違和感なしに `rails generate` を実現できるようなツール link:https://github.com/himanoa/mdmg[mdmg] を作成しました!
+この解決方法は結構開発体験がよいので、今回はどのプロジェクトでも違和感なしに `rails generate` を実現できるようなツール link:https://github.com/himanoa/mdmg[mdmg] を作成しました!
 
 == インストール方法
 
@@ -27,37 +27,13 @@ cargoがない人は https://github.com/himanoa/mdmg/releases/tag/v0.1.1 から�
 
 mdmgコマンドは .mdmgディレクトリ内のMarkdownを基にscaffolding計画を決めるツールなので、次のようなmdmgテンプレートを `.mdmg/source.md` に配置しましょう
 
-[source,markdown]
----
-## src/{{identify}}.ts
-
-```typescript
-export const {{camel_case identify}} = () => {
-  throw new Error("not implemented")
-}
-```
-
-## src/{{identify}}.test.ts
-```typescript
-import { {{camel_case identify}} } from './{identify}'
-
-describe("#{{camel_case identify}}", () => {
-  describe("異常系", () => {
-
-  })
-
-  describe("正常系", () => {
-
-  })
-})
-```
----
+https://gist.github.com/himanoa/9b716e16fa421c523150b00114a186ed
 
 作成したプランを基に実行するのは次のコマンドでできます!
 
 `mdmg generate source fetchGitHubToken`
 
-プランのテンプレート内の`{{identify}}`がfetchGitHubTokenに置換されて、h2見出しのディレクトリとファイル名にcodeblockが出力されて保存されます
+プランのテンプレート内の `{{identify}}` がfetchGitHubTokenに置換されて、h2見出しのディレクトリとファイル名にcodeblockが出力されて保存されます
 
 また `mdmg generate` は -d オプションでdry-runすることができるので、テンプレートを書いてる時に有効活用すると良いでしょう
 
@@ -87,7 +63,7 @@ mdmgではその点を解消するためにシングルバイナリで動作す�
 
 僕がscaffdogで微妙だとおもったポイントを改善しました。
 
-scaffdogではscaffoldingするためにインタラクティブシェルを使う必要があり、エディタプラグインやshellscriptからscaffoldingを実行しようとすると標準出力に媚を売るような煩雑なコードを書く必要が出てきます。
+scaffdogではscaffoldingするためにインタラクティブシェルを使う必要があり、エディタプラグインやshellscriptからscaffoldingを実行しようとするとinteractive shellに媚を売るような煩雑なコードを書く必要が出てきます。
 
 mdmgではinteractive shellを使わないで済むようにコマンドライン一つを入力に取るだけのシンプルなインターフェースで実装しました。
 
