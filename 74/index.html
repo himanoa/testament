@@ -113,9 +113,17 @@ cargoがない人は <a href="https://github.com/himanoa/mdmg/releases/tag/v0.1.
 <p><code>rails generate</code> では generatorを自作するためにはRubyスクリプトを書きますが、mdmgはhandlebars templateが使えるmarkdownを採用しました。</p>
 </div>
 <div class="paragraph">
-<p>Rubyスクリプトとmarkdownでの計画書記述の優劣は次の通りです
-- (優) markdownはcodeblockを使えるのでGitHub上でsyntax highlightが効く
-- (劣) スクリプトではないので環境変数などによってファイルを作ったり作らなかったりみたいな分岐を表現できない</p>
+<p>Rubyスクリプトとmarkdownでの計画書記述の優劣は次の通りです</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>(優) markdownはcodeblockを使えるのでGitHub上でsyntax highlightが効く</p>
+</li>
+<li>
+<p>(劣) スクリプトではないので環境変数などによってファイルを作ったり作らなかったりみたいな分岐を表現できない</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>このmarkdownでscaffoldの計画書を記述することができる、というアイデアは <a href="scaffdog"></a><a href="https://github.com/cats-oss/scaffdog" class="bare">https://github.com/cats-oss/scaffdog</a> で採用されていて、とても良かったので概ねパクってきました。</p>
