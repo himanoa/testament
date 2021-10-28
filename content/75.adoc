@@ -1,0 +1,14 @@
+---
+title: "僕が作ったツールがhomebrewから入るようになりました"
+date: 2021-10-29T07:28:23+09:00 
+draft: false
+author: himanoa
+---
+
+といってもcoreに入ったわけではなく、自前のtapを用意しただけです。
+
+今のところは `mkrepo` と `mdmg` の二つが入ります
+
+sourceからのインストールになるので `brew install -s himanoa/tap/mdmg` みたいな感じでインストールしてください。
+
+LinuxBrewでは試しましたがmacOSで試してないので、macOSで試して何か問題あったら link:https://twitter.com/h1manoa[@h1manoa] のほうまでお願いします
