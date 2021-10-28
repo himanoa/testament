@@ -8,6 +8,17 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>僕が作ったツールがhomebrewから入るようになりました</title>
+      <link>https://blog.himanoa.net/75/</link>
+      <pubDate>Fri, 29 Oct 2021 07:28:23 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/75/</guid>
+      <description>といってもcoreに入ったわけではなく、自前のtapを用意しただけです。
+ 今のところは mkrepo と mdmg の二つが入ります
+ sourceからのインストールになるので brew install -s himanoa/tap/mdmg みたいな感じでインストールしてください。
+ LinuxBrewでは試しましたがmacOSで試してないので、macOSで試して何か問題あったら @h1manoa のほうまでお願いします
+ </description>
+    </item><item>
       <title>Markdownでrails generateみたいなのを作れるツールを作った</title>
       <link>https://blog.himanoa.net/74/</link>
       <pubDate>Wed, 27 Oct 2021 03:27:48 +0900</pubDate>
@@ -71,16 +82,6 @@
  k8sのクラスタでもVPS上に建築するって言って全く手つけてなかったのえやれるといいなーっていま思ってます
  あと、風呂からブログかけたら便利だろうなとおもって、iPadからブログを書けるようにしてるんですが、意外とiPadって文字書きやすいですね。仕事で使ってるラップトップよりタイピング体験がいい気さえしています。
    </description>
-    </item><item>
-      <title>TypeScript備忘録(関数の実行時に推論を確定させるテク)</title>
-      <link>https://blog.himanoa.net/70/</link>
-      <pubDate>Mon, 02 Aug 2021 17:23:58 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/70/</guid>
-      <description>type UseSelectorBuilder&amp;lt;T, S&amp;gt; = () =&amp;gt; (selector: (state: T) =&amp;gt; S) =&amp;gt; S   みたいな型が存在した時にSelectorBuilderではTまでの型を確定してSはbuilderの戻り値を呼び出した時に型を確定させたい場合どう書けばいいか
- 答えはこう
- type UseSelectorBuilder&amp;lt;T, S&amp;gt; = () =&amp;gt; &amp;lt;S&amp;gt;(selectlor: (state: T) =&amp;gt; S) =&amp;gt; S   よかったですね
- </description>
     </item>
   </channel>
 </rss>
