@@ -51,7 +51,7 @@
 <p>webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。</p>
 <p>筋悪い箇所があったらTwitterかはてブのコメントで頼む</p>
 <h2 id="tsconfigjson">tsconfig.json</h2>
-<pre><code>{
+<pre tabindex="0"><code>{
   &quot;compilerOptions&quot;: {
     &quot;target&quot;: &quot;es5&quot;,
     &quot;module&quot;: &quot;commonjs&quot;,
@@ -80,7 +80,7 @@
 </code></pre><p>moduleをcommonjsにしてしまったけどwebpackでの最適化の都合を考えると  <code>esModuleInterop</code> の方がいいかも</p>
 <p><code>strictNullChecks</code> は依存で壊れがちらしいのでオフにしている…オンにしたい…</p>
 <h2 id="webpackconfigjs">webpack.config.js</h2>
-<pre><code>const path = require(&quot;path&quot;);
+<pre tabindex="0"><code>const path = require(&quot;path&quot;);
 const ENV = process.env.NODE_ENV || &quot;development&quot;;
 const DEV_PORT = process.env.PORT || 4444;
 const webpack = require(&quot;webpack&quot;);
@@ -137,7 +137,7 @@ module.exports = [
 </code></pre><p>baseは<a href="https://github.com/himanoa/shimarin">しまりん</a>で使っていたやつのbabel周りをts-loaderにしたのと、CSSを抜いただけ</p>
 <h2 id="型定義ファイルを落す方法">型定義ファイルを落す方法</h2>
 <p>npmのtypesパッケージを使うのが主流らしい。以下の通りにやるとreactの型定義ファイルが手に入る</p>
-<pre><code>yarn add --dev @types/react
+<pre tabindex="0"><code>yarn add --dev @types/react
 </code></pre><p>devDependenciesに入れるべきか否かの意味合いの判断が取れないのがつらい</p>
 
         <a href="http://clap.webclap.com/clap.php?id=himanoa" target="_blank" onclick="window.open('http://clap.webclap.com/clap.php?id=himanoa','webclap','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes');return false;">拍手ボタン</a>

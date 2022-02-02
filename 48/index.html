@@ -7,20 +7,20 @@
   <title>monaco-editorをwebpackでバンドルする &middot; 遺言書</title>
   <meta name="description" content="&lt;h2 id=&#34;問題&#34;&gt;問題&lt;/h2&gt;
 &lt;p&gt;monaco-editorを以下のようなloader設定とplugin設定でバンドルしようとしたらハマった。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;backgroun" />
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f" />
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary">
   <meta property="twitter:title" content="monaco-editorをwebpackでバンドルする &middot; 遺言書" >
   <meta property="twitter:description" content="&lt;h2 id=&#34;問題&#34;&gt;問題&lt;/h2&gt;
 &lt;p&gt;monaco-editorを以下のようなloader設定とplugin設定でバンドルしようとしたらハマった。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;backgroun" />
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f" />
   <meta property="twittere:url" content="https://blog.himanoa.net/48/" >
   <meta property="og:image" content="default.jpg">
   <meta property="og:url" content="https://blog.himanoa.net/48/" >
   <meta property="og:title" content="monaco-editorをwebpackでバンドルする &middot; 遺言書" >
   <meta property="og:description" content="&lt;h2 id=&#34;問題&#34;&gt;問題&lt;/h2&gt;
 &lt;p&gt;monaco-editorを以下のようなloader設定とplugin設定でバンドルしようとしたらハマった。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;backgroun" />
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   
@@ -49,7 +49,7 @@
         
         <h2 id="問題">問題</h2>
 <p>monaco-editorを以下のようなloader設定とplugin設定でバンドルしようとしたらハマった。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;path&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;path&#39;</span>)
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> {
   <span style="color:#a6e22e">externals</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;electron&#34;</span>],
   <span style="color:#a6e22e">target</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;electron-renderer&#34;</span>,
@@ -72,7 +72,7 @@
 
 <span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">config</span>
 </code></pre></div><p>エラー内容はこんなかんじで 下部分で重要そうな問題だけコピペしてきた</p>
-<pre><code>    ERROR in ./node_modules/monaco-editor/esm/vs/editor/contrib/find/findWidget.css 8:0
+<pre tabindex="0"><code>    ERROR in ./node_modules/monaco-editor/esm/vs/editor/contrib/find/findWidget.css 8:0
     Module parse failed: Unexpected token (8:0)
     You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
     | /* Checkbox */
@@ -107,9 +107,9 @@
 <h2 id="解決">解決</h2>
 <p>とりあえずstyle-loaderとcss-loader入れれば解決するかなと大体当たりがついたので、インターネット上で似た事例がないかだけ一旦調査してみたところ、MSが作ってる専用のwebpack-pluginを使えばいいということがわかった。</p>
 <p>1 以下のコマンドで専用のプラグインと必要なloaderを入れる</p>
-<pre><code>yarn add --dev monaco-editor-webpack-plugin css-loader style-loader
+<pre tabindex="0"><code>yarn add --dev monaco-editor-webpack-plugin css-loader style-loader
 </code></pre><p>2 <code>webpack.config.js</code> に先程いれたプラグインとloaderを使うように変更</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;path&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;path&#39;</span>)
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">MonacoWebpackPlugin</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;monaco-editor-webpack-plugin&#39;</span>);
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> {
   <span style="color:#a6e22e">externals</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;electron&#34;</span>],

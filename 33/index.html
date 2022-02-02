@@ -49,7 +49,7 @@
 <p>ライブラリを物色してみると<a href="https://crates.io/crates/pulldown-cmark">pulldown-cmark</a>というやつが人気そうなので雑にインストールして使ってみることにしました:smile:</p>
 <h2 id="インストール">インストール</h2>
 <p>Rustの環境構築は一旦省いて、以下のコマンドでパッケージを切って依存関係に<a href="https://crates.io/crates/pulldown-cmark">pulldown-cmark</a>を入れていきます。</p>
-<pre><code>$ cargo new --bin pulldown_cmark_playground
+<pre tabindex="0"><code>$ cargo new --bin pulldown_cmark_playground
 $ cd pulldown_cmark_playground
 $ cat 'pulldown-cmark = &quot;0.1.2&quot;' &gt;&gt; Cargo.toml
 $ cargo build
@@ -57,7 +57,7 @@ $ cargo build
 <h2 id="htmlに変換してみる">htmlに変換してみる</h2>
 <p>というわけでライブラリを使う準備が整ったのでさっそくMarkdownをhtmlに変換してみる。
 GitHubのREADME.mdにはサンプルコードらしき物が書いていないが、ドキュメントの方にはちゃんと書いてあるのでそちらを参照しよう。大体以下のコードになります。</p>
-<pre><code>extern crate pulldown_cmark;
+<pre tabindex="0"><code>extern crate pulldown_cmark;
 
 use pulldown_cmark::{html, Parser};
 
@@ -73,7 +73,7 @@ fn main() {
     println!(&quot;{}&quot;, html_buf);
 }
 </code></pre><p><code>$ cargo run</code> で実行してみると以下の結果が出力されます。</p>
-<pre><code>&lt;h1&gt;Hello&lt;/h1&gt;
+<pre tabindex="0"><code>&lt;h1&gt;Hello&lt;/h1&gt;
 &lt;p&gt;人間は愚かな生物。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://blog.himanoa.net&quot;&gt;俺のブログ&lt;/a&gt;&lt;/p&gt;
 </code></pre><p>普通にhtmlに変換されていますね。やったぜ
@@ -84,7 +84,7 @@ mutableな変数の参照を引数で渡して、渡した引数に結果が代�
 <p>シンプルな仕様のリプレーサーとして aタグのhrefのurlがhttpsだった場合にhttpに変換するリプレーサーを書いていきます。時代に逆行している気がしますが、まぁ気にしないことにしましょう。</p>
 <p><a href="https://crates.io/crates/pulldown-cmark">pulldown-cmark</a>のパーサーはIterator traitを実装しています。つまりmapすることができるわけです。mapの引数に渡す関数はEventを受け取ってEventを返す事を期待されています。このEventにパースするテキストの情報などが入っているので受けとったEventを加工してEventで返すやつを作ればいいわけです。</p>
 <p>やっていった結果がこちら</p>
-<pre><code>extern crate pulldown_cmark;
+<pre tabindex="0"><code>extern crate pulldown_cmark;
 
 use pulldown_cmark::{html, Parser, Event, Tag};
 use std::borrow::Cow::{Owned};
@@ -107,7 +107,7 @@ fn main() {
     println!(&quot;{}&quot;, html_buf);
 }
 </code></pre><p>出力結果は</p>
-<pre><code>&lt;h1&gt;Hello&lt;/h1&gt;
+<pre tabindex="0"><code>&lt;h1&gt;Hello&lt;/h1&gt;
 &lt;p&gt;人間は愚かな生物。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://blog.himanoa.net&quot;&gt;俺のブログ&lt;/a&gt;&lt;/p&gt;
 </code></pre><p>ヤリマシタネ！これで好きなようにテキストを変換し放題になりました!</p>

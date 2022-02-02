@@ -51,7 +51,7 @@
 <p>XWindowSystemが必要なアプリケーションを使う予定がないならXLaunch入れたりとかはしなくていいとは思う</p>
 <p>あとは普通のUbuntuなので必要なアプリケーションをインストールしていくだけ。</p>
 <p>僕の環境は多分大体以下のコマンドで再現できると思う</p>
-<pre><code>sudo apt-get install software-properties-common
+<pre tabindex="0"><code>sudo apt-get install software-properties-common
 sudo apt-add-repository ppa:fish-shell/release-2
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt-get update &amp;&amp; sudo apt-get install neovim fish tmux go git build-essential openssl libssl-dev libbz2-dev libreadline-dev libsqlite-dev gcc python-build
@@ -66,7 +66,7 @@ git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-vi
 <h2 id="はまったこと">はまったこと</h2>
 <h3 id="pecoが動かん">pecoが動かん</h3>
 <p>pecoのLinuxビルド持ってきて叩いてみたら</p>
-<pre><code>Failed to execute process '/usr/bin/peco'. Reason:
+<pre tabindex="0"><code>Failed to execute process '/usr/bin/peco'. Reason:
 exec: Exec format error
 The file '/usr/bin/peco' is marked as an executable but could not be run by the operating system.
 </code></pre><!-- raw HTML omitted -->
@@ -74,7 +74,7 @@ The file '/usr/bin/peco' is marked as an executable but could not be run by the 
 <p>ちなみに僕の場合はpeco -&gt; fzfは fzfをインストールして peco使うコードが書いてあるファイルで <code>:%s/peco/fzf-tmux/g</code> しただけで移行終了した。よかった</p>
 <h3 id="systemd動いてはいるけど様子がおかしい">systemd動いてはいるけど様子がおかしい</h3>
 <p><code> systemctl status acpid.service</code> とか叩いてみると</p>
-<pre><code>Failed to get properties: Launch helper exited with unknown return code 1
+<pre tabindex="0"><code>Failed to get properties: Launch helper exited with unknown return code 1
 </code></pre><p>になる。 WSLはGitHubがあるので issue見てたら見つけた</p>
 <p><a href="https://github.com/Microsoft/WSL/issues/1579">https://github.com/Microsoft/WSL/issues/1579</a></p>
 <p>service使おねということらしい</p>

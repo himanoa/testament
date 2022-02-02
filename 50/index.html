@@ -70,7 +70,7 @@
 <h2 id="実装したコマンド">実装したコマンド</h2>
 <h3 id="git-replace-リポジトリ内の特定の文字列を置換するhttpsgithubcomhimanoagit-subcommandsblobmastersrcgit-strreplace"><a href="https://github.com/himanoa/git-subcommands/blob/master/src/git-strreplace">git-replace リポジトリ内の特定の文字列を置換する</a></h3>
 <p>いつも <code>git grep -l Foo | xargs sed -i '' -e &quot;/Foo/Bar/&quot;</code> とか書いてた実装ですね。これをこのサブコマンドを用いることで以下のスニペットまで短縮できます</p>
-<pre><code>$ git strreplace Foo Bar
+<pre tabindex="0"><code>$ git strreplace Foo Bar
 </code></pre><p>ちなみに自慢していたところを<a href="https://twitter.com/unecochan">@unecochan</a>さんに <code>--word-regexp</code> オプションへの対応実装のPRをもらいました！ありがとうございました！</p>
 <h3 id="git-base-branch-本流となるブランチを記録するhttpsgithubcomhimanoagit-subcommandsblobmastersrcgit-base-branch"><a href="https://github.com/himanoa/git-subcommands/blob/master/src/git-base-branch">git-base-branch 本流となるブランチを記録する</a></h3>
 <p>プロジェクトによって開発者にとって主流になるブランチが違う場合があります。
@@ -88,12 +88,12 @@
 <p>そうなってくると記憶能力が弱い僕は3つ前に作業していたブランチをチェックアウトしたくても名前すら全く思い出せない時があります。</p>
 <p>そこで便利なのが <code>git-chistory</code> 、このコマンドを実行すると <code>git reflog</code> からcheckoutのログを抜き出して、移動したブランチのみを抜き出して列挙してくれます！</p>
 <p>あとは <code>fzf</code> なり <code>peco</code> に食わせればいいだけなので簡単ですね！</p>
-<pre><code>$ git checkout $(git chistory | fzf)
+<pre tabindex="0"><code>$ git checkout $(git chistory | fzf)
 </code></pre><h3 id="git-exec-コマンドを実行し実行したコマンドをコミットメッセージにしてコミットするhttpsgithubcomhimanoagit-subcommandsblobmastersrcgit-exec"><a href="https://github.com/himanoa/git-subcommands/blob/master/src/git-exec">git-exec コマンドを実行し実行したコマンドをコミットメッセージにしてコミットする</a></h3>
 <p><code>yarn add --dev @types/react</code> などコマンドを実行した結果起きた副作用をcommitしたい場合があります</p>
 <p>僕はそのようなコミットをする時は常に <code>Exec: yarn add --dev @types/react</code> のようなコミットメッセージにしたいのですが、運用でカバーだけでは大変です。</p>
 <p>そのような運用をカバーするために作られたのがこのコマンド。引数で実行したいコマンドを渡すことによって、コマンドを実行したあとコミットまでやってくれる便利なツールです</p>
-<pre><code>$ git exec &quot;yarn add --dev typescript&quot;
+<pre tabindex="0"><code>$ git exec &quot;yarn add --dev typescript&quot;
 </code></pre><h2 id="使った言語の選定基準">使った言語の選定基準</h2>
 <p>リポジトリ見れば一目瞭然なのですが、主に使ったプログラミング言語はPythonでした。</p>
 <p>選定理由としては以下の項目を重視した結果です。</p>
