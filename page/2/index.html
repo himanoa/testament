@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" dir="ltr">
   <head>
-	<meta name="generator" content="Hugo 0.80.0" />
+	<meta name="generator" content="Hugo 0.92.2" />
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,6 +42,34 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/71/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">連休の始まり</h2>
+    <p class="card-text lineclamp">遅めの5連休を取ったので今日から連休スタートです。せめて連休中は毎日日記を書いていきたいところ
+ 今日やったこと   労働
+  職場の人にいい感じの小さいRustツールを教えてもらったのでパッチ書いた
+  ゴミ捨て
+  オクトパストラベラー
+  プリムロゼの二章だけ
+        今日やりたいこと   生活の修復
+  部屋の掃除
+  ゴミ捨て
+  風呂掃除
+     プログラミング
+  旅団世界の戦闘シミュレータ
+  なんか良さげなOSSみつけてパッチ投げたい
+        その他 せっかく5連休を手に入れたのはいいですが、日程だけとりあえず抑えた感じで何も予定がないし、コロナが最強に流行ってるので旅行とかもいけないしでやること不足気味ですね。
+ k8sのクラスタでもVPS上に建築するって言って全く手つけてなかったのえやれるといいなーっていま思ってます
+ あと、風呂からブログかけたら便利だろうなとおもって、iPadからブログを書けるようにしてるんですが、意外とiPadって文字書きやすいですね。仕事で使ってるラップトップよりタイピング体験がいい気さえしています。
+   </p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2021-08-21">Aug 21, 2021</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/70/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -133,31 +161,6 @@
  .config/ を展開 direnv と asdf と neovim とRustのtoolchain入れたら開発できるくらいには回復したので、環境構築楽でいいなあとおもった</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2021-06-15">Jun 15, 2021</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/65/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">ブログのURL構造を変更した</h2>
-    <p class="card-text lineclamp">hugoのversionを上げたら blog.himanoa.net が entries/って記事を表示しはじめて壊れてしまっていたので、content配下のディレクトリ構造を変更した。
- しかし、content以下のディレクトリ構造を変えるとビルドした後の記事のURLも変わってしまう。
- URLが変わってしまうと、過去のリンクが壊れてしまってつらいつらいなので、過去のURLを踏んできたときは今のURLにリダイレクトするようにした。
- ここではその作業ログを残す
- Hugoでのリダイレクトの貼り方 hugoにはFront Matterという仕組みが存在し、ここに決められた形式のメタデータを書くことができる。
- ここにリダイレクト元となるパスを記述することでリダイレクトを実現することができる。
- 詳細は公式ドキュメントを参照するべし
-   作業手順  content/entries以下のファイルをcontent/に移動 15a468c
-  既存の記事内のFront Matterの形式を揃える
- hugo convert toJSON --unsafe を実行することでcontent配下のFront matterを一括変換できる cf5bfc5
-     記事ファイルの内部を開いてFront Matter部分だけ抜き出して置換するJavaScriptを書いて実行する c5a942b
- コードはこちら
-     git push してデプロイされたら動作確認する
-     </p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2021-02-06">Feb 6, 2021</time></p>
       
     </div>
   </article>
