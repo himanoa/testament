@@ -48,7 +48,7 @@ SolidJSはVue + React / 2 みたいな感じで個人的には今のところか
 
 昨今のTwitterはレコメンドが暴走していて、自分が見たくもないコンテンツがめちゃくちゃ表示されていて嫌だなあと感じていたのだが、これを抜け出すためのコツが最近わかったのでここに記載しておこうとおもう。
 
-日本人のTweetをふぁぼするのをやめて、https://twitter.com/hashtag/NaturePhotography[#NaturePhotography] などのハッシュタグの画像付きツイートをふぁぼすることだ。
+日本人のTweetをふぁぼするのをやめて、 https://twitter.com/hashtag/NaturePhotography[#NaturePhotography] などのハッシュタグの画像付きツイートをふぁぼすることだ。
 
 こうすることによって日本人の陰湿なツイートがレコメンドされるのを避け、綺麗な自然の写真のみを摂取し続けられてお得だ。
 
