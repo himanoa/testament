@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>近況 &middot; 遺言書</title>
+  <meta name="description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;なんか仕事していたり趣味でコード書いてたりしてこっちに記事を投稿してなかった。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;そろそろ広告が付く気がするので死ぬ気で記事を更新しようと思う(古代文化" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="近況 &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;なんか仕事していたり趣味でコード書いてたりしてこっちに記事を投稿してなかった。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;そろそろ広告が付く気がするので死ぬ気で記事を更新しようと思う(古代文化" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/77/" >
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/77/" >
+  <meta property="og:title" content="近況 &middot; 遺言書" >
+  <meta property="og:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;なんか仕事していたり趣味でコード書いてたりしてこっちに記事を投稿してなかった。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;そろそろ広告が付く気がするので死ぬ気で記事を更新しようと思う(古代文化" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">近況</h1>
+          <p class="post-date">Posted <time datetime="2022-06-05">Jun 5, 2022</time></p>
+        </header>
+        
+        <div class="paragraph">
+<p>なんか仕事していたり趣味でコード書いてたりしてこっちに記事を投稿してなかった。</p>
+</div>
+<div class="paragraph">
+<p>そろそろ広告が付く気がするので死ぬ気で記事を更新しようと思う(古代文化)</p>
+</div>
+<div class="sect1">
+<h2 id="_wikiシステムを作っている">wikiシステムを作っている</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/nibo4/matsunoki" class="bare">https://github.com/nibo4/matsunoki</a></p>
+</div>
+<div class="paragraph">
+<p>会社で使っているNotionへのイラ立ちが抑えられなくなってきており、最近はwikiシステムを作ろうとしている。</p>
+</div>
+<div class="paragraph">
+<p>ここ1ヵ月で認証だったりCIだったりの足回りを大体整えた。</p>
+</div>
+<div class="paragraph">
+<p>こういう者を作る時のベストプラクティスとしてコアコンセプトの実装をやって、ちゃんと使えることを最初に証明してから認証だとかテスト基盤を作っていく というのが一般的だが、今回は逆のアプローチで作っている。</p>
+</div>
+<div class="paragraph">
+<p>これには理由があって、コアコンセプトができあがった時の実装がテスタブルじゃなかったりそもそもテストが少なかったりすると、そこから認証とかを作るためにリファクタリングしたりしないといけなくなるのだが、それが面倒でエターナルことがよくあるためだ。</p>
+</div>
+<div class="paragraph">
+<p>また、新規技術の採用も積極的にやっている。バックエンドはRust + axumでフロントエンドはTypeScriptのままだが、最近巷で話題のSolidJSを採用してみた。</p>
+</div>
+<div class="paragraph">
+<p>axumはtokioベースでユーザーフレンドリーなAPIを提供しているWebサーバー立てるマンで、hyperよりもroutingの構造が書きやすかったり、actixとかで採用されているFromRequestTraitなどを輸入してきていて、リクエストハンドラの仮引数の定義次第で自動的にバリデーションを走らせたりヘッダーが適切に設定されているかなどを検証できて、便利だなあとおもった。</p>
+</div>
+<div class="paragraph">
+<p>SolidJSはVue + React / 2 みたいな感じで個人的には今のところかなり使い勝手がいいUIライブラリに見える。</p>
+</div>
+<div class="paragraph">
+<p>現職ではReactを書いてるのでそれとの比較になってしまうのだが、Reactで再レンダリングをちゃんと抑制しつつコードを書こうとするとどうしてもmemoだけだと大変すぎて、「Reduxや自作のストアパターンを作って繋ぎ込む部分で、ストアの値が更新されていたらforceUpdateをする」 みたいなパターンに甘えがちなのだが、SolidJSだとこのパターンがデフォルトで採用されていて、自分がやりたいことを素直に書けるなあとおもった。</p>
+</div>
+<div class="paragraph">
+<p>どちらの技術も5万行も書いてないので、もうちょっとwikiシステムがおおきくなったら再評価していきたいなとおもう</p>
+</div>
+<div class="paragraph">
+<p>あと、友達のkb10uyと一緒に作ろうぜ！っていいつつ、動作させる基盤がまだ揃い切ってないので今週中には全部できるといいなあという感じ</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_料理">料理</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>相変わらずやっている。友達が一人暮らしをはじめたのもあって、みんなで料理をDiscordに投稿していたりしたが、最近は写真活動は落ち付いてきてしまった。</p>
+</div>
+<div class="paragraph">
+<p>最近よく食べている食べ物はしらすで、これはすごい。何も調理せずに白米に納豆と乗せて食べるとうまいし最悪そのまま食ってもうまい。最近は冷凍するために沢山かって保存していたりしてすっかり冷蔵庫のいつものメンバー入りしてしまった。</p>
+</div>
+<div class="paragraph">
+<p>あとはおやつの間食も控えていて、冷蔵庫であまりがちな人参や胡瓜を野菜スティックにしてディップしながら間食している。あんまり健康になることを望んでいるわけではないが、野菜はおいしいし水分を含んでいるので喉も潤うしなんかお得な気分になる。</p>
+</div>
+<div class="paragraph">
+<p>ディップするタレは色々試しているのがだ、一番おいしいと感じたのは 味噌と胡椒と砂糖と少量の水を加えて混ぜたやつだ。調味料はいろいろ混ぜて使うと味の解像度が増えて食べた時楽しくなる印象がある。まあいれすぎると味がうるさくなるという欠点もあるのだが…</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_twitter">Twitter</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>昨今のTwitterはレコメンドが暴走していて、自分が見たくもないコンテンツがめちゃくちゃ表示されていて嫌だなあと感じていたのだが、これを抜け出すためのコツが最近わかったのでここに記載しておこうとおもう。</p>
+</div>
+<div class="paragraph">
+<p>日本人のTweetをふぁぼするのをやめて、https://twitter.com/hashtag/NaturePhotography[#NaturePhotography] などのハッシュタグの画像付きツイートをふぁぼすることだ。</p>
+</div>
+<div class="paragraph">
+<p>こうすることによって日本人の陰湿なツイートがレコメンドされるのを避け、綺麗な自然の写真のみを摂取し続けられてお得だ。</p>
+</div>
+<div class="paragraph">
+<p>最強料理ツイートなどをふぁぼっていた時期もあったが、人気が出てきた日本人は政治評論や人間評論に夢中になって、最悪情報しかたれながさなくなるので、避けたほうがいいということがわかってきた。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_仕事">仕事</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>先月初めの話になるが <a href="https://scalebase.com/news/article#ft82t7sfn_oc" class="bare">https://scalebase.com/news/article#ft82t7sfn_oc</a> これを開発していてリリースした。</p>
+</div>
+<div class="paragraph">
+<p>対応自体はシンプルにReactComponentで一段ラップすることでどの権限がないと見れないのかという属性を付与できる簡単な仕組みにしたのだが、補完できるようにする基盤を用意したり、そもそも対応する箇所が多すぎるなどで大変だったなあ。</p>
+</div>
+<div class="paragraph">
+<p>この後にチーム移動してまたでかい機能を作ることになった。</p>
+</div>
+<div class="paragraph">
+<p>前のチームの成功体験として、「ちゃんとした粒度でチケットが切れていて、いつまではリリースできないのかが明確にする」といったことが明確になったので新しいチームでもそれを実績していたり、それだけではうまく回りそうになかったので細かく動作確認するための環境を作るなどをやっていたりする。</p>
+</div>
+<div class="paragraph">
+<p>自分や回りの人間の作業のクオリティを上げるためにどういうのを用意すればいいか というのを考えながら実績するのは楽しいな。とおもったりした。一歩でも明日を今日よりよくするためにこういう作業は今後も積極的にやっていきたい。</p>
+</div>
+<div class="paragraph">
+<p>こういうのを社外にアウトプットできるとより良いらしいのだが、僕が日本の巷に興味ないのと友達の間で効率よく作業するためにはどうすればいいのか議論できればそれで満足なので、社外のためにアウトプットするみたいなことはしない気がする。</p>
+</div>
+<div class="paragraph">
+<p>ほかにも友達とスカイツリー登って酒を買ってきた話とか、呑みをやった話とかいろいろしたいのだが、収拾が付かなくなるのでまた今度にしようとおもう。さらばだ…</p>
+</div>
+</div>
+</div>
+
+        <a href="http://clap.webclap.com/clap.php?id=himanoa" target="_blank" onclick="window.open('http://clap.webclap.com/clap.php?id=himanoa','webclap','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes');return false;">拍手ボタン</a>
+      </article>
+    </main>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  </body>
+</html>

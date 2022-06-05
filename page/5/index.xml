@@ -8,6 +8,13 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>あけましておめでとうございます</title>
+      <link>https://blog.himanoa.net/56/</link>
+      <pubDate>Tue, 31 Dec 2019 21:40:30 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/56/</guid>
+      <description>今年もよろしくおねがいします</description>
+    </item><item>
       <title>おれはもうだめだ</title>
       <link>https://blog.himanoa.net/55/</link>
       <pubDate>Thu, 26 Dec 2019 02:04:26 +0900</pubDate>
@@ -66,13 +73,6 @@ cargo install mkrepo
       <description>えー、物理の単位をー落としてしまうとー、将来、モニタのレストアームをつけうときにーあー、とても、つけるのがー困難にーなってしまう。
 なので物理の単位を落とさないように皆さんちゃんと勉強しましょう
 あと自分の机の規格を知らずに雑にアーム買うのもやめましょう</description>
-    </item><item>
-      <title>MHWで効率良くクラウンをコンプしたい</title>
-      <link>https://blog.himanoa.net/51/</link>
-      <pubDate>Wed, 11 Sep 2019 22:29:02 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/51/</guid>
-      <description>モンスターハンターワールドで効率よく金冠をコンプしたい</description>
     </item>
   </channel>
 </rss>

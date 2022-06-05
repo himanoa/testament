@@ -8,6 +8,13 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>テスト記事</title>
+      <link>https://blog.himanoa.net/36/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/36/</guid>
+      <description>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</description>
+    </item><item>
       <title>RustでEnumを文字列(文字列slice)から生成したい</title>
       <link>https://blog.himanoa.net/35/</link>
       <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
@@ -57,20 +64,6 @@ extern crate pulldown_cmark;use pulldown_cmark::{html, Parser};fn main() {let
 エースコンバット ACE余裕じゃなんとかならない難易度 まじで難しい。エースコンバットはかなり得意なゲームなんですけどEasyでも死んだ箇所があったくらいには難しかった。Normalはやばいですね。難しいポイント攻略するのにかなり時間がかかった。敵が物量の暴力で攻めてくるのもあるんだけどエースコンバットよりも攻撃をよくするイメージがついた。全部俺が撃墜してやるぜーなんてやると一瞬で蒸発したりする。
 攻略のコツとか まずは全部自分でなんとかするという気持ちを殺すことです。敵がおおいのでミサイルいっぱいあっても足りなかったりする。
 味方が有能なので味方と一緒に飛ぶ事を心がける事でこの変はなんとかなったりする。あと母艦が出てくるミッションは困ったら母艦の上空をグルグル回ったりしとけば敵が勝手に死ぬ。この変はエースコンバットよりどうやって飛ぶかを考えさせられるゲームだった。</description>
-    </item><item>
-      <title>Python &#43; Firebase RealtimeDBでDiscordBotを作った感想</title>
-      <link>https://blog.himanoa.net/31/</link>
-      <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/31/</guid>
-      <description>これの話です。
-これの裏側はPython3.6 + Firebase RealtimeDB + GAE(Flexible Enviroment)になっています。
-今回はRealtime Databsaeを使った感想について書いていきます
-そもそもなぜReatimeDBを？ 人間がデプロイしないで自分のサーバーに追加できるDiscordBotを組みたかったので何かしらに永続化する必要がある。 RDBMSで何か遊ぶことには慣れてるので、本当はRDBMSを使いたかったのだが、無料で使える or もしくはコスパがよろしいプランが存在しなかったので、NosqlなFirebase Realtime DBを採用したみたいな経緯でした。
-よかった話 安い 日のデータ通信量がわかれば月のデータ通信量もなんとなくわかるのでわかるんですが、安いのは個人のホビーとしてはポイントがたかい。 僕のユースケースだと無料枠に収まりそうなのでよかった
-見えるものが動くまでのサイクルがはやい。 テーブル設計しなくても適当にDatabaseに実データが入れられたり、リアルタイム同期してくれるため動くものを作るまでのサイクルはめちゃくちゃ簡略化できる。
-しんどかった話 flattenなスキーマ設計 RealtimeDBはスキーマレスだが開発を効率的にやるためにはやはりスキーマはあったほうがいいと思っているのでアプリケーションコード上でやった。 RealtimeDBはあるテーブルのデータを一覧で取得してくるとその子要素も全部取得してしまうため、データが増えてくるとpayloadは巨大化するしコストも増えていくので、flattenに設計していく必要があるのだがそうすると今度は削除や書き込み時に複数のエンドポイントを更新しないといけなくなるため、漏れが発生するとすぐに破綻するのが大変だった。
-そもそもFirestoreを選定しなかった理由 まだベータ版だったのと良さげなAPIClientがなかったため今回は敬遠した。が今度試してみたいですね</description>
     </item>
   </channel>
 </rss>

@@ -42,6 +42,41 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/77/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">近況</h2>
+    <p class="card-text lineclamp">なんか仕事していたり趣味でコード書いてたりしてこっちに記事を投稿してなかった。
+ そろそろ広告が付く気がするので死ぬ気で記事を更新しようと思う(古代文化)
+ wikiシステムを作っている https://github.com/nibo4/matsunoki
+ 会社で使っているNotionへのイラ立ちが抑えられなくなってきており、最近はwikiシステムを作ろうとしている。
+ ここ1ヵ月で認証だったりCIだったりの足回りを大体整えた。
+ こういう者を作る時のベストプラクティスとしてコアコンセプトの実装をやって、ちゃんと使えることを最初に証明してから認証だとかテスト基盤を作っていく というのが一般的だが、今回は逆のアプローチで作っている。
+ これには理由があって、コアコンセプトができあがった時の実装がテスタブルじゃなかったりそもそもテストが少なかったりすると、そこから認証とかを作るためにリファクタリングしたりしないといけなくなるのだが、それが面倒でエターナルことがよくあるためだ。
+ また、新規技術の採用も積極的にやっている。バックエンドはRust + axumでフロントエンドはTypeScriptのままだが、最近巷で話題のSolidJSを採用してみた。
+ axumはtokioベースでユーザーフレンドリーなAPIを提供しているWebサーバー立てるマンで、hyperよりもroutingの構造が書きやすかったり、actixとかで採用されているFromRequestTraitなどを輸入してきていて、リクエストハンドラの仮引数の定義次第で自動的にバリデーションを走らせたりヘッダーが適切に設定されているかなどを検証できて、便利だなあとおもった。
+ SolidJSはVue + React / 2 みたいな感じで個人的には今のところかなり使い勝手がいいUIライブラリに見える。
+ 現職ではReactを書いてるのでそれとの比較になってしまうのだが、Reactで再レンダリングをちゃんと抑制しつつコードを書こうとするとどうしてもmemoだけだと大変すぎて、「Reduxや自作のストアパターンを作って繋ぎ込む部分で、ストアの値が更新されていたらforceUpdateをする」 みたいなパターンに甘えがちなのだが、SolidJSだとこのパターンがデフォルトで採用されていて、自分がやりたいことを素直に書けるなあとおもった。
+ どちらの技術も5万行も書いてないので、もうちょっとwikiシステムがおおきくなったら再評価していきたいなとおもう
+ あと、友達のkb10uyと一緒に作ろうぜ！っていいつつ、動作させる基盤がまだ揃い切ってないので今週中には全部できるといいなあという感じ
+   料理 相変わらずやっている。友達が一人暮らしをはじめたのもあって、みんなで料理をDiscordに投稿していたりしたが、最近は写真活動は落ち付いてきてしまった。
+ 最近よく食べている食べ物はしらすで、これはすごい。何も調理せずに白米に納豆と乗せて食べるとうまいし最悪そのまま食ってもうまい。最近は冷凍するために沢山かって保存していたりしてすっかり冷蔵庫のいつものメンバー入りしてしまった。
+ あとはおやつの間食も控えていて、冷蔵庫であまりがちな人参や胡瓜を野菜スティックにしてディップしながら間食している。あんまり健康になることを望んでいるわけではないが、野菜はおいしいし水分を含んでいるので喉も潤うしなんかお得な気分になる。
+ ディップするタレは色々試しているのがだ、一番おいしいと感じたのは 味噌と胡椒と砂糖と少量の水を加えて混ぜたやつだ。調味料はいろいろ混ぜて使うと味の解像度が増えて食べた時楽しくなる印象がある。まあいれすぎると味がうるさくなるという欠点もあるのだが…
+   Twitter 昨今のTwitterはレコメンドが暴走していて、自分が見たくもないコンテンツがめちゃくちゃ表示されていて嫌だなあと感じていたのだが、これを抜け出すためのコツが最近わかったのでここに記載しておこうとおもう。
+ 日本人のTweetをふぁぼするのをやめて、https://twitter.com/hashtag/NaturePhotography[#NaturePhotography] などのハッシュタグの画像付きツイートをふぁぼすることだ。
+ こうすることによって日本人の陰湿なツイートがレコメンドされるのを避け、綺麗な自然の写真のみを摂取し続けられてお得だ。
+ 最強料理ツイートなどをふぁぼっていた時期もあったが、人気が出てきた日本人は政治評論や人間評論に夢中になって、最悪情報しかたれながさなくなるので、避けたほうがいいということがわかってきた。
+   仕事 先月初めの話になるが https://scalebase.com/news/article#ft82t7sfn_oc これを開発していてリリースした。
+ 対応自体はシンプルにReactComponentで一段ラップすることでどの権限がないと見れないのかという属性を付与できる簡単な仕組みにしたのだが、補完できるようにする基盤を用意したり、そもそも対応する箇所が多すぎるなどで大変だったなあ。
+ この後にチーム移動してまたでかい機能を作ることになった。</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2022-06-05">Jun 5, 2022</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/76/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -120,19 +155,6 @@
    </p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2021-10-06">Oct 6, 2021</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/72/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">ゆっくりと破滅に向かう</h2>
-    <p class="card-text lineclamp">もしかして: 終焉のカウントダウン ?
- </p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2021-09-27">Sep 27, 2021</time></p>
       
     </div>
   </article>
