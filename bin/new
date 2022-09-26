@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+git pull origin master
 function testament_open() {
   touch_erb blog content/$1.adoc && $EDITOR content/$1.adoc
 }
