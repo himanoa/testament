@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>TypeScriptで集合に対する操作を実装する &middot; 遺言書</title>
+  <meta name="description" content="&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;highlight&#34;&gt;&lt;code class=&#34;language-typescript&#34; data-lang=&#34;typescript&#34;&gt;type Regist" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="TypeScriptで集合に対する操作を実装する &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;highlight&#34;&gt;&lt;code class=&#34;language-typescript&#34; data-lang=&#34;typescript&#34;&gt;type Regist" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/78/" >
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/78/" >
+  <meta property="og:title" content="TypeScriptで集合に対する操作を実装する &middot; 遺言書" >
+  <meta property="og:description" content="&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;highlight&#34;&gt;&lt;code class=&#34;language-typescript&#34; data-lang=&#34;typescript&#34;&gt;type Regist" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">TypeScriptで集合に対する操作を実装する</h1>
+          <p class="post-date">Posted <time datetime="2022-09-26">Sep 26, 2022</time></p>
+        </header>
+        
+        <div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">type RegisteredUser = {
+  kind: &#39;registered&#39;,
+  id: string,
+  name: string,
+}
+
+type TentativeUser = {
+  kind: &#39;tentative&#39;
+  id: string,
+  name: string,
+}
+
+type User = TentativeUser | RegisteredUser</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>みたいな構造が存在した時に <code>User[]</code> に対する振舞いを定義したい！みたいなモチベーションが発生することがある。</p>
+</div>
+<div class="paragraph">
+<p>例を上げると、登録済みのユーザーのみでfilterしたい！みたいな感じだ。</p>
+</div>
+<div class="paragraph">
+<p>フロントエンドのコードを書いたり見たりしたりすると、やりがちなのは <code>User[]</code> で引き回してコンポーネント側で次のようなコードで実装するやつだ。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">import { FC, useMemo } from &#39;react&#39;
+
+const UserCard: FC&lt;{ users: User[] }&gt; = ({users}) =&gt; {
+  const registeredUsers = useMemo(() =&gt; {
+    return user.filter((u): u is TentativeUser =&gt; u.kind === &#39;registered&#39;)
+  }, [])
+  return &lt;&gt;...&lt;/&gt;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>この方法でも要件は実装できるのだが次の点で課題がのこる。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>registeredUsersを計算するための処理がComponentに閉じてしまっているため、外部からユニットテストできない</p>
+</li>
+<li>
+<p>他のコンポーネントで同じロジックを実装しようとした時にコピペで持ってくる必要がある</p>
+</li>
+<li>
+<p>これの何が悪いかというと、コピペで複製されまくるのでこのロジック自体にバグが存在した場合、変更箇所がコピペした分だけ増えてしまい、なおかつ検索もしにくい</p>
+</li>
+<li>
+<p>UserCardが賢くなりすぎてしまい、全容を把握することが困難</p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_関数として外部に切り出す手法">関数として外部に切り出す手法</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>関数の内部にfilterの内部実装が置いてあるのが問題なのであれば、次のようにfilterする関数として切り出してあげるとうまくテストしたり他のモジュールから再利用できそうだ。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">type RegisteredUser = {
+  kind: &#39;registered&#39;,
+  id: string,
+  name: string,
+}
+
+type TentativeUser = {
+  kind: &#39;tentative&#39;
+  id: string,
+  name: string,
+}
+
+type User = TentativeUser | RegisteredUser
+
+export const filterRegisterd = (users: User[]): RegisteredUser[] =&gt; {
+  return users.filter((u): u is RegisteredUser =&gt; u.kind === &#39;registered&#39;)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>使うところは次のような感じだ</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">import { FC, useMemo } from &#39;react&#39;
+import { User, filterRegisterd } from &#39;./user&#39;
+
+const UserCard: FC&lt;{ users: User[] }&gt; = ({users}) =&gt; {
+  const registeredUsers = useMemo(() =&gt; {
+    return filterRegisterd(users)
+  }, [])
+  return &lt;&gt;...&lt;/&gt;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>こうすることで上記に上げた問題は解決できたが、次の点で課題が残る。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>filterRegisterdという関数の名前を知っていれば tsserver の機能で一発でimportすることができるが、名前を知らなければどこのモジュールにその実装があるかわかりにくい</p>
+</li>
+<li>
+<p>Userモジュールにありそうな名前だが…本当にそうかどうか機械的に判別できない</p>
+</li>
+<li>
+<p>等価性チェックなどで <code>eq</code> みたいな汎用性が高い名前を使いたいが、tsserverの機能で一意に判別することができない</p>
+</li>
+<li>
+<p>プロジェクト内で一意な名前にしたくなって、eqUserみたいな名前に変更しがち</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>この問題を便利に解決できる手法がコレクションクラスとしての実装方法だ。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_collectionclassとして実装する">CollectionClassとして実装する</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>User[]</code> として引き回す代わりに <code>UserCollection</code> を実装して、利用者側は <code>User[]</code> ではなくUserCollectionとして引き回す。具体的には次のようなコードだ。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">class UserCollection {
+  constructor(protected values: User[]) {}
+
+  filterRegistered(): RegisteredUser[] {
+    return this.values.filter((u): u is RegisteredUser =&gt; u.kind === &#39;registered&#39;)
+  }
+}
+
+// ここから先はUserCollectionを利用するReactコンポーネント
+
+import { FC, useMemo } from &#39;react&#39;
+import { User, filterRegisterd } from &#39;./user&#39;
+
+const UserCard: FC&lt;{ users: UserCollection }&gt; = ({users}) =&gt; {
+  const registeredUsers = useMemo(() =&gt; {
+    return users.filterRegisterd()
+  }, [])
+  return &lt;&gt;...&lt;/&gt;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>UserCollectionがユーザー定義型として、利用側のコードに表出することによって次の問題が解決する。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>名前を知らないとこの実装が既に存在するかどうか判断がつかない問題</p>
+</li>
+<li>
+<p>class を用いることによってネームスペースが一段切れるので <code>eq</code> みたいな汎用性が高い名前がためらわれる問題</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>しかし、この方法を取ることによって発生する問題もある</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>UserCollection</code> に <code>map</code> や <code>filter</code> が生えていないため、 <code>User[]</code> から <code>map</code> してJSXを返すみたいなことをしたい場合はmap関数を都度自作する必要がある</p>
+</li>
+<li>
+<p>toJSON した時に [object Object] になってしまう</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>この問題を解決した真・コレクションクラスの実装を次のセクションで解説する。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_真コレクションクラス">真・コレクションクラス</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>独自クラスを用いると既存のArray.prototypeに紐付いている実装を使うことができないという問題が発生することがわかった。これを解決するためにはArrayを継承したCollectionClassを作ってあげるとよい</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">class UserCollection extends Array&lt;User&gt; {
+  registereds(): RegisteredUser[] {
+    return this.filter((u): u is RegisteredUser =&gt; u.kind === &#39;registered&#39;)
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Arrayクラスを継承してあげることによって次のようなコードを書くことができる</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">const users = UserCollection.from({kind: &#39;registerd&#39;, id: &#39;xxxx&#39;, name: &#39;yyyy&#39;}, {{kind: &#39;tentative&#39;, id: &#39;yyyy&#39;, name: &#39;yyyy&#39;}}) // fromというstatic methodは継承したArrayに生えている実装
+users.filter(u  =&gt; u.name === &#39;himanoa&#39; ) // filterはArray.prototypeの実装
+JSON.stringify(users) // -&gt; [{kind: &#39;registerd&#39;, id: &#39;xxxx&#39;, name: &#39;yyyy&#39;}, {{kind: &#39;tentative&#39;, id: &#39;yyyy&#39;, name: &#39;yyyy&#39;}}] :smile:</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>こうすることによってグローバルのネームスペースを汚すことも既存のArrayに対する操作の自由度を損なうこともなく、コレクションに振舞いを紐付けることとが達成された。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_おわりに">おわりに</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>弊社のScalaプロジェクトでカスタムコレクションを定義してそこに振舞いを定義するというやり方を見て、大変goodな感じがしてどこかで採用したかったのですが、こうしてTypeScriptでもうまく作ることができて満足できてよかった</p>
+</div>
+<div class="paragraph">
+<p>世界を広げてくれた同僚に圧倒的感謝！</p>
+</div>
+</div>
+</div>
+
+        <a href="http://clap.webclap.com/clap.php?id=himanoa" target="_blank" onclick="window.open('http://clap.webclap.com/clap.php?id=himanoa','webclap','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes');return false;">拍手ボタン</a>
+      </article>
+    </main>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  </body>
+</html>

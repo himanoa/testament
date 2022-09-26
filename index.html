@@ -42,6 +42,21 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/78/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">TypeScriptで集合に対する操作を実装する</h2>
+    <p class="card-text lineclamp">type RegisteredUser = { kind: &#39;registered&#39;, id: string, name: string, } type TentativeUser = { kind: &#39;tentative&#39; id: string, name: string, } type User = TentativeUser | RegisteredUser   みたいな構造が存在した時に User[] に対する振舞いを定義したい！みたいなモチベーションが発生することがある。
+ 例を上げると、登録済みのユーザーのみでfilterしたい！みたいな感じだ。
+ フロントエンドのコードを書いたり見たりしたりすると、やりがちなのは User[] で引き回してコンポーネント側で次のようなコードで実装するやつだ。
+ import { FC, useMemo } from &#39;react&#39; const UserCard: FC&lt;{ users: User[] }&gt; = ({users}) =&gt; { const registeredUsers = useMemo(() =&gt; { return user.filter((u): u is TentativeUser =&gt; u.kind === &#39;registered&#39;) }, []) return &lt;&gt;.</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2022-09-26">Sep 26, 2022</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/77/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -138,23 +153,6 @@
  Markdownでscaffoldの計画書を記述できる rails generate では generatorを自作するためにはRubyスクリプトを書きますが、mdmgはhandlebars templateが使えるmarkdownを採用しました。</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2021-10-27">Oct 27, 2021</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/73/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">やめたい人生2021</h2>
-    <p class="card-text lineclamp">  部屋の片付けができない
-  ゴミを指定の日に出せない
-  床に物を置きがち
-  労働のパフォーマンスが不安定
-   総括 人生ごとやめたほうが良い
-   </p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2021-10-06">Oct 6, 2021</time></p>
       
     </div>
   </article>
