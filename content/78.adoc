@@ -1,0 +1,169 @@
+---
+title: "TypeScriptで集合に対する操作を実装する"
+date: 2022-09-26T20:06:08+09:00 
+draft: false
+author: himanoa
+---
+
+
+[source,typescript]
+----
+type RegisteredUser = {
+  kind: 'registered',
+  id: string,
+  name: string,
+}
+
+type TentativeUser = {
+  kind: 'tentative'
+  id: string,
+  name: string,
+}
+
+type User = TentativeUser | RegisteredUser
+
+----
+
+みたいな構造が存在した時に `User[]` に対する振舞いを定義したい！みたいなモチベーションが発生することがある。
+
+例を上げると、登録済みのユーザーのみでfilterしたい！みたいな感じだ。
+
+フロントエンドのコードを書いたり見たりしたりすると、やりがちなのは `User[]` で引き回してコンポーネント側で次のようなコードで実装するやつだ。
+
+[source,typescript]
+----
+import { FC, useMemo } from 'react'
+
+const UserCard: FC<{ users: User[] }> = ({users}) => {
+  const registeredUsers = useMemo(() => {
+    return user.filter((u): u is TentativeUser => u.kind === 'registered')
+  }, [])
+  return <>...</>
+}
+----
+
+この方法でも要件は実装できるのだが次の点で課題がのこる。
+
+* registeredUsersを計算するための処理がComponentに閉じてしまっているため、外部からユニットテストできない
+* 他のコンポーネントで同じロジックを実装しようとした時にコピペで持ってくる必要がある
+  * これの何が悪いかというと、コピペで複製されまくるのでこのロジック自体にバグが存在した場合、変更箇所がコピペした分だけ増えてしまい、なおかつ検索もしにくい
+* UserCardが賢くなりすぎてしまい、全容を把握することが困難
+
+
+== 関数として外部に切り出す手法
+
+関数の内部にfilterの内部実装が置いてあるのが問題なのであれば、次のようにfilterする関数として切り出してあげるとうまくテストしたり他のモジュールから再利用できそうだ。
+
+[source,typescript]
+----
+type RegisteredUser = {
+  kind: 'registered',
+  id: string,
+  name: string,
+}
+
+type TentativeUser = {
+  kind: 'tentative'
+  id: string,
+  name: string,
+}
+
+type User = TentativeUser | RegisteredUser
+
+export const filterRegisterd = (users: User[]): RegisteredUser[] => {
+  return users.filter((u): u is RegisteredUser => u.kind === 'registered')
+}
+----
+
+使うところは次のような感じだ
+
+[source,typescript]
+-------
+import { FC, useMemo } from 'react'
+import { User, filterRegisterd } from './user'
+
+const UserCard: FC<{ users: User[] }> = ({users}) => {
+  const registeredUsers = useMemo(() => {
+    return filterRegisterd(users)
+  }, [])
+  return <>...</>
+}
+-------
+こうすることで上記に上げた問題は解決できたが、次の点で課題が残る。
+
+* filterRegisterdという関数の名前を知っていれば tsserver の機能で一発でimportすることができるが、名前を知らなければどこのモジュールにその実装があるかわかりにくい
+  * Userモジュールにありそうな名前だが…本当にそうかどうか機械的に判別できない
+* 等価性チェックなどで `eq` みたいな汎用性が高い名前を使いたいが、tsserverの機能で一意に判別することができない
+  * プロジェクト内で一意な名前にしたくなって、eqUserみたいな名前に変更しがち
+
+この問題を便利に解決できる手法がコレクションクラスとしての実装方法だ。
+
+== CollectionClassとして実装する
+
+`User[]` として引き回す代わりに `UserCollection` を実装して、利用者側は `User[]` ではなくUserCollectionとして引き回す。具体的には次のようなコードだ。
+
+[source,typescript]
+----
+class UserCollection {
+  constructor(protected values: User[]) {}
+
+  filterRegistered(): RegisteredUser[] {
+    return this.values.filter((u): u is RegisteredUser => u.kind === 'registered')
+  }
+}
+
+// ここから先はUserCollectionを利用するReactコンポーネント
+
+import { FC, useMemo } from 'react'
+import { User, filterRegisterd } from './user'
+
+const UserCard: FC<{ users: UserCollection }> = ({users}) => {
+  const registeredUsers = useMemo(() => {
+    return users.filterRegisterd()
+  }, [])
+  return <>...</>
+}
+----
+
+UserCollectionがユーザー定義型として、利用側のコードに表出することによって次の問題が解決する。
+
+* 名前を知らないとこの実装が既に存在するかどうか判断がつかない問題
+* class を用いることによってネームスペースが一段切れるので `eq` みたいな汎用性が高い名前がためらわれる問題
+
+しかし、この方法を取ることによって発生する問題もある
+
+* `UserCollection` に `map` や `filter` が生えていないため、 `User[]` から `map` してJSXを返すみたいなことをしたい場合はmap関数を都度自作する必要がある
+* toJSON した時に [object Object] になってしまう
+
+この問題を解決した真・コレクションクラスの実装を次のセクションで解説する。
+
+== 真・コレクションクラス
+
+独自クラスを用いると既存のArray.prototypeに紐付いている実装を使うことができないという問題が発生することがわかった。これを解決するためにはArrayを継承したCollectionClassを作ってあげるとよい
+
+[source,typescript]
+----
+class UserCollection extends Array<User> {
+  registereds(): RegisteredUser[] {
+    return this.filter((u): u is RegisteredUser => u.kind === 'registered')
+  }
+}
+----
+
+Arrayクラスを継承してあげることによって次のようなコードを書くことができる
+
+[source,typescript]
+-----
+const users = UserCollection.from({kind: 'registerd', id: 'xxxx', name: 'yyyy'}, {{kind: 'tentative', id: 'yyyy', name: 'yyyy'}}) // fromというstatic methodは継承したArrayに生えている実装
+users.filter(u  => u.name === 'himanoa' ) // filterはArray.prototypeの実装
+JSON.stringify(users) // -> [{kind: 'registerd', id: 'xxxx', name: 'yyyy'}, {{kind: 'tentative', id: 'yyyy', name: 'yyyy'}}] :smile:
+-----
+
+こうすることによってグローバルのネームスペースを汚すことも既存のArrayに対する操作の自由度を損なうこともなく、コレクションに振舞いを紐付けることとが達成された。
+
+
+== おわりに
+
+弊社のScalaプロジェクトでカスタムコレクションを定義してそこに振舞いを定義するというやり方を見て、大変goodな感じがしてどこかで採用したかったのですが、こうしてTypeScriptでもうまく作ることができて満足できてよかった
+
+世界を広げてくれた同僚に圧倒的感謝！
