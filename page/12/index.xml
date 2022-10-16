@@ -8,6 +8,16 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>xrandrコマンドで解像度を弄る</title>
+      <link>https://blog.himanoa.net/23/</link>
+      <pubDate>Tue, 20 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/23/</guid>
+      <description>ThinkPad X1Carbonを購入してから早4カ月経過しました。
+スペック的には不満がないんですが、解像度がおおきすぎて文字が小さくてつらいという問題があったので解像度を下げたくなったのでやった。
+XWindowManagerでやっているので以下のコマンドで解像度を設定できる
+&amp;gt;&amp;gt;&amp;gt; xrandr --output eDP-1 --mode 1920x1080以上</description>
+    </item><item>
       <title>Nの末路</title>
       <link>https://blog.himanoa.net/22/</link>
       <pubDate>Sat, 24 Feb 2018 00:00:00 +0000</pubDate>
@@ -53,26 +63,6 @@ Neovimからwin32yank.exeを使う さてここまでできたのなら、Neovim
 過去の記憶からNeovimでLinuxのクリップボードと連携した時に xsel に依存していた覚えがあった。
 また、丁度手元にNeovimのソースコードがあったのでそこから検索して(最悪書き換えてビルドすればよい)どうすればいいかを模索した
 cd ~/src/github.com/neovim/neovimgit grep xselruntime/autoload/provider/clipboard.vim:&amp;quot; When caching is enabled, store the jobid of the xclip/xsel process keepingruntime/autoload/provider/clipboard.vim: elseif exists(&#39;$DISPLAY&#39;) &amp;amp;&amp;amp; executable(&#39;xsel&#39;) &amp;amp;&amp;amp; s:cmd_ok(&#39;xsel -o -b&#39;)runtime/autoload/provider/clipboard.</description>
-    </item><item>
-      <title>正しい(Neo)Vimのやめ方</title>
-      <link>https://blog.himanoa.net/12/</link>
-      <pubDate>Wed, 31 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/12/</guid>
-      <description>この記事はN高 Advent Calendar 2017の記事です。N高要素がないどころが本人が卒業生です。
-やめた理由としては、今年の春にN高を卒業したということで頭文字がNだったのと、vimscript書きたくなくなってきたのと、vimconf2017でのt9mdさんのvmp: the most ambitious vim emulator - Qiitaを効いた結果やめられそうな気がしたからです。
-AtomはJavaScriptでplugin書けるので便利ですね。
-Vimの沼 大体主な理由は以下の通りだと思います
- vimscriptに恋をしてしまった 秘伝のconfigファイルでキーバインドを染め上げてしまった  僕は2つめに該当していたが色々不満が出てきたのですが、いい加減vimrc管理するのに疲れてきたのと、色々vimの使い方が変わり vimrc からキーバインド設定が消えてきたところでvimconf2017でvmpを知って「これでも生きて行けそう」感が出てきたので移行しました。
-Atomへ移行してからはvmpを入れたのとlinterとgit-plus入れただけで対して弄ってないので、そこに至るまでの軌跡について書いて行こうと思います
-キーバインド設定を減らしていく vimのキーバインド設定を減らしていく方法として素のvimを使うのがおすすめです。がPluginなどを入れて開発している人は素のvimでは生産性が落ちてしまうことでしょう。
-vimtutorをやりましょう。vimtutorはvimでの効率的なテキスト操作方法を手になじませてくれます。機能を覚え尽くす勢いでやりましょう。
-ここで知らなかった便利機能をオレオレキーバインドでオーバーライドしてるのだったら自然とキーマッピングの設定がが消えていくことでしょう。
-もっと便利にVimを使えるようになる Vim幼稚園からVim小学校へ - Qiita
-↑の記事も詳しくvimの機能について記述してあります。ここに書いてあることを無意識に使えるようになる頃にはキーマッピングの設定もだいぶ少なくなってくる頃でしょう。
-別のエディタを入れる ここまで来たらもう一息です。別のエディタをインストールしてvimキーバインドを提供してくれるプラグインを入れるだけでもだいぶ快適にテキスト編集できるはずです。この際にvimを完全にアンインストールしないで、いざってときは使えるようにしとくと便利でしょう。
-移行してよかったこと  Rubyのハイライトが体感軽くなった気がする JSでハックできて便利 git-plusが便利 MarkdownPreview、使わないでMarkdown書いてること多かったし今も使ってないんですけど Markdownで斜体と太文字のシンタックスがわからなくなったときに便利  我慢してるけど本当につらいこと  C-z rspec(別に任意のコマンドでもいい) fg の一連のコンボ技ができなくなったこと 正規表現 ノーマルモードでq:が出来なくなったこと(exコマンドをvmp-ex-command使ってるがvimに比べて貧弱なこと) タブとペインの包含関係が逆になったのがつらい バッファという概念がないこと  Vimのキーバインドを他のエディタで使ってるの卒業できてないのでは？ …
-追伸: 2018/01/31 ダメでした。上記の方法でVimを卒業したつもりになっていましたが気づいたらNeovimを使っています。</description>
     </item>
   </channel>
 </rss>
