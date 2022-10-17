@@ -46,7 +46,7 @@
   </div>
 </nav>
 
-    <main class="content side-text-padding">
+    <main class="article side-text-padding">
       <article class="post dropcase">
         <header class="post-header">
         	<h1 class="post-title">日記</h1>
@@ -102,7 +102,7 @@ const useCollection = &lt;T&gt;(observableCollection: Collection&lt;T&gt;): T = 
 <p>職場のコードはReact17を使っているので <code>useSyncExternalStore</code> を使わなくても問題ないし、ReactからこのAPIがexportされていないので使えないが、将来的にReact18に移行する際に実装を変更することなく移行できるようにしたい。</p>
 </div>
 <div class="paragraph">
-<p>そんな人向けのライブラリとして、https://www.npmjs.com/package/use-sync-external-store が存在する。</p>
+<p>そんな人向けのライブラリとして、 <a href="https://www.npmjs.com/package/use-sync-external-store" class="bare">https://www.npmjs.com/package/use-sync-external-store</a> が存在する。</p>
 </div>
 <div class="paragraph">
 <p>これは古いReactバージョンで <code>useSyncExternalStore</code> を使うためのshimsで、React18が動いている場合は自動でそちらにfallbackしてくれる便利ライブラリだ。</p>
