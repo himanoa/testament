@@ -8,6 +8,15 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Blogをasciidocで書いてみた</title>
+      <link>https://blog.himanoa.net/64/</link>
+      <pubDate>Sat, 06 Feb 2021 07:31:26 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/64/</guid>
+      <description>Hugoはasciidocもサポートしてるみたいで、表現力が微妙に足りないmarkdownじゃなくてasciidocを試験的に使ってみるテスト
+ めっっちゃ話は飛ぶんですが、下の画像はエデン共鳴ノーマルのクリア記念撮影のスクショです。どうでもいいですね
+   </description>
+    </item><item>
       <title>パスタのゆでかた</title>
       <link>https://blog.himanoa.net/63/</link>
       <pubDate>Wed, 18 Nov 2020 11:55:18 +0900</pubDate>
@@ -55,15 +64,6 @@ rust-lang orgsのリポジトリにコミットできるとちょっとかっこ
 もともと調子が悪めではあったが、せめて日課だけは継続しようとおもって継続していたがそれで悪影響が発生しては意味がないよなとおもって、契約によって縛られていること以外は一旦休止するかという機運が高まってきた。
 話は変わって、気持ちの持ち方について書きたいことがあったので書いておこうとおもう。
 もともと全人類に薄ら嫌われているという前提のもと物事を解釈すると、コードに対する批判だったり行動に対する批判や人格に対する批判を全部フラットに受け取ることができて便利！みたいな雑な指針があったのだが、いつしかやめてしまって、些細なことで受けるダメージ量が上がりヒールが追いつかなくなってきた感じがしたので、この気持ちの持ち方を大切にしないとだめだなと思った</description>
-    </item><item>
-      <title>ブログに投稿する画像をどこに置くか悩んでいるという話</title>
-      <link>https://blog.himanoa.net/59/</link>
-      <pubDate>Tue, 13 Oct 2020 19:39:30 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/59/</guid>
-      <description>ここ最近ブログの画像をどこにホスティングさせるかを考えている。
-満たしたい要件は次の通り
- 独自ドメインから画像を配布したい  Ex. https://img.himanoa.net/foobar.png みたいな感じで独自ドメインから配布したい Why. この文章は最悪GitHub Pagesが廃れようと、独自ドメインを持っているので、デプロイ先を変えればどこでも動くので、同じような可搬性を担保しておきたい   スマホからアップロードしやすい  Why. Androidには共有メニューがあってここからアップロードできるやつがうれしい 最悪アプリを書くでもよい    今現在の思考としてはimgurやGoogleDriveが独自ドメインから配布できれば嬉しいんだけど、やっぱりS3をbackendにして自分でアプリを書くしかないのかな…みたいな感じで、何かいい方法があったらしりたい。</description>
     </item>
   </channel>
 </rss>

@@ -42,6 +42,22 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/75/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">僕が作ったツールがhomebrewから入るようになりました</h2>
+    <p class="card-text lineclamp">といってもcoreに入ったわけではなく、自前のtapを用意しただけです。
+ 今のところは mkrepo と mdmg の二つが入ります
+ sourceからのインストールになるので brew install -s himanoa/tap/mdmg みたいな感じでインストールしてください。
+ LinuxBrewでは試しましたがmacOSで試してないので、macOSで試して何か問題あったら @h1manoa のほうまでお願いします
+ </p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2021-10-29">Oct 29, 2021</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/74/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -121,21 +137,6 @@
    </p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2021-08-21">Aug 21, 2021</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/70/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">TypeScript備忘録(関数の実行時に推論を確定させるテク)</h2>
-    <p class="card-text lineclamp">type UseSelectorBuilder&lt;T, S&gt; = () =&gt; (selector: (state: T) =&gt; S) =&gt; S   みたいな型が存在した時にSelectorBuilderではTまでの型を確定してSはbuilderの戻り値を呼び出した時に型を確定させたい場合どう書けばいいか
- 答えはこう
- type UseSelectorBuilder&lt;T, S&gt; = () =&gt; &lt;S&gt;(selectlor: (state: T) =&gt; S) =&gt; S   よかったですね
- </p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2021-08-02">Aug 2, 2021</time></p>
       
     </div>
   </article>

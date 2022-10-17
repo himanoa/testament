@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>日記 &middot; 遺言書</title>
+  <meta name="description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;夜に東京で予定があったので、オフィスに出社して仕事していた。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;深夜にやったツイートがなんかすごい伸びてたのでミュートにした。基本的にTweetがたくさ" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="日記 &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;夜に東京で予定があったので、オフィスに出社して仕事していた。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;深夜にやったツイートがなんかすごい伸びてたのでミュートにした。基本的にTweetがたくさ" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/80/" >
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/80/" >
+  <meta property="og:title" content="日記 &middot; 遺言書" >
+  <meta property="og:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;夜に東京で予定があったので、オフィスに出社して仕事していた。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;深夜にやったツイートがなんかすごい伸びてたのでミュートにした。基本的にTweetがたくさ" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">日記</h1>
+          <p class="post-date">Posted <time datetime="2022-10-18">Oct 18, 2022</time></p>
+        </header>
+        
+        <div class="paragraph">
+<p>夜に東京で予定があったので、オフィスに出社して仕事していた。</p>
+</div>
+<div class="paragraph">
+<p>深夜にやったツイートがなんかすごい伸びてたのでミュートにした。基本的にTweetがたくさんfavられることとかないので、初めてミュートにする機能を使った。</p>
+</div>
+<div class="paragraph">
+<p>仕事は自作したデータ構造をReactコンポーネントのレンダリングサイクルと接続するためのAPIを書いたり、説明用のドキュメントを書いていたりしていた。</p>
+</div>
+<div class="paragraph">
+<p>自作したMutableなオブジェクトの変更に対してReactコンポーネントを接続する時に次のようなコードをよく書く。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">import {useState, useEffect} from &#39;react&#39;
+
+interface Collection&lt;T&gt; = {
+  updateSnapshot(value: T): void
+  getSnapshot(): T
+  subscribe(callback: () =&gt; void): () =&gt; void
+}
+
+const useCollection = &lt;T&gt;(observableCollection: Collection&lt;T&gt;): T = (observableCollection) =&gt; {
+  const [state, updateState] = observableCollection.getSnapshot()
+  useEffect(() =&gt; {
+    return observableCollection.subscribe(() =&gt; {
+      updateState(observableCollection.getSnapshot())
+    })
+  }, [observableCollection])
+  return state
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ReactコンポーネントはupdateStateが呼び出される度にuseStateが書かれているコンポーネントを再レンダリングするという特徴を利用して、自前で定義したMutableなCollectionに変更がある度に、useCollectionを呼び出したコンポーネントが再レンダリングさせる。ということを実現している。</p>
+</div>
+<div class="paragraph">
+<p>これにselectorやmemo化を加えた概念がReact17までのStoreライブラリとReactを繋ぐhooksの実装としてメジャーだったのだが、React18から追加されるConcurrentModeと併用した時に、画面が一瞬だけ前の状態を表示してしまうなどのチラつきが発生してしまう問題を抱えている。</p>
+</div>
+<div class="paragraph">
+<p>See. <a href="https://youtu.be/oPfSC5bQPR8?t=245" class="bare">https://youtu.be/oPfSC5bQPR8?t=245</a></p>
+</div>
+<div class="paragraph">
+<p>この問題を解決するためにReact18から <code>useSyncExternalStore</code> というカスタムフックが提供されていてこれにstoreのメソッドを食わせることでこの問題を解決できる。</p>
+</div>
+<div class="paragraph">
+<p>職場のコードはReact17を使っているので <code>useSyncExternalStore</code> を使わなくても問題ないし、ReactからこのAPIがexportされていないので使えないが、将来的にReact18に移行する際に実装を変更することなく移行できるようにしたい。</p>
+</div>
+<div class="paragraph">
+<p>そんな人向けのライブラリとして、https://www.npmjs.com/package/use-sync-external-store が存在する。</p>
+</div>
+<div class="paragraph">
+<p>これは古いReactバージョンで <code>useSyncExternalStore</code> を使うためのshimsで、React18が動いている場合は自動でそちらにfallbackしてくれる便利ライブラリだ。</p>
+</div>
+<div class="paragraph">
+<p>これを使って自作したデータ構造とReactを接続するコードとテストを書いていた。</p>
+</div>
+<div class="paragraph">
+<p>自作したデータ構造の内部がES2015 Mapなことと、 <code>useSyncExternalStore</code> 内の更新検知がshallow equalsで比較するという実装が相性が悪く、そこらをどうにかするために、いくつかアイデアを試してベンチマークを取るということをやっていた。</p>
+</div>
+<div class="paragraph">
+<p>夜は Twtiterのオタクたちと蟹を食べにかに道楽に行った。</p>
+</div>
+<div class="paragraph">
+<p>かに道楽のコースはすべて蟹が入った料理が出てきて大変満足度が高かった。</p>
+</div>
+<div class="paragraph">
+<p>また蟹酒も試してみたがめっちゃアルコール感 + 蟹の風味といった感じだった</p>
+</div>
+<div class="paragraph">
+<p>終電で帰ってきたのだが、疲れてしまって今日はゲームをしていない。ゲームしたい</p>
+</div>
+
+        <a href="http://clap.webclap.com/clap.php?id=himanoa" target="_blank" onclick="window.open('http://clap.webclap.com/clap.php?id=himanoa','webclap','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes');return false;">拍手ボタン</a>
+      </article>
+    </main>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  </body>
+</html>
