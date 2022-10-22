@@ -42,6 +42,35 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/67/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">日記 2021-06-14</h2>
+    <p class="card-text lineclamp">ダイエット なんか気づいたら太ってたのでダイエットしようとおもう。食生活も直したいけどそれどころではないので一旦運動からやろうかなと
+ この日記を書き終わったら、散歩してくる予定
+   他人の書いたコード 他人の書いたコードを読むことはできるが、他人の書いたコードに自分の書いたコードを足すのがとてもダルいとおもっていることがわかってきた。
+ 予防線を貼るが特定個人のコードがだるいとかいう話ではなく、自分の性格的な話です
+ で、これを拗せると他人の書いたコードに最小の変更で、機能を追加するということができず、結局全部書き直すのとおなじくらいのdiff量になってしまう という問題に直面する。
+ 「ダーティなコードを書く選択も取らずに甘えたこと言ってるんじゃねえ」って言われたらそれはそう…って感じになるので、ある程度こういう手が取れるようになりたいよなあって思った
+ ダーティなコードを書きたくない理由はあって、基本的にダーティなコードを書いて何か問題が発生して困るのは自分 なので 問題が発生した時に切り分けと修正がしやすいような構成で自分のコミットをデプロイしたい。すなわち、要件に対して自分が適切だと思えるコードに書き直したい というのが理由。
+ 正直チーム開発に向いてないなあって最近思った
+ はやく石になりたい
+ あと外部ライブラリ、大体仕事の邪魔
+   会社 チームでコード書くのだるいな…とかいう話をした後にこれを書くのも信憑性を疑われそうなのですが、会社については神だとおもってます。
+ 単順に会社の人達おもしろいし仕事が正確で、仕事してて大変快適で最高です。
+ 次回の出社日とか楽しみ
+   今日みた配信    ピアノの音楽に綺麗な歌声が重なると泣きそうになる。多分疲れてるんだなあ
+   TypeScript UnionType とか割と都合がいい機能が揃ってて仕事で使うにはかなり便利なんですが、例外はどんなにがんばろうとanyゲーミングになって安全もクソもないので使用を強要された時以外使いたくないなあとおもいはじめた。
+ Reactつかえて例外周りがまともなプログラミング言語っていうのも思い付かないしどうしようかなあってなってる。ReasonMLとかどうなんだろう
+   WSL2 土曜にぶっ壊して sudo の user password すら通らなくなったので、コードとconfigのバックアップだけとって、ArchWSLの再インストールをした
+ .config/ を展開 direnv と asdf と neovim とRustのtoolchain入れたら開発できるくらいには回復したので、環境構築楽でいいなあとおもった</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2021-06-15">Jun 15, 2021</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/65/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -104,29 +133,6 @@
     <h2 class="card-title">ブログの記事ファイルを生成するコマンドを書き直したという話</h2>
     <p class="card-text lineclamp">hugo newを使っていたんだけど、これ使うとそのままエディタで開いてくれなくてちょっと不便なので、touch_erbベースに書きかえた。
 bin/new したらエディタまで開いてくれて便利だし、テンプレートみたいなのも生やしたい放題になったので柔軟性があがった気がする</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2020-11-05">Nov 5, 2020</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/61/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">近況</h2>
-    <p class="card-text lineclamp">元気ですか？ひまのあです。最近いろいろ動きがあったので書いとこうとおもいます
-引っ越し はこねこの力を借りて成功したのだが、引っ越し先がインターネット工事できない物件で爆死した。はこねこの紹介で会社を紹介してもらいもう一度引っ越しすることになりました。そんなことある？
-FF14 引っ越し直前INできてなかったのと、二回目の引っ越しのゴタゴタのせいでまたINできなくてCWLSのリーダーに心配かけてしまって本当に申し分けねえ………ってなった
-引っ越し一段落した時に紅蓮の一番長いシナリオクリアした。その後は蒼天の風脈解放をしていなかったのでそれをやってた。
-んでインターネット工事できない問題に直面してプチ休止。
-今日復帰して紅蓮の風脈解放を開始していた。これは解放作業中に取れたいい感じのスクショ OSS活動とかもやるかーってなっててFF14後回し気味になっていてよくないな…本当にやりたいことはこれなのに…
-OSS活動 これ をやっている。日本語でおkすると、as_secs_f64 とかの公式ライブラリに実装はあるけど、存在を検索するのが面倒で手動実装するのを叱るルールを作るってやつ
-既存のルールをうまくやりながら、とりあえず全部のテストパターンにマッチするやつは作れたんだけどFixerの実装がまだ。
-as 64みたいなのがうまく扱えないのでがんばる必要があって、それだけできれば完成って感じ。ただ、1日くらいあくとrust-analyzerの機嫌が悪くなったりで開発体験がちょっと悪い。
-rust-lang orgsのリポジトリにコミットできるとちょっとかっこいい気がするのでやり遂げたい。がんばる
-仕事 おそらく順調
-最後に はこねこには本当に迷惑かけてすまないとおもっています………</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2020-11-05">Nov 5, 2020</time></p>
       
