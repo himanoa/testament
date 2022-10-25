@@ -52,20 +52,20 @@
 <p>AtomだったりVSCodeだとprettierrcの有無でprettierをかけたりかけなかったりしてくれるんだが、ale + Neovimの構成だと自分で設定を書かないとうまくやってくれない。</p>
 <p>んでその設定なんですけど僕はこうしてますってやつです。</p>
 <pre tabindex="0"><code class="language-vimscript" data-lang="vimscript">let l:is_active = 0
-let l:prettierrcs = [&quot;.prettierrc&quot;, &quot;.prettierrc.toml&quot;, &quot;.prettierrc.config.js&quot;, &quot;.prettierrc.js&quot;]
+let l:prettierrcs = [&#34;.prettierrc&#34;, &#34;.prettierrc.toml&#34;, &#34;.prettierrc.config.js&#34;, &#34;.prettierrc.js&#34;]
 for item in l:prettierrcs
   let l:is_active = l:is_active + filereadable(item)
 endfor
 let g:ale_fixers = {
-      \ 'javascript': ['eslint'],
-      \ 'typescript': ['eslint'],
-      \ 'vue': ['eslint']
+      \ &#39;javascript&#39;: [&#39;eslint&#39;],
+      \ &#39;typescript&#39;: [&#39;eslint&#39;],
+      \ &#39;vue&#39;: [&#39;eslint&#39;]
       \ }
 let g:ale_fix_on_save = 1
 if l:is_active &gt; 0
-  call insert(g:ale_fixers.javascript, &quot;prettier&quot;)
-  call insert(g:ale_fixers.typescript, &quot;prettier&quot;)
-  call insert(g:ale_fixers.vue, &quot;prettier&quot;)
+  call insert(g:ale_fixers.javascript, &#34;prettier&#34;)
+  call insert(g:ale_fixers.typescript, &#34;prettier&#34;)
+  call insert(g:ale_fixers.vue, &#34;prettier&#34;)
 endif
 </code></pre><p><a href="https://prettier.io/docs/en/configuration.html">ここ</a> を見るとわかるんですけど、package.jsonにconfigが書かれる場合もあるのだが、それに関しては未対応。</p>
 <p>vimscript jsonソリューションを募集しています</p>

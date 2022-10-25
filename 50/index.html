@@ -93,7 +93,7 @@
 <p><code>yarn add --dev @types/react</code> などコマンドを実行した結果起きた副作用をcommitしたい場合があります</p>
 <p>僕はそのようなコミットをする時は常に <code>Exec: yarn add --dev @types/react</code> のようなコミットメッセージにしたいのですが、運用でカバーだけでは大変です。</p>
 <p>そのような運用をカバーするために作られたのがこのコマンド。引数で実行したいコマンドを渡すことによって、コマンドを実行したあとコミットまでやってくれる便利なツールです</p>
-<pre tabindex="0"><code>$ git exec &quot;yarn add --dev typescript&quot;
+<pre tabindex="0"><code>$ git exec &#34;yarn add --dev typescript&#34;
 </code></pre><h2 id="使った言語の選定基準">使った言語の選定基準</h2>
 <p>リポジトリ見れば一目瞭然なのですが、主に使ったプログラミング言語はPythonでした。</p>
 <p>選定理由としては以下の項目を重視した結果です。</p>

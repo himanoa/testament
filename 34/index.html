@@ -52,40 +52,40 @@
 <p><img src="https://i.imgur.com/vge7sUy.png" alt="sequence"></p>
 <p>追記:
 とりあえずシーケンス図が書けたのでAPIサーバーに求められている機構を実装した。curlで試しているのと、SPAのガワが存在していないため一旦セッションに入れたりstateの検証するのは省いた。</p>
-<pre tabindex="0"><code>const { createHash } = require(&quot;crypto&quot;);
-const url = require(&quot;url&quot;);
+<pre tabindex="0"><code>const { createHash } = require(&#34;crypto&#34;);
+const url = require(&#34;url&#34;);
 
-const express = require(&quot;express&quot;);
-const bp = require(&quot;body-parser&quot;);
-const axios = require(&quot;axios&quot;);
-const jwt = require(&quot;jwt-simple&quot;);
+const express = require(&#34;express&#34;);
+const bp = require(&#34;body-parser&#34;);
+const axios = require(&#34;axios&#34;);
+const jwt = require(&#34;jwt-simple&#34;);
 
-const secret = require(&quot;./secret.json&quot;);
+const secret = require(&#34;./secret.json&#34;);
 
 const app = express();
 app.use(bp.json());
 
-const salt = &quot;hakatanosalt&quot;;
+const salt = &#34;hakatanosalt&#34;;
 
-app.get(&quot;/oauth/callback&quot;, (req, res) =&gt; {
+app.get(&#34;/oauth/callback&#34;, (req, res) =&gt; {
   console.log(
     JSON.stringify({
       code: req.query.code,
       state: req.query.state
     })
   );
-  res.send(&quot;ok&quot;);
+  res.send(&#34;ok&#34;);
 });
 
-app.get(&quot;/oauth/google/login&quot;, function(req, res) {
-  const state = createHash(&quot;sha256&quot;)
+app.get(&#34;/oauth/google/login&#34;, function(req, res) {
+  const state = createHash(&#34;sha256&#34;)
     .update(`${salt}${Math.random()}${+new Date()}`)
-    .digest(&quot;hex&quot;);
+    .digest(&#34;hex&#34;);
   const params = new url.URLSearchParams({
-    response_type: &quot;code&quot;,
+    response_type: &#34;code&#34;,
     client_id: secret.clientId,
-    redirect_uri: &quot;https://localhost:3000/oauth/callback&quot;,
-    scope: &quot;profile&quot;,
+    redirect_uri: &#34;https://localhost:3000/oauth/callback&#34;,
+    scope: &#34;profile&#34;,
     state
   });
   // ここでstateをセッションに格納するなりしよう
@@ -95,51 +95,51 @@ app.get(&quot;/oauth/google/login&quot;, function(req, res) {
   );
 });
 
-app.post(&quot;/oauth/google/authorize&quot;, (req, res) =&gt; {
+app.post(&#34;/oauth/google/authorize&#34;, (req, res) =&gt; {
   // curlで確認しているためセッションが確認つかえないので一旦スキップ。本番環境で運用する場合は必ずstateの検証をやること
   // if (state !== req.body.state) {
   //   res.send(400);
   // }
-  console.log(&quot;poe&quot;);
+  console.log(&#34;poe&#34;);
   auth(req)
     .then(a =&gt; {
-      res.send(&quot;a&quot;);
+      res.send(&#34;a&#34;);
     })
     .catch(err =&gt; {
       console.dir(err);
-      res.send(&quot;err&quot;);
+      res.send(&#34;err&#34;);
     });
 });
 
-const decodeBase64 = str =&gt; Buffer.from(str, &quot;base64&quot;).toString(&quot;utf8&quot;);
+const decodeBase64 = str =&gt; Buffer.from(str, &#34;base64&#34;).toString(&#34;utf8&#34;);
 async function auth(req) {
   const idToken = (await axios.post(secret.tokenUrl, {
     client_id: secret.clientId,
     client_secret: secret.clientSecret,
-    redirect_uri: &quot;https://localhost:3000/oauth/callback&quot;,
-    grant_type: &quot;authorization_code&quot;,
+    redirect_uri: &#34;https://localhost:3000/oauth/callback&#34;,
+    grant_type: &#34;authorization_code&#34;,
     code: req.body.code
   })).data.id_token;
-  const segments = idToken.split(&quot;.&quot;) || &quot;&quot;;
+  const segments = idToken.split(&#34;.&#34;) || &#34;&#34;;
   if (segments.length &lt;= 2) {
-    return Promise.reject(&quot;segmentの長さおかしい&quot;);
+    return Promise.reject(&#34;segmentの長さおかしい&#34;);
   }
   const envelope = JSON.parse(decodeBase64(segments[0]));
   if (envelope.kid === undefined) {
-    return Promise.reject(&quot;kid?&quot;);
+    return Promise.reject(&#34;kid?&#34;);
   }
   const payload = JSON.parse(decodeBase64(segments[1]));
 
   console.dir(envelope.kid);
-  const certs = (await axios.get(&quot;https://www.googleapis.com/oauth2/v3/certs&quot;))
+  const certs = (await axios.get(&#34;https://www.googleapis.com/oauth2/v3/certs&#34;))
     .data;
   const key = certs.keys.find(val =&gt; val.kid === envelope.kid);
   console.dir(jwt.decode(idToken, key.n, key.alg));
-  return &quot;&quot;;
+  return &#34;&#34;;
 }
 
 app.listen(3000, function() {
-  console.log(&quot;Example app listening on port 3000!&quot;);
+  console.log(&#34;Example app listening on port 3000!&#34;);
 });
 </code></pre>
         <a href="http://clap.webclap.com/clap.php?id=himanoa" target="_blank" onclick="window.open('http://clap.webclap.com/clap.php?id=himanoa','webclap','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes');return false;">拍手ボタン</a>

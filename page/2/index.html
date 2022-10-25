@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" dir="ltr">
   <head>
-	<meta name="generator" content="Hugo 0.92.2" />
+	<meta name="generator" content="Hugo 0.104.3" />
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,34 +42,53 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/78/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">TypeScriptで集合に対する操作を実装する</h2>
+    <p class="card-text lineclamp">type RegisteredUser = { kind: &#39;registered&#39;, id: string, name: string, } type TentativeUser = { kind: &#39;tentative&#39; id: string, name: string, } type User = TentativeUser | RegisteredUser みたいな構造が存在した時に User[] に対する振舞いを定義したい！みたいなモチベーションが発生することがある。
+例を上げると、登録済みのユーザーのみでfilterしたい！みたいな感じだ。
+フロントエンドのコードを書いたり見たりしたりすると、やりがちなのは User[] で引き回してコンポーネント側で次のようなコードで実装するやつだ。
+import { FC, useMemo } from &#39;react&#39; const UserCard: FC&lt;{ users: User[] }&gt; = ({users}) =&gt; { const registeredUsers = useMemo(() =&gt; { return user.filter((u): u is TentativeUser =&gt; u.kind === &#39;registered&#39;) }, []) return &lt;&gt;.</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2022-09-26">Sep 26, 2022</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/77/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
     <h2 class="card-title">近況</h2>
     <p class="card-text lineclamp">なんか仕事していたり趣味でコード書いてたりしてこっちに記事を投稿してなかった。
- そろそろ広告が付く気がするので死ぬ気で記事を更新しようと思う(古代文化)
- wikiシステムを作っている https://github.com/nibo4/matsunoki
- 会社で使っているNotionへのイラ立ちが抑えられなくなってきており、最近はwikiシステムを作ろうとしている。
- ここ1ヵ月で認証だったりCIだったりの足回りを大体整えた。
- こういう者を作る時のベストプラクティスとしてコアコンセプトの実装をやって、ちゃんと使えることを最初に証明してから認証だとかテスト基盤を作っていく というのが一般的だが、今回は逆のアプローチで作っている。
- これには理由があって、コアコンセプトができあがった時の実装がテスタブルじゃなかったりそもそもテストが少なかったりすると、そこから認証とかを作るためにリファクタリングしたりしないといけなくなるのだが、それが面倒でエターナルことがよくあるためだ。
- また、新規技術の採用も積極的にやっている。バックエンドはRust + axumでフロントエンドはTypeScriptのままだが、最近巷で話題のSolidJSを採用してみた。
- axumはtokioベースでユーザーフレンドリーなAPIを提供しているWebサーバー立てるマンで、hyperよりもroutingの構造が書きやすかったり、actixとかで採用されているFromRequestTraitなどを輸入してきていて、リクエストハンドラの仮引数の定義次第で自動的にバリデーションを走らせたりヘッダーが適切に設定されているかなどを検証できて、便利だなあとおもった。
- SolidJSはVue + React / 2 みたいな感じで個人的には今のところかなり使い勝手がいいUIライブラリに見える。
- 現職ではReactを書いてるのでそれとの比較になってしまうのだが、Reactで再レンダリングをちゃんと抑制しつつコードを書こうとするとどうしてもmemoだけだと大変すぎて、「Reduxや自作のストアパターンを作って繋ぎ込む部分で、ストアの値が更新されていたらforceUpdateをする」 みたいなパターンに甘えがちなのだが、SolidJSだとこのパターンがデフォルトで採用されていて、自分がやりたいことを素直に書けるなあとおもった。
- どちらの技術も5万行も書いてないので、もうちょっとwikiシステムがおおきくなったら再評価していきたいなとおもう
- あと、友達のkb10uyと一緒に作ろうぜ！っていいつつ、動作させる基盤がまだ揃い切ってないので今週中には全部できるといいなあという感じ
-   料理 相変わらずやっている。友達が一人暮らしをはじめたのもあって、みんなで料理をDiscordに投稿していたりしたが、最近は写真活動は落ち付いてきてしまった。
- 最近よく食べている食べ物はしらすで、これはすごい。何も調理せずに白米に納豆と乗せて食べるとうまいし最悪そのまま食ってもうまい。最近は冷凍するために沢山かって保存していたりしてすっかり冷蔵庫のいつものメンバー入りしてしまった。
- あとはおやつの間食も控えていて、冷蔵庫であまりがちな人参や胡瓜を野菜スティックにしてディップしながら間食している。あんまり健康になることを望んでいるわけではないが、野菜はおいしいし水分を含んでいるので喉も潤うしなんかお得な気分になる。
- ディップするタレは色々試しているのがだ、一番おいしいと感じたのは 味噌と胡椒と砂糖と少量の水を加えて混ぜたやつだ。調味料はいろいろ混ぜて使うと味の解像度が増えて食べた時楽しくなる印象がある。まあいれすぎると味がうるさくなるという欠点もあるのだが…
-   Twitter 昨今のTwitterはレコメンドが暴走していて、自分が見たくもないコンテンツがめちゃくちゃ表示されていて嫌だなあと感じていたのだが、これを抜け出すためのコツが最近わかったのでここに記載しておこうとおもう。
- 日本人のTweetをふぁぼするのをやめて、 #NaturePhotography などのハッシュタグの画像付きツイートをふぁぼすることだ。
- こうすることによって日本人の陰湿なツイートがレコメンドされるのを避け、綺麗な自然の写真のみを摂取し続けられてお得だ。
- 最強料理ツイートなどをふぁぼっていた時期もあったが、人気が出てきた日本人は政治評論や人間評論に夢中になって、最悪情報しかたれながさなくなるので、避けたほうがいいということがわかってきた。
-   仕事 先月初めの話になるが https://scalebase.com/news/article#ft82t7sfn_oc これを開発していてリリースした。
- 対応自体はシンプルにReactComponentで一段ラップすることでどの権限がないと見れないのかという属性を付与できる簡単な仕組みにしたのだが、補完できるようにする基盤を用意したり、そもそも対応する箇所が多すぎるなどで大変だったなあ。
- この後にチーム移動してまたでかい機能を作ることになった。</p>
+そろそろ広告が付く気がするので死ぬ気で記事を更新しようと思う(古代文化)
+wikiシステムを作っている https://github.com/nibo4/matsunoki
+会社で使っているNotionへのイラ立ちが抑えられなくなってきており、最近はwikiシステムを作ろうとしている。
+ここ1ヵ月で認証だったりCIだったりの足回りを大体整えた。
+こういう者を作る時のベストプラクティスとしてコアコンセプトの実装をやって、ちゃんと使えることを最初に証明してから認証だとかテスト基盤を作っていく というのが一般的だが、今回は逆のアプローチで作っている。
+これには理由があって、コアコンセプトができあがった時の実装がテスタブルじゃなかったりそもそもテストが少なかったりすると、そこから認証とかを作るためにリファクタリングしたりしないといけなくなるのだが、それが面倒でエターナルことがよくあるためだ。
+また、新規技術の採用も積極的にやっている。バックエンドはRust + axumでフロントエンドはTypeScriptのままだが、最近巷で話題のSolidJSを採用してみた。
+axumはtokioベースでユーザーフレンドリーなAPIを提供しているWebサーバー立てるマンで、hyperよりもroutingの構造が書きやすかったり、actixとかで採用されているFromRequestTraitなどを輸入してきていて、リクエストハンドラの仮引数の定義次第で自動的にバリデーションを走らせたりヘッダーが適切に設定されているかなどを検証できて、便利だなあとおもった。
+SolidJSはVue + React / 2 みたいな感じで個人的には今のところかなり使い勝手がいいUIライブラリに見える。
+現職ではReactを書いてるのでそれとの比較になってしまうのだが、Reactで再レンダリングをちゃんと抑制しつつコードを書こうとするとどうしてもmemoだけだと大変すぎて、「Reduxや自作のストアパターンを作って繋ぎ込む部分で、ストアの値が更新されていたらforceUpdateをする」 みたいなパターンに甘えがちなのだが、SolidJSだとこのパターンがデフォルトで採用されていて、自分がやりたいことを素直に書けるなあとおもった。
+どちらの技術も5万行も書いてないので、もうちょっとwikiシステムがおおきくなったら再評価していきたいなとおもう
+あと、友達のkb10uyと一緒に作ろうぜ！っていいつつ、動作させる基盤がまだ揃い切ってないので今週中には全部できるといいなあという感じ
+料理 相変わらずやっている。友達が一人暮らしをはじめたのもあって、みんなで料理をDiscordに投稿していたりしたが、最近は写真活動は落ち付いてきてしまった。
+最近よく食べている食べ物はしらすで、これはすごい。何も調理せずに白米に納豆と乗せて食べるとうまいし最悪そのまま食ってもうまい。最近は冷凍するために沢山かって保存していたりしてすっかり冷蔵庫のいつものメンバー入りしてしまった。
+あとはおやつの間食も控えていて、冷蔵庫であまりがちな人参や胡瓜を野菜スティックにしてディップしながら間食している。あんまり健康になることを望んでいるわけではないが、野菜はおいしいし水分を含んでいるので喉も潤うしなんかお得な気分になる。
+ディップするタレは色々試しているのがだ、一番おいしいと感じたのは 味噌と胡椒と砂糖と少量の水を加えて混ぜたやつだ。調味料はいろいろ混ぜて使うと味の解像度が増えて食べた時楽しくなる印象がある。まあいれすぎると味がうるさくなるという欠点もあるのだが…
+Twitter 昨今のTwitterはレコメンドが暴走していて、自分が見たくもないコンテンツがめちゃくちゃ表示されていて嫌だなあと感じていたのだが、これを抜け出すためのコツが最近わかったのでここに記載しておこうとおもう。
+日本人のTweetをふぁぼするのをやめて、 #NaturePhotography などのハッシュタグの画像付きツイートをふぁぼすることだ。
+こうすることによって日本人の陰湿なツイートがレコメンドされるのを避け、綺麗な自然の写真のみを摂取し続けられてお得だ。
+最強料理ツイートなどをふぁぼっていた時期もあったが、人気が出てきた日本人は政治評論や人間評論に夢中になって、最悪情報しかたれながさなくなるので、避けたほうがいいということがわかってきた。
+仕事 先月初めの話になるが https://scalebase.com/news/article#ft82t7sfn_oc これを開発していてリリースした。
+対応自体はシンプルにReactComponentで一段ラップすることでどの権限がないと見れないのかという属性を付与できる簡単な仕組みにしたのだが、補完できるようにする基盤を用意したり、そもそも対応する箇所が多すぎるなどで大変だったなあ。
+この後にチーム移動してまたでかい機能を作ることになった。
+前のチームの成功体験として、「ちゃんとした粒度でチケットが切れていて、いつまではリリースできないのかが明確にする」といったことが明確になったので新しいチームでもそれを実績していたり、それだけではうまく回りそうになかったので細かく動作確認するための環境を作るなどをやっていたりする。
+自分や回りの人間の作業のクオリティを上げるためにどういうのを用意すればいいか というのを考えながら実績するのは楽しいな。とおもったりした。一歩でも明日を今日よりよくするためにこういう作業は今後も積極的にやっていきたい。
+こういうのを社外にアウトプットできるとより良いらしいのだが、僕が日本の巷に興味ないのと友達の間で効率よく作業するためにはどうすればいいのか議論できればそれで満足なので、社外のためにアウトプットするみたいなことはしない気がする。
+ほかにも友達とスカイツリー登って酒を買ってきた話とか、呑みをやった話とかいろいろしたいのだが、収拾が付かなくなるのでまた今度にしようとおもう。さらばだ…</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2022-06-05">Jun 5, 2022</time></p>
       
@@ -81,19 +100,18 @@
     
   <article class="card-body">
     <h2 class="card-title">焼き鮭たらこパスタ</h2>
-    <p class="card-text lineclamp">材料   セブンイレブンの 焼き鮭たらこ(30g)
-  パスタ(120g)
-  塩(大匙1)
-  オリーブオイル(小匙1)
-  スライスチーズ(1枚)
-  きざみ海苔(お好み)
-     手順  お湯を沸騰させ、塩を加えてパスタを茹でる
-  フライパンでにオリーブオイルを投入
-  フライパンが熱くなってきたら、弱火にして焼き鮭たらことスライスチーズを投入し、混ぜ合わせる。
-  パスタが茹で終わったら、パスタの汁を少量フライパンに入れてからパスタを湯切り
-  パスタをフライパンに投入し、焼き鮭たらことスライスチーズを和えたらフライパンから取り出し皿に盛り付け完成
-  (optional) きざみ海苔を散らす
-     </p>
+    <p class="card-text lineclamp">材料 セブンイレブンの 焼き鮭たらこ(30g)
+パスタ(120g)
+塩(大匙1)
+オリーブオイル(小匙1)
+スライスチーズ(1枚)
+きざみ海苔(お好み)
+手順 お湯を沸騰させ、塩を加えてパスタを茹でる
+フライパンでにオリーブオイルを投入
+フライパンが熱くなってきたら、弱火にして焼き鮭たらことスライスチーズを投入し、混ぜ合わせる。
+パスタが茹で終わったら、パスタの汁を少量フライパンに入れてからパスタを湯切り
+パスタをフライパンに投入し、焼き鮭たらことスライスチーズを和えたらフライパンから取り出し皿に盛り付け完成
+(optional) きざみ海苔を散らす</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2022-04-11">Apr 11, 2022</time></p>
       
@@ -106,10 +124,9 @@
   <article class="card-body">
     <h2 class="card-title">僕が作ったツールがhomebrewから入るようになりました</h2>
     <p class="card-text lineclamp">といってもcoreに入ったわけではなく、自前のtapを用意しただけです。
- 今のところは mkrepo と mdmg の二つが入ります
- sourceからのインストールになるので brew install -s himanoa/tap/mdmg みたいな感じでインストールしてください。
- LinuxBrewでは試しましたがmacOSで試してないので、macOSで試して何か問題あったら @h1manoa のほうまでお願いします
- </p>
+今のところは mkrepo と mdmg の二つが入ります
+sourceからのインストールになるので brew install -s himanoa/tap/mdmg みたいな感じでインストールしてください。
+LinuxBrewでは試しましたがmacOSで試してないので、macOSで試して何か問題あったら @h1manoa のほうまでお願いします</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2021-10-29">Oct 29, 2021</time></p>
       
@@ -122,39 +139,24 @@
   <article class="card-body">
     <h2 class="card-title">Markdownでrails generateみたいなのを作れるツールを作った</h2>
     <p class="card-text lineclamp">開発中にアーキテクチャに乗った開発していくにつれて、テストだったり実装だったりをいつも同じような記述やディレクトリ構造に配置すること、多々あるとおもいます。
- そういった時に他のファイルをコピペして開発するのだと、実装を消したりコピペ元特有の名前を置換する作業が発生して面倒です。
- とくにコピペミスやディレクトリの作成ミスなどで他の部分と若干命名がずれる、みたいなのが発生すると開発体験が最悪です。
- Ruby on Railsではこのような問題を rails generate でソースコードの雛形を複数ファイルをまとめて作ることによって解決しています。
- この解決方法は結構開発体験がよいので、今回はどのプロジェクトでも違和感なしに rails generate を実現できるようなツール mdmg を作成しました!
- インストール方法 AURやhomebrew用のあれこれをやるのが面倒だったので、もう適当です。 cargoコマンドが使える人は cargo install mdmg でインストールできます。 cargoがない人は https://github.com/himanoa/mdmg/releases/tag/v0.1.1 からお好きなプラットフォーム向けのassetsをダウンロードして、中のmdmgをパスが通ってるところに配置してください。
-   シンプルな使い方 プロジェクトディレクトリで mdmg setup を実行すると .mdmgディレクトリが生成されます。
- mdmgコマンドは .mdmgディレクトリ内のMarkdownを基にscaffolding計画を決めるツールなので、次のようなmdmgテンプレートを .mdmg/source.md に配置しましょう
- https://gist.github.com/himanoa/9b716e16fa421c523150b00114a186ed
- 作成したプランを基に実行するのは次のコマンドでできます!
- mdmg generate source fetchGitHubToken
- プランのテンプレート内の {{identify}} がfetchGitHubTokenに置換されて、h2見出しのディレクトリとファイル名にcodeblockが出力されて保存されます
- また mdmg generate は -d オプションでdry-runすることができるので、テンプレートを書いてる時に有効活用すると良いでしょう
-   特徴 ほぼREADME.mdに書いてあることの詳細解説です
- Markdownでscaffoldの計画書を記述できる rails generate では generatorを自作するためにはRubyスクリプトを書きますが、mdmgはhandlebars templateが使えるmarkdownを採用しました。</p>
+そういった時に他のファイルをコピペして開発するのだと、実装を消したりコピペ元特有の名前を置換する作業が発生して面倒です。
+とくにコピペミスやディレクトリの作成ミスなどで他の部分と若干命名がずれる、みたいなのが発生すると開発体験が最悪です。
+Ruby on Railsではこのような問題を rails generate でソースコードの雛形を複数ファイルをまとめて作ることによって解決しています。
+この解決方法は結構開発体験がよいので、今回はどのプロジェクトでも違和感なしに rails generate を実現できるようなツール mdmg を作成しました!
+インストール方法 AURやhomebrew用のあれこれをやるのが面倒だったので、もう適当です。 cargoコマンドが使える人は cargo install mdmg でインストールできます。 cargoがない人は https://github.com/himanoa/mdmg/releases/tag/v0.1.1 からお好きなプラットフォーム向けのassetsをダウンロードして、中のmdmgをパスが通ってるところに配置してください。
+シンプルな使い方 プロジェクトディレクトリで mdmg setup を実行すると .mdmgディレクトリが生成されます。
+mdmgコマンドは .mdmgディレクトリ内のMarkdownを基にscaffolding計画を決めるツールなので、次のようなmdmgテンプレートを .mdmg/source.md に配置しましょう
+https://gist.github.com/himanoa/9b716e16fa421c523150b00114a186ed
+作成したプランを基に実行するのは次のコマンドでできます!
+mdmg generate source fetchGitHubToken
+プランのテンプレート内の {{identify}} がfetchGitHubTokenに置換されて、h2見出しのディレクトリとファイル名にcodeblockが出力されて保存されます
+また mdmg generate は -d オプションでdry-runすることができるので、テンプレートを書いてる時に有効活用すると良いでしょう
+特徴 ほぼREADME.mdに書いてあることの詳細解説です
+Markdownでscaffoldの計画書を記述できる rails generate では generatorを自作するためにはRubyスクリプトを書きますが、mdmgはhandlebars templateが使えるmarkdownを採用しました。
+Rubyスクリプトとmarkdownでの計画書記述の優劣は次の通りです - (優) markdownはcodeblockを使えるのでGitHub上でsyntax highlightが効く - (劣) スクリプトではないので環境変数などによってファイルを作ったり作らなかったりみたいな分岐を表現できない
+このmarkdownでscaffoldの計画書を記述することができる、というアイデアは https://github.com/cats-oss/scaffdog で採用されていて、とても良かったので概ねパクってきました。</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2021-10-27">Oct 27, 2021</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/73/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">やめたい人生2021</h2>
-    <p class="card-text lineclamp">  部屋の片付けができない
-  ゴミを指定の日に出せない
-  床に物を置きがち
-  労働のパフォーマンスが不安定
-   総括 人生ごとやめたほうが良い
-   </p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2021-10-06">Oct 6, 2021</time></p>
       
     </div>
   </article>

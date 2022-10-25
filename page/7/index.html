@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" dir="ltr">
   <head>
-	<meta name="generator" content="Hugo 0.92.2" />
+	<meta name="generator" content="Hugo 0.104.3" />
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,6 +42,20 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/52/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">物理の単位を落としてしまうと</h2>
+    <p class="card-text lineclamp">えー、物理の単位をー落としてしまうとー、将来、モニタのレストアームをつけうときにーあー、とても、つけるのがー困難にーなってしまう。
+なので物理の単位を落とさないように皆さんちゃんと勉強しましょう
+あと自分の机の規格を知らずに雑にアーム買うのもやめましょう</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2019-10-25">Oct 25, 2019</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/51/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -65,8 +79,9 @@
 たとえばリポジトリ内でgrepした結果を置換する git grep -l Foo | xargs sed -i '' -e &quot;/Foo/Bar/g&quot; をサブコマンドとして実装するとかです。
 やっと本題に戻りますが、これらのサブコマンド集を実装してリポジトリとして公開しました! himanoa/git-subcommands
 インストール himanoa/git-subcommands は以下のツールに依存しています。
- bash python  3.x推奨   git   git clone https://github.com/himanoa/git-subcommands ~/git-subcommands PATHを ~/git-subcommands/src に通す zshとかbashを使っているなら export PATH=~/git-subcommands/src:$PATH とかでいいのでは？  インストールが完了したら以下のセクションのサブコマンドがそれぞれ動作できるようになるはずです！
-実装したコマンド git-replace リポジトリ内の特定の文字列を置換する いつも git grep -l Foo | xargs sed -i '' -e &quot;/Foo/Bar/&quot; とか書いてた実装ですね。これをこのサブコマンドを用いることで以下のスニペットまで短縮できます</p>
+bash python 3.x推奨 git git clone https://github.com/himanoa/git-subcommands ~/git-subcommands PATHを ~/git-subcommands/src に通す zshとかbashを使っているなら export PATH=~/git-subcommands/src:$PATH とかでいいのでは？ インストールが完了したら以下のセクションのサブコマンドがそれぞれ動作できるようになるはずです！
+実装したコマンド git-replace リポジトリ内の特定の文字列を置換する いつも git grep -l Foo | xargs sed -i '' -e &quot;/Foo/Bar/&quot; とか書いてた実装ですね。これをこのサブコマンドを用いることで以下のスニペットまで短縮できます
+$ git strreplace Foo Bar ちなみに自慢していたところを@unecochanさんに --word-regexp オプションへの対応実装のPRをもらいました！ありがとうございました！</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-09-10">Sep 10, 2019</time></p>
       
@@ -80,9 +95,9 @@
     <h2 class="card-title">RSSリーダーとの付き合い方</h2>
     <p class="card-text lineclamp">この記事はどうやって普段RSSリーダーを運用して情報を収集しているのかを言語化したものです
 使っているRSSリーダー 今使っているのはFeedlyだが、 正直何でもいいと思う。ただ、以下の特徴を抑えてるリーダーがあると便利。
- クラウド同期  どこまでフィードに既読をつけたかなどをデバイス間で自動同期してくれる   フィードのグループ化 あとで見る  feedlyには備え付けられているけどTwitterで流れてきて後で見たいリンクなども一元管理したいため、Pocketを使っている    feedlyもベターではあるがベストではない感じがしていて、また自作したいなと考えている。とはいえ、巡回どうするかとか面倒見なくちゃいけない物が多くてなんとなく優先度低い
-今まで使っていたツールの遍歴  Opera feedly Slack nadeshiko  YQLが爆発して動かなくなった   feedly  運用方法 以下のライフサイクルで運用している。閲覧できなかった物に関しては縁がなかったということで既読つけてる。
- 朝起きてfeedlyを見て気になる記事をPocketのあとで見るに突っ込んでおく   寝坊した時は出社して余裕がある時間に眺める 時間の許す限りやる。見れなかった情報に関してはスルーする  風呂入ってる時とか寝落ちするまでの間にスマートフォンでPocketに突っ込んだやつを読んでいく   今後やりたいこと: Pocketに突っ込んだ記事だけ選定してブログに自動でポストしてニュースフィードみたいにしたら便利かも  週の終わりに見れなかった情報を全部既読つける   今後やりたいこと: crontab回して自動で既読つけたい  </p>
+クラウド同期 どこまでフィードに既読をつけたかなどをデバイス間で自動同期してくれる フィードのグループ化 あとで見る feedlyには備え付けられているけどTwitterで流れてきて後で見たいリンクなども一元管理したいため、Pocketを使っている feedlyもベターではあるがベストではない感じがしていて、また自作したいなと考えている。とはいえ、巡回どうするかとか面倒見なくちゃいけない物が多くてなんとなく優先度低い
+今まで使っていたツールの遍歴 Opera feedly Slack nadeshiko YQLが爆発して動かなくなった feedly 運用方法 以下のライフサイクルで運用している。閲覧できなかった物に関しては縁がなかったということで既読つけてる。
+朝起きてfeedlyを見て気になる記事をPocketのあとで見るに突っ込んでおく 寝坊した時は出社して余裕がある時間に眺める 時間の許す限りやる。見れなかった情報に関してはスルーする 風呂入ってる時とか寝落ちするまでの間にスマートフォンでPocketに突っ込んだやつを読んでいく 今後やりたいこと: Pocketに突っ込んだ記事だけ選定してブログに自動でポストしてニュースフィードみたいにしたら便利かも 週の終わりに見れなかった情報を全部既読つける 今後やりたいこと: crontab回して自動で既読つけたい </p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-09-07">Sep 7, 2019</time></p>
       
@@ -95,27 +110,10 @@
   <article class="card-body">
     <h2 class="card-title">monaco-editorをwebpackでバンドルする</h2>
     <p class="card-text lineclamp">問題 monaco-editorを以下のようなloader設定とplugin設定でバンドルしようとしたらハマった。
-const path = require(&#39;path&#39;) const config = { externals: [&#34;electron&#34;], target: &#34;electron-renderer&#34;, entry: &#34;./src/renderer/index.tsx&#34;, plugins: [], //←重要,  output: { path: path.join(__dirname, &#34;dist&#34;), filename: &#34;renderer.js&#34; }, module: { rules: [ //←重要  { test: /.tsx$/, exclude: /node_modules/, loader: &#34;babel-loader&#34; }, ] } } module.exports = config エラー内容はこんなかんじで 下部分で重要そうな問題だけコピペしてきた
- ERROR in ./node_modules/monaco-editor/esm/vs/editor/contrib/find/findWidget.css 8:0 Module parse failed: Unexpected token (8:0) You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file.</p>
+const path = require(&#39;path&#39;) const config = { externals: [&#34;electron&#34;], target: &#34;electron-renderer&#34;, entry: &#34;./src/renderer/index.tsx&#34;, plugins: [], //←重要, output: { path: path.join(__dirname, &#34;dist&#34;), filename: &#34;renderer.js&#34; }, module: { rules: [ //←重要 { test: /.tsx$/, exclude: /node_modules/, loader: &#34;babel-loader&#34; }, ] } } module.exports = config エラー内容はこんなかんじで 下部分で重要そうな問題だけコピペしてきた
+ERROR in ./node_modules/monaco-editor/esm/vs/editor/contrib/find/findWidget.css 8:0 Module parse failed: Unexpected token (8:0) You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file.</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-07-22">Jul 22, 2019</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/47/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">pre-orderで走破する木構造を書いた</h2>
-    <p class="card-text lineclamp">動機 人はまれに木構造を書きたくなるときがあって、ついにそれを発症したので植林活動に手を染めてみることにしました。
-嘘です。本当は某所でビヘイビアツリーなるものを知ってしまったので、原理を知るために実装したかった。
-最近 lintとかtypescriptとかでASTでなんやかんやするの流行ってるし木を自作できたらいろいろ幅が聞くだろうなぁ（妄想）と思って木構造と走破するやつをつくった。
-実装 https://github.com/himanoa-sandbox/hayashi/commit/a165b76b773edc699fb5d2a53d947e9afae3a9bc
-意識したこと  こういうシンプルなやつはTDDの素振りに良いので意識しながら書いた  commitには現れてないけどイテレータープロトコルを満たす普通の関数で最初書いてた ジェネレーターで書き直したくなった。 このときにテストがあったので壊さずリファクタリングできた。   ハマったときはgistに投げてTwitterで助けを求めた  しかし だれも こなかった。 自分を信じて自分でなおしました 俺は神    感想した感想 たのしかったです！（幼稚園生並感)。ていうか走破処理ってこんなに短くかけるものだったのね。もっと複雑でだるいものかとおもってたわ
-leftとrightがあるし実質北上双葉。双葉の双葉はどーれだ</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2019-07-20">Jul 20, 2019</time></p>
       
     </div>
   </article>

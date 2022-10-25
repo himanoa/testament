@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" dir="ltr">
   <head>
-	<meta name="generator" content="Hugo 0.92.2" />
+	<meta name="generator" content="Hugo 0.104.3" />
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,6 +42,18 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/22/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">Nの末路</h2>
+    <p class="card-text lineclamp">微妙に拗せて終わってしまった心に染みるアニメ ゆるキャン△</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-02-24">Feb 24, 2018</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/21/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -49,9 +61,9 @@
     <p class="card-text lineclamp">flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。
 webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。
 筋悪い箇所があったらTwitterかはてブのコメントで頼む
-tsconfig.json {&quot;compilerOptions&quot;: {&quot;target&quot;: &quot;es5&quot;,&quot;module&quot;: &quot;commonjs&quot;,&quot;moduleResolution&quot;: &quot;node&quot;,&quot;emitDecoratorMetadata&quot;: true,&quot;experimentalDecorators&quot;: true,&quot;declaration&quot;: false,&quot;noImplicitAny&quot;: false,&quot;noImplicitReturns&quot;: false,&quot;removeComments&quot;: true,&quot;strictNullChecks&quot;: false,&quot;outDir&quot;: &quot;build&quot;,&quot;lib&quot;: [&quot;es6&quot;,&quot;es7&quot;,&quot;dom&quot;]},&quot;exclude&quot;: [&quot;dist&quot;,&quot;build&quot;,&quot;node_modules&quot;]}moduleをcommonjsにしてしまったけどwebpackでの最適化の都合を考えると esModuleInterop の方がいいかも
+tsconfig.json {&#34;compilerOptions&#34;: {&#34;target&#34;: &#34;es5&#34;,&#34;module&#34;: &#34;commonjs&#34;,&#34;moduleResolution&#34;: &#34;node&#34;,&#34;emitDecoratorMetadata&#34;: true,&#34;experimentalDecorators&#34;: true,&#34;declaration&#34;: false,&#34;noImplicitAny&#34;: false,&#34;noImplicitReturns&#34;: false,&#34;removeComments&#34;: true,&#34;strictNullChecks&#34;: false,&#34;outDir&#34;: &#34;build&#34;,&#34;lib&#34;: [&#34;es6&#34;,&#34;es7&#34;,&#34;dom&#34;]},&#34;exclude&#34;: [&#34;dist&#34;,&#34;build&#34;,&#34;node_modules&#34;]} moduleをcommonjsにしてしまったけどwebpackでの最適化の都合を考えると esModuleInterop の方がいいかも
 strictNullChecks は依存で壊れがちらしいのでオフにしている…オンにしたい…
-webpack.config.js const path = require(&quot;path&quot;);const ENV = process.env.NODE_ENV || &quot;development&quot;;const DEV_PORT = process.env.PORT || 4444;const webpack = require(&quot;webpack&quot;);const CleanWebpackPlugin = require(&quot;clean-webpack-plugin&quot;);const HtmlWebpackPlugin = require(&quot;html-webpack-plugin&quot;);const ExtractTextPlugin = require(&quot;extract-text-webpack-plugin&quot;);module.</p>
+webpack.config.js const path = require(&#34;path&#34;);const ENV = process.env.NODE_ENV || &#34;development&#34;;const DEV_PORT = process.env.PORT || 4444;const webpack = require(&#34;webpack&#34;);const CleanWebpackPlugin = require(&#34;clean-webpack-plugin&#34;);const HtmlWebpackPlugin = require(&#34;html-webpack-plugin&#34;);const ExtractTextPlugin = require(&#34;extract-text-webpack-plugin&#34;);module.</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-02-22">Feb 22, 2018</time></p>
       
@@ -82,13 +94,13 @@ sudo apt-get install software-properties-commonsudo apt-add-repository ppa:fish
     <h2 class="card-title">WSLでクリップボードを共有する</h2>
     <p class="card-text lineclamp">Windows Subsystem for Linuxで開発環境を整えた の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに入ってくれないのが結構ストレスになったのでそれの解消をします。
 Windowsにはclip.exeというソフトウェアが搭載されており、これを使うことでWSLからWindowsのクリップボードに文字列を入れることができます
-echo &quot;:innocent:&quot; | clip.exe# wsl Terminal上でShift + Insert:innocent:ただ、このソフトウェア単体だとクリップボードから文字列を取り出すことができないのと、文字列の最後に改行コードが入るらしく(余計なことしやがって)つらいので別のアプローチでやります
-先にやっておくこと  https://github.com/equalsraf/win32yank/releases から win32yank-x64.zipをダウンロードしてきて展開 展開して出てきたwin32yank.exeを WSL上でecho $PATHして列挙されたディレクトリのいずれかに配置  win32yankの使い方は clip.exe と大体同じで以下のように使う
-echo &quot;poepoe&quot; | win32yank.exe -iwin32yank.exe -opoepoe念のためWindows上で任意のテキストボックスでCtrl+vして貼り付けられるか確認しておくと良いかもしれない。
+echo &#34;:innocent:&#34; | clip.exe# wsl Terminal上でShift + Insert:innocent: ただ、このソフトウェア単体だとクリップボードから文字列を取り出すことができないのと、文字列の最後に改行コードが入るらしく(余計なことしやがって)つらいので別のアプローチでやります
+先にやっておくこと https://github.com/equalsraf/win32yank/releases から win32yank-x64.zipをダウンロードしてきて展開 展開して出てきたwin32yank.exeを WSL上でecho $PATHして列挙されたディレクトリのいずれかに配置 win32yankの使い方は clip.exe と大体同じで以下のように使う
+echo &#34;poepoe&#34; | win32yank.exe -iwin32yank.exe -opoepoe 念のためWindows上で任意のテキストボックスでCtrl+vして貼り付けられるか確認しておくと良いかもしれない。
 Neovimからwin32yank.exeを使う さてここまでできたのなら、Neovimから yでヤンク、pで貼り付けるみたいなことをできるようにしたい。
 過去の記憶からNeovimでLinuxのクリップボードと連携した時に xsel に依存していた覚えがあった。
 また、丁度手元にNeovimのソースコードがあったのでそこから検索して(最悪書き換えてビルドすればよい)どうすればいいかを模索した
-cd ~/src/github.com/neovim/neovimgit grep xselruntime/autoload/provider/clipboard.vim:&quot; When caching is enabled, store the jobid of the xclip/xsel process keepingruntime/autoload/provider/clipboard.vim: elseif exists('$DISPLAY') &amp;&amp; executable('xsel') &amp;&amp; s:cmd_ok('xsel -o -b')runtime/autoload/provider/clipboard.</p>
+cd ~/src/github.com/neovim/neovimgit grep xselruntime/autoload/provider/clipboard.vim:&#34; When caching is enabled, store the jobid of the xclip/xsel process keepingruntime/autoload/provider/clipboard.vim: elseif exists(&#39;$DISPLAY&#39;) &amp;&amp; executable(&#39;xsel&#39;) &amp;&amp; s:cmd_ok(&#39;xsel -o -b&#39;)runtime/autoload/provider/clipboard.</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-01-31">Jan 31, 2018</time></p>
       
@@ -104,7 +116,7 @@ cd ~/src/github.com/neovim/neovimgit grep xselruntime/autoload/provider/clipbo
 やめた理由としては、今年の春にN高を卒業したということで頭文字がNだったのと、vimscript書きたくなくなってきたのと、vimconf2017でのt9mdさんのvmp: the most ambitious vim emulator - Qiitaを効いた結果やめられそうな気がしたからです。
 AtomはJavaScriptでplugin書けるので便利ですね。
 Vimの沼 大体主な理由は以下の通りだと思います
- vimscriptに恋をしてしまった 秘伝のconfigファイルでキーバインドを染め上げてしまった  僕は2つめに該当していたが色々不満が出てきたのですが、いい加減vimrc管理するのに疲れてきたのと、色々vimの使い方が変わり vimrc からキーバインド設定が消えてきたところでvimconf2017でvmpを知って「これでも生きて行けそう」感が出てきたので移行しました。
+vimscriptに恋をしてしまった 秘伝のconfigファイルでキーバインドを染め上げてしまった 僕は2つめに該当していたが色々不満が出てきたのですが、いい加減vimrc管理するのに疲れてきたのと、色々vimの使い方が変わり vimrc からキーバインド設定が消えてきたところでvimconf2017でvmpを知って「これでも生きて行けそう」感が出てきたので移行しました。
 Atomへ移行してからはvmpを入れたのとlinterとgit-plus入れただけで対して弄ってないので、そこに至るまでの軌跡について書いて行こうと思います
 キーバインド設定を減らしていく vimのキーバインド設定を減らしていく方法として素のvimを使うのがおすすめです。がPluginなどを入れて開発している人は素のvimでは生産性が落ちてしまうことでしょう。
 vimtutorをやりましょう。vimtutorはvimでの効率的なテキスト操作方法を手になじませてくれます。機能を覚え尽くす勢いでやりましょう。
@@ -112,31 +124,10 @@ vimtutorをやりましょう。vimtutorはvimでの効率的なテキスト操�
 もっと便利にVimを使えるようになる Vim幼稚園からVim小学校へ - Qiita
 ↑の記事も詳しくvimの機能について記述してあります。ここに書いてあることを無意識に使えるようになる頃にはキーマッピングの設定もだいぶ少なくなってくる頃でしょう。
 別のエディタを入れる ここまで来たらもう一息です。別のエディタをインストールしてvimキーバインドを提供してくれるプラグインを入れるだけでもだいぶ快適にテキスト編集できるはずです。この際にvimを完全にアンインストールしないで、いざってときは使えるようにしとくと便利でしょう。
-移行してよかったこと  Rubyのハイライトが体感軽くなった気がする JSでハックできて便利 git-plusが便利 MarkdownPreview、使わないでMarkdown書いてること多かったし今も使ってないんですけど Markdownで斜体と太文字のシンタックスがわからなくなったときに便利  我慢してるけど本当につらいこと  C-z rspec(別に任意のコマンドでもいい) fg の一連のコンボ技ができなくなったこと 正規表現 ノーマルモードでq:が出来なくなったこと(exコマンドをvmp-ex-command使ってるがvimに比べて貧弱なこと) タブとペインの包含関係が逆になったのがつらい バッファという概念がないこと  Vimのキーバインドを他のエディタで使ってるの卒業できてないのでは？ …
+移行してよかったこと Rubyのハイライトが体感軽くなった気がする JSでハックできて便利 git-plusが便利 MarkdownPreview、使わないでMarkdown書いてること多かったし今も使ってないんですけど Markdownで斜体と太文字のシンタックスがわからなくなったときに便利 我慢してるけど本当につらいこと C-z rspec(別に任意のコマンドでもいい) fg の一連のコンボ技ができなくなったこと 正規表現 ノーマルモードでq:が出来なくなったこと(exコマンドをvmp-ex-command使ってるがvimに比べて貧弱なこと) タブとペインの包含関係が逆になったのがつらい バッファという概念がないこと Vimのキーバインドを他のエディタで使ってるの卒業できてないのでは？ …
 追伸: 2018/01/31 ダメでした。上記の方法でVimを卒業したつもりになっていましたが気づいたらNeovimを使っています。</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-01-31">Jan 31, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/18/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">20歳になりました</h2>
-    <p class="card-text lineclamp">20170130で20歳になりました。酒が飲めて便利な年齢ですね。 20歳と言えば
-といった年齢なんですが当方はダメでしたね。来世に期待といったところ。
-20歳ってMMOの最初のレベルキャップのイメージがあって、いろいろエンドコンテンツが開放されてくイメージがあったんですけど、以外となんともないですね。
-酒 人生の先輩に酒の限界値を知っておくべきといわれたので、会社休んでストロングゼロ DRYでベンチマークをしていた。(やったのは日付回った瞬間からなので過去形)
-結論ファーストで行くと
-が限界で3缶飲むと var_dump(食った物) することになるということがわかった。
-イキりオタク的な事を書くと1缶は余裕なんですけど2缶目は大体vimの操作ができなくなって3缶目は言動が終わる。
-あとガチで悪酔い中にやったゴッドフィールドが面白かったのでゴッドフィールド神ゲーだと思った(本当か？)
-いつもの 飲みにいくぞ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!etcご用があったら Twitter まで。 Twitterもってないマンはさすがにいないと思うけど matsunoappy@gmail.com まで連絡くだしゃい。正直こっちはあんま見てないけど
-誕生日プレゼントマジで頼む!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! http://amzn.asia/5dZqBma</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-01-30">Jan 30, 2018</time></p>
       
     </div>
   </article>

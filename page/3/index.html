@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" dir="ltr">
   <head>
-	<meta name="generator" content="Hugo 0.92.2" />
+	<meta name="generator" content="Hugo 0.104.3" />
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,12 +42,27 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/73/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">やめたい人生2021</h2>
+    <p class="card-text lineclamp">部屋の片付けができない
+ゴミを指定の日に出せない
+床に物を置きがち
+労働のパフォーマンスが不安定
+総括 人生ごとやめたほうが良い</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2021-10-06">Oct 6, 2021</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/72/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
     <h2 class="card-title">ゆっくりと破滅に向かう</h2>
-    <p class="card-text lineclamp">もしかして: 終焉のカウントダウン ?
- </p>
+    <p class="card-text lineclamp">もしかして: 終焉のカウントダウン ?</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2021-09-27">Sep 27, 2021</time></p>
       
@@ -60,22 +75,21 @@
   <article class="card-body">
     <h2 class="card-title">連休の始まり</h2>
     <p class="card-text lineclamp">遅めの5連休を取ったので今日から連休スタートです。せめて連休中は毎日日記を書いていきたいところ
- 今日やったこと   労働
-  職場の人にいい感じの小さいRustツールを教えてもらったのでパッチ書いた
-  ゴミ捨て
-  オクトパストラベラー
-  プリムロゼの二章だけ
-        今日やりたいこと   生活の修復
-  部屋の掃除
-  ゴミ捨て
-  風呂掃除
-     プログラミング
-  旅団世界の戦闘シミュレータ
-  なんか良さげなOSSみつけてパッチ投げたい
-        その他 せっかく5連休を手に入れたのはいいですが、日程だけとりあえず抑えた感じで何も予定がないし、コロナが最強に流行ってるので旅行とかもいけないしでやること不足気味ですね。
- k8sのクラスタでもVPS上に建築するって言って全く手つけてなかったのえやれるといいなーっていま思ってます
- あと、風呂からブログかけたら便利だろうなとおもって、iPadからブログを書けるようにしてるんですが、意外とiPadって文字書きやすいですね。仕事で使ってるラップトップよりタイピング体験がいい気さえしています。
-   </p>
+今日やったこと 労働
+職場の人にいい感じの小さいRustツールを教えてもらったのでパッチ書いた
+ゴミ捨て
+オクトパストラベラー
+プリムロゼの二章だけ
+今日やりたいこと 生活の修復
+部屋の掃除
+ゴミ捨て
+風呂掃除
+プログラミング
+旅団世界の戦闘シミュレータ
+なんか良さげなOSSみつけてパッチ投げたい
+その他 せっかく5連休を手に入れたのはいいですが、日程だけとりあえず抑えた感じで何も予定がないし、コロナが最強に流行ってるので旅行とかもいけないしでやること不足気味ですね。
+k8sのクラスタでもVPS上に建築するって言って全く手つけてなかったのえやれるといいなーっていま思ってます
+あと、風呂からブログかけたら便利だろうなとおもって、iPadからブログを書けるようにしてるんですが、意外とiPadって文字書きやすいですね。仕事で使ってるラップトップよりタイピング体験がいい気さえしています。</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2021-08-21">Aug 21, 2021</time></p>
       
@@ -87,10 +101,9 @@
     
   <article class="card-body">
     <h2 class="card-title">TypeScript備忘録(関数の実行時に推論を確定させるテク)</h2>
-    <p class="card-text lineclamp">type UseSelectorBuilder&lt;T, S&gt; = () =&gt; (selector: (state: T) =&gt; S) =&gt; S   みたいな型が存在した時にSelectorBuilderではTまでの型を確定してSはbuilderの戻り値を呼び出した時に型を確定させたい場合どう書けばいいか
- 答えはこう
- type UseSelectorBuilder&lt;T, S&gt; = () =&gt; &lt;S&gt;(selectlor: (state: T) =&gt; S) =&gt; S   よかったですね
- </p>
+    <p class="card-text lineclamp">type UseSelectorBuilder&lt;T, S&gt; = () =&gt; (selector: (state: T) =&gt; S) =&gt; S みたいな型が存在した時にSelectorBuilderではTまでの型を確定してSはbuilderの戻り値を呼び出した時に型を確定させたい場合どう書けばいいか
+答えはこう
+type UseSelectorBuilder&lt;T, S&gt; = () =&gt; &lt;S&gt;(selectlor: (state: T) =&gt; S) =&gt; S よかったですね</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2021-08-02">Aug 2, 2021</time></p>
       
@@ -103,48 +116,24 @@
   <article class="card-body">
     <h2 class="card-title">HugoでもがんばればGatsbyみたいなことできるんでは？</h2>
     <p class="card-text lineclamp">今日は読みにくい文章を書くことによって人類の脳味噌を破壊しまーーーすw
- blog.ojisan.io とか random.taguch.dev みたいなgatsbyのSSRやNextJSのSSRでできたサイトは一覧ページの回覧が早くていいですよね。羨しいです。僕も亜音速の世界で生きたい(!?!?!?)
- しかし絶対にサーバーは持ちたくないので、最初のレンダリングはビルドしたHTMLが降ってきて、そこからJSでReactがマウントされてSPAになってページ遷移が最高の速度を人類に提供するサンタクロース(!?)になりたいです。
- ここでよく考えてみると、実はSSGしてmetaタグとかを作るのは記事の個別のページでよく、一覧ページにそういうメタ情報を付ける必要はあんまりないことに気づいちゃいました。
- つまり次の二つのフローをうまく動かすことができるSPAアプリケーションを作れば、hugoのまま最高の記事一覧ページ体験をプレゼントすることができるわけですね
- フロー1 最初に個別ページにアクセスがくる編  回覧者がサイトに blog.himanoa.net にアクセスする
-  GitHub Pagesが https://github.com/himanoa/testament/blob/gh-pages/68/index.html 返してブラウザに表示させる
-  回覧者がサイト内導線を踏んで一覧ページにアクセスする
-  GitHub Pagesが唐突に一覧ページの顔をしたSPAを返す
-  回覧者がSPA上で記事のリンクをクリックする
-  prefetchされたJSONをSPAが返して記事ページを表示する！！！！
-  卍 閃光の世界へようこそ 卍
-     フロー2 最初に記事一覧ページにくる場合  GitHub Pagesが唐突に一覧ページの顔をしたSPAを返す
-  回覧者がSPA上で記事のリンクをクリックする
-  prefetchされたJSONをSPAが返して記事ページを表示する！！！！
-  卍 閃光の世界へようこそ 卍
-   これはhugoのtheme機能をつかえばちょっとしたあとはちょっとした設定で実現できそうなのでそのうちやりたいですね。俺のブログ回覧者も閃光の世界に誘いたいぜ～～～～～～～～～～～～～
-   </p>
+blog.ojisan.io とか random.taguch.dev みたいなgatsbyのSSRやNextJSのSSRでできたサイトは一覧ページの回覧が早くていいですよね。羨しいです。僕も亜音速の世界で生きたい(!?!?!?)
+しかし絶対にサーバーは持ちたくないので、最初のレンダリングはビルドしたHTMLが降ってきて、そこからJSでReactがマウントされてSPAになってページ遷移が最高の速度を人類に提供するサンタクロース(!?)になりたいです。
+ここでよく考えてみると、実はSSGしてmetaタグとかを作るのは記事の個別のページでよく、一覧ページにそういうメタ情報を付ける必要はあんまりないことに気づいちゃいました。
+つまり次の二つのフローをうまく動かすことができるSPAアプリケーションを作れば、hugoのまま最高の記事一覧ページ体験をプレゼントすることができるわけですね
+フロー1 最初に個別ページにアクセスがくる編 回覧者がサイトに blog.himanoa.net にアクセスする
+GitHub Pagesが https://github.com/himanoa/testament/blob/gh-pages/68/index.html 返してブラウザに表示させる
+回覧者がサイト内導線を踏んで一覧ページにアクセスする
+GitHub Pagesが唐突に一覧ページの顔をしたSPAを返す
+回覧者がSPA上で記事のリンクをクリックする
+prefetchされたJSONをSPAが返して記事ページを表示する！！！！
+卍 閃光の世界へようこそ 卍
+フロー2 最初に記事一覧ページにくる場合 GitHub Pagesが唐突に一覧ページの顔をしたSPAを返す
+回覧者がSPA上で記事のリンクをクリックする
+prefetchされたJSONをSPAが返して記事ページを表示する！！！！
+卍 閃光の世界へようこそ 卍
+これはhugoのtheme機能をつかえばちょっとしたあとはちょっとした設定で実現できそうなのでそのうちやりたいですね。俺のブログ回覧者も閃光の世界に誘いたいぜ～～～～～～～～～～～～～</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2021-07-02">Jul 2, 2021</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/68/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">日記 2021-06-15</h2>
-    <p class="card-text lineclamp">ダイエット 昨日日記を書いた後散歩して、友達と通話をしながら朝を迎えた
- 今日は筋肉痛がひどすぎるのと徹夜なので寝る
-   ちゃんとしたPR ちゃんとしたPRってなんだろう。テンプレートだけではまともなPRっていうのはわからないので、OSSのPR一日一個を読むみたいなのをやってみたら言語化できるんじゃないか？という仮説をたてた
- 明日からやっていきたいがそこまでの余力があるのか果たして…
-   労働 無限に一つのコンポーネントのバグを取っていた。とりあえず手を入れてたコンポーネント自体はできたので繋ぎ込んで終わり
-   React   How to support strict effects · Discussion #18 · reactwg/react-18
-  Automatic batching for fewer renders in React 18 · Discussion #21 · reactwg/react-18
-  New feature: startTransition · Discussion #41 · reactwg/react-18
-   あたりをさらっと読んだ。
- startTransition に関しては業務で使ったら若干便利そうなところをあるので導入したさがある。
- ただ Concurrent modeをoptinするのかどうかの議論は必要そうだなーって感じ
- useEffect の周りの話は最初見た時は使ってる箇所とマイグレーション方法的を考えた時に手間がやばいな…っておもったが、</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2021-06-16">Jun 16, 2021</time></p>
       
     </div>
   </article>

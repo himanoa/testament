@@ -8,6 +8,18 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>pre-orderで走破する木構造を書いた</title>
+      <link>https://blog.himanoa.net/47/</link>
+      <pubDate>Sat, 20 Jul 2019 19:27:08 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/47/</guid>
+      <description>動機 人はまれに木構造を書きたくなるときがあって、ついにそれを発症したので植林活動に手を染めてみることにしました。
+嘘です。本当は某所でビヘイビアツリーなるものを知ってしまったので、原理を知るために実装したかった。
+最近 lintとかtypescriptとかでASTでなんやかんやするの流行ってるし木を自作できたらいろいろ幅が聞くだろうなぁ（妄想）と思って木構造と走破するやつをつくった。
+実装 https://github.com/himanoa-sandbox/hayashi/commit/a165b76b773edc699fb5d2a53d947e9afae3a9bc
+意識したこと こういうシンプルなやつはTDDの素振りに良いので意識しながら書いた commitには現れてないけどイテレータープロトコルを満たす普通の関数で最初書いてた ジェネレーターで書き直したくなった。 このときにテストがあったので壊さずリファクタリングできた。 ハマったときはgistに投げてTwitterで助けを求めた しかし だれも こなかった。 自分を信じて自分でなおしました 俺は神 感想した感想 たのしかったです！（幼稚園生並感)。ていうか走破処理ってこんなに短くかけるものだったのね。もっと複雑でだるいものかとおもってたわ
+leftとrightがあるし実質北上双葉。双葉の双葉はどーれだ</description>
+    </item><item>
       <title>転職してました</title>
       <link>https://blog.himanoa.net/46/</link>
       <pubDate>Fri, 28 Jun 2019 23:28:27 +0900</pubDate>
@@ -27,7 +39,7 @@
 自分がやる(Java|Type)Scriptプロジェクトは全部prettier使いたいけど、他人のプロジェクトではprettierを動作させたない場合がある。
 AtomだったりVSCodeだとprettierrcの有無でprettierをかけたりかけなかったりしてくれるんだが、ale + Neovimの構成だと自分で設定を書かないとうまくやってくれない。
 んでその設定なんですけど僕はこうしてますってやつです。
-let l:is_active = 0 let l:prettierrcs = [&amp;quot;.prettierrc&amp;quot;, &amp;quot;.prettierrc.toml&amp;quot;, &amp;quot;.prettierrc.config.js&amp;quot;, &amp;quot;.prettierrc.js&amp;quot;] for item in l:prettierrcs let l:is_active = l:is_active + filereadable(item) endfor let g:ale_fixers = { \ &#39;javascript&#39;: [&#39;eslint&#39;], \ &#39;typescript&#39;: [&#39;eslint&#39;], \ &#39;vue&#39;: [&#39;eslint&#39;] \ } let g:ale_fix_on_save = 1 if l:is_active &amp;gt; 0 call insert(g:ale_fixers.javascript, &amp;quot;prettier&amp;quot;) call insert(g:ale_fixers.typescript, &amp;quot;prettier&amp;quot;) call insert(g:ale_fixers.vue, &amp;quot;prettier&amp;quot;) endif ここ を見るとわかるんですけど、package.jsonにconfigが書かれる場合もあるのだが、それに関しては未対応。
+let l:is_active = 0 let l:prettierrcs = [&amp;#34;.prettierrc&amp;#34;, &amp;#34;.prettierrc.toml&amp;#34;, &amp;#34;.prettierrc.config.js&amp;#34;, &amp;#34;.prettierrc.js&amp;#34;] for item in l:prettierrcs let l:is_active = l:is_active + filereadable(item) endfor let g:ale_fixers = { \ &amp;#39;javascript&amp;#39;: [&amp;#39;eslint&amp;#39;], \ &amp;#39;typescript&amp;#39;: [&amp;#39;eslint&amp;#39;], \ &amp;#39;vue&amp;#39;: [&amp;#39;eslint&amp;#39;] \ } let g:ale_fix_on_save = 1 if l:is_active &amp;gt; 0 call insert(g:ale_fixers.javascript, &amp;#34;prettier&amp;#34;) call insert(g:ale_fixers.typescript, &amp;#34;prettier&amp;#34;) call insert(g:ale_fixers.vue, &amp;#34;prettier&amp;#34;) endif ここ を見るとわかるんですけど、package.jsonにconfigが書かれる場合もあるのだが、それに関しては未対応。
 vimscript jsonソリューションを募集しています</description>
     </item><item>
       <title>自分専用のブックマークサービスを作り始めた</title>
@@ -59,19 +71,6 @@ GitHubでOSSにしてもいいかなと思ったけどコミットログに.fire
 想定していた集約が破綻するとRepositoryパターンだけで取得と永続化用のコードを書くのは依存性解決とか集約を跨ぐトランザクションとかが出てきてしんどくなる。
 そこで便利なのがCQRSになるんだけど、トランザクションの関係でRepositoryのコードをコピペする必要が出てきたりするとコード変更による影響箇所が正しく判別しにくくなるので、そことのトレードオフですね…
 ってポエムを書こうとしたらTwitterだと文字数オーバーになった</description>
-    </item><item>
-      <title>2019-04-03(ニート歴3日目)</title>
-      <link>https://blog.himanoa.net/42/</link>
-      <pubDate>Thu, 04 Apr 2019 13:13:42 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/42/</guid>
-      <description>生活習慣を整えたくて早く寝て早く起きたんだけど、書くの忘れてたので何をやったかを忘れる前に書いておく
-やったこと 家賃の支払い 家計にダメージ。
-Laravel環境生成 動かすところまでは来た。チュートリアルは手付かず。こういう動かすのに多大な時間がかかるやつきらい。
-AetherへのPR 出した
-メール返信 やった
-できなかったこと 飲み会 日付の認識が曖昧で実は違う日だった
-あした(今日)やること Laravel入門 飲み会</description>
     </item>
   </channel>
 </rss>

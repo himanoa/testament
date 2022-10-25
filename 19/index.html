@@ -66,9 +66,9 @@ git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-vi
 <h2 id="はまったこと">はまったこと</h2>
 <h3 id="pecoが動かん">pecoが動かん</h3>
 <p>pecoのLinuxビルド持ってきて叩いてみたら</p>
-<pre tabindex="0"><code>Failed to execute process '/usr/bin/peco'. Reason:
+<pre tabindex="0"><code>Failed to execute process &#39;/usr/bin/peco&#39;. Reason:
 exec: Exec format error
-The file '/usr/bin/peco' is marked as an executable but could not be run by the operating system.
+The file &#39;/usr/bin/peco&#39; is marked as an executable but could not be run by the operating system.
 </code></pre><!-- raw HTML omitted -->
 <p>pecoにPR投げるのが得策なのはそれはそうなんですけど、時間もなければGoがわからないので普通に迂回してfzfで代替することにした。tmux連携とかvim連携あるらしくてこっちの方がいいかも感出てきた。</p>
 <p>ちなみに僕の場合はpeco -&gt; fzfは fzfをインストールして peco使うコードが書いてあるファイルで <code>:%s/peco/fzf-tmux/g</code> しただけで移行終了した。よかった</p>

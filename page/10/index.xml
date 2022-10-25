@@ -8,6 +8,39 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>なりました。21歳に(倒置法)</title>
+      <link>https://blog.himanoa.net/37/</link>
+      <pubDate>Wed, 30 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/37/</guid>
+      <description>多分これ公開されるのが1/31とかなんですけど、ついに21歳になりました。今年はとても早かったですね。
+変わったことは思想、価値観や自己評価です。使っているテキストエディタは変わりませんでした。
+いつも通りですが非論理的な文章構造になってます。
+どうでしたか去年は？(倒置法) 2017年は前半死んでて後半がんばってる感じだった気がしたんですけど、2018年は真逆だった気がする。
+酒 たくさん飲んだ。主にビールが好きということがわかったというのがアドですね。あとは年相応にしてサイゼのワインを無限に飲むのが好き。
+社会人ならもっと高い酒飲めよという話はあるのだが、ぶっちゃけ財布に余裕があるわけではないので許して欲しい。(突然の懺悔)
+お酒を飲んでる時が人生でそれ以外の時は人生ではないというのが今年一番の知見だと思った。アルコール最高!!
+コード 2017年よりは書いたと思う。GitHubの草は900前後とかだった。
+まぁでも実用的なコードって全くなくて、OSSとかをガチガチでやってるって感じじゃなかった。でもブルーオーシャンな言語のライブラリを使って不便なところにPRを投げる遊びは楽しかった。
+新しく学んだ言語は業務で使うためにScalaと、趣味で遊ぶためにRustを書いてた。っていうか今ではJavaScript(TypeScript)が一番書ける言語な感じがするんですけど、本格的に書き初めたのって今年っぽいですね。
+各言語の感想を雑に書くとScalaはMonad的要素とパターンマッチが最高。Rustはブルーオーシャン感が最高(あんまり踏み込んで学習できてない)。TypeScriptはなんか雑に便利でよかった
+名取さなさんの声を常に聞きたくてvimのpluginを書いたりしてた。あと、名取さなさんの音声を再生するDiscordBotを作ったりしてた。これは名取さなさんのガイドラインが制定された時に公開をやめた。DiscordBotを我以外の他人がホスティングし始めてしまったので。
+後半はあまりコード書いてないがこれの理由は後述するんだがエンジニアの休日にコードやアウトプットがうんちゃらみたいな文化に吐き気がしたのと、そういうのを疑似強制するような人間が求めてることをやりたくなさが強くなったからです。
+OSSメンテナに憧れて生きてるけど我にはきっと継続的にメンテしていく気力も自身もないよなって気持ちになってる。
+ブログ 前半はよくできたね偉いってくらい書いたと思う。30はてブくらい付いた記事とかあって承認欲求の高まりを感じちゃった。でも後半は精神が荒れていたのと文化破壊欲求が加速して書かなくなった。アドベントカレンダーは本当にごめんなさい。来年からはもう登録しません
+ゲーム だいたいたのしかった。でもハースストーンはマンモス年のDKとかゴミレジェが環境を破壊していて単純に不快なゲームだったのでスタン落ちしたら呼んでください。
+寄稿した。合同誌に(トーチゴーレム) 楽しかったんだが一番体力を使ったが関係各位にだいぶ迷惑をかけた気がしているやつです。まじでごめんなさい
+始めて有料でイラストの依頼メールとか送ったけどこれは良かった(原稿進捗や仕事が忙しくて連絡滞りや雑な対応などあって反省点はおおいが‥)し、今度はアイコンとかで依頼してみたいなぁ
+仕事 2/1に書きます
+VTuber 名取さなさんが好き。
+見なくなったもの。見るようになったもの Twitterとはてブをあまり見なくなった。Twitterはモバイルが最悪で他人のいいねで容易に悪意が可視化されてるのが嫌だった。はてブもそう。ホットエントリーにたまに上がってくるDis系のコンテンツを見るのが嫌になってきたっていうがある。インターネットには悪意の渦が渦を巻いていることがわかる。
+諸悪の根源 2018年は本当に嫌いな物や明確な悪意というのがよくわかった年だった。後半苦しかったのもそれが悪い。
+全部人の中にある承認欲求が悪いんです。承認欲求消えさってくれ。俺の観測範囲に入ってくるな。おまえらはWebサービスを実装する時にいいねなんていうバカげた機能を実装するな。今すぐ滅びろ。頼む。俺のために滅びてくれ。人間。いいね合戦をやめろ。いいねを稼ぐなんて馬鹿げた目的を俺の観測範囲に入れるな。いいねを稼ぐ目的で過激をするな。やめろ。やめろ。やめろ。やめろ。やめろ。やめろ。やめろ。承認欲求はこの世に存在しちゃいけないんだ。インターネットを見てるだけで個体値厳選されてる気持ちになるのも全部こいつがいけない。
+こういう事言うと「お前の生産性や評価がゴミなのを外部に擦り付けるな」とか言われそうなんですけどそういうことじゃなくて、単純にお前のそのやり方が他人の生き辛くしているからやめろといっているんですよ。
+今年 まったりひっそりとなんかしていたい。なるべく外界とのアダプターを切っていきたいっていうのが正直な所なんだけど、もっといろんな人間と友達になってみたいというのもある。
+これは友達の受け売りなんですけど、今のインターネットは何らかの影響ででかい存在になって走り続けなければ行けない人間と何の影響もなくてひっそりと永遠に停滞し続けるの両極端になってるっていう話があった。僕は後者なので一生停滞します。
+さいごに 例のリストです http://www.amazon.co.jp/registry/wishlist/2MFXRTHKOUEYH/ref=cm_sw_r_tw</description>
+    </item><item>
       <title>テスト記事</title>
       <link>https://blog.himanoa.net/36/</link>
       <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
@@ -21,8 +54,8 @@
       
       <guid>https://blog.himanoa.net/35/</guid>
       <description>Rustを書いていると自分で定義したEnumを文字列から生成したくなる時がある。コード例で示すとこんな感じ
-pub enum Foo {Foo1,Foo2,Foo3,Foo4}Foo::from_str(&amp;quot;Foo1&amp;quot;) // -&amp;gt; Foo::Foo1こんな時は標準ライブラリに入っている、std::str::FromStr トレイトを実装してやるとうまいこといくし、他の似たような挙動をする型と一緒に扱えたりして便利で作法的にも良い。例は以下の通り
-use std::str::FromStr;use std::str::FromStr;pub enum Foo {Foo1,Foo2,Foo3}impl FromStr for Foo {type Err = &amp;amp;&#39;static str;fn from_str(s: &amp;amp;str) -&amp;gt; Result&amp;lt;Self, Self::Err&amp;gt; {match s {&amp;quot;Foo1&amp;quot; =&amp;gt; Ok(Foo::Foo1),&amp;quot;Foo2&amp;quot; =&amp;gt; Ok(Foo::Foo2),&amp;quot;Foo3&amp;quot; =&amp;gt; Ok(Foo::Foo3),_ =&amp;gt; Err(&amp;quot;Error&amp;quot;)}}}Foo::from_str(&amp;quot;Foo1&amp;quot;) // Ok(Foo::Foo1)Foo::from_str(&amp;quot;Foo1sadasd&amp;quot;) // Err(&amp;quot;Error&amp;quot;)もちろんFromStrはトレイトなのでenum以外にも適用可能なので、任意の型を文字列から生成したい時にはこの方法を使いましょう。</description>
+pub enum Foo {Foo1,Foo2,Foo3,Foo4}Foo::from_str(&amp;#34;Foo1&amp;#34;) // -&amp;gt; Foo::Foo1 こんな時は標準ライブラリに入っている、std::str::FromStr トレイトを実装してやるとうまいこといくし、他の似たような挙動をする型と一緒に扱えたりして便利で作法的にも良い。例は以下の通り
+use std::str::FromStr;use std::str::FromStr;pub enum Foo {Foo1,Foo2,Foo3}impl FromStr for Foo {type Err = &amp;amp;&amp;#39;static str;fn from_str(s: &amp;amp;str) -&amp;gt; Result&amp;lt;Self, Self::Err&amp;gt; {match s {&amp;#34;Foo1&amp;#34; =&amp;gt; Ok(Foo::Foo1),&amp;#34;Foo2&amp;#34; =&amp;gt; Ok(Foo::Foo2),&amp;#34;Foo3&amp;#34; =&amp;gt; Ok(Foo::Foo3),_ =&amp;gt; Err(&amp;#34;Error&amp;#34;)}}}Foo::from_str(&amp;#34;Foo1&amp;#34;) // Ok(Foo::Foo1)Foo::from_str(&amp;#34;Foo1sadasd&amp;#34;) // Err(&amp;#34;Error&amp;#34;) もちろんFromStrはトレイトなのでenum以外にも適用可能なので、任意の型を文字列から生成したい時にはこの方法を使いましょう。</description>
     </item><item>
       <title>SPAにおけるOpen ID Connect認証</title>
       <link>https://blog.himanoa.net/34/</link>
@@ -32,7 +65,7 @@ use std::str::FromStr;use std::str::FromStr;pub enum Foo {Foo1,Foo2,Foo3}
       <description>サーバーサイドとクライアントサイド両方とも実装する機運が出てきたのでそれぞれの役割を整理するためにシーケンス図を書いた。 Googleって書いてあるところはOAuthプロバイダーなら何でも置き替えられるはず
 間違ってたら教えてくれ
 追記: とりあえずシーケンス図が書けたのでAPIサーバーに求められている機構を実装した。curlで試しているのと、SPAのガワが存在していないため一旦セッションに入れたりstateの検証するのは省いた。
-const { createHash } = require(&amp;quot;crypto&amp;quot;);const url = require(&amp;quot;url&amp;quot;);const express = require(&amp;quot;express&amp;quot;);const bp = require(&amp;quot;body-parser&amp;quot;);const axios = require(&amp;quot;axios&amp;quot;);const jwt = require(&amp;quot;jwt-simple&amp;quot;);const secret = require(&amp;quot;./secret.json&amp;quot;);const app = express();app.use(bp.json());const salt = &amp;quot;hakatanosalt&amp;quot;;app.get(&amp;quot;/oauth/callback&amp;quot;, (req, res) =&amp;gt; {console.log(JSON.stringify({code: req.query.code,state: req.query.state}));res.send(&amp;quot;ok&amp;quot;);});app.get(&amp;quot;/oauth/google/login&amp;quot;, function(req, res) {const state = createHash(&amp;quot;sha256&amp;quot;).update(`${salt}${Math.random()}${+new Date()}`).digest(&amp;quot;hex&amp;quot;);const params = new url.</description>
+const { createHash } = require(&amp;#34;crypto&amp;#34;);const url = require(&amp;#34;url&amp;#34;);const express = require(&amp;#34;express&amp;#34;);const bp = require(&amp;#34;body-parser&amp;#34;);const axios = require(&amp;#34;axios&amp;#34;);const jwt = require(&amp;#34;jwt-simple&amp;#34;);const secret = require(&amp;#34;./secret.json&amp;#34;);const app = express();app.use(bp.json());const salt = &amp;#34;hakatanosalt&amp;#34;;app.get(&amp;#34;/oauth/callback&amp;#34;, (req, res) =&amp;gt; {console.log(JSON.stringify({code: req.query.code,state: req.query.state}));res.send(&amp;#34;ok&amp;#34;);});app.get(&amp;#34;/oauth/google/login&amp;#34;, function(req, res) {const state = createHash(&amp;#34;sha256&amp;#34;).update(`${salt}${Math.random()}${+new Date()}`).digest(&amp;#34;hex&amp;#34;);const params = new url.</description>
     </item><item>
       <title>RustでMarkdown to Htmlを試してみる</title>
       <link>https://blog.himanoa.net/33/</link>
@@ -42,28 +75,10 @@ const { createHash } = require(&amp;quot;crypto&amp;quot;);const url = require(
       <description>有給を取って、ここ最近新しい事を始められてなかったことを思い出したので前からやりたかったRustに入門をしました。 んで、まぁいつも通りブログシステムでも書いてみるかなぁとか思ってRocket触ってDBまでアクセスしてInsert流す所までは普通にできたので、とりあえず次はMarkdownをパースしてhtmlに変換するやつでも書こうかなと思ったのでやってみることに。
 ライブラリを物色してみるとpulldown-cmarkというやつが人気そうなので雑にインストールして使ってみることにしました:smile:
 インストール Rustの環境構築は一旦省いて、以下のコマンドでパッケージを切って依存関係にpulldown-cmarkを入れていきます。
-$ cargo new --bin pulldown_cmark_playground$ cd pulldown_cmark_playground$ cat &#39;pulldown-cmark = &amp;quot;0.1.2&amp;quot;&#39; &amp;gt;&amp;gt; Cargo.toml$ cargo buildcargo buildした時に依存関係にあるpulldown-cmarkが落ちてきてビルドされます。エコシステムがしっかりしていて完全に便利。文明の息吹を感じろ。
+$ cargo new --bin pulldown_cmark_playground$ cd pulldown_cmark_playground$ cat &amp;#39;pulldown-cmark = &amp;#34;0.1.2&amp;#34;&amp;#39; &amp;gt;&amp;gt; Cargo.toml$ cargo build cargo buildした時に依存関係にあるpulldown-cmarkが落ちてきてビルドされます。エコシステムがしっかりしていて完全に便利。文明の息吹を感じろ。
 htmlに変換してみる というわけでライブラリを使う準備が整ったのでさっそくMarkdownをhtmlに変換してみる。 GitHubのREADME.mdにはサンプルコードらしき物が書いていないが、ドキュメントの方にはちゃんと書いてあるのでそちらを参照しよう。大体以下のコードになります。
-extern crate pulldown_cmark;use pulldown_cmark::{html, Parser};fn main() {let markdown_str = r#&amp;quot;# Hello人間は愚かな生物。[俺のブログ](https://blog.himanoa.net)&amp;quot;#;let parser = Parser::new(markdown_str);let mut html_buf = String::new();html::push_html(&amp;amp;mut html_buf, parser);println!(&amp;quot;{}&amp;quot;, html_buf);}$ cargo run で実行してみると以下の結果が出力されます。
-&amp;lt;h1&amp;gt;Hello&amp;lt;/h1&amp;gt;&amp;lt;p&amp;gt;人間は愚かな生物。&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;https://blog.himanoa.net&amp;quot;&amp;gt;俺のブログ&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;普通にhtmlに変換されていますね。やったぜ mutableな変数の参照を引数で渡して、渡した引数に結果が代入されるっていうのがすごい気持ち悪いのですが、多分戻り値で受けるとコピーのオーバーヘッドが発生するからこうなってるのでしょう。わからない…Rust詳しい人教えてくれ…。</description>
-    </item><item>
-      <title>EFFY one of unreasonable &#34;if&#34; をクリアした</title>
-      <link>https://blog.himanoa.net/32/</link>
-      <pubDate>Thu, 16 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/32/</guid>
-      <description>Vertical Strilke Endless Challenge を作ったサークルProject ICKX さん の第一作である所の EFFY one of unreasonable &amp;ldquo;if&amp;rdquo; をNormalでクリアしたのでそれの感想を書く。ネタバレもある。たぶん
-どんなゲームかというと、フライトシューティング(エースコンバット的な)で敵をバッタバッタと撃墜していく感じ。主人公機には専用の装備とかわいい戦術A.Iがついており、専用の装備で超起動したりめっちゃ加速できたりする
-ストーリー 民間軍事企業のテストパイロットをやっていたと思ったら敵が襲いかかってきたので、振りかかる火の粉を払ってたらいつの間にかに戦争になっていた。上司は無茶なミッションばっか頼んでくるしこれからわたし、どうなっちゃうのー！？みたいな感じ。主人公が男なのでこれからわたし、どうなっちゃうのー！？ではないが。
-驚きのフルボイス ゲーム中のセリフがフルボイスになっていて神、難易度が高いというのもあるが、レーダーみたり機銃のレティクルみたりでセリフ追ってプレイしていられないのでフルボイスなのは嬉しい。シナリオの把握がしやすい
-頻繁にキャラクターが喋ってるのでテキスト量も膨大な感じがするんだがしっかりボイスが付いててすごいと思った。
-あと味方のモブが主人公ワッショイしてくれる演出もすき。オタクは自己肯定観がひくいので
-機載AIのエフィーがかわいい 機体の性能が高いところに由来するのか妙に自信家なところとか、被弾しまくると落ち込んだりするところがかわいい。
-セリフからドヤ顔が浮かぶ…
-「わたしを使って　彼らを斃して」だとか「勝てない筈がないのです」とか、こうプレイヤーを奮起させるセリフをバシバシ言ってくのが僕的にはスコポイントでした。
-エースコンバット ACE余裕じゃなんとかならない難易度 まじで難しい。エースコンバットはかなり得意なゲームなんですけどEasyでも死んだ箇所があったくらいには難しかった。Normalはやばいですね。難しいポイント攻略するのにかなり時間がかかった。敵が物量の暴力で攻めてくるのもあるんだけどエースコンバットよりも攻撃をよくするイメージがついた。全部俺が撃墜してやるぜーなんてやると一瞬で蒸発したりする。
-攻略のコツとか まずは全部自分でなんとかするという気持ちを殺すことです。敵がおおいのでミサイルいっぱいあっても足りなかったりする。
-味方が有能なので味方と一緒に飛ぶ事を心がける事でこの変はなんとかなったりする。あと母艦が出てくるミッションは困ったら母艦の上空をグルグル回ったりしとけば敵が勝手に死ぬ。この変はエースコンバットよりどうやって飛ぶかを考えさせられるゲームだった。</description>
+extern crate pulldown_cmark;use pulldown_cmark::{html, Parser};fn main() {let markdown_str = r#&amp;#34;# Hello人間は愚かな生物。[俺のブログ](https://blog.himanoa.net)&amp;#34;#;let parser = Parser::new(markdown_str);let mut html_buf = String::new();html::push_html(&amp;amp;mut html_buf, parser);println!(&amp;#34;{}&amp;#34;, html_buf);} $ cargo run で実行してみると以下の結果が出力されます。
+&amp;lt;h1&amp;gt;Hello&amp;lt;/h1&amp;gt;&amp;lt;p&amp;gt;人間は愚かな生物。&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;#34;https://blog.himanoa.net&amp;#34;&amp;gt;俺のブログ&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt; 普通にhtmlに変換されていますね。やったぜ mutableな変数の参照を引数で渡して、渡した引数に結果が代入されるっていうのがすごい気持ち悪いのですが、多分戻り値で受けるとコピーのオーバーヘッドが発生するからこうなってるのでしょう。わからない…Rust詳しい人教えてくれ…。</description>
     </item>
   </channel>
 </rss>

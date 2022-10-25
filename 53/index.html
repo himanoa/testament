@@ -52,13 +52,13 @@
 <p>次のコマンドでインストールすることができます</p>
 <p><code>cargo install mkrepo</code></p>
 <p>また、mkrepoは.gitconfigに特定のkey-value構造が存在していることに依存しています。そのため <code>~/.gitconfig</code>に次のような記述を追加する必要があります</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">user</span>]
-<span style="color:#a6e22e">name</span>=<span style="color:#e6db74">&#34;あなたのなまえ&#34;</span>
-[<span style="color:#a6e22e">ghq</span>]
-<span style="color:#a6e22e">root</span>=<span style="color:#e6db74">&#34;~/src&#34;</span>
-[<span style="color:#a6e22e">mkrepo</span>]
-<span style="color:#a6e22e">service</span>=<span style="color:#e6db74">&#34;github.com&#34;</span>
-</code></pre></div><h2 id="つかいかた">つかいかた</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">user</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">name</span>=<span style="color:#e6db74">&#34;あなたのなまえ&#34;</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">ghq</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">root</span>=<span style="color:#e6db74">&#34;~/src&#34;</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">mkrepo</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">service</span>=<span style="color:#e6db74">&#34;github.com&#34;</span>
+</span></span></code></pre></div><h2 id="つかいかた">つかいかた</h2>
 <pre tabindex="0"><code>Make project directory for ghq style. 0.0.1
 
 USAGE:
@@ -76,7 +76,6 @@ OPTIONS:
 
 ARGS:
     &lt;repository&gt;    Repository name
-
 </code></pre><p><code>mkrepo foobar</code> とかやると <code>src/github.com/himanoa/foobar</code>が生成されて <code>mkrepo -a himanoa-sandbox foobar</code> すると <code>src/github.com/himanoa-sandbox/foobar</code> が生成される形です。<code>github.com</code>が使えない企業戦士向けに <code>mkrepo -s corp.repo foobar</code> とかやると <code>src/corp.repo/himanoa/foobar</code>が生成されます。便利ですね。</p>
 <h3 id="オワオワリに">オワオワリに</h3>
 <p>一年前にRustでWebApp書くのに挫折していて、それからあんまり書かなくなってしまった言語だったのですが、パターンマッチや<code>if let</code>など書き味がよくいい言語だなぁといった感想でした。</p>

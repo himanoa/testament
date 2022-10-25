@@ -43,11 +43,10 @@
         
         <p><a href="https://blog.himanoa.net/entries/19">Windows Subsystem for Linuxで開発環境を整えた</a> の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに入ってくれないのが結構ストレスになったのでそれの解消をします。</p>
 <p>Windowsにはclip.exeというソフトウェアが搭載されており、これを使うことでWSLからWindowsのクリップボードに文字列を入れることができます</p>
-<pre tabindex="0"><code>echo &quot;:innocent:&quot; | clip.exe
+<pre tabindex="0"><code>echo &#34;:innocent:&#34; | clip.exe
 
 # wsl Terminal上でShift + Insert
 :innocent:
-
 </code></pre><p>ただ、このソフトウェア単体だとクリップボードから文字列を取り出すことができないのと、文字列の最後に改行コードが入るらしく(余計なことしやがって)つらいので別のアプローチでやります</p>
 <h2 id="先にやっておくこと">先にやっておくこと</h2>
 <ol>
@@ -55,7 +54,7 @@
 <li>展開して出てきたwin32yank.exeを WSL上で<code>echo $PATH</code>して列挙されたディレクトリのいずれかに配置</li>
 </ol>
 <p>win32yankの使い方は clip.exe と大体同じで以下のように使う</p>
-<pre tabindex="0"><code>echo &quot;poepoe&quot; | win32yank.exe -i
+<pre tabindex="0"><code>echo &#34;poepoe&#34; | win32yank.exe -i
 
 win32yank.exe -o
 poepoe
@@ -66,50 +65,49 @@ poepoe
 <p>また、丁度手元にNeovimのソースコードがあったのでそこから検索して(最悪書き換えてビルドすればよい)どうすればいいかを模索した</p>
 <pre tabindex="0"><code>cd ~/src/github.com/neovim/neovim
 git grep xsel
-runtime/autoload/provider/clipboard.vim:&quot; When caching is enabled, store the jobid of the xclip/xsel process keeping
-runtime/autoload/provider/clipboard.vim:  elseif exists('$DISPLAY') &amp;&amp; executable('xsel') &amp;&amp; s:cmd_ok('xsel -o -b')
-runtime/autoload/provider/clipboard.vim:    let s:copy['+'] = 'xsel --nodetach -i -b'
-runtime/autoload/provider/clipboard.vim:    let s:paste['+'] = 'xsel -o -b'
-runtime/autoload/provider/clipboard.vim:    let s:copy['*'] = 'xsel --nodetach -i -p'
-runtime/autoload/provider/clipboard.vim:    let s:paste['*'] = 'xsel -o -p'
-runtime/autoload/provider/clipboard.vim:    return 'xsel'
+runtime/autoload/provider/clipboard.vim:&#34; When caching is enabled, store the jobid of the xclip/xsel process keeping
+runtime/autoload/provider/clipboard.vim:  elseif exists(&#39;$DISPLAY&#39;) &amp;&amp; executable(&#39;xsel&#39;) &amp;&amp; s:cmd_ok(&#39;xsel -o -b&#39;)
+runtime/autoload/provider/clipboard.vim:    let s:copy[&#39;+&#39;] = &#39;xsel --nodetach -i -b&#39;
+runtime/autoload/provider/clipboard.vim:    let s:paste[&#39;+&#39;] = &#39;xsel -o -b&#39;
+runtime/autoload/provider/clipboard.vim:    let s:copy[&#39;*&#39;] = &#39;xsel --nodetach -i -p&#39;
+runtime/autoload/provider/clipboard.vim:    let s:paste[&#39;*&#39;] = &#39;xsel -o -p&#39;
+runtime/autoload/provider/clipboard.vim:    return &#39;xsel&#39;
 runtime/doc/provider.txt:  - xsel (if $DISPLAY is set)
-
 </code></pre><p>なんか普通に設定方法がドキュメントに書いてありそうなので、調べてみたところg:clipboardを弄ることにより変更できるみたいだった。</p>
 <p>以下のように変更した</p>
 <pre tabindex="0"><code>let g:clipboard = {
-      \   'name': 'myClipboard',
-      \   'copy': {
-      \      '+': 'win32yank.exe -i',
-      \      '*': 'win32yank.exe -i',
+      \   &#39;name&#39;: &#39;myClipboard&#39;,
+      \   &#39;copy&#39;: {
+      \      &#39;+&#39;: &#39;win32yank.exe -i&#39;,
+      \      &#39;*&#39;: &#39;win32yank.exe -i&#39;,
       \    },
-      \   'paste': {
-      \      '+': 'win32yank.exe -o',
-      \      '*': 'win32yank.exe -o',
+      \   &#39;paste&#39;: {
+      \      &#39;+&#39;: &#39;win32yank.exe -o&#39;,
+      \      &#39;*&#39;: &#39;win32yank.exe -o&#39;,
       \   },
-      \   'cache_enabled': 1,
+      \   &#39;cache_enabled&#39;: 1,
       \ }
 </code></pre><p>さてこのままだと、マルチプラットフォーム対応として怪しいのでもうちょっと工夫をする。</p>
 <p>WSLの <code>uname -a</code> は特殊になっており、普通のUbuntuとは表示が違うことを利用して判定をする</p>
 <pre tabindex="0"><code>uname -a
 Linux HOSTNAME 4.4.0-43-Microsoft #1-Microsoft Wed Dec 31 14:42:53 PST 2014 x86\_64 x86\_64 x86\_64 GNU/Linux
-</code></pre><pre tabindex="0"><code>if system('uname -a | grep Microsoft') != &quot;&quot;
+</code></pre><pre tabindex="0"><code>if system(&#39;uname -a | grep Microsoft&#39;) != &#34;&#34;
   let g:clipboard = {
-        \   'name': 'myClipboard',
-        \   'copy': {
-        \      '+': 'win32yank.exe -i',
-        \      '*': 'win32yank.exe -i',
+        \   &#39;name&#39;: &#39;myClipboard&#39;,
+        \   &#39;copy&#39;: {
+        \      &#39;+&#39;: &#39;win32yank.exe -i&#39;,
+        \      &#39;*&#39;: &#39;win32yank.exe -i&#39;,
         \    },
-        \   'paste': {
-        \      '+': 'win32yank.exe -o',
-        \      '*': 'win32yank.exe -o',
+        \   &#39;paste&#39;: {
+        \      &#39;+&#39;: &#39;win32yank.exe -o&#39;,
+        \      &#39;*&#39;: &#39;win32yank.exe -o&#39;,
         \   },
-        \   'cache_enabled': 1,
+        \   &#39;cache_enabled&#39;: 1,
         \ }
 endif
 </code></pre><h2 id="tmuxからwin32yankを使う">tmuxからwin32yankを使う</h2>
 <p>vi-mode使ってること前提。</p>
-<pre tabindex="0"><code>if-shell 'test &quot;$(uname -a | grep Microsoft)&quot; != &quot;&quot;'  bind-key -t vi-copy Enter copy-pipe &quot;cat | win32yank.exe -i&quot;
+<pre tabindex="0"><code>if-shell &#39;test &#34;$(uname -a | grep Microsoft)&#34; != &#34;&#34;&#39;  bind-key -t vi-copy Enter copy-pipe &#34;cat | win32yank.exe -i&#34;
 </code></pre><h2 id="まとめ">まとめ</h2>
 <p>WSLでもクリップボード共有できて嬉しいですね。多分これで常用できると思います</p>
 

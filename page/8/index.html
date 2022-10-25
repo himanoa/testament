@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" dir="ltr">
   <head>
-	<meta name="generator" content="Hugo 0.92.2" />
+	<meta name="generator" content="Hugo 0.104.3" />
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,6 +42,23 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/47/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">pre-orderで走破する木構造を書いた</h2>
+    <p class="card-text lineclamp">動機 人はまれに木構造を書きたくなるときがあって、ついにそれを発症したので植林活動に手を染めてみることにしました。
+嘘です。本当は某所でビヘイビアツリーなるものを知ってしまったので、原理を知るために実装したかった。
+最近 lintとかtypescriptとかでASTでなんやかんやするの流行ってるし木を自作できたらいろいろ幅が聞くだろうなぁ（妄想）と思って木構造と走破するやつをつくった。
+実装 https://github.com/himanoa-sandbox/hayashi/commit/a165b76b773edc699fb5d2a53d947e9afae3a9bc
+意識したこと こういうシンプルなやつはTDDの素振りに良いので意識しながら書いた commitには現れてないけどイテレータープロトコルを満たす普通の関数で最初書いてた ジェネレーターで書き直したくなった。 このときにテストがあったので壊さずリファクタリングできた。 ハマったときはgistに投げてTwitterで助けを求めた しかし だれも こなかった。 自分を信じて自分でなおしました 俺は神 感想した感想 たのしかったです！（幼稚園生並感)。ていうか走破処理ってこんなに短くかけるものだったのね。もっと複雑でだるいものかとおもってたわ
+leftとrightがあるし実質北上双葉。双葉の双葉はどーれだ</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2019-07-20">Jul 20, 2019</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/46/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -65,7 +82,7 @@
 自分がやる(Java|Type)Scriptプロジェクトは全部prettier使いたいけど、他人のプロジェクトではprettierを動作させたない場合がある。
 AtomだったりVSCodeだとprettierrcの有無でprettierをかけたりかけなかったりしてくれるんだが、ale + Neovimの構成だと自分で設定を書かないとうまくやってくれない。
 んでその設定なんですけど僕はこうしてますってやつです。
-let l:is_active = 0 let l:prettierrcs = [&quot;.prettierrc&quot;, &quot;.prettierrc.toml&quot;, &quot;.prettierrc.config.js&quot;, &quot;.prettierrc.js&quot;] for item in l:prettierrcs let l:is_active = l:is_active + filereadable(item) endfor let g:ale_fixers = { \ 'javascript': ['eslint'], \ 'typescript': ['eslint'], \ 'vue': ['eslint'] \ } let g:ale_fix_on_save = 1 if l:is_active &gt; 0 call insert(g:ale_fixers.javascript, &quot;prettier&quot;) call insert(g:ale_fixers.typescript, &quot;prettier&quot;) call insert(g:ale_fixers.vue, &quot;prettier&quot;) endif ここ を見るとわかるんですけど、package.jsonにconfigが書かれる場合もあるのだが、それに関しては未対応。
+let l:is_active = 0 let l:prettierrcs = [&#34;.prettierrc&#34;, &#34;.prettierrc.toml&#34;, &#34;.prettierrc.config.js&#34;, &#34;.prettierrc.js&#34;] for item in l:prettierrcs let l:is_active = l:is_active + filereadable(item) endfor let g:ale_fixers = { \ &#39;javascript&#39;: [&#39;eslint&#39;], \ &#39;typescript&#39;: [&#39;eslint&#39;], \ &#39;vue&#39;: [&#39;eslint&#39;] \ } let g:ale_fix_on_save = 1 if l:is_active &gt; 0 call insert(g:ale_fixers.javascript, &#34;prettier&#34;) call insert(g:ale_fixers.typescript, &#34;prettier&#34;) call insert(g:ale_fixers.vue, &#34;prettier&#34;) endif ここ を見るとわかるんですけど、package.jsonにconfigが書かれる場合もあるのだが、それに関しては未対応。
 vimscript jsonソリューションを募集しています</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-04-14">Apr 14, 2019</time></p>
@@ -107,24 +124,6 @@ GitHubでOSSにしてもいいかなと思ったけどコミットログに.fire
 想定していた集約が破綻するとRepositoryパターンだけで取得と永続化用のコードを書くのは依存性解決とか集約を跨ぐトランザクションとかが出てきてしんどくなる。
 そこで便利なのがCQRSになるんだけど、トランザクションの関係でRepositoryのコードをコピペする必要が出てきたりするとコード変更による影響箇所が正しく判別しにくくなるので、そことのトレードオフですね…
 ってポエムを書こうとしたらTwitterだと文字数オーバーになった</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2019-04-04">Apr 4, 2019</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/42/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">2019-04-03(ニート歴3日目)</h2>
-    <p class="card-text lineclamp">生活習慣を整えたくて早く寝て早く起きたんだけど、書くの忘れてたので何をやったかを忘れる前に書いておく
-やったこと 家賃の支払い 家計にダメージ。
-Laravel環境生成 動かすところまでは来た。チュートリアルは手付かず。こういう動かすのに多大な時間がかかるやつきらい。
-AetherへのPR 出した
-メール返信 やった
-できなかったこと 飲み会 日付の認識が曖昧で実は違う日だった
-あした(今日)やること Laravel入門 飲み会</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-04-04">Apr 4, 2019</time></p>
       

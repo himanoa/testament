@@ -51,7 +51,7 @@
 <p>Rustの環境構築は一旦省いて、以下のコマンドでパッケージを切って依存関係に<a href="https://crates.io/crates/pulldown-cmark">pulldown-cmark</a>を入れていきます。</p>
 <pre tabindex="0"><code>$ cargo new --bin pulldown_cmark_playground
 $ cd pulldown_cmark_playground
-$ cat 'pulldown-cmark = &quot;0.1.2&quot;' &gt;&gt; Cargo.toml
+$ cat &#39;pulldown-cmark = &#34;0.1.2&#34;&#39; &gt;&gt; Cargo.toml
 $ cargo build
 </code></pre><p>cargo buildした時に依存関係にある<a href="https://crates.io/crates/pulldown-cmark">pulldown-cmark</a>が落ちてきてビルドされます。エコシステムがしっかりしていて完全に便利。文明の息吹を感じろ。</p>
 <h2 id="htmlに変換してみる">htmlに変換してみる</h2>
@@ -62,20 +62,20 @@ GitHubのREADME.mdにはサンプルコードらしき物が書いていない�
 use pulldown_cmark::{html, Parser};
 
 fn main() {
-    let markdown_str = r#&quot;# Hello
+    let markdown_str = r#&#34;# Hello
 人間は愚かな生物。
 
 [俺のブログ](https://blog.himanoa.net)
-&quot;#;
+&#34;#;
     let parser = Parser::new(markdown_str);
     let mut html_buf = String::new();
     html::push_html(&amp;mut html_buf, parser);
-    println!(&quot;{}&quot;, html_buf);
+    println!(&#34;{}&#34;, html_buf);
 }
 </code></pre><p><code>$ cargo run</code> で実行してみると以下の結果が出力されます。</p>
 <pre tabindex="0"><code>&lt;h1&gt;Hello&lt;/h1&gt;
 &lt;p&gt;人間は愚かな生物。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://blog.himanoa.net&quot;&gt;俺のブログ&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net&#34;&gt;俺のブログ&lt;/a&gt;&lt;/p&gt;
 </code></pre><p>普通にhtmlに変換されていますね。やったぜ
 mutableな変数の参照を引数で渡して、渡した引数に結果が代入されるっていうのがすごい気持ち悪いのですが、多分戻り値で受けるとコピーのオーバーヘッドが発生するからこうなってるのでしょう。わからない…Rust詳しい人教えてくれ…。</p>
 <h2 id="リプレーサーを実装してみる">リプレーサーを実装してみる</h2>
@@ -90,26 +90,26 @@ use pulldown_cmark::{html, Parser, Event, Tag};
 use std::borrow::Cow::{Owned};
 
 fn main() {
-    let markdown_str = r#&quot;# Hello
+    let markdown_str = r#&#34;# Hello
 人間は愚かな生物。
 
 [俺のブログ](https://blog.himanoa.net)
-&quot;#;
+&#34;#;
     let parser = Parser::new(markdown_str).map(|event| match event {
         Event::Start(Tag::Link(url, title)) =&gt; {
-            let replaced_url = url.replace(&quot;https&quot;, &quot;http&quot;);
+            let replaced_url = url.replace(&#34;https&#34;, &#34;http&#34;);
             Event::Start(Tag::Link(Owned(replaced_url), title))
         },
         _ =&gt; event
     });
     let mut html_buf = String::new();
     html::push_html(&amp;mut html_buf, parser);
-    println!(&quot;{}&quot;, html_buf);
+    println!(&#34;{}&#34;, html_buf);
 }
 </code></pre><p>出力結果は</p>
 <pre tabindex="0"><code>&lt;h1&gt;Hello&lt;/h1&gt;
 &lt;p&gt;人間は愚かな生物。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://blog.himanoa.net&quot;&gt;俺のブログ&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.himanoa.net&#34;&gt;俺のブログ&lt;/a&gt;&lt;/p&gt;
 </code></pre><p>ヤリマシタネ！これで好きなようにテキストを変換し放題になりました!</p>
 <h2 id="感想">感想</h2>
 <p>スコープが終わると参照が開放されてしまい、replace_urlが渡せなかったんですがGitHubで他のサンプルを探すなりガチャガチャしてたらよくわからない内に動くようになってしまったため結局所有権何もわからない…俺たちは雰囲気でRustを書いている…。</p>
