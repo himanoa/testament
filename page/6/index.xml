@@ -8,6 +8,15 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>goshitekiというvimからGitHubのPull-Requestに対してコードレビューできるプラグインを作った</title>
+      <link>https://blog.himanoa.net/58/</link>
+      <pubDate>Sun, 11 Oct 2020 15:33:21 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/58/</guid>
+      <description>つくったやつ https://github.com/himanoa/goshiteki
+動機 GitHub上でコードレビューしてると見れるdiffに限界があり、適切なコードレビューができないことがおおい 手元でコード動かせないし、レビューした結果自分の指摘でコードが動くかも保証できない vimでいい感じにdiffとかみたいので、いい感じの環境を作った→https://blog.jez.io/cli-code-review/ コードコメントしにGitHub開くのが面倒 vimからレビューコメントを書ければいいのでは？(天才的アイデア)←いまここ 今後 実用上不便だったらやるけど、実際やるかどうかわからん
+vimからレビューコメントが見えないのでなんとかしたい signとfloating windowを使えばいいかんじになるんでは？ やばすぎ実装を直したい Document書きたい シンプルだしgif見れば完全に使い方理解できるしいらんのでは？みたいな甘えがある どうでもいいんですが、自分で作ったPRに対してApproveできなくて、その辺の動作確認ができていないし早く平日来てほしい。でもやっぱりFF14やりたいので休日でいいや</description>
+    </item><item>
       <title>コンピューターとプログラミングと僕</title>
       <link>https://blog.himanoa.net/57/</link>
       <pubDate>Thu, 30 Jul 2020 19:17:22 +0900</pubDate>
@@ -96,20 +105,6 @@ Vue.jsなどのモダンなUIフレームワークの使い方や利便生やJav
 今日まで大義名分に囲まれて仕事してきたが、今日は友達と友達の友達の文章を見て、我に返ってこのまま金のためだけに仕事しててもいいんだなぁと思えた。変わるのが難しければ変わらなくても良いらしい。
 というわけでこのまま僕は死ぬまでのんびりやっていこうとおもうので皆さんよろしくおねがいします。
 そいえば最近上司に「他人が成果を出してくることに期待して仕事をするのは二流」みたいなことを言われた。FPSでもきゃりーできなきゃ戦績は上がらないし、ポケモンも6割勝たないとゴミなのでそういう考えは社会にでも適用できるんだなぁって思った。</description>
-    </item><item>
-      <title>ghqで管理されたディレクトリ構造でディレクトリを作ってgit initまでしてくれるツールを作った</title>
-      <link>https://blog.himanoa.net/53/</link>
-      <pubDate>Sat, 26 Oct 2019 20:09:49 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/53/</guid>
-      <description>手元のマシンでリポジトリを管理するときにghqを使うと勝手に統一感あるディレクトリ構成でリポジトリ管理してくれるので便利です。
-しかし、自分でリポジトリを作ってなにかを開始する機会が多いと mkdir ~/src/github.com/himanoa/foobarを毎回入力する必要がありちょっと不便です。
-リポジトリ名を入力したらよしなにディレクトリを作って欲しいと思ってたので、勉強がてらにRustで簡単なCLIツールを作りました。 mkrepo
-インストール方法 macOS用にhomebrew用の整備とかArchLinux向けにAURパッケージを公開しているわけではないので、インストールには cargo が必要です。
-次のコマンドでインストールすることができます
-cargo install mkrepo
-また、mkrepoは.gitconfigに特定のkey-value構造が存在していることに依存しています。そのため ~/.gitconfigに次のような記述を追加する必要があります
-[user] name=&amp;#34;あなたのなまえ&amp;#34; [ghq] root=&amp;#34;~/src&amp;#34; [mkrepo] service=&amp;#34;github.com&amp;#34; つかいかた Make project directory for ghq style. 0.0.1 USAGE: mkrepo [FLAGS] [OPTIONS] &amp;lt;repository&amp;gt; FLAGS: -d dru run -h, --help Prints help information -V, --version Prints version information OPTIONS: -a, --author &amp;lt;author&amp;gt; repository author name -m &amp;lt;first_commit_message&amp;gt; first_commit_message name -s, --service &amp;lt;service&amp;gt; service name ARGS: &amp;lt;repository&amp;gt; Repository name mkrepo foobar とかやると src/github.</description>
     </item>
   </channel>
 </rss>

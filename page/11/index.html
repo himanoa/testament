@@ -42,6 +42,24 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/33/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">RustでMarkdown to Htmlを試してみる</h2>
+    <p class="card-text lineclamp">有給を取って、ここ最近新しい事を始められてなかったことを思い出したので前からやりたかったRustに入門をしました。 んで、まぁいつも通りブログシステムでも書いてみるかなぁとか思ってRocket触ってDBまでアクセスしてInsert流す所までは普通にできたので、とりあえず次はMarkdownをパースしてhtmlに変換するやつでも書こうかなと思ったのでやってみることに。
+ライブラリを物色してみるとpulldown-cmarkというやつが人気そうなので雑にインストールして使ってみることにしました:smile:
+インストール Rustの環境構築は一旦省いて、以下のコマンドでパッケージを切って依存関係にpulldown-cmarkを入れていきます。
+$ cargo new --bin pulldown_cmark_playground$ cd pulldown_cmark_playground$ cat &#39;pulldown-cmark = &#34;0.1.2&#34;&#39; &gt;&gt; Cargo.toml$ cargo build cargo buildした時に依存関係にあるpulldown-cmarkが落ちてきてビルドされます。エコシステムがしっかりしていて完全に便利。文明の息吹を感じろ。
+htmlに変換してみる というわけでライブラリを使う準備が整ったのでさっそくMarkdownをhtmlに変換してみる。 GitHubのREADME.mdにはサンプルコードらしき物が書いていないが、ドキュメントの方にはちゃんと書いてあるのでそちらを参照しよう。大体以下のコードになります。
+extern crate pulldown_cmark;use pulldown_cmark::{html, Parser};fn main() {let markdown_str = r#&#34;# Hello人間は愚かな生物。[俺のブログ](https://blog.himanoa.net)&#34;#;let parser = Parser::new(markdown_str);let mut html_buf = String::new();html::push_html(&amp;mut html_buf, parser);println!(&#34;{}&#34;, html_buf);} $ cargo run で実行してみると以下の結果が出力されます。
+&lt;h1&gt;Hello&lt;/h1&gt;&lt;p&gt;人間は愚かな生物。&lt;/p&gt;&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net&#34;&gt;俺のブログ&lt;/a&gt;&lt;/p&gt; 普通にhtmlに変換されていますね。やったぜ mutableな変数の参照を引数で渡して、渡した引数に結果が代入されるっていうのがすごい気持ち悪いのですが、多分戻り値で受けるとコピーのオーバーヘッドが発生するからこうなってるのでしょう。わからない…Rust詳しい人教えてくれ…。</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-08-20">Aug 20, 2018</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/32/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -107,18 +125,6 @@
 今日もハースで9連敗した</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-07-15">Jul 15, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/28/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">意図しないターゲットに対してバズった時にどこまでサポートするか</h2>
-    <p class="card-text lineclamp">これからネタプロダクトで一発当てる(ここでの一発当てるはTwitterでRTされてチヤホヤされるの意)のを狙ってる人向けの個人の見解です。</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-07-03">Jul 3, 2018</time></p>
       
     </div>
   </article>

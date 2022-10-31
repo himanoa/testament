@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Neovimの設定回りをlua化した &middot; 遺言書</title>
+  <meta name="description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;昨日はまじで仕事する気がでなくて泣く泣く有給を取ったが、やることがなかったのでNeovimの設定をlua化してみた。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;一日で終わるか不安だったが元々の" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="Neovimの設定回りをlua化した &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;昨日はまじで仕事する気がでなくて泣く泣く有給を取ったが、やることがなかったのでNeovimの設定をlua化してみた。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;一日で終わるか不安だったが元々の" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/84/" >
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/84/" >
+  <meta property="og:title" content="Neovimの設定回りをlua化した &middot; 遺言書" >
+  <meta property="og:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;昨日はまじで仕事する気がでなくて泣く泣く有給を取ったが、やることがなかったのでNeovimの設定をlua化してみた。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;一日で終わるか不安だったが元々の" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="article side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">Neovimの設定回りをlua化した</h1>
+          <p class="post-date">Posted <time datetime="2022-11-01">Nov 1, 2022</time></p>
+        </header>
+        
+        <div class="paragraph">
+<p>昨日はまじで仕事する気がでなくて泣く泣く有給を取ったが、やることがなかったのでNeovimの設定をlua化してみた。</p>
+</div>
+<div class="paragraph">
+<p>一日で終わるか不安だったが元々の設定がモジュールとして分離されていたため、部分的にlua化→動作確認というプロセスが踏みやすくて3時間くらいで終了した。</p>
+</div>
+<div class="paragraph">
+<p>手順は次のサイトを参考にしながらやった。</p>
+</div>
+<div class="paragraph">
+<p>[nvim-lua-guide-ja/README.ja.md at master · willelz/nvim-lua-guide-ja](<a href="https://github.com/willelz/nvim-lua-guide-ja/blob/master/README.ja.md" class="bare">https://github.com/willelz/nvim-lua-guide-ja/blob/master/README.ja.md</a>)</p>
+</div>
+<div class="paragraph">
+<p>こことNeovim本体のAPIDocumentationを見れば少なくともluaでどうやって書けばいいかはわかったので想像より簡単に作業ができた。</p>
+</div>
+<div class="paragraph">
+<p>しかし、VimScriptじゃないとだめな部分というのはまだ存在するようで、Luaの中からVimScriptを呼び出して解決している部分もまだ多く残っている。</p>
+</div>
+<div class="paragraph">
+<p>移行した感想は次の通り</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Luaというのがシンプルな言語仕様かつ、関数をオブジェクトとして使えるプログラミング言語で僕好みで、うれしかった</p>
+</li>
+<li>
+<p>Luaを書くのははじめてではなく、i3wmの設定かウィジェットを書くのに使ったことはあるが、しっかり書いたことはなかった</p>
+</li>
+<li>
+<p>VimScriptではやりにくかった書き方がluaではサクッと出きて僕フレンドリーな設定ファイルができた</p>
+</li>
+<li>
+<p>とはいえ標準APIにTableをcombineする実装やmapする実装がなくて（◞‸◟）だったので、自分でそういったFPライクな書き方ができるモジュールを作ったりはした(楽しかった)</p>
+</li>
+<li>
+<p>設定ファイルという側面より実行されるコードという側面がめちゃくちゃ強くなったので、テスト書ける部分は書くようにしたい。</p>
+</li>
+<li>
+<p>Luaのテストはどうやって書けばいいんだろうみたいなのを調べるのに頭が回らなくて今回はやってない</p>
+</li>
+<li>
+<p>CIとかも回せるとNeovimに内蔵されたLuaのversion↑とかにも自信を持って追従できれ嬉しいかもね</p>
+</li>
+<li>
+<p>普段書いてるRustやTypeScriptに比べてLintやFormatterなどの情報が弱い気がした。どうやってやればいいかわかってないので、大手のLuaプロジェクトを調査したほうがいいかも</p>
+</li>
+</ul>
+</div>
+
+        <a href="http://clap.webclap.com/clap.php?id=himanoa" target="_blank" onclick="window.open('http://clap.webclap.com/clap.php?id=himanoa','webclap','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes');return false;">拍手ボタン</a>
+      </article>
+    </main>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  </body>
+</html>

@@ -8,6 +8,19 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>RustでMarkdown to Htmlを試してみる</title>
+      <link>https://blog.himanoa.net/33/</link>
+      <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/33/</guid>
+      <description>有給を取って、ここ最近新しい事を始められてなかったことを思い出したので前からやりたかったRustに入門をしました。 んで、まぁいつも通りブログシステムでも書いてみるかなぁとか思ってRocket触ってDBまでアクセスしてInsert流す所までは普通にできたので、とりあえず次はMarkdownをパースしてhtmlに変換するやつでも書こうかなと思ったのでやってみることに。
+ライブラリを物色してみるとpulldown-cmarkというやつが人気そうなので雑にインストールして使ってみることにしました:smile:
+インストール Rustの環境構築は一旦省いて、以下のコマンドでパッケージを切って依存関係にpulldown-cmarkを入れていきます。
+$ cargo new --bin pulldown_cmark_playground$ cd pulldown_cmark_playground$ cat &amp;#39;pulldown-cmark = &amp;#34;0.1.2&amp;#34;&amp;#39; &amp;gt;&amp;gt; Cargo.toml$ cargo build cargo buildした時に依存関係にあるpulldown-cmarkが落ちてきてビルドされます。エコシステムがしっかりしていて完全に便利。文明の息吹を感じろ。
+htmlに変換してみる というわけでライブラリを使う準備が整ったのでさっそくMarkdownをhtmlに変換してみる。 GitHubのREADME.mdにはサンプルコードらしき物が書いていないが、ドキュメントの方にはちゃんと書いてあるのでそちらを参照しよう。大体以下のコードになります。
+extern crate pulldown_cmark;use pulldown_cmark::{html, Parser};fn main() {let markdown_str = r#&amp;#34;# Hello人間は愚かな生物。[俺のブログ](https://blog.himanoa.net)&amp;#34;#;let parser = Parser::new(markdown_str);let mut html_buf = String::new();html::push_html(&amp;amp;mut html_buf, parser);println!(&amp;#34;{}&amp;#34;, html_buf);} $ cargo run で実行してみると以下の結果が出力されます。
+&amp;lt;h1&amp;gt;Hello&amp;lt;/h1&amp;gt;&amp;lt;p&amp;gt;人間は愚かな生物。&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;#34;https://blog.himanoa.net&amp;#34;&amp;gt;俺のブログ&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt; 普通にhtmlに変換されていますね。やったぜ mutableな変数の参照を引数で渡して、渡した引数に結果が代入されるっていうのがすごい気持ち悪いのですが、多分戻り値で受けるとコピーのオーバーヘッドが発生するからこうなってるのでしょう。わからない…Rust詳しい人教えてくれ…。</description>
+    </item><item>
       <title>EFFY one of unreasonable &#34;if&#34; をクリアした</title>
       <link>https://blog.himanoa.net/32/</link>
       <pubDate>Thu, 16 Aug 2018 00:00:00 +0000</pubDate>
@@ -57,13 +70,6 @@
       <description>単純に苦手。
 負な出来事が起こると愚直に不安にもなるしストレスが来るし何しろイライラするし機嫌もわるくなる
 今日もハースで9連敗した</description>
-    </item><item>
-      <title>意図しないターゲットに対してバズった時にどこまでサポートするか</title>
-      <link>https://blog.himanoa.net/28/</link>
-      <pubDate>Tue, 03 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/28/</guid>
-      <description>これからネタプロダクトで一発当てる(ここでの一発当てるはTwitterでRTされてチヤホヤされるの意)のを狙ってる人向けの個人の見解です。</description>
     </item>
   </channel>
 </rss>

@@ -8,6 +8,15 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>エラーレポート</title>
+      <link>https://blog.himanoa.net/38/</link>
+      <pubDate>Sat, 02 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/38/</guid>
+      <description>風呂に3時間入っていた。思考は何時もの長風呂タイムと同じで自分の人生の足りない物、今後理想を実現するためのロードマップと現在の状態の乖離についてまとめなおしていた。
+スタックトレースを紛失してしまったので実行中の状態の詳細は不明だが特定のロジックパターンを遂行していた時に突然過呼吸が発生し、顔面が痺れていて鮮明に誰かに気づいて欲しい状態になったことを覚えている。
+2-3分この状態が続いた後ふと鏡を覗いたら自分の顔が平常時の顔だったことを確認して症状を回復した。</description>
+    </item><item>
       <title>なりました。21歳に(倒置法)</title>
       <link>https://blog.himanoa.net/37/</link>
       <pubDate>Wed, 30 Jan 2019 00:00:00 +0000</pubDate>
@@ -66,19 +75,6 @@ use std::str::FromStr;use std::str::FromStr;pub enum Foo {Foo1,Foo2,Foo3}
 間違ってたら教えてくれ
 追記: とりあえずシーケンス図が書けたのでAPIサーバーに求められている機構を実装した。curlで試しているのと、SPAのガワが存在していないため一旦セッションに入れたりstateの検証するのは省いた。
 const { createHash } = require(&amp;#34;crypto&amp;#34;);const url = require(&amp;#34;url&amp;#34;);const express = require(&amp;#34;express&amp;#34;);const bp = require(&amp;#34;body-parser&amp;#34;);const axios = require(&amp;#34;axios&amp;#34;);const jwt = require(&amp;#34;jwt-simple&amp;#34;);const secret = require(&amp;#34;./secret.json&amp;#34;);const app = express();app.use(bp.json());const salt = &amp;#34;hakatanosalt&amp;#34;;app.get(&amp;#34;/oauth/callback&amp;#34;, (req, res) =&amp;gt; {console.log(JSON.stringify({code: req.query.code,state: req.query.state}));res.send(&amp;#34;ok&amp;#34;);});app.get(&amp;#34;/oauth/google/login&amp;#34;, function(req, res) {const state = createHash(&amp;#34;sha256&amp;#34;).update(`${salt}${Math.random()}${+new Date()}`).digest(&amp;#34;hex&amp;#34;);const params = new url.</description>
-    </item><item>
-      <title>RustでMarkdown to Htmlを試してみる</title>
-      <link>https://blog.himanoa.net/33/</link>
-      <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/33/</guid>
-      <description>有給を取って、ここ最近新しい事を始められてなかったことを思い出したので前からやりたかったRustに入門をしました。 んで、まぁいつも通りブログシステムでも書いてみるかなぁとか思ってRocket触ってDBまでアクセスしてInsert流す所までは普通にできたので、とりあえず次はMarkdownをパースしてhtmlに変換するやつでも書こうかなと思ったのでやってみることに。
-ライブラリを物色してみるとpulldown-cmarkというやつが人気そうなので雑にインストールして使ってみることにしました:smile:
-インストール Rustの環境構築は一旦省いて、以下のコマンドでパッケージを切って依存関係にpulldown-cmarkを入れていきます。
-$ cargo new --bin pulldown_cmark_playground$ cd pulldown_cmark_playground$ cat &amp;#39;pulldown-cmark = &amp;#34;0.1.2&amp;#34;&amp;#39; &amp;gt;&amp;gt; Cargo.toml$ cargo build cargo buildした時に依存関係にあるpulldown-cmarkが落ちてきてビルドされます。エコシステムがしっかりしていて完全に便利。文明の息吹を感じろ。
-htmlに変換してみる というわけでライブラリを使う準備が整ったのでさっそくMarkdownをhtmlに変換してみる。 GitHubのREADME.mdにはサンプルコードらしき物が書いていないが、ドキュメントの方にはちゃんと書いてあるのでそちらを参照しよう。大体以下のコードになります。
-extern crate pulldown_cmark;use pulldown_cmark::{html, Parser};fn main() {let markdown_str = r#&amp;#34;# Hello人間は愚かな生物。[俺のブログ](https://blog.himanoa.net)&amp;#34;#;let parser = Parser::new(markdown_str);let mut html_buf = String::new();html::push_html(&amp;amp;mut html_buf, parser);println!(&amp;#34;{}&amp;#34;, html_buf);} $ cargo run で実行してみると以下の結果が出力されます。
-&amp;lt;h1&amp;gt;Hello&amp;lt;/h1&amp;gt;&amp;lt;p&amp;gt;人間は愚かな生物。&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;#34;https://blog.himanoa.net&amp;#34;&amp;gt;俺のブログ&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt; 普通にhtmlに変換されていますね。やったぜ mutableな変数の参照を引数で渡して、渡した引数に結果が代入されるっていうのがすごい気持ち悪いのですが、多分戻り値で受けるとコピーのオーバーヘッドが発生するからこうなってるのでしょう。わからない…Rust詳しい人教えてくれ…。</description>
     </item>
   </channel>
 </rss>

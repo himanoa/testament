@@ -8,6 +8,13 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>意図しないターゲットに対してバズった時にどこまでサポートするか</title>
+      <link>https://blog.himanoa.net/28/</link>
+      <pubDate>Tue, 03 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/28/</guid>
+      <description>これからネタプロダクトで一発当てる(ここでの一発当てるはTwitterでRTされてチヤホヤされるの意)のを狙ってる人向けの個人の見解です。</description>
+    </item><item>
       <title>明日から会話で使えるさなボタン</title>
       <link>https://blog.himanoa.net/27/</link>
       <pubDate>Tue, 03 Jul 2018 00:00:00 +0000</pubDate>
@@ -68,16 +75,6 @@ OpenboxっていうのはWindowを管理するソフトウェアで壁紙を表�
 ただ機能不足感は否めないので他のソフトウェアも併用して行くことになるんだけどこれは後述で。
 キーリマッパー xmodmap一択。といってもそんなに沢山リマップするわけでもないのでこれで十分だと思ってる(Caps -&amp;gt; Ctrlと無変換をShiftにするくらい)
 ターミナルエミュレーター macOSに比べると何使っても描画が早いのであんま拘らずに済んだ。gnome-terminalを使っています。</description>
-    </item><item>
-      <title>xrandrコマンドで解像度を弄る</title>
-      <link>https://blog.himanoa.net/23/</link>
-      <pubDate>Tue, 20 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/23/</guid>
-      <description>ThinkPad X1Carbonを購入してから早4カ月経過しました。
-スペック的には不満がないんですが、解像度がおおきすぎて文字が小さくてつらいという問題があったので解像度を下げたくなったのでやった。
-XWindowManagerでやっているので以下のコマンドで解像度を設定できる
-&amp;gt;&amp;gt;&amp;gt; xrandr --output eDP-1 --mode 1920x1080 以上</description>
     </item>
   </channel>
 </rss>
