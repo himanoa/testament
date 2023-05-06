@@ -8,6 +8,17 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>ブログ復旧しました</title>
+      <link>https://blog.himanoa.net/39/</link>
+      <pubDate>Wed, 03 Apr 2019 00:46:15 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/39/</guid>
+      <description>Railsの手入れ面倒になってきたのでブログを再構築しました。時代はhugoです。よろしくお願いします。
+重大な連絡 前述の都合上feedのURLがhttps://blog.himanoa.net/rss から https://blog.himanoa.net/feed.xml に変更されました。お手数ですが変更の方をよろしくお願いします。
+インフラとか GitHubにpush→CircleCI→gh-pages で自動で反映される仕組みにしました。選定したDockerコンテナがおかしくてpushできなかったりsshの設定がだめだったりいろいろあって50commit程時間がかかりましたが、実現できました。とてもうれしい
+hugo theme aetherをフォークしてhimanoa/aetherにしました。色とかかなり弄ったり、hugoのminify機構を使ってCSSをminifyしてくれる形に修正した。前者はまだしも後者のパッチは独立させてPR送りたい。
+Railsやめた理由とか アプリケーションのメンテするモチベーションが消えたから。鯖もメンテしないといけないし。近いうちにgh-pagesに移行する見込みはあったんだけど、手付かずだったんで鯖のSSL証明書が切れたタイミングで移行するかなーーーみたいな気持ちになった。</description>
+    </item><item>
       <title>エラーレポート</title>
       <link>https://blog.himanoa.net/38/</link>
       <pubDate>Sat, 02 Feb 2019 00:00:00 +0000</pubDate>
@@ -65,16 +76,6 @@ VTuber 名取さなさんが好き。
       <description>Rustを書いていると自分で定義したEnumを文字列から生成したくなる時がある。コード例で示すとこんな感じ
 pub enum Foo {Foo1,Foo2,Foo3,Foo4}Foo::from_str(&amp;#34;Foo1&amp;#34;) // -&amp;gt; Foo::Foo1 こんな時は標準ライブラリに入っている、std::str::FromStr トレイトを実装してやるとうまいこといくし、他の似たような挙動をする型と一緒に扱えたりして便利で作法的にも良い。例は以下の通り
 use std::str::FromStr;use std::str::FromStr;pub enum Foo {Foo1,Foo2,Foo3}impl FromStr for Foo {type Err = &amp;amp;&amp;#39;static str;fn from_str(s: &amp;amp;str) -&amp;gt; Result&amp;lt;Self, Self::Err&amp;gt; {match s {&amp;#34;Foo1&amp;#34; =&amp;gt; Ok(Foo::Foo1),&amp;#34;Foo2&amp;#34; =&amp;gt; Ok(Foo::Foo2),&amp;#34;Foo3&amp;#34; =&amp;gt; Ok(Foo::Foo3),_ =&amp;gt; Err(&amp;#34;Error&amp;#34;)}}}Foo::from_str(&amp;#34;Foo1&amp;#34;) // Ok(Foo::Foo1)Foo::from_str(&amp;#34;Foo1sadasd&amp;#34;) // Err(&amp;#34;Error&amp;#34;) もちろんFromStrはトレイトなのでenum以外にも適用可能なので、任意の型を文字列から生成したい時にはこの方法を使いましょう。</description>
-    </item><item>
-      <title>SPAにおけるOpen ID Connect認証</title>
-      <link>https://blog.himanoa.net/34/</link>
-      <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/34/</guid>
-      <description>サーバーサイドとクライアントサイド両方とも実装する機運が出てきたのでそれぞれの役割を整理するためにシーケンス図を書いた。 Googleって書いてあるところはOAuthプロバイダーなら何でも置き替えられるはず
-間違ってたら教えてくれ
-追記: とりあえずシーケンス図が書けたのでAPIサーバーに求められている機構を実装した。curlで試しているのと、SPAのガワが存在していないため一旦セッションに入れたりstateの検証するのは省いた。
-const { createHash } = require(&amp;#34;crypto&amp;#34;);const url = require(&amp;#34;url&amp;#34;);const express = require(&amp;#34;express&amp;#34;);const bp = require(&amp;#34;body-parser&amp;#34;);const axios = require(&amp;#34;axios&amp;#34;);const jwt = require(&amp;#34;jwt-simple&amp;#34;);const secret = require(&amp;#34;./secret.json&amp;#34;);const app = express();app.use(bp.json());const salt = &amp;#34;hakatanosalt&amp;#34;;app.get(&amp;#34;/oauth/callback&amp;#34;, (req, res) =&amp;gt; {console.log(JSON.stringify({code: req.query.code,state: req.query.state}));res.send(&amp;#34;ok&amp;#34;);});app.get(&amp;#34;/oauth/google/login&amp;#34;, function(req, res) {const state = createHash(&amp;#34;sha256&amp;#34;).update(`${salt}${Math.random()}${+new Date()}`).digest(&amp;#34;hex&amp;#34;);const params = new url.</description>
     </item>
   </channel>
 </rss>

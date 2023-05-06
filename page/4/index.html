@@ -42,6 +42,20 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/70/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">TypeScript備忘録(関数の実行時に推論を確定させるテク)</h2>
+    <p class="card-text lineclamp">type UseSelectorBuilder&lt;T, S&gt; = () =&gt; (selector: (state: T) =&gt; S) =&gt; S みたいな型が存在した時にSelectorBuilderではTまでの型を確定してSはbuilderの戻り値を呼び出した時に型を確定させたい場合どう書けばいいか
+答えはこう
+type UseSelectorBuilder&lt;T, S&gt; = () =&gt; &lt;S&gt;(selectlor: (state: T) =&gt; S) =&gt; S よかったですね</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2021-08-02">Aug 2, 2021</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/69/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -141,19 +155,6 @@ hugo convert toJSON --unsafe を実行することでcontent配下のFront matte
 記事ファイルの内部を開いてFront Matter部分だけ抜き出して置換するJavaScriptを書いて実行する c5a942b
 コードはこちら
 git push してデプロイされたら動作確認する</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2021-02-06">Feb 6, 2021</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/64/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">Blogをasciidocで書いてみた</h2>
-    <p class="card-text lineclamp">Hugoはasciidocもサポートしてるみたいで、表現力が微妙に足りないmarkdownじゃなくてasciidocを試験的に使ってみるテスト
-めっっちゃ話は飛ぶんですが、下の画像はエデン共鳴ノーマルのクリア記念撮影のスクショです。どうでもいいですね</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2021-02-06">Feb 6, 2021</time></p>
       

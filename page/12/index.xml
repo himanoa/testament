@@ -8,6 +8,15 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>ストレスコントロール</title>
+      <link>https://blog.himanoa.net/29/</link>
+      <pubDate>Sun, 15 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/29/</guid>
+      <description>単純に苦手。
+負な出来事が起こると愚直に不安にもなるしストレスが来るし何しろイライラするし機嫌もわるくなる
+今日もハースで9連敗した</description>
+    </item><item>
       <title>意図しないターゲットに対してバズった時にどこまでサポートするか</title>
       <link>https://blog.himanoa.net/28/</link>
       <pubDate>Tue, 03 Jul 2018 00:00:00 +0000</pubDate>
@@ -54,27 +63,6 @@ DiscordのBotの方ですがさなボタンの更新に追従する機能だっ�
       
       <guid>https://blog.himanoa.net/25/</guid>
       <description>当選しました。まだ何書くか確定してないのですががんばりますので各位来てくれ</description>
-    </item><item>
-      <title>Linux デスクトップ環境 2018</title>
-      <link>https://blog.himanoa.net/24/</link>
-      <pubDate>Wed, 21 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/24/</guid>
-      <description>元々macOSがあまり好きではなくUbuntuなりArchLinuxで開発したいという気持ちがあり、かといってMacBookにLinux入れたくなかった。
-ついに新しいラップトップをかったので、Linuxで開発環境を構築して運用しているよって話です。
-ブログ書く意気込みとしては Linux デスクトップ環境 2017 - k0kubun&amp;rsquo;s blog に影響されている感じです
-コンセプトは自分が使いやすい(設定を弄りやすい。GUI含めて細かい所まで弄りやすい)です。
-そもそもmacOSのどういうところが嫌いなの？ UNIX互換な環境が欲しいならMacで十分じゃないの？っていう人は多いと思うので僕がmacOSに対して感じている不満に付いてまとめます。
-Window Manager 同一のアプリケーションを二つのウィンドウで起動している時(Chromeの「新しいウィンドウで開く」) Command + Tabで片方のウィンドウしか選択できない ショートカットキーだけでカレントウィンドウのワークスペース移動ができない Window Managerに自由がない(好みのWindow Managerに差し替えられない) ターミナルエミュレーター まともな速度でレンダリングできてTrueColor出せて日本語入力できるターミナルエミュレーターが存在しない(iTerm2はレンダリング遅い) macOSのアップデートが信用できない セットアップ時にxcode抱き合せセットをダウンロードさせられるのがつらい 現在のLinuxデスクトップ環境 ディストリビューション プログラマが開発環境を作るなら、Arch Linux vs Ubuntuみたいな所だと思うが僕はUbuntuを選択しました。
-理由については後述するとしてさきに二つのディストリのメリデメを挙げようと思います。
-Ubuntu メリット UbuntuServerのノウハウが生きる(aptの使い方だとか) インストールしたらハードウェアのこと考えなくてもとりあえず動く WindowManagerに関してもとりあえずデフォルトでGNOMEが入るので悩まないのがいい デメリット aptで入ってくるパッケージのバージョンが古い 例えばtmuxは未だに2.5が入ってくる 最初から色々入っており小さくないので壊れた時(Archに比べて)直しにくい バージョン上げるのが大変 Arch メリット ローリングリリースなので普段からパッケージを更新しとけばバージョンを上げるのが大変といったことがない Ubuntuより新しいパッケージが入ってくるのが早い 充実したAURとyaourt Git repositoryからHEADを直接インストールできたりと柔軟性がある 最初は殆ど何も入ってないのでUbuntuに比べて壊れた時に直しやすい ArchWikiが優秀というのはある デメリット ハードウェアのドライバどれいれるかとか調べないといけない 初回だけとはいえそういうところで消耗したくない… Ubuntuに比べてアップデートが頻繁でたまに壊れたりする んで僕がUbuntuを選択した理由なんだけど、これは単純でハードウェアのドライバ周りで消耗したくなかったからです。
-カーネルのアップデートで突然ドライバが壊れてマシンが使い物にならないとかが嫌なので…
-Window Manager 最初はGNOME3のWMを使ってたんだけど妙に使いにくかったのでOpenboxに変更しました
-OpenboxっていうのはWindowを管理するソフトウェアで壁紙を表示する機能とかもない。
-ただマシン負荷が少ないのとちょっとconfigファイルを弄るだけでカスタマイズができるので、コンセプトの細かいところまでチューニングしやすいを満たしてくれていい。
-ただ機能不足感は否めないので他のソフトウェアも併用して行くことになるんだけどこれは後述で。
-キーリマッパー xmodmap一択。といってもそんなに沢山リマップするわけでもないのでこれで十分だと思ってる(Caps -&amp;gt; Ctrlと無変換をShiftにするくらい)
-ターミナルエミュレーター macOSに比べると何使っても描画が早いのであんま拘らずに済んだ。gnome-terminalを使っています。</description>
     </item>
   </channel>
 </rss>

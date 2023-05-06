@@ -8,6 +8,16 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>SPAにおけるOpen ID Connect認証</title>
+      <link>https://blog.himanoa.net/34/</link>
+      <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/34/</guid>
+      <description>サーバーサイドとクライアントサイド両方とも実装する機運が出てきたのでそれぞれの役割を整理するためにシーケンス図を書いた。 Googleって書いてあるところはOAuthプロバイダーなら何でも置き替えられるはず
+間違ってたら教えてくれ
+追記: とりあえずシーケンス図が書けたのでAPIサーバーに求められている機構を実装した。curlで試しているのと、SPAのガワが存在していないため一旦セッションに入れたりstateの検証するのは省いた。
+const { createHash } = require(&amp;#34;crypto&amp;#34;);const url = require(&amp;#34;url&amp;#34;);const express = require(&amp;#34;express&amp;#34;);const bp = require(&amp;#34;body-parser&amp;#34;);const axios = require(&amp;#34;axios&amp;#34;);const jwt = require(&amp;#34;jwt-simple&amp;#34;);const secret = require(&amp;#34;./secret.json&amp;#34;);const app = express();app.use(bp.json());const salt = &amp;#34;hakatanosalt&amp;#34;;app.get(&amp;#34;/oauth/callback&amp;#34;, (req, res) =&amp;gt; {console.log(JSON.stringify({code: req.query.code,state: req.query.state}));res.send(&amp;#34;ok&amp;#34;);});app.get(&amp;#34;/oauth/google/login&amp;#34;, function(req, res) {const state = createHash(&amp;#34;sha256&amp;#34;).update(`${salt}${Math.random()}${+new Date()}`).digest(&amp;#34;hex&amp;#34;);const params = new url.</description>
+    </item><item>
       <title>RustでMarkdown to Htmlを試してみる</title>
       <link>https://blog.himanoa.net/33/</link>
       <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
@@ -61,15 +71,6 @@ extern crate pulldown_cmark;use pulldown_cmark::{html, Parser};fn main() {let
       <description>初心者を脱したのでよかったですね。
 滑りこめたのでよかった。月末は弱い人がおおいきがする。最高16で16~18をいったり来たりしてたんだがたまたま、奇数パラがメタと噛みあって連勝ボーナス混みで4-1(記憶ちがいあるかも)で15はいった。
 今月主に回してたデッキは 奇数パラディン 奇数ローグ ミラクルローグ で途中9連敗を二回したりでマウス投げたりしてたがまぁ自己ベスト更新できてよかったですね、みたいなところ。このランク帯までは、デッキパワーたかいデッキでメタが噛みあってる時間帯にどれだけしゃぶり尽せるかみたいなところなのでデッキパワーつよいデッキを使えるかみたいなのがでかいとおもう。</description>
-    </item><item>
-      <title>ストレスコントロール</title>
-      <link>https://blog.himanoa.net/29/</link>
-      <pubDate>Sun, 15 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/29/</guid>
-      <description>単純に苦手。
-負な出来事が起こると愚直に不安にもなるしストレスが来るし何しろイライラするし機嫌もわるくなる
-今日もハースで9連敗した</description>
     </item>
   </channel>
 </rss>
