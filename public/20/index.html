@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>WSLでクリップボードを共有する &middot; 遺言書</title>
+  <meta name="description" content="&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net/entries/19&#34;&gt;Windows Subsystem for Linuxで開発環境を整えた&lt;/a&gt; の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="WSLでクリップボードを共有する &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net/entries/19&#34;&gt;Windows Subsystem for Linuxで開発環境を整えた&lt;/a&gt; の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/20/" >
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/20/" >
+  <meta property="og:title" content="WSLでクリップボードを共有する &middot; 遺言書" >
+  <meta property="og:description" content="&lt;p&gt;&lt;a href=&#34;https://blog.himanoa.net/entries/19&#34;&gt;Windows Subsystem for Linuxで開発環境を整えた&lt;/a&gt; の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="article side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">WSLでクリップボードを共有する</h1>
+          <p class="post-date">Posted <time datetime="2018-01-31">Jan 31, 2018</time></p>
+        </header>
+        
+        <p><a href="https://blog.himanoa.net/entries/19">Windows Subsystem for Linuxで開発環境を整えた</a> の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに入ってくれないのが結構ストレスになったのでそれの解消をします。</p>
+<p>Windowsにはclip.exeというソフトウェアが搭載されており、これを使うことでWSLからWindowsのクリップボードに文字列を入れることができます</p>
+<pre tabindex="0"><code>echo &#34;:innocent:&#34; | clip.exe
+
+# wsl Terminal上でShift + Insert
+:innocent:
+</code></pre><p>ただ、このソフトウェア単体だとクリップボードから文字列を取り出すことができないのと、文字列の最後に改行コードが入るらしく(余計なことしやがって)つらいので別のアプローチでやります</p>
+<h2 id="先にやっておくこと">先にやっておくこと</h2>
+<ol>
+<li><a href="https://github.com/equalsraf/win32yank/releases">https://github.com/equalsraf/win32yank/releases</a> から win32yank-x64.zipをダウンロードしてきて展開</li>
+<li>展開して出てきたwin32yank.exeを WSL上で<code>echo $PATH</code>して列挙されたディレクトリのいずれかに配置</li>
+</ol>
+<p>win32yankの使い方は clip.exe と大体同じで以下のように使う</p>
+<pre tabindex="0"><code>echo &#34;poepoe&#34; | win32yank.exe -i
+
+win32yank.exe -o
+poepoe
+</code></pre><p>念のためWindows上で任意のテキストボックスでCtrl+vして貼り付けられるか確認しておくと良いかもしれない。</p>
+<h2 id="neovimからwin32yankexeを使う">Neovimからwin32yank.exeを使う</h2>
+<p>さてここまでできたのなら、Neovimから yでヤンク、pで貼り付けるみたいなことをできるようにしたい。</p>
+<p>過去の記憶からNeovimでLinuxのクリップボードと連携した時に xsel に依存していた覚えがあった。</p>
+<p>また、丁度手元にNeovimのソースコードがあったのでそこから検索して(最悪書き換えてビルドすればよい)どうすればいいかを模索した</p>
+<pre tabindex="0"><code>cd ~/src/github.com/neovim/neovim
+git grep xsel
+runtime/autoload/provider/clipboard.vim:&#34; When caching is enabled, store the jobid of the xclip/xsel process keeping
+runtime/autoload/provider/clipboard.vim:  elseif exists(&#39;$DISPLAY&#39;) &amp;&amp; executable(&#39;xsel&#39;) &amp;&amp; s:cmd_ok(&#39;xsel -o -b&#39;)
+runtime/autoload/provider/clipboard.vim:    let s:copy[&#39;+&#39;] = &#39;xsel --nodetach -i -b&#39;
+runtime/autoload/provider/clipboard.vim:    let s:paste[&#39;+&#39;] = &#39;xsel -o -b&#39;
+runtime/autoload/provider/clipboard.vim:    let s:copy[&#39;*&#39;] = &#39;xsel --nodetach -i -p&#39;
+runtime/autoload/provider/clipboard.vim:    let s:paste[&#39;*&#39;] = &#39;xsel -o -p&#39;
+runtime/autoload/provider/clipboard.vim:    return &#39;xsel&#39;
+runtime/doc/provider.txt:  - xsel (if $DISPLAY is set)
+</code></pre><p>なんか普通に設定方法がドキュメントに書いてありそうなので、調べてみたところg:clipboardを弄ることにより変更できるみたいだった。</p>
+<p>以下のように変更した</p>
+<pre tabindex="0"><code>let g:clipboard = {
+      \   &#39;name&#39;: &#39;myClipboard&#39;,
+      \   &#39;copy&#39;: {
+      \      &#39;+&#39;: &#39;win32yank.exe -i&#39;,
+      \      &#39;*&#39;: &#39;win32yank.exe -i&#39;,
+      \    },
+      \   &#39;paste&#39;: {
+      \      &#39;+&#39;: &#39;win32yank.exe -o&#39;,
+      \      &#39;*&#39;: &#39;win32yank.exe -o&#39;,
+      \   },
+      \   &#39;cache_enabled&#39;: 1,
+      \ }
+</code></pre><p>さてこのままだと、マルチプラットフォーム対応として怪しいのでもうちょっと工夫をする。</p>
+<p>WSLの <code>uname -a</code> は特殊になっており、普通のUbuntuとは表示が違うことを利用して判定をする</p>
+<pre tabindex="0"><code>uname -a
+Linux HOSTNAME 4.4.0-43-Microsoft #1-Microsoft Wed Dec 31 14:42:53 PST 2014 x86\_64 x86\_64 x86\_64 GNU/Linux
+</code></pre><pre tabindex="0"><code>if system(&#39;uname -a | grep Microsoft&#39;) != &#34;&#34;
+  let g:clipboard = {
+        \   &#39;name&#39;: &#39;myClipboard&#39;,
+        \   &#39;copy&#39;: {
+        \      &#39;+&#39;: &#39;win32yank.exe -i&#39;,
+        \      &#39;*&#39;: &#39;win32yank.exe -i&#39;,
+        \    },
+        \   &#39;paste&#39;: {
+        \      &#39;+&#39;: &#39;win32yank.exe -o&#39;,
+        \      &#39;*&#39;: &#39;win32yank.exe -o&#39;,
+        \   },
+        \   &#39;cache_enabled&#39;: 1,
+        \ }
+endif
+</code></pre><h2 id="tmuxからwin32yankを使う">tmuxからwin32yankを使う</h2>
+<p>vi-mode使ってること前提。</p>
+<pre tabindex="0"><code>if-shell &#39;test &#34;$(uname -a | grep Microsoft)&#34; != &#34;&#34;&#39;  bind-key -t vi-copy Enter copy-pipe &#34;cat | win32yank.exe -i&#34;
+</code></pre><h2 id="まとめ">まとめ</h2>
+<p>WSLでもクリップボード共有できて嬉しいですね。多分これで常用できると思います</p>
+
+        <a href="http://clap.webclap.com/clap.php?id=himanoa" target="_blank" onclick="window.open('http://clap.webclap.com/clap.php?id=himanoa','webclap','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes');return false;">拍手ボタン</a>
+      </article>
+    </main>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  </body>
+</html>

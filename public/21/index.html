@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>私的TypeScriptいろいろまとめ &middot; 遺言書</title>
+  <meta name="description" content="&lt;p&gt;flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。&lt;/p&gt;
+&lt;p&gt;webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。&lt;/p&gt;
+&lt;p&gt;筋悪い箇所があったらT" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="私的TypeScriptいろいろまとめ &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;p&gt;flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。&lt;/p&gt;
+&lt;p&gt;webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。&lt;/p&gt;
+&lt;p&gt;筋悪い箇所があったらT" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/21/" >
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/21/" >
+  <meta property="og:title" content="私的TypeScriptいろいろまとめ &middot; 遺言書" >
+  <meta property="og:description" content="&lt;p&gt;flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。&lt;/p&gt;
+&lt;p&gt;webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。&lt;/p&gt;
+&lt;p&gt;筋悪い箇所があったらT" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="article side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">私的TypeScriptいろいろまとめ</h1>
+          <p class="post-date">Posted <time datetime="2018-02-22">Feb 22, 2018</time></p>
+        </header>
+        
+        <p>flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。</p>
+<p>webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。</p>
+<p>筋悪い箇所があったらTwitterかはてブのコメントで頼む</p>
+<h2 id="tsconfigjson">tsconfig.json</h2>
+<pre tabindex="0"><code>{
+  &#34;compilerOptions&#34;: {
+    &#34;target&#34;: &#34;es5&#34;,
+    &#34;module&#34;: &#34;commonjs&#34;,
+    &#34;moduleResolution&#34;: &#34;node&#34;,
+    &#34;emitDecoratorMetadata&#34;: true,
+    &#34;experimentalDecorators&#34;: true,
+    &#34;declaration&#34;: false,
+    &#34;noImplicitAny&#34;: false,
+    &#34;noImplicitReturns&#34;: false,
+    &#34;removeComments&#34;: true,
+    &#34;strictNullChecks&#34;: false,
+    &#34;outDir&#34;: &#34;build&#34;,
+    &#34;lib&#34;: [
+      &#34;es6&#34;,
+      &#34;es7&#34;,
+      &#34;dom&#34;
+    ]
+  },
+  &#34;exclude&#34;: [
+    &#34;dist&#34;,
+    &#34;build&#34;,
+    &#34;node_modules&#34;
+  ]
+}
+</code></pre><p>moduleをcommonjsにしてしまったけどwebpackでの最適化の都合を考えると  <code>esModuleInterop</code> の方がいいかも</p>
+<p><code>strictNullChecks</code> は依存で壊れがちらしいのでオフにしている…オンにしたい…</p>
+<h2 id="webpackconfigjs">webpack.config.js</h2>
+<pre tabindex="0"><code>const path = require(&#34;path&#34;);
+const ENV = process.env.NODE_ENV || &#34;development&#34;;
+const DEV_PORT = process.env.PORT || 4444;
+const webpack = require(&#34;webpack&#34;);
+const CleanWebpackPlugin = require(&#34;clean-webpack-plugin&#34;);
+const HtmlWebpackPlugin = require(&#34;html-webpack-plugin&#34;);
+const ExtractTextPlugin = require(&#34;extract-text-webpack-plugin&#34;);
+
+module.exports = [
+  {
+    entry: {
+      app: [&#34;./src/index.ts&#34;]
+    },
+    output: {
+      filename: &#34;[name].bundle.js&#34;,
+      chunkFilename: &#34;[name].bundle.js&#34;,
+      path: __dirname + &#34;/dist&#34;,
+      publicPath: &#34;/&#34;
+    },
+    watchOptions: {
+      poll: true
+    },
+    devServer: {
+      contentBase: &#34;dist/&#34;,
+      historyApiFallback: true,
+      port: DEV_PORT
+    },
+    module: {
+      rules: [
+        {
+          test: /\.ts$/,
+          use: &#34;ts-loader&#34;
+        }
+      ]
+    },
+    devtool:
+      process.env.NODE_ENV === &#34;production&#34; ? &#34;eval&#34; : &#34;inline-source-map&#34;,
+    plugins: [
+      new webpack.DefinePlugin({
+        &#34;process.env.NODE_ENV&#34;: JSON.stringify(&#34;production&#34;),
+        API_HOST: process.env.PROD_APIHOST
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        sourceMap: process.env.NODE_ENV === &#34;production&#34; ? false : true
+      }),
+      new CleanWebpackPlugin([&#34;public&#34;]),
+      new HtmlWebpackPlugin({
+        hash: true,
+        template: &#34;./src/index.template.ejs&#34;,
+        inject: &#34;body&#34;
+      })
+    ]
+  }
+];
+</code></pre><p>baseは<a href="https://github.com/himanoa/shimarin">しまりん</a>で使っていたやつのbabel周りをts-loaderにしたのと、CSSを抜いただけ</p>
+<h2 id="型定義ファイルを落す方法">型定義ファイルを落す方法</h2>
+<p>npmのtypesパッケージを使うのが主流らしい。以下の通りにやるとreactの型定義ファイルが手に入る</p>
+<pre tabindex="0"><code>yarn add --dev @types/react
+</code></pre><p>devDependenciesに入れるべきか否かの意味合いの判断が取れないのがつらい</p>
+
+        <a href="http://clap.webclap.com/clap.php?id=himanoa" target="_blank" onclick="window.open('http://clap.webclap.com/clap.php?id=himanoa','webclap','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes');return false;">拍手ボタン</a>
+      </article>
+    </main>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  </body>
+</html>

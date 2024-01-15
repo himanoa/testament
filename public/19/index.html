@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Windows Subsystem for Linuxで開発環境を整えた &middot; 遺言書</title>
+  <meta name="description" content="&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;ndenv とか pyenv とか rbenv とか tmux とか fish とか neovim とか fzf とか色々動いたし、True Color出せるということもわかったので、まぁ常用はできるんじゃないですかね？と" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="Windows Subsystem for Linuxで開発環境を整えた &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;ndenv とか pyenv とか rbenv とか tmux とか fish とか neovim とか fzf とか色々動いたし、True Color出せるということもわかったので、まぁ常用はできるんじゃないですかね？と" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/19/" >
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/19/" >
+  <meta property="og:title" content="Windows Subsystem for Linuxで開発環境を整えた &middot; 遺言書" >
+  <meta property="og:description" content="&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;ndenv とか pyenv とか rbenv とか tmux とか fish とか neovim とか fzf とか色々動いたし、True Color出せるということもわかったので、まぁ常用はできるんじゃないですかね？と" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="article side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">Windows Subsystem for Linuxで開発環境を整えた</h1>
+          <p class="post-date">Posted <time datetime="2018-02-09">Feb 9, 2018</time></p>
+        </header>
+        
+        <!-- raw HTML omitted -->
+<p>ndenv とか pyenv とか rbenv とか tmux とか fish とか neovim とか fzf とか色々動いたし、True Color出せるということもわかったので、まぁ常用はできるんじゃないですかね？といった所。常用するかどうかは知らん。まだ課題点もいろいろあるし。</p>
+<h2 id="導入">導入</h2>
+<p>WSLチュートリアルがあるので これ通りやった。 <a href="https://github.com/QMonkey/wsl-tutorial">https://github.com/QMonkey/wsl-tutorial</a></p>
+<p>XWindowSystemが必要なアプリケーションを使う予定がないならXLaunch入れたりとかはしなくていいとは思う</p>
+<p>あとは普通のUbuntuなので必要なアプリケーションをインストールしていくだけ。</p>
+<p>僕の環境は多分大体以下のコマンドで再現できると思う</p>
+<pre tabindex="0"><code>sudo apt-get install software-properties-common
+sudo apt-add-repository ppa:fish-shell/release-2
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update &amp;&amp; sudo apt-get install neovim fish tmux go git build-essential openssl libssl-dev libbz2-dev libreadline-dev libsqlite-dev gcc python-build
+
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+git clone https://github.com/riywo/ndenv ~/.ndenv
+git clone https://github.com/riywo/node-build.git ~/.ndenv/plugins/node-build
+git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+</code></pre><p>惰性で各envそれぞれインストールしてるけどanyenvとか使う方が絶対筋いいのでそっちにしような</p>
+<h2 id="はまったこと">はまったこと</h2>
+<h3 id="pecoが動かん">pecoが動かん</h3>
+<p>pecoのLinuxビルド持ってきて叩いてみたら</p>
+<pre tabindex="0"><code>Failed to execute process &#39;/usr/bin/peco&#39;. Reason:
+exec: Exec format error
+The file &#39;/usr/bin/peco&#39; is marked as an executable but could not be run by the operating system.
+</code></pre><!-- raw HTML omitted -->
+<p>pecoにPR投げるのが得策なのはそれはそうなんですけど、時間もなければGoがわからないので普通に迂回してfzfで代替することにした。tmux連携とかvim連携あるらしくてこっちの方がいいかも感出てきた。</p>
+<p>ちなみに僕の場合はpeco -&gt; fzfは fzfをインストールして peco使うコードが書いてあるファイルで <code>:%s/peco/fzf-tmux/g</code> しただけで移行終了した。よかった</p>
+<h3 id="systemd動いてはいるけど様子がおかしい">systemd動いてはいるけど様子がおかしい</h3>
+<p><code> systemctl status acpid.service</code> とか叩いてみると</p>
+<pre tabindex="0"><code>Failed to get properties: Launch helper exited with unknown return code 1
+</code></pre><p>になる。 WSLはGitHubがあるので issue見てたら見つけた</p>
+<p><a href="https://github.com/Microsoft/WSL/issues/1579">https://github.com/Microsoft/WSL/issues/1579</a></p>
+<p>service使おねということらしい</p>
+<h3 id="chsh見てくれない">chsh見てくれない</h3>
+<p>これ本当に最悪なんですけどWSLちゃんはなんかchsh効きません。僕は 泣く泣く <code>.bashrc</code> に <code>fish &amp;&amp; exit</code>を書きました</p>
+<p>** 追記 **</p>
+<p><code>exec fish</code> にするとbashのプロセスが置き変わるので便利らしいですね</p>
+<h2 id="ターミナルエミュレータどうするよ問題">ターミナルエミュレータどうするよ問題</h2>
+<p>Windowsは残念なことにまともなターミナルエミュレータが存在しないと思い込んでたが、https://github.com/goreliu/wsl-terminal が比較的まともっぽいので入れた。これがなかったら正直WSLで開発とかしようと思わなかったと思う。</p>
+<p>導入法はWSL側のUsername と Passwordの設定が終わった段階で <code>bash -c &quot;wget https://github.com/goreliu/wsl-terminal/releases/download/v0.8.7/wsl-terminal-0.8.7.7z &amp;&amp; 7z x wsl-terminal-0.8.7.7z&quot;</code> をするだけ。あとはスタートメニューに、 Ubuntu Terminalが召喚されるので、そいつを起動するだけ。右クリック -&gt; Optionsで色々弄れるので下のようにしとくとよい</p>
+<!-- raw HTML omitted -->
+<h2 id="総括">総括</h2>
+<p>常用できるWSL環境を整えられたということがわかる。</p>
+<p>WSLのUbuntuの挙動はかなり癖があるが、まぁ普通にLinux使ってきた皆さんならあんまり問題にならないよねといった物ばかりなのでこれを期に開発マシンでUbuntuとか使ってた人たちはWSL試してみては？</p>
+<p>かなりサクッと導入できて便利なんですけどプログラミング初心者とかにとりあえずWSL入れてねって勧められる程の出来ではない感じだと思った。</p>
+<h2 id="課題点">課題点</h2>
+<ul>
+<li>Windows + tmuxでのクリップボード共有設定について煮つめられていない。 -&gt; <a href="https://blog.himanoa.net/entries/20/">続編</a></li>
+<li>職場のWindowsマシンマンがvagrantで作業しているのがしんどそうなので導入してもらいたい -&gt; 手オペレーションは日本語を書かなくちゃでしんどいのでMitamaeとか使ってバンドカバンで入るようにしたい</li>
+<li>Docker動くのかこれ…？</li>
+</ul>
+<!-- raw HTML omitted -->
+
+        <a href="http://clap.webclap.com/clap.php?id=himanoa" target="_blank" onclick="window.open('http://clap.webclap.com/clap.php?id=himanoa','webclap','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes');return false;">拍手ボタン</a>
+      </article>
+    </main>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  </body>
+</html>
