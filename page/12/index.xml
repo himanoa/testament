@@ -8,6 +8,15 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Hearthstoneランク15いった</title>
+      <link>https://blog.himanoa.net/30/</link>
+      <pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/30/</guid>
+      <description>初心者を脱したのでよかったですね。
+滑りこめたのでよかった。月末は弱い人がおおいきがする。最高16で16~18をいったり来たりしてたんだがたまたま、奇数パラがメタと噛みあって連勝ボーナス混みで4-1(記憶ちがいあるかも)で15はいった。
+今月主に回してたデッキは 奇数パラディン 奇数ローグ ミラクルローグ で途中9連敗を二回したりでマウス投げたりしてたがまぁ自己ベスト更新できてよかったですね、みたいなところ。このランク帯までは、デッキパワーたかいデッキでメタが噛みあってる時間帯にどれだけしゃぶり尽せるかみたいなところなのでデッキパワーつよいデッキを使えるかみたいなのがでかいとおもう。</description>
+    </item><item>
       <title>ストレスコントロール</title>
       <link>https://blog.himanoa.net/29/</link>
       <pubDate>Sun, 15 Jul 2018 00:00:00 +0000</pubDate>
@@ -56,13 +65,6 @@ DiscordのBotの方ですがさなボタンの更新に追従する機能だっ�
       
       <guid>https://blog.himanoa.net/26/</guid>
       <description> </description>
-    </item><item>
-      <title>夏コミ当選しました</title>
-      <link>https://blog.himanoa.net/25/</link>
-      <pubDate>Sat, 09 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/25/</guid>
-      <description>当選しました。まだ何書くか確定してないのですががんばりますので各位来てくれ</description>
     </item>
   </channel>
 </rss>
