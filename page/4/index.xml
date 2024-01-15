@@ -8,6 +8,13 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>ゆっくりと破滅に向かう</title>
+      <link>https://blog.himanoa.net/72/</link>
+      <pubDate>Mon, 27 Sep 2021 09:26:07 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/72/</guid>
+      <description>もしかして: 終焉のカウントダウン ?</description>
+    </item><item>
       <title>連休の始まり</title>
       <link>https://blog.himanoa.net/71/</link>
       <pubDate>Sat, 21 Aug 2021 04:53:58 +0900</pubDate>
@@ -80,31 +87,6 @@ startTransition に関しては業務で使ったら若干便利そうなとこ�
 ただ Concurrent modeをoptinするのかどうかの議論は必要そうだなーって感じ
 useEffect の周りの話は最初見た時は使ってる箇所とマイグレーション方法的を考えた時に手間がやばいな…っておもったが、
 import { useEffect, useRef } from &amp;#39;react&amp;#39; type OnUnmounted = () =&amp;gt; void | void type UseWillBeMounted = (effect: () =&amp;gt; OnUnmounted) =&amp;gt; void export const useWillBeMounted: UseWillBeMounted = (effect) =&amp;gt; { const effectRef = useRef&amp;lt;boolean&amp;gt;(false) useEffect(() =&amp;gt; { if(effectRef.</description>
-    </item><item>
-      <title>日記 2021-06-14</title>
-      <link>https://blog.himanoa.net/67/</link>
-      <pubDate>Tue, 15 Jun 2021 00:58:38 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/67/</guid>
-      <description>ダイエット なんか気づいたら太ってたのでダイエットしようとおもう。食生活も直したいけどそれどころではないので一旦運動からやろうかなと
-この日記を書き終わったら、散歩してくる予定
-他人の書いたコード 他人の書いたコードを読むことはできるが、他人の書いたコードに自分の書いたコードを足すのがとてもダルいとおもっていることがわかってきた。
-予防線を貼るが特定個人のコードがだるいとかいう話ではなく、自分の性格的な話です
-で、これを拗せると他人の書いたコードに最小の変更で、機能を追加するということができず、結局全部書き直すのとおなじくらいのdiff量になってしまう という問題に直面する。
-「ダーティなコードを書く選択も取らずに甘えたこと言ってるんじゃねえ」って言われたらそれはそう…って感じになるので、ある程度こういう手が取れるようになりたいよなあって思った
-ダーティなコードを書きたくない理由はあって、基本的にダーティなコードを書いて何か問題が発生して困るのは自分 なので 問題が発生した時に切り分けと修正がしやすいような構成で自分のコミットをデプロイしたい。すなわち、要件に対して自分が適切だと思えるコードに書き直したい というのが理由。
-正直チーム開発に向いてないなあって最近思った
-はやく石になりたい
-あと外部ライブラリ、大体仕事の邪魔
-会社 チームでコード書くのだるいな…とかいう話をした後にこれを書くのも信憑性を疑われそうなのですが、会社については神だとおもってます。
-単順に会社の人達おもしろいし仕事が正確で、仕事してて大変快適で最高です。
-次回の出社日とか楽しみ
-今日みた配信 ピアノの音楽に綺麗な歌声が重なると泣きそうになる。多分疲れてるんだなあ
-TypeScript UnionType とか割と都合がいい機能が揃ってて仕事で使うにはかなり便利なんですが、例外はどんなにがんばろうとanyゲーミングになって安全もクソもないので使用を強要された時以外使いたくないなあとおもいはじめた。
-Reactつかえて例外周りがまともなプログラミング言語っていうのも思い付かないしどうしようかなあってなってる。ReasonMLとかどうなんだろう
-WSL2 土曜にぶっ壊して sudo の user password すら通らなくなったので、コードとconfigのバックアップだけとって、ArchWSLの再インストールをした
-.config/ を展開 direnv と asdf と neovim とRustのtoolchain入れたら開発できるくらいには回復したので、環境構築楽でいいなあとおもった
-asciidoctor 生成されるhtmlに不満があるので、はやく自作してるAsciidoc parserベースにして作り直したい。FF14の固定活動とかもあって全然作業できなくて自分が二人ほしいですね</description>
     </item>
   </channel>
 </rss>
