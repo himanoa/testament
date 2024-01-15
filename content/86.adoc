@@ -101,9 +101,11 @@ PCゲームはいろいろします。
 
 === 料理
 
-自炊も余裕がある時はします。得意料理は卵焼きです.l
+自炊も余裕がある時はします。得意料理は卵焼きです
 
++++
 <iframe src="https://mstdn.maud.io/@himanoa/109829170866397344/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script src="https://mstdn.maud.io/embed.js" async="async"></script>
++++
 
 知っとくとお得な知識として卵焼きを上手く作るコツを書いておきます。大体次の二つを意識するとうまくいきます
 
