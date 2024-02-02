@@ -10,6 +10,22 @@
     
     <item>
       <title>日記</title>
+      <link>https://blog.himanoa.net/83/</link>
+      <pubDate>Tue, 25 Oct 2022 22:16:41 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/83/</guid>
+      <description>今日は朝かなり早く起きたので、珍しく朝御飯を作った。
+グリルで焼いた焼き魚と目玉焼き、あとは味噌汁と漬物と納豆御飯と海苔だ。
+朝から大量にたべてしまったこともあって、昼飯も晩飯も特に食べなくても活動が維持できている。豪勢な朝御飯は体験がいいので明日も作っていきたいが、魚のストックを切らしてしまったので維持することができない。残念。
+一人暮らしで焼き魚を食うのはコスパが悪い食事だとおもっていたのだが、1パックで4食くらい食べられることを考えると実はコスパがいいのでは？とおもった。特に塩さばは肉と違って賞味期限も長いのでしらすと同時にこれからも食べていきたい。
+冬といえばブリが安くておいしい季節なので魚を楽しむという意味ではこれからの季節が楽しみである。
+魚で思い出したのだが、最近はメガ盛りみたいな感じで安くてボリュームディスカウントが効いてるこま切れ肉を買うのをやめた。
+というのも魚を食べるようになってから魚と肉、どっちも消費するのが厳しいので肉の量を減らしてグレードを上げたのだ。
+肉は国産の豚しゃぶを買うようになったが正直冷しゃぶばっか作っていて、あまり違いはわかっていない。できれば肉の質で変わるような料理を作って試してみたいところだ。
+今日は早朝からひどく冷えた朝で、常にホットな飲み物や味噌汁を飲みながら仕事をしていた。この時期からこの寒さだと冬になったらどんな寒さになってしまうのだろう。
+冬という季節は花粉がなく、厚着をしていれば外は歩きやすいし汗もかかない快適な季節だ。しかし、寒さというのは人間の不安を煽る成分があり、夜になると気分が下振れしやすいのが困りポイントだ。</description>
+    </item><item>
+      <title>日記</title>
       <link>https://blog.himanoa.net/82/</link>
       <pubDate>Sat, 22 Oct 2022 19:58:06 +0900</pubDate>
       
@@ -82,16 +98,6 @@ ErgoDash EZ 8月の末に長く使っていた自作キーボードが壊れて�
 自炊 一時期ダレてやっていなかったが、やっている。最近は料理を作ることが日常になってしまい、一々写真とったりしなくなってしまった。
 最近では豚の冷しゃぶサラダやポトフなど、ヘルシーなメニューがメインに作ってたべている。
 昨日は豚肉を食べる気合がなかったので、蒸し鶏をキャベツと人参と一緒にフライパンで蒸して作った。優しい味がしてよかった</description>
-    </item><item>
-      <title>TypeScriptで集合に対する操作を実装する</title>
-      <link>https://blog.himanoa.net/78/</link>
-      <pubDate>Mon, 26 Sep 2022 20:06:08 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/78/</guid>
-      <description>type RegisteredUser = { kind: &amp;#39;registered&amp;#39;, id: string, name: string, } type TentativeUser = { kind: &amp;#39;tentative&amp;#39; id: string, name: string, } type User = TentativeUser | RegisteredUser みたいな構造が存在した時に User[] に対する振舞いを定義したい！みたいなモチベーションが発生することがある。
-例を上げると、登録済みのユーザーのみでfilterしたい！みたいな感じだ。
-フロントエンドのコードを書いたり見たりしたりすると、やりがちなのは User[] で引き回してコンポーネント側で次のようなコードで実装するやつだ。
-import { FC, useMemo } from &amp;#39;react&amp;#39; const UserCard: FC&amp;lt;{ users: User[] }&amp;gt; = ({users}) =&amp;gt; { const registeredUsers = useMemo(() =&amp;gt; { return user.filter((u): u is TentativeUser =&amp;gt; u.kind === &amp;#39;registered&amp;#39;) }, []) return &amp;lt;&amp;gt;.</description>
     </item>
   </channel>
 </rss>
