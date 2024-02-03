@@ -42,6 +42,34 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/69/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">HugoでもがんばればGatsbyみたいなことできるんでは？</h2>
+    <p class="card-text lineclamp">今日は読みにくい文章を書くことによって人類の脳味噌を破壊しまーーーすw
+blog.ojisan.io とか random.taguch.dev みたいなgatsbyのSSRやNextJSのSSRでできたサイトは一覧ページの回覧が早くていいですよね。羨しいです。僕も亜音速の世界で生きたい(!?!?!?)
+しかし絶対にサーバーは持ちたくないので、最初のレンダリングはビルドしたHTMLが降ってきて、そこからJSでReactがマウントされてSPAになってページ遷移が最高の速度を人類に提供するサンタクロース(!?)になりたいです。
+ここでよく考えてみると、実はSSGしてmetaタグとかを作るのは記事の個別のページでよく、一覧ページにそういうメタ情報を付ける必要はあんまりないことに気づいちゃいました。
+つまり次の二つのフローをうまく動かすことができるSPAアプリケーションを作れば、hugoのまま最高の記事一覧ページ体験をプレゼントすることができるわけですね
+フロー1 最初に個別ページにアクセスがくる編 回覧者がサイトに blog.himanoa.net にアクセスする
+GitHub Pagesが https://github.com/himanoa/testament/blob/gh-pages/68/index.html 返してブラウザに表示させる
+回覧者がサイト内導線を踏んで一覧ページにアクセスする
+GitHub Pagesが唐突に一覧ページの顔をしたSPAを返す
+回覧者がSPA上で記事のリンクをクリックする
+prefetchされたJSONをSPAが返して記事ページを表示する！！！！
+卍 閃光の世界へようこそ 卍
+フロー2 最初に記事一覧ページにくる場合 GitHub Pagesが唐突に一覧ページの顔をしたSPAを返す
+回覧者がSPA上で記事のリンクをクリックする
+prefetchされたJSONをSPAが返して記事ページを表示する！！！！
+卍 閃光の世界へようこそ 卍
+これはhugoのtheme機能をつかえばちょっとしたあとはちょっとした設定で実現できそうなのでそのうちやりたいですね。俺のブログ回覧者も閃光の世界に誘いたいぜ～～～～～～～～～～～～～</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2021-07-02">Jul 2, 2021</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/68/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -128,23 +156,6 @@ git push してデプロイされたら動作確認する</p>
 めっっちゃ話は飛ぶんですが、下の画像はエデン共鳴ノーマルのクリア記念撮影のスクショです。どうでもいいですね</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2021-02-06">Feb 6, 2021</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/63/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">パスタのゆでかた</h2>
-    <p class="card-text lineclamp">引っ越しに成功したのはいい物の諸事情により冷蔵庫が金曜日まで存在しないので、自炊ができなくて悲しい。
-こういう時にパスタなどの乾燥麺が便利。
-常温で放置していてもある程度日持ちして、作るのも簡単なのでね
-味付けはどうしているのかというと、セブンイレブンで打ってる あえるだけのパスタソース シリーズで適当にあえているだけ。冷蔵庫がないので具はシーチキンの缶詰めとかを適当にのせて食べている
-この際だし自分のやっている麺の茹で方についてのメモを残しておこうとおもう。他に書くこともないので
-水を1Lをある程度深さがある鍋に入れる 塩を大さじ1 + 小さじ2でお湯に入れて溶かす 火にかけて沸騰するまで待つ 麺を一人前沸騰したお湯に入れる(最初は全部お湯に浸らないが、お湯に浸ってる側が柔らかくなるのでそのうち全部入るようになる) 麺を適当につまみ食いしながら硬さを確認する。いい感じになったら、ざるにかけるなどしてお湯を切る 皿に盛り付けてパスタソースをあえて完成 </p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2020-11-18">Nov 18, 2020</time></p>
       
     </div>
   </article>

@@ -42,6 +42,34 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/74/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">Markdownでrails generateみたいなのを作れるツールを作った</h2>
+    <p class="card-text lineclamp">開発中にアーキテクチャに乗った開発していくにつれて、テストだったり実装だったりをいつも同じような記述やディレクトリ構造に配置すること、多々あるとおもいます。
+そういった時に他のファイルをコピペして開発するのだと、実装を消したりコピペ元特有の名前を置換する作業が発生して面倒です。
+とくにコピペミスやディレクトリの作成ミスなどで他の部分と若干命名がずれる、みたいなのが発生すると開発体験が最悪です。
+Ruby on Railsではこのような問題を rails generate でソースコードの雛形を複数ファイルをまとめて作ることによって解決しています。
+この解決方法は結構開発体験がよいので、今回はどのプロジェクトでも違和感なしに rails generate を実現できるようなツール mdmg を作成しました!
+インストール方法 AURやhomebrew用のあれこれをやるのが面倒だったので、もう適当です。 cargoコマンドが使える人は cargo install mdmg でインストールできます。 cargoがない人は https://github.com/himanoa/mdmg/releases/tag/v0.1.1 からお好きなプラットフォーム向けのassetsをダウンロードして、中のmdmgをパスが通ってるところに配置してください。
+シンプルな使い方 プロジェクトディレクトリで mdmg setup を実行すると .mdmgディレクトリが生成されます。
+mdmgコマンドは .mdmgディレクトリ内のMarkdownを基にscaffolding計画を決めるツールなので、次のようなmdmgテンプレートを .mdmg/source.md に配置しましょう
+https://gist.github.com/himanoa/9b716e16fa421c523150b00114a186ed
+作成したプランを基に実行するのは次のコマンドでできます!
+mdmg generate source fetchGitHubToken
+プランのテンプレート内の {{identify}} がfetchGitHubTokenに置換されて、h2見出しのディレクトリとファイル名にcodeblockが出力されて保存されます
+また mdmg generate は -d オプションでdry-runすることができるので、テンプレートを書いてる時に有効活用すると良いでしょう
+特徴 ほぼREADME.mdに書いてあることの詳細解説です
+Markdownでscaffoldの計画書を記述できる rails generate では generatorを自作するためにはRubyスクリプトを書きますが、mdmgはhandlebars templateが使えるmarkdownを採用しました。
+Rubyスクリプトとmarkdownでの計画書記述の優劣は次の通りです - (優) markdownはcodeblockを使えるのでGitHub上でsyntax highlightが効く - (劣) スクリプトではないので環境変数などによってファイルを作ったり作らなかったりみたいな分岐を表現できない
+このmarkdownでscaffoldの計画書を記述することができる、というアイデアは https://github.com/cats-oss/scaffdog で採用されていて、とても良かったので概ねパクってきました。</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2021-10-27">Oct 27, 2021</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/73/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -106,34 +134,6 @@ k8sのクラスタでもVPS上に建築するって言って全く手つけて�
 type UseSelectorBuilder&lt;T, S&gt; = () =&gt; &lt;S&gt;(selectlor: (state: T) =&gt; S) =&gt; S よかったですね</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2021-08-02">Aug 2, 2021</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/69/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">HugoでもがんばればGatsbyみたいなことできるんでは？</h2>
-    <p class="card-text lineclamp">今日は読みにくい文章を書くことによって人類の脳味噌を破壊しまーーーすw
-blog.ojisan.io とか random.taguch.dev みたいなgatsbyのSSRやNextJSのSSRでできたサイトは一覧ページの回覧が早くていいですよね。羨しいです。僕も亜音速の世界で生きたい(!?!?!?)
-しかし絶対にサーバーは持ちたくないので、最初のレンダリングはビルドしたHTMLが降ってきて、そこからJSでReactがマウントされてSPAになってページ遷移が最高の速度を人類に提供するサンタクロース(!?)になりたいです。
-ここでよく考えてみると、実はSSGしてmetaタグとかを作るのは記事の個別のページでよく、一覧ページにそういうメタ情報を付ける必要はあんまりないことに気づいちゃいました。
-つまり次の二つのフローをうまく動かすことができるSPAアプリケーションを作れば、hugoのまま最高の記事一覧ページ体験をプレゼントすることができるわけですね
-フロー1 最初に個別ページにアクセスがくる編 回覧者がサイトに blog.himanoa.net にアクセスする
-GitHub Pagesが https://github.com/himanoa/testament/blob/gh-pages/68/index.html 返してブラウザに表示させる
-回覧者がサイト内導線を踏んで一覧ページにアクセスする
-GitHub Pagesが唐突に一覧ページの顔をしたSPAを返す
-回覧者がSPA上で記事のリンクをクリックする
-prefetchされたJSONをSPAが返して記事ページを表示する！！！！
-卍 閃光の世界へようこそ 卍
-フロー2 最初に記事一覧ページにくる場合 GitHub Pagesが唐突に一覧ページの顔をしたSPAを返す
-回覧者がSPA上で記事のリンクをクリックする
-prefetchされたJSONをSPAが返して記事ページを表示する！！！！
-卍 閃光の世界へようこそ 卍
-これはhugoのtheme機能をつかえばちょっとしたあとはちょっとした設定で実現できそうなのでそのうちやりたいですね。俺のブログ回覧者も閃光の世界に誘いたいぜ～～～～～～～～～～～～～</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2021-07-02">Jul 2, 2021</time></p>
       
     </div>
   </article>

@@ -9,6 +9,18 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>パスタのゆでかた</title>
+      <link>https://blog.himanoa.net/63/</link>
+      <pubDate>Wed, 18 Nov 2020 11:55:18 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/63/</guid>
+      <description>引っ越しに成功したのはいい物の諸事情により冷蔵庫が金曜日まで存在しないので、自炊ができなくて悲しい。
+こういう時にパスタなどの乾燥麺が便利。
+常温で放置していてもある程度日持ちして、作るのも簡単なのでね
+味付けはどうしているのかというと、セブンイレブンで打ってる あえるだけのパスタソース シリーズで適当にあえているだけ。冷蔵庫がないので具はシーチキンの缶詰めとかを適当にのせて食べている
+この際だし自分のやっている麺の茹で方についてのメモを残しておこうとおもう。他に書くこともないので
+水を1Lをある程度深さがある鍋に入れる 塩を大さじ1 + 小さじ2でお湯に入れて溶かす 火にかけて沸騰するまで待つ 麺を一人前沸騰したお湯に入れる(最初は全部お湯に浸らないが、お湯に浸ってる側が柔らかくなるのでそのうち全部入るようになる) 麺を適当につまみ食いしながら硬さを確認する。いい感じになったら、ざるにかけるなどしてお湯を切る 皿に盛り付けてパスタソースをあえて完成 </description>
+    </item><item>
       <title>ブログの記事ファイルを生成するコマンドを書き直したという話</title>
       <link>https://blog.himanoa.net/62/</link>
       <pubDate>Thu, 05 Nov 2020 03:06:10 +0900</pubDate>
@@ -53,15 +65,6 @@ rust-lang orgsのリポジトリにコミットできるとちょっとかっこ
       <description>ここ最近ブログの画像をどこにホスティングさせるかを考えている。
 満たしたい要件は次の通り
 独自ドメインから画像を配布したい Ex. https://img.himanoa.net/foobar.png みたいな感じで独自ドメインから配布したい Why. この文章は最悪GitHub Pagesが廃れようと、独自ドメインを持っているので、デプロイ先を変えればどこでも動くので、同じような可搬性を担保しておきたい スマホからアップロードしやすい Why. Androidには共有メニューがあってここからアップロードできるやつがうれしい 最悪アプリを書くでもよい 今現在の思考としてはimgurやGoogleDriveが独自ドメインから配布できれば嬉しいんだけど、やっぱりS3をbackendにして自分でアプリを書くしかないのかな…みたいな感じで、何かいい方法があったらしりたい。</description>
-    </item><item>
-      <title>goshitekiというvimからGitHubのPull-Requestに対してコードレビューできるプラグインを作った</title>
-      <link>https://blog.himanoa.net/58/</link>
-      <pubDate>Sun, 11 Oct 2020 15:33:21 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/58/</guid>
-      <description>つくったやつ https://github.com/himanoa/goshiteki
-動機 GitHub上でコードレビューしてると見れるdiffに限界があり、適切なコードレビューができないことがおおい 手元でコード動かせないし、レビューした結果自分の指摘でコードが動くかも保証できない vimでいい感じにdiffとかみたいので、いい感じの環境を作った→https://blog.jez.io/cli-code-review/ コードコメントしにGitHub開くのが面倒 vimからレビューコメントを書ければいいのでは？(天才的アイデア)←いまここ 今後 実用上不便だったらやるけど、実際やるかどうかわからん
-vimからレビューコメントが見えないのでなんとかしたい signとfloating windowを使えばいいかんじになるんでは？ やばすぎ実装を直したい Document書きたい シンプルだしgif見れば完全に使い方理解できるしいらんのでは？みたいな甘えがある どうでもいいんですが、自分で作ったPRに対してApproveできなくて、その辺の動作確認ができていないし早く平日来てほしい。でもやっぱりFF14やりたいので休日でいいや</description>
     </item>
   </channel>
 </rss>

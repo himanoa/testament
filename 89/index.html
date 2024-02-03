@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>2023年再考 &middot; 遺言書</title>
+  <meta name="description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;2023年について考えてみるといろいろおもうことがあったのでメモがてら残しておく。なんというか人に読ませる文章ではないのでとっちらかっているかもしれない&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 i" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="2023年再考 &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;2023年について考えてみるといろいろおもうことがあったのでメモがてら残しておく。なんというか人に読ませる文章ではないのでとっちらかっているかもしれない&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 i" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/89/" >
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/89/" >
+  <meta property="og:title" content="2023年再考 &middot; 遺言書" >
+  <meta property="og:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;2023年について考えてみるといろいろおもうことがあったのでメモがてら残しておく。なんというか人に読ませる文章ではないのでとっちらかっているかもしれない&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 i" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="article side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">2023年再考</h1>
+          <p class="post-date">Posted <time datetime="2024-02-03">Feb 3, 2024</time></p>
+        </header>
+        
+        <div class="paragraph">
+<p>2023年について考えてみるといろいろおもうことがあったのでメモがてら残しておく。なんというか人に読ませる文章ではないのでとっちらかっているかもしれない</p>
+</div>
+<div class="sect1">
+<h2 id="_労働">労働</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>今年やっていたこと、できなかったこと</p>
+</div>
+<div class="sect2">
+<h3 id="_アーキテクト">アーキテクト</h3>
+<div class="paragraph">
+<p>巨大モノリスSPAの分割。</p>
+</div>
+<div class="paragraph">
+<p>長年の開発月日によって巨大なモノリスになってしまったアプリケーション、業務システムということもありバンドルサイズに無関心に開発をしていたらバンドルサイズはどんどん肥大化し、webpackのスピンアップコストも肥大化し、CIのビルドタスクで必要なメモリもおおくなってしまいとんでもない状況になってしまった。</p>
+</div>
+<div class="paragraph">
+<p>こういった問題をどうやって解決するかを考える仕事をした</p>
+</div>
+<div class="paragraph">
+<p>古いコードから新しいコードに変える必要も多々あり、migration用のESLintルールを多数開発したり、密結合のアプリケーションから個別パッケージにソースコード単位で安全にcloneするツールを作ってmigration作業をしていた</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/himanoa/dependencies-based-clone">つくったやつ</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_コミュニケーション">コミュニケーション</h3>
+<div class="paragraph">
+<p>明確にできなかった。人に仕事を任すのが単純に下手だった。</p>
+</div>
+<div class="paragraph">
+<p>具体的に発生した問題はつぎの通り</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>他人の出力が自分の期待した物ではない</p>
+</li>
+<li>
+<p>闇に葬りさられる</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>その結果一人で仕事する時間が圧倒的に増え、やっている仕事のインパクトというのが薄れてしまった。インパクトが薄れることによって並列で別の改修が走ったり困る実装が知らない意思決定プロセスから生えて常に頭を悩まされる状態に置かれることになった</p>
+</div>
+<div class="paragraph">
+<p>どうすればよかったか、というのは今だによくわからない。上司ともこの話はよくしている気がするがどの提案も納得できなかった。</p>
+</div>
+<div class="paragraph">
+<p>人を巻き込むためにコミュニケーションをもっと取ったほうがいい、という話はごもっともだが提案してもレスポンスがこないからどうやってコミュニケーションを深めるんだ、という観点で疑問が残っている</p>
+</div>
+<div class="paragraph">
+<p>そもそも、一人で全部草案作ったのがよくなかったんじゃないかなみたいな観点もある</p>
+</div>
+<div class="paragraph">
+<p>全体周知という形で共有したりタスク任せたりしたのがよくなかったかもしれない、もっと個別にやるのが正しいアプローチだったのかも。これは検証の余地あるなとおもっていて、最近そういう仕事のやり方を意識している。具体的には、とりあえず全体周知が必要なものに関してはマネージャーに全部相談して適切な人間を割り当ててもらって、そこを全部通す形にするみたいな。まあ意図的ではない部分が過多でマネージャーにだっこされているはある</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_生活">生活</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>一番おおきなライフスタイルの変化はTwitterをやめたことだ。</p>
+</div>
+<div class="paragraph">
+<p>代替としてmastodonに移行はしたが、見る頻度は以前Twitterみていた頻度とは比べものにならないほどmastodonもみてないし投稿もしていない。</p>
+</div>
+<div class="paragraph">
+<p>Twitterをやめた理由は色々あるが、TLみて不快に感じることが増えた。プライベートな時間でストレスを作るのは人生を無駄にしている感じがあったというのが一番おおきな理由である。</p>
+</div>
+<div class="paragraph">
+<p>やめて浮いた時間で何かはじめたか、というとそういうわけでもない。部屋でダーツしたり考え事をしたり、Discordで人と話してたり見ている時間が増えただけだ。</p>
+</div>
+<div class="paragraph">
+<p>これによって気づいたことや良かったこと、悪かったことがいろいろあるので、ここではそれらについて語っていこうとおもう</p>
+</div>
+<div class="sect2">
+<h3 id="_良くなかったこと">良くなかったこと</h3>
+<div class="paragraph">
+<p>あまり明瞭ではない。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="1">
+<li>
+<p>元々世間知らず、トレンドに疎い状態だったが自分が興味あることですら疎くなった</p>
+</li>
+<li>
+<p>交友関係が減った</p>
+</li>
+<li>
+<p>あらゆる物事への興味関心が薄れた。</p>
+</li>
+<li>
+<p>Twitterをやっている人間に対しての選民思想</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>これらによって、世界と自分が切り離されたような感覚を感じることはTwitterをやめる以前より増えた気がする。</p>
+</div>
+<div class="paragraph">
+<p>また、今まではよくもわるくも世界的なトレンドはこうだから、みたいな論調で考えていた部分がまったくなくなった。自分が正しいとおもったからこうしています。なぜ正しいと思うかは〜という考え方にシフトしていっている気がする。</p>
+</div>
+<div class="paragraph">
+<p>他人とコラボレーションして物事を進めるという考え方が自分の中からどんどん欠落していっている気がする。これの何がよくないかが明確にわからないのもよくない気がする。</p>
+</div>
+<div class="paragraph">
+<p>言語化できない危機感を常に感じている</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_良かったこと">良かったこと</h3>
+<div class="olist arabic">
+<ol class="arabic" start="1">
+<li>
+<p>(程度はあるが)今でも交友している人間とはより深い仲になった気はする</p>
+</li>
+<li>
+<p>不幸な事故ニュースによって悲しい気持ちになることがなくなった</p>
+</li>
+<li>
+<p>思考停止できていた部分が少なくなった</p>
+</li>
+<li>
+<p>本を読むということができるようになった</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>メンタル面はかなり安定するようになった気がする、とはいえリアルでヘコむようなことがあれば相応にヘコむので本質的は何も変わっていないのだが…</p>
+</div>
+<div class="paragraph">
+<p>前より考える時間が増えたのは人生が豊かになった感じがしてよいなとおもった。</p>
+</div>
+<div class="paragraph">
+<p>個人的には本を読むようになったのが結構良かった。</p>
+</div>
+<div class="paragraph">
+<p>本という媒体はすごくて、なんとオーバーレイ広告がでないし情報が正確でまとまっていることがあり、知識として役に立ちやすくて神</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_twitterをやめることで気づいたこと">Twitterをやめることで気づいたこと</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>インターネット検索という機能はもう完全に汚れ切っており、あれを使って常日頃欲しい情報にアクセスするのは困難だということ。</p>
+</li>
+<li>
+<p>Twitterにしかない情報というのは案外多い</p>
+</li>
+<li>
+<p>知識をストックで保持してインターネットに公開することへの価値が、低下していったのだろう</p>
+</li>
+<li>
+<p>文書という媒体が衰退して動画になっただけのような気もするが…</p>
+</li>
+<li>
+<p>Youtube shortなどもでてきており、動画もフロー情報化しているように思えるから、ストック情報として保持することに人々が関心を持たなくなったのだろう。</p>
+</li>
+<li>
+<p>俺も最近よりブログを書かなくなった気がする</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_最後に">最後に</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>なんか統合失調症になりそうな気がしてこわいなぁと感じています。</p>
+</div>
+<div class="paragraph">
+<p>他にも</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>自分の人格に自信がなくなってきたこと</p>
+</li>
+<li>
+<p>人格を矯正しないとこの先社会でやっていけなさそうな感覚があること</p>
+</li>
+<li>
+<p>自分が好きだったpublic communicationがメインな社会というのは幻想だったのかもしれないと思っていること</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>などいろいろ書きたいことはあるのですが、まとまりがなさそうなのでまたの機会に書くか、お蔵入りにしようとおもいます。</p>
+</div>
+<div class="paragraph">
+<p>去年もつらい1年でしたが今年も好転する兆しがまったく見えないですね。人生はいつも厳しい</p>
+</div>
+</div>
+</div>
+
+        <a href="http://clap.webclap.com/clap.php?id=himanoa" target="_blank" onclick="window.open('http://clap.webclap.com/clap.php?id=himanoa','webclap','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes');return false;">拍手ボタン</a>
+      </article>
+    </main>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  </body>
+</html>
