@@ -9,6 +9,25 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>ThinkPadX1Carbon 5th にUbuntu17.10を入れる</title>
+      <link>https://blog.himanoa.net/10/</link>
+      <pubDate>Tue, 05 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/10/</guid>
+      <description>情報が散らばっててたので作業ログをまとめます。最近まとめブログみたいなことしかしてないなこれ。
+セキュアブート無効化 Windowsをセットアップして再起動したらコントロールパネルを開き、&amp;lt;ハードウェアとサウンド&amp;gt;→&amp;lt;電源プランの選択&amp;gt;から、高速スタートアップを有効にする(推奨)のチェックを外す。(非アクティブ状態の場合は詳細情報をクリックするといじれるようになると思います
+Ubuntu USBブート後 トラックパッドが効かなくてカーソルの操作ができないと思うのでできるようにします。
+Winキー押してterminalと入力してEnterを押すとTerminal Emulatorが開くので以下のコマンドを手で入力して実行します
+sudo modprobe -r psmousesudo modprobe psmouse proto=imps トラックポイントが操作できるようになると思うのであとは普通にインストール
+インストール終了後のSSDからの再起動後 ログイン画面で歯車マークをクリックしUbuntu on Xorgを選択する。 Ubuntu 17.10からWaylandが採用されたが日本語入力が不可能なのとバグが多数あるためとりあえず無効化しておく
+grub.cfgを弄ってトラックパッドが効くようにする インストール時は無理やりなんとかしたが、このままだと起動するたびに上記のコマンドでトラックポイントの有効化をしないといけない。 それはだるいので、ブートローダーの設定を弄って解決する。
+以下のコマンドを実行
+sudo vim /etc/default/grub
+１１行目を以下に書き換え
+GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet splash psmouse.proto=imps
+書き換えたらgrubのconfigを適用させたいので sudo update-grub を実行する
+ホームディレクトリのディレクトリ名の英語化 LANG=C xdg-user-dirs-gtk-update </description>
+    </item><item>
       <title>ぱくとまのブログから学ぶぱくとまの歴史</title>
       <link>https://blog.himanoa.net/9/</link>
       <pubDate>Fri, 01 Dec 2017 00:00:00 +0000</pubDate>
@@ -119,21 +138,6 @@ Nyaovim(+NeovimのTerminalEmulator)を試す Electron製のGUINeovimClientであ
 Neovim-dot-app(+NeovimのTerminalEmulator)を試す 次にObjC + Cocoa実装のGUINeovimClientを試した。rogual/neovim-dot-app IMEの入力が効かなかったが僕はtyru/eskk.vimのユーザーなのであんまり問題ではなかった。(TerminalModeで日本語入力が効かないのはちょっとつらいんだけど、そもそもターミナル上で日本語打つ機会ってgrepするときだけだと思うし、日本語でgrepするのも稀な機会だよね) まぁTerminl使わなくても頻繁に落ちてしまったのでやめた
 そんなこんなでalacritty 描画早くて神で最高といった感じ。IMEが使えないが日本語も表示できるしぼくはNeovimに籠っているのでこれでいいかなといった感覚 DPIが違うマルチモニタでウィンドウを移動するとフォントサイズが壊れるみたいな問題があるけど修正PRがあったのでそのうち直りそう。
 iTerm2高機能で便利だけど描画遅いので皆さんもGPUレンダリングを信じてalacrittyを使いましょうまる</description>
-    </item><item>
-      <title>2017年9月15日 はれ</title>
-      <link>https://blog.himanoa.net/4/</link>
-      <pubDate>Fri, 15 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/4/</guid>
-      <description>日誌 朝起きて会社に行った。昨日からやけに疲れていたので寝坊を決めてしまって最悪だった。
-仕事はまぁ普通に順調だったのだが、昨日振られたタスクが思ったより重めで大変で残業を決めてしまったのだが何とか終わってよかったですねといったところ。
-一日中仕事しているとブログに書けることが少なくて辛い。日誌ブログからは方向性変えて行こうか検討している
-寝て起きたら北海道に行かなくてはいけないのですが、こんな時間まで起きてて大丈夫なのだろうか。とりあえず空港までの移動時間と飛行機の中では睡眠をしていこうと思う
-内定 貰えて10/1から労働することになった。今も労働してる所の内定なので別に特段変わったことは起きない。まぁ給与上がるのでアドですねといった感じ。
-正直サレジオ退学してからここまで物事がすんなり行き続けてるのが心配で、そろそろ神様から見放される頃だなぁとか思っててエントリの仕方もあまりにもひどい(メールの名義がひまのあだったり、深夜テンションで自己PR書いたり)ので落ちてもまぁしょうがないよねとか思ってたんだけどすんなり内定取れてしまった。「本当に世の中を舐めて生きてるな」って言われても何も言い返せない人生だなといった感じ。
-万に一つの可能性 として実力で選ばれてるんだったら光栄だなぁと思っている。まぁ実力で選ばれたとしても、適当にダラダラ生きてると実力が相対的に無になってしまうので、運で選ばれたとしてもそうでないにしても精進しなければいけないことは変わらないが。
-やっていく気持ち みたいなのをやっていきたいなぁって思ってる。とりあえずマイク録音して自分の声だけ抽出する機構を作ってるところ。
-ブログもいろいろまだ不完全なので北海道でいろいろ完成させていくつもり</description>
     </item>
   </channel>
 </rss>

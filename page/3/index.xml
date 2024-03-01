@@ -9,6 +9,23 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>日記</title>
+      <link>https://blog.himanoa.net/80/</link>
+      <pubDate>Tue, 18 Oct 2022 03:02:25 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/80/</guid>
+      <description>夜に東京で予定があったので、オフィスに出社して仕事していた。
+深夜にやったツイートがなんかすごい伸びてたのでミュートにした。基本的にTweetがたくさんfavられることとかないので、初めてミュートにする機能を使った。
+仕事は自作したデータ構造をReactコンポーネントのレンダリングサイクルと接続するためのAPIを書いたり、説明用のドキュメントを書いていたりしていた。
+自作したMutableなオブジェクトの変更に対してReactコンポーネントを接続する時に次のようなコードをよく書く。
+import {useState, useEffect} from &amp;#39;react&amp;#39; interface Collection&amp;lt;T&amp;gt; = { updateSnapshot(value: T): void getSnapshot(): T subscribe(callback: () =&amp;gt; void): () =&amp;gt; void } const useCollection = &amp;lt;T&amp;gt;(observableCollection: Collection&amp;lt;T&amp;gt;): T = (observableCollection) =&amp;gt; { const [state, updateState] = observableCollection.getSnapshot() useEffect(() =&amp;gt; { return observableCollection.subscribe(() =&amp;gt; { updateState(observableCollection.getSnapshot()) }) }, [observableCollection]) return state } ReactコンポーネントはupdateStateが呼び出される度にuseStateが書かれているコンポーネントを再レンダリングするという特徴を利用して、自前で定義したMutableなCollectionに変更がある度に、useCollectionを呼び出したコンポーネントが再レンダリングさせる。ということを実現している。
+これにselectorやmemo化を加えた概念がReact17までのStoreライブラリとReactを繋ぐhooksの実装としてメジャーだったのだが、React18から追加されるConcurrentModeと併用した時に、画面が一瞬だけ前の状態を表示してしまうなどのチラつきが発生してしまう問題を抱えている。
+See. https://youtu.be/oPfSC5bQPR8?t=245
+この問題を解決するためにReact18から useSyncExternalStore というカスタムフックが提供されていてこれにstoreのメソッドを食わせることでこの問題を解決できる。
+職場のコードはReact17を使っているので useSyncExternalStore を使わなくても問題ないし、ReactからこのAPIがexportされていないので使えないが、将来的にReact18に移行する際に実装を変更することなく移行できるようにしたい。
+そんな人向けのライブラリとして、 https://www.npmjs.com/package/use-sync-external-store が存在する。
+これは古いReactバージョンで useSyncExternalStore を使うためのshimsで、React18が動いている場合は自動でそちらにfallbackしてくれる便利ライブラリだ。</description>
+    </item><item>
       <title>近況</title>
       <link>https://blog.himanoa.net/79/</link>
       <pubDate>Mon, 17 Oct 2022 04:21:04 +0900</pubDate>
@@ -102,16 +119,6 @@ Twitter 昨今のTwitterはレコメンドが暴走していて、自分が見�
 パスタが茹で終わったら、パスタの汁を少量フライパンに入れてからパスタを湯切り
 パスタをフライパンに投入し、焼き鮭たらことスライスチーズを和えたらフライパンから取り出し皿に盛り付け完成
 (optional) きざみ海苔を散らす</description>
-    </item><item>
-      <title>僕が作ったツールがhomebrewから入るようになりました</title>
-      <link>https://blog.himanoa.net/75/</link>
-      <pubDate>Fri, 29 Oct 2021 07:28:23 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/75/</guid>
-      <description>といってもcoreに入ったわけではなく、自前のtapを用意しただけです。
-今のところは mkrepo と mdmg の二つが入ります
-sourceからのインストールになるので brew install -s himanoa/tap/mdmg みたいな感じでインストールしてください。
-LinuxBrewでは試しましたがmacOSで試してないので、macOSで試して何か問題あったら @h1manoa のほうまでお願いします</description>
     </item>
   </channel>
 </rss>

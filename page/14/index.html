@@ -42,6 +42,32 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/24/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">Linux デスクトップ環境 2018</h2>
+    <p class="card-text lineclamp">元々macOSがあまり好きではなくUbuntuなりArchLinuxで開発したいという気持ちがあり、かといってMacBookにLinux入れたくなかった。
+ついに新しいラップトップをかったので、Linuxで開発環境を構築して運用しているよって話です。
+ブログ書く意気込みとしては Linux デスクトップ環境 2017 - k0kubun&rsquo;s blog に影響されている感じです
+コンセプトは自分が使いやすい(設定を弄りやすい。GUI含めて細かい所まで弄りやすい)です。
+そもそもmacOSのどういうところが嫌いなの？ UNIX互換な環境が欲しいならMacで十分じゃないの？っていう人は多いと思うので僕がmacOSに対して感じている不満に付いてまとめます。
+Window Manager 同一のアプリケーションを二つのウィンドウで起動している時(Chromeの「新しいウィンドウで開く」) Command + Tabで片方のウィンドウしか選択できない ショートカットキーだけでカレントウィンドウのワークスペース移動ができない Window Managerに自由がない(好みのWindow Managerに差し替えられない) ターミナルエミュレーター まともな速度でレンダリングできてTrueColor出せて日本語入力できるターミナルエミュレーターが存在しない(iTerm2はレンダリング遅い) macOSのアップデートが信用できない セットアップ時にxcode抱き合せセットをダウンロードさせられるのがつらい 現在のLinuxデスクトップ環境 ディストリビューション プログラマが開発環境を作るなら、Arch Linux vs Ubuntuみたいな所だと思うが僕はUbuntuを選択しました。
+理由については後述するとしてさきに二つのディストリのメリデメを挙げようと思います。
+Ubuntu メリット UbuntuServerのノウハウが生きる(aptの使い方だとか) インストールしたらハードウェアのこと考えなくてもとりあえず動く WindowManagerに関してもとりあえずデフォルトでGNOMEが入るので悩まないのがいい デメリット aptで入ってくるパッケージのバージョンが古い 例えばtmuxは未だに2.5が入ってくる 最初から色々入っており小さくないので壊れた時(Archに比べて)直しにくい バージョン上げるのが大変 Arch メリット ローリングリリースなので普段からパッケージを更新しとけばバージョンを上げるのが大変といったことがない Ubuntuより新しいパッケージが入ってくるのが早い 充実したAURとyaourt Git repositoryからHEADを直接インストールできたりと柔軟性がある 最初は殆ど何も入ってないのでUbuntuに比べて壊れた時に直しやすい ArchWikiが優秀というのはある デメリット ハードウェアのドライバどれいれるかとか調べないといけない 初回だけとはいえそういうところで消耗したくない… Ubuntuに比べてアップデートが頻繁でたまに壊れたりする んで僕がUbuntuを選択した理由なんだけど、これは単純でハードウェアのドライバ周りで消耗したくなかったからです。
+カーネルのアップデートで突然ドライバが壊れてマシンが使い物にならないとかが嫌なので…
+Window Manager 最初はGNOME3のWMを使ってたんだけど妙に使いにくかったのでOpenboxに変更しました
+OpenboxっていうのはWindowを管理するソフトウェアで壁紙を表示する機能とかもない。
+ただマシン負荷が少ないのとちょっとconfigファイルを弄るだけでカスタマイズができるので、コンセプトの細かいところまでチューニングしやすいを満たしてくれていい。
+ただ機能不足感は否めないので他のソフトウェアも併用して行くことになるんだけどこれは後述で。
+キーリマッパー xmodmap一択。といってもそんなに沢山リマップするわけでもないのでこれで十分だと思ってる(Caps -&gt; Ctrlと無変換をShiftにするくらい)
+ターミナルエミュレーター macOSに比べると何使っても描画が早いのであんま拘らずに済んだ。gnome-terminalを使っています。</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-03-21">Mar 21, 2018</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/23/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -98,26 +124,6 @@ XWindowSystemが必要なアプリケーションを使う予定がないならX
 sudo apt-get install software-properties-commonsudo apt-add-repository ppa:fish-shell/release-2sudo add-apt-repository ppa:neovim-ppa/unstablesudo apt-get update &amp;&amp; sudo apt-get install neovim fish tmux go git build-essential openssl libssl-dev libbz2-dev libreadline-dev libsqlite-dev gcc python-buildgit clone https://github.com/sstephenson/rbenv.git ~/.rbenvgit clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-buildgit clone https://github.com/riywo/ndenv ~/.ndenvgit clone https://github.com/riywo/node-build.git ~/.ndenv/plugins/node-buildgit clone https://github.</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-02-09">Feb 9, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/20/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">WSLでクリップボードを共有する</h2>
-    <p class="card-text lineclamp">Windows Subsystem for Linuxで開発環境を整えた の続きの記事です。まともに使ってみたところ、NeovimのyankがWindowsのクリップボードに入ってくれないのが結構ストレスになったのでそれの解消をします。
-Windowsにはclip.exeというソフトウェアが搭載されており、これを使うことでWSLからWindowsのクリップボードに文字列を入れることができます
-echo &#34;:innocent:&#34; | clip.exe# wsl Terminal上でShift + Insert:innocent: ただ、このソフトウェア単体だとクリップボードから文字列を取り出すことができないのと、文字列の最後に改行コードが入るらしく(余計なことしやがって)つらいので別のアプローチでやります
-先にやっておくこと https://github.com/equalsraf/win32yank/releases から win32yank-x64.zipをダウンロードしてきて展開 展開して出てきたwin32yank.exeを WSL上でecho $PATHして列挙されたディレクトリのいずれかに配置 win32yankの使い方は clip.exe と大体同じで以下のように使う
-echo &#34;poepoe&#34; | win32yank.exe -iwin32yank.exe -opoepoe 念のためWindows上で任意のテキストボックスでCtrl+vして貼り付けられるか確認しておくと良いかもしれない。
-Neovimからwin32yank.exeを使う さてここまでできたのなら、Neovimから yでヤンク、pで貼り付けるみたいなことをできるようにしたい。
-過去の記憶からNeovimでLinuxのクリップボードと連携した時に xsel に依存していた覚えがあった。
-また、丁度手元にNeovimのソースコードがあったのでそこから検索して(最悪書き換えてビルドすればよい)どうすればいいかを模索した
-cd ~/src/github.com/neovim/neovimgit grep xselruntime/autoload/provider/clipboard.vim:&#34; When caching is enabled, store the jobid of the xclip/xsel process keepingruntime/autoload/provider/clipboard.vim: elseif exists(&#39;$DISPLAY&#39;) &amp;&amp; executable(&#39;xsel&#39;) &amp;&amp; s:cmd_ok(&#39;xsel -o -b&#39;)runtime/autoload/provider/clipboard.</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-01-31">Jan 31, 2018</time></p>
       
     </div>
   </article>
