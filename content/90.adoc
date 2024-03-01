@@ -12,8 +12,9 @@ ripgrep、デフォルトだと隠しファイルとかを検索対象にしな�
 
 $HOME/.ripgreprcとかに下記のやつをおいておくと最強になれるょ
 
-```
+[source]
+---
 --hidden
 --glob
 !.git/
-```
+---
