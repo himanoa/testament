@@ -1,0 +1,18 @@
+---
+title: "mdmg v0.1.6をリリースした"
+date: 2024-03-16T15:57:44+09:00 
+draft: false
+author: himanoa
+---
+
+ふとGitHubを見ていると、akamecoさんが https://github.com/akameco/touchx[touchx] という新作を作っていた。
+
+このプログラムはXDG Based Directoryに基づいてテンプレートを書いたり、touch --save でテンプレート化したりとおもしろい機能が付いている。
+
+mdmgでもrepositoryの外からテンプレートを展開したいよねーという課題を以前から抱えていて、収まりが付く方法を思い付かずに放置していたのだが、XDG Based Directoryを使うという方針は筋が良さそうなので、さっそく実装してみた
+
+https://github.com/himanoa/mdmg/pull/13
+
+touchxが使っていたXDG_DATA_HOMEを使うようにしてしまったが、普通にXDG_CONFIG_HOMEのほうがよかったかもなーという後悔もあり、今後配置場所が変わるかもしれない。
+
+実装してみた感想は、2年前の僕がFsRepositoryを作っていたおかげでここをちょちょいと拡張すればとりあえず動くようになっていて簡単でよかった。CIが腐ってて作り直したいなーとおもったりした。など
