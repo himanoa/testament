@@ -9,6 +9,17 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>2017年9月16日 くもりだったりはれだったりくもりだったり</title>
+      <link>https://blog.himanoa.net/5/</link>
+      <pubDate>Thu, 25 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/5/</guid>
+      <description>日誌 今日から家族で北海道に来ている。
+朝7:00に家を出て、車で空港に行って昼から飛行機に乗って1400くらいに新千歳空港に到着みたいな感じ。 で、そこから薄野で御飯食べてアパホテルに泊っている感じの世界観です
+すすきのは初めて来たんですけど人が少ない渋谷みたいだなぁといった感想でした。
+今は深夜ですがこのサイトのSEOを改善したりTwitterしたりとかなり適当な感じですごしています
+やっていき ブログの進捗が出たので神</description>
+    </item><item>
       <title>ニコ生でプログラミング配信がしたかった</title>
       <link>https://blog.himanoa.net/16/</link>
       <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
@@ -76,13 +87,6 @@ Flexboxを用いると要素を規則的に並べるのが非常に楽になり�
 netlifyが神 ちょっと前に騒がれてたnetlifyがデプロイ先として僕の要件をクリアしていたのでここでホスティングしています。
 GitHubのリポジトリを見てくれるのでpushに応じて自動でビルドしてページを更新してくれるので、サイト管理も楽なのが良かったです。
 あとはどこのディレクトリをドキュメントルートにするかもnetlify側で決められるのでgithub pagesと違い、gh-pagesみたいな余計なブランチを生やさなくてもいいのとhttps対応がクリック一回でできるのもよかったです。</description>
-    </item><item>
-      <title>インターネットに生かされ殺された愚者</title>
-      <link>https://blog.himanoa.net/11/</link>
-      <pubDate>Wed, 06 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/11/</guid>
-      <description>だーれだw</description>
     </item>
   </channel>
 </rss>

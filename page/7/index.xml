@@ -9,6 +9,16 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>ルーシッドドリームのリキャ待ち</title>
+      <link>https://blog.himanoa.net/60/</link>
+      <pubDate>Wed, 14 Oct 2020 15:48:47 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/60/</guid>
+      <description>単純にいろいろありすぎて気が滅入っていて、いろいろ休止することにした。
+もともと調子が悪めではあったが、せめて日課だけは継続しようとおもって継続していたがそれで悪影響が発生しては意味がないよなとおもって、契約によって縛られていること以外は一旦休止するかという機運が高まってきた。
+話は変わって、気持ちの持ち方について書きたいことがあったので書いておこうとおもう。
+もともと全人類に薄ら嫌われているという前提のもと物事を解釈すると、コードに対する批判だったり行動に対する批判や人格に対する批判を全部フラットに受け取ることができて便利！みたいな雑な指針があったのだが、いつしかやめてしまって、些細なことで受けるダメージ量が上がりヒールが追いつかなくなってきた感じがしたので、この気持ちの持ち方を大切にしないとだめだなと思った</description>
+    </item><item>
       <title>ブログに投稿する画像をどこに置くか悩んでいるという話</title>
       <link>https://blog.himanoa.net/59/</link>
       <pubDate>Tue, 13 Oct 2020 19:39:30 +0900</pubDate>
@@ -79,16 +89,6 @@ Vue.jsなどのモダンなUIフレームワークの使い方や利便生やJav
       
       <guid>https://blog.himanoa.net/56/</guid>
       <description>今年もよろしくおねがいします</description>
-    </item><item>
-      <title>おれはもうだめだ</title>
-      <link>https://blog.himanoa.net/55/</link>
-      <pubDate>Thu, 26 Dec 2019 02:04:26 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/55/</guid>
-      <description>最近どんどん頭が悪くなっているような気がしていて辛い、主に自覚する瞬間はポケモンの初手の出し負けと仕事中です。
-多分頭の良さでは1年前が一番ピークだった気がするけど、ここ1ヵ月で露骨に頭が悪くなっている。
-今日起きたとき体調が最悪で死にかけてたんで、会社を休んでたんですけど頭がよかったらこんなことにはなっていなかった気がする。
-この調子で頭悪くなり続けると3ヵ月後には何も考えられない人間になっている気がする。だれかおれをたすけてくれ</description>
     </item>
   </channel>
 </rss>

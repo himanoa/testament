@@ -42,6 +42,23 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/45/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">aleで.prettierrc.*が存在する時のみprettierをする設定</h2>
+    <p class="card-text lineclamp">どうでもいい設定シリーズ。
+自分がやる(Java|Type)Scriptプロジェクトは全部prettier使いたいけど、他人のプロジェクトではprettierを動作させたない場合がある。
+AtomだったりVSCodeだとprettierrcの有無でprettierをかけたりかけなかったりしてくれるんだが、ale + Neovimの構成だと自分で設定を書かないとうまくやってくれない。
+んでその設定なんですけど僕はこうしてますってやつです。
+let l:is_active = 0 let l:prettierrcs = [&#34;.prettierrc&#34;, &#34;.prettierrc.toml&#34;, &#34;.prettierrc.config.js&#34;, &#34;.prettierrc.js&#34;] for item in l:prettierrcs let l:is_active = l:is_active + filereadable(item) endfor let g:ale_fixers = { \ &#39;javascript&#39;: [&#39;eslint&#39;], \ &#39;typescript&#39;: [&#39;eslint&#39;], \ &#39;vue&#39;: [&#39;eslint&#39;] \ } let g:ale_fix_on_save = 1 if l:is_active &gt; 0 call insert(g:ale_fixers.javascript, &#34;prettier&#34;) call insert(g:ale_fixers.typescript, &#34;prettier&#34;) call insert(g:ale_fixers.vue, &#34;prettier&#34;) endif ここ を見るとわかるんですけど、package.jsonにconfigが書かれる場合もあるのだが、それに関しては未対応。
+vimscript jsonソリューションを募集しています</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2019-04-14">Apr 14, 2019</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/44/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -106,37 +123,6 @@ AetherへのPR 出した
     <h2 class="card-title">gitの管理対象外のファイルをまとめて消す方法</h2>
     <p class="card-text lineclamp">今までは awk を駆使して gst -s | awk '/??/{print $2}' | xargs rm -rf とか書いてたけど実は git clean -fdx で良いということに気づいた。
 git clean を用いるとdry-run的なこともできるのでこちらの方が便利</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2019-04-03">Apr 3, 2019</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/40/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">2019-04-02(ニート歴2日目)</h2>
-    <p class="card-text lineclamp">やったこと ブログの移行 Rails→hugo
-CircleCI入門 ひたすらキャッチアップしつつこのブログのデプロイ環境を構築していた。
-CircleCIがデフォルトで用意してくれる秘密鍵と公開鍵がReadOnlyだということに気が付かずずっとgit push origin HEADがコンテナ内から通らないなぁとか思ってたりしたので結構ハマった。
-完走した感想ですが、設定ファイルをyamlで書かなくちゃいけないのがどうしてもストレスで(これは前使ってたTravisCIもそう)、正直手続き的に設定ファイルを書きたい気持ちが強い。なんでyamlが嫌いなのかというと、テキストエディタがまともなインデントをしてくれないのがストレスになっているからである。
-CIの出来はともかく設定ファイルの書き易さだけで見るなら個人的にはJenkinsのJenkinsfile(groovy)が一番書き安く読み易いし複雑なことも表現しやすいと思ってる。
-ある程度複雑な設定にyamlやJSONを使うのは向いていないと考えていて、そういうのはRubyの内部DSLだったり軽量なスクリプト言語でやれるといいよなと考えてる。
-似たような理由でAnsibleも嫌いでItamaeの方が僕にとってはやさしいツールだなぁと感じる。
-himanoa/aether hugo使うならベースにしやすいブログ用テーマを選んで改造していくのが良さそうと感じたのでフォークして色とかを調節したり、シェアボタンを置いたりとかした。
-色とかを調節するだけでもだいぶ雰囲気がガラっと変わって感動しています。今年はデザイン学習とかにも力を入れていきたいと思っているけど、はたして時間はあるのだろうか
-選考面接を受けた 今も着実に貯蓄は底に向かって消費されていて、いつまでもニートのままというわけにもいかないので、就活ってやつをやっている。
-今日は以前カジュアル面談行った中で一番興味を持てて、かつ金も一番貰えそうな企業の採用面接を受けにいった。
-正直こういう採用面接って採用担当者のエンジニアと雑談していい時間になっていることが多くて今回もそうだったんだけど手応えみたいなのがまったくよくわからない。
-一番仕事をしたい企業だったので受かると嬉しい……
-できなかったこと メール返信 変に気合が必要な作業を後回しにしがちで、悪癖が出ていますね
-家賃の支払い グゥ~~~~
-あしたやること メールの返信 2通
-Laravelの入門 Docker内でいい感じに開発環境整うところまですらできてないのでまずはそこ。 次点でチュートリアルの完遂
-家賃の支払い お金が飛んでく恐怖に震えて眠ります
-飲み会 いかなきゃ。
-aetherのhugoのminify機構を使ってくれるPRを出す パッチ…パッチはいりませんか…？</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2019-04-03">Apr 3, 2019</time></p>
       

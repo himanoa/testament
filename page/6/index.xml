@@ -9,6 +9,25 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>ブログのURL構造を変更した</title>
+      <link>https://blog.himanoa.net/65/</link>
+      <pubDate>Sat, 06 Feb 2021 09:12:08 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/65/</guid>
+      <description>hugoのversionを上げたら blog.himanoa.net が entries/って記事を表示しはじめて壊れてしまっていたので、content配下のディレクトリ構造を変更した。
+しかし、content以下のディレクトリ構造を変えるとビルドした後の記事のURLも変わってしまう。
+URLが変わってしまうと、過去のリンクが壊れてしまってつらいつらいなので、過去のURLを踏んできたときは今のURLにリダイレクトするようにした。
+ここではその作業ログを残す
+Hugoでのリダイレクトの貼り方 hugoにはFront Matterという仕組みが存在し、ここに決められた形式のメタデータを書くことができる。
+ここにリダイレクト元となるパスを記述することでリダイレクトを実現することができる。
+詳細は公式ドキュメントを参照するべし
+作業手順 content/entries以下のファイルをcontent/に移動 15a468c
+既存の記事内のFront Matterの形式を揃える
+hugo convert toJSON --unsafe を実行することでcontent配下のFront matterを一括変換できる cf5bfc5
+記事ファイルの内部を開いてFront Matter部分だけ抜き出して置換するJavaScriptを書いて実行する c5a942b
+コードはこちら
+git push してデプロイされたら動作確認する</description>
+    </item><item>
       <title>Blogをasciidocで書いてみた</title>
       <link>https://blog.himanoa.net/64/</link>
       <pubDate>Sat, 06 Feb 2021 07:31:26 +0900</pubDate>
@@ -54,16 +73,6 @@ as 64みたいなのがうまく扱えないのでがんばる必要があって
 rust-lang orgsのリポジトリにコミットできるとちょっとかっこいい気がするのでやり遂げたい。がんばる
 仕事 おそらく順調
 最後に はこねこには本当に迷惑かけてすまないとおもっています………</description>
-    </item><item>
-      <title>ルーシッドドリームのリキャ待ち</title>
-      <link>https://blog.himanoa.net/60/</link>
-      <pubDate>Wed, 14 Oct 2020 15:48:47 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/60/</guid>
-      <description>単純にいろいろありすぎて気が滅入っていて、いろいろ休止することにした。
-もともと調子が悪めではあったが、せめて日課だけは継続しようとおもって継続していたがそれで悪影響が発生しては意味がないよなとおもって、契約によって縛られていること以外は一旦休止するかという機運が高まってきた。
-話は変わって、気持ちの持ち方について書きたいことがあったので書いておこうとおもう。
-もともと全人類に薄ら嫌われているという前提のもと物事を解釈すると、コードに対する批判だったり行動に対する批判や人格に対する批判を全部フラットに受け取ることができて便利！みたいな雑な指針があったのだが、いつしかやめてしまって、些細なことで受けるダメージ量が上がりヒールが追いつかなくなってきた感じがしたので、この気持ちの持ち方を大切にしないとだめだなと思った</description>
     </item>
   </channel>
 </rss>

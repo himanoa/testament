@@ -9,6 +9,13 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>夏コミ当選しました</title>
+      <link>https://blog.himanoa.net/25/</link>
+      <pubDate>Sat, 09 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/25/</guid>
+      <description>当選しました。まだ何書くか確定してないのですががんばりますので各位来てくれ</description>
+    </item><item>
       <title>Linux デスクトップ環境 2018</title>
       <link>https://blog.himanoa.net/24/</link>
       <pubDate>Wed, 21 Mar 2018 00:00:00 +0000</pubDate>
@@ -58,18 +65,6 @@ webpackでとりあえずproduction用とその他でsourcemapを出し分けで
 tsconfig.json {&amp;#34;compilerOptions&amp;#34;: {&amp;#34;target&amp;#34;: &amp;#34;es5&amp;#34;,&amp;#34;module&amp;#34;: &amp;#34;commonjs&amp;#34;,&amp;#34;moduleResolution&amp;#34;: &amp;#34;node&amp;#34;,&amp;#34;emitDecoratorMetadata&amp;#34;: true,&amp;#34;experimentalDecorators&amp;#34;: true,&amp;#34;declaration&amp;#34;: false,&amp;#34;noImplicitAny&amp;#34;: false,&amp;#34;noImplicitReturns&amp;#34;: false,&amp;#34;removeComments&amp;#34;: true,&amp;#34;strictNullChecks&amp;#34;: false,&amp;#34;outDir&amp;#34;: &amp;#34;build&amp;#34;,&amp;#34;lib&amp;#34;: [&amp;#34;es6&amp;#34;,&amp;#34;es7&amp;#34;,&amp;#34;dom&amp;#34;]},&amp;#34;exclude&amp;#34;: [&amp;#34;dist&amp;#34;,&amp;#34;build&amp;#34;,&amp;#34;node_modules&amp;#34;]} moduleをcommonjsにしてしまったけどwebpackでの最適化の都合を考えると esModuleInterop の方がいいかも
 strictNullChecks は依存で壊れがちらしいのでオフにしている…オンにしたい…
 webpack.config.js const path = require(&amp;#34;path&amp;#34;);const ENV = process.env.NODE_ENV || &amp;#34;development&amp;#34;;const DEV_PORT = process.env.PORT || 4444;const webpack = require(&amp;#34;webpack&amp;#34;);const CleanWebpackPlugin = require(&amp;#34;clean-webpack-plugin&amp;#34;);const HtmlWebpackPlugin = require(&amp;#34;html-webpack-plugin&amp;#34;);const ExtractTextPlugin = require(&amp;#34;extract-text-webpack-plugin&amp;#34;);module.</description>
-    </item><item>
-      <title>Windows Subsystem for Linuxで開発環境を整えた</title>
-      <link>https://blog.himanoa.net/19/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/19/</guid>
-      <description>ndenv とか pyenv とか rbenv とか tmux とか fish とか neovim とか fzf とか色々動いたし、True Color出せるということもわかったので、まぁ常用はできるんじゃないですかね？といった所。常用するかどうかは知らん。まだ課題点もいろいろあるし。
-導入 WSLチュートリアルがあるので これ通りやった。 https://github.com/QMonkey/wsl-tutorial
-XWindowSystemが必要なアプリケーションを使う予定がないならXLaunch入れたりとかはしなくていいとは思う
-あとは普通のUbuntuなので必要なアプリケーションをインストールしていくだけ。
-僕の環境は多分大体以下のコマンドで再現できると思う
-sudo apt-get install software-properties-commonsudo apt-add-repository ppa:fish-shell/release-2sudo add-apt-repository ppa:neovim-ppa/unstablesudo apt-get update &amp;amp;&amp;amp; sudo apt-get install neovim fish tmux go git build-essential openssl libssl-dev libbz2-dev libreadline-dev libsqlite-dev gcc python-buildgit clone https://github.com/sstephenson/rbenv.git ~/.rbenvgit clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-buildgit clone https://github.com/riywo/ndenv ~/.ndenvgit clone https://github.com/riywo/node-build.git ~/.ndenv/plugins/node-buildgit clone https://github.</description>
     </item>
   </channel>
 </rss>
