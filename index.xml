@@ -15,6 +15,7 @@
       
       <guid>https://blog.himanoa.net/92/</guid>
       <description>はじめに この記事は PureScript - Qiita Advent Calendar 2024 の2日目の記事です。
+前日は toyboot4e さんによる 一夜漬け PureScript でした。
 この記事では、TypeScriptでのフロントエンド経験者向けにPureScriptでViteを使ったフロントエンド開発環境を構築を解説していきます。
 この記事の手順に従うことでホットリロードが効く開発サーバーの起動、テストの実行、エディタのサポート機能を活用した型補完やエラー表示などが可能な開発環境が実現します。
 また、前提知識としてNode.jsやnpmの基本的な使い方は理解しておくことを推奨します。
@@ -26,7 +27,7 @@ PureScriptとspagoのインストール 続いてPureScriptとPureScriptのパ�
 $ npm install -D purescript spago また、これらのツールへパスが通っているという挙動に暗黙に依存しているソフトウェアがあるので次のようなシェルスクリプトファイルを用意しましょう
 # path-add.bash export PATH=$PATH:node_modules/.bin そしてプロジェクトの開発をはじめる前に毎回 source path-add.bash を実行します
 direnvを使っている場合 direnvを使っている場合は.envrcに次の項目を記載しておくと毎回path-add.bashを実行する必要がなくなります。
-# .envrc PATH_add node_modules/.bin なぜグローバルインストールではないのか 巷の環境構築ガイドでは purescriptやspagoをインストールする方法はglobal instlalが推奨されていることがおおいですが、これは次の理由からおすすめしていません。</description>
+# .</description>
     </item><item>
       <title>mdmg v0.1.6をリリースした</title>
       <link>https://blog.himanoa.net/91/</link>
