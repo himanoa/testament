@@ -1,0 +1,409 @@
+---
+title: "PureScriptでフロントエンド開発を始める"
+date: 2024-12-01T15:05:02+09:00 
+draft: false
+author: himanoa
+---
+
+== はじめに
+
+この記事は https://qiita.com/advent-calendar/2024/purescript[PureScript - Qiita Advent Calendar 2024] の2日目の記事です。
+
+この記事では、TypeScriptでのフロントエンド経験者向けにPureScriptでViteを使ったフロントエンド開発環境を構築を解説していきます。
+
+この記事の手順に従うことでホットリロードが効く開発サーバーの起動、テストの実行、エディタのサポート機能を活用した型補完やエラー表示などが可能な開発環境が実現します。
+
+また、前提知識としてNode.jsやnpmの基本的な使い方は理解しておくことを推奨します。
+
+== 基本的な開発環境の準備
+
+まずプロジェクトディレクトリを作成し npm packageとして振舞えるようにしていきましょう。次のコマンドを実行してください。
+
+[source]
+----
+mkdir your-project-name
+cd your-project-name
+npm init -y
+----
+
+コマンド実行後、プロジェクトディレクトリの構造が次のようになっていたら問題ないです。
+
+[source,bash]
+----
+$ tree
+
+.
+└── package.json
+
+1 directory, 1 file
+----
+
+他のパッケージマネージャーを使いたい場合は `yarn init` を `pnpm init` に読み変えてもらっても問題ないです。
+
+また、以降のコマンドで `npm` が出てくる場合も各パッケージマネージャーの対応するコマンドに紐付けてもらって構いません。
+
+=== PureScriptとspagoのインストール
+
+続いてPureScriptとPureScriptのパッケージマネージャーのspagoをインストールしましょう。これらは次のコマンドで導入してください。
+
+[source,bash]
+----
+$ npm install -D purescript spago
+----
+
+また、これらのツールへパスが通っているという挙動に暗黙に依存しているソフトウェアがあるので次のようなシェルスクリプトファイルを用意しましょう
+
+[source,bash]
+----
+# path-add.bash
+
+export PATH=$PATH:node_modules/.bin
+----
+
+そしてプロジェクトの開発をはじめる前に毎回 `source path-add.bash` を実行します
+
+==== direnvを使っている場合
+
+direnvを使っている場合は.envrcに次の項目を記載しておくと毎回path-add.bashを実行する必要がなくなります。
+
+[source]
+----
+# .envrc
+PATH_add node_modules/.bin
+
+----
+
+==== なぜグローバルインストールではないのか
+
+巷の環境構築ガイドでは purescriptやspagoをインストールする方法はglobal instlalが推奨されていることがおおいですが、これは次の理由からおすすめしていません。
+
+1. プロジェクト固有で使っているPureScriptのバージョンが固定していない場合、特定のバージョン依存のコンパイルエラーなどが再現できない
+2. CIなどクリーンな環境で`npm install` するだけでビルド環境のセットアップが完了しない。
+
+=== PureScriptプロジェクトの作成と初期設定
+
+ここまでで、開発に必要なツールのインストールが完了しました。続いて PureScriptプロジェクトの初期化を行っていきましょう。次のコマンドを実行してください。
+
+[source,bash]
+----
+$ spago init
+----
+
+実行後、プロジェクトディレクトリが次のような形になっていることを確認します。
+
+[source]
+----
+$ tree
+
+.
+├── add-path.bash
+├── package.json
+├── package-lock.json
+├── packages.dhall
+├── spago.dhall
+├── src
+│   └── Main.purs
+└── test
+    └── Main.purs
+----
+
+
+生成されたファイルを解説します。
+
+`packages.dhall` は PureScriptのパッケージリストの設定ファイルです。デフォルトではPureScript公式のパッケージセットを参照するように設定されています。これらは自前のパッケージセットを作るなどしない限りは特に弄る必要はありません
+
+`spago.dhall` は PureScriptのプロジェクト設定ファイルです。依存パッケージの定義や、パッケージとして公開した場合のパッケージ名などが定義されています。
+
+`src/Main.purs` は 実際にコードを書いていくファイルです。ファイルの中身を見ていきましょう
+
+[source]
+----
+module Main where
+
+import Prelude
+
+import Effect (Effect)
+import Effect.Console (log)
+
+main :: Effect Unit
+main = do
+  log "🍝"
+
+----
+
+生成されたファイルはこのようになっているはずです。このコードが正しくコンパイルできるかを確認するには次のコマンドを実行します
+
+[source]
+----
+$ spago build
+
+[info] Build succeeded.
+----
+
+出力がこの通りになれば問題なく環境は構築されています。
+
+`spago run` を実行すると `Main` モジュールのmain関数が実行されます。
+
+[source]
+----
+$ spago run
+🍝
+----
+
+`test/Main.purs` はテストファイルのエントリーポイントですが後のセクションで解説します。
+
+=== 依存関係の追加
+
+このセクションでは、フロントエンドの開発を始めるにあたって必要最低限のパッケージを追加していくことで、PureScriptのプロジェクトに依存ライブラリをインストールする方法を解説していきます。
+
+フロントエンド開発を始めるにあたって、DOMを触るためのライブラリをインストールする必要があります。次のコマンドを実行してください。
+
+[source]
+----
+spago install web-dom web-html
+----
+
+`spago install` コマンドによって依存パッケージをインストールすることができます。インストール後、`spago.dhall` が変更されインストールしたパッケージの定義が追加されているはずです。
+
+これらを使ったコードをMain.pursに書いていきましょう。次のコードをコピペしてください
+
+[source,purescript]
+----
+module Main where
+
+import Prelude
+
+import Effect (Effect)
+import Web.DOM.ParentNode (QuerySelector(..), querySelector)
+import Web.HTML (window)
+import Web.HTML.HTMLDocument (toParentNode)
+import Web.HTML.Window (document)
+
+main :: Effect Unit
+main = do
+  win <- window
+  doc <- document win
+  _ <- querySelector (QuerySelector "#app") (toParentNode doc)
+  pure unit
+
+----
+
+コピペしたら `spago build` を実行しましょう。ここまでの手順が問題なければコンパイルが通るはずです。
+
+このコードは、HTML上から idが `app` な要素を取得する最低限の実装です。
+
+`spago run` をしてもブラウザ環境ではないので今のところはこれらのコードは実行することはできませんが、一旦そのままで問題ないです
+
+=== エディタ環境の整備
+
+このセクションではVisual Studio Codeの拡張機能をインストールし、コードの補完やエラー表示が機能する開発環境を整えていきます。
+
+https://marketplace.visualstudio.com/items?itemName=nwolverson.ide-purescript[PureScript IDE]というプラグインをインストールしましょう
+
+インストールに成功したら一旦VisualStudioCodeを閉じて、プロジェクトディレクトリを開いているターミナルで次のコマンドを実行します
+
+[source]
+----
+$ source add-path.bash
+$ code .
+----
+
+これを実行するとPATHがspagoやpurescriptに通った状態でVisual Studio Codeが起動します。この状態で `src/Main.purs` を開いて `main` 関数内のブロックで次のように補完が出てくればセットアップ完了です。
+
+image::https://i.imgur.com/LS67sFZ.png[]
+
+== Viteによるビルド環境の構築
+
+続いて先ほど書いた `Main.purs` を実際にブラウザで動かせるようにしていきましょう。
+現代的なフロントエンドアプリケーションの開発では、開発サーバーを立ち上げてコードの変更を即座に確認できる環境が必要不可欠です。
+
+PureScriptのコードをブラウザで動作させるためには、コンパイルしてJavaScriptに変換し、それをブラウザが読み込める形で提供する必要があります。この変換とブラウザへの提供を自動化するために、Viteを利用します。
+
+=== PureScriptとViteの統合
+
+実際の方法を手順にする前に今回組むビルドフローがどのようなものかを説明します。
+
+開発時には次のような流れでコードが実行されます：
+
+1. PureScriptのソースコードをspagoがJavaScriptにコンパイルします
+2. コンパイルされたJavaScriptをViteが開発サーバーを通じてブラウザに配信します
+3. コードの変更を検知すると、自動的に再コンパイルとブラウザの更新が行われます
+
+これを図示すると次のようになります
+
+image:https://i.imgur.com/IPSFInq.png[]
+
+さっそくセットアップに移っていきましょう。まずはviteをプロジェクトにインストールします。
+
+[source,bash]
+----
+$ npm install -D vite
+----
+
+次に、PureScriptファイルを呼び出すJavaScriptとJavaScriptを読み出して Vite からサーブされるHTMLファイルを作成します。
+
+[source,html]
+----
+<!-- index.html -->
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yout project name</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
+----
+
+[source,javascript]
+----
+// index.js
+import { main } from './output/Main/index.js'
+main()
+----
+
+重要なところは `index.js` にて `./output/Main/index.js` をインポートして実行していることです。
+
+`./output/Main/index.js` は `spago build` してPureScriptファイルがJavaScriptにコンパイルされた結果を差しています。つまりこれで何がしているかというと、ビルドしたPureScriptで書かれたMainモジュールのmain関数を読み込み実行しています。
+
+さて、package.jsonにviteを呼び出すnpm scriptsを定義して実際にviteでdev serverを起動してみましょう。
+
+[source,json]
+----
+{
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "vite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "purescript": "0.15.15",
+    "spago": "0.21.0"
+  }
+}
+----
+
+package.jsonを編集したら `npm run serve` コマンドによって開発用サーバーが起動します。
+
+サーバーが起動したら localhost:5173 にアクセスしてみてください。真っ白で何もないページが表示されるはずです。
+
+このままでは本当にPureScriptファイルが読みまれているのか検証できないので `src/Main.purs` を次のように編集してみましょう。
+
+[source,purescript]
+----
+module Main where
+
+import Prelude
+
+import Effect (Effect)
+import Effect.Console (log)
+
+main :: Effect Unit
+main = do
+  log "Hello, World."
+----
+
+保存するとブラウザが更新され、開発者ツールのコンソールに `Hello, World.` と表示されているはずです。
+
+これは何が起きているかというと、Visual Studio Codeの裏側で動いている `purs ide` のプロセスがPureScriptのソースコードの変更を検知し、ビルドしてoutput下のビルド後の成果物(JavaScript)を更新。 Viteがoutput下のJavaScriptの変更を検知して ブラウザを更新させる。ということが実際には起こっています。
+
+== テスト環境の整備
+
+ここまでのセクションで無事にブラウザでPureScriptコードを動作させることに成功しました。ここからは実用的なソフトウェアを作るにあたって、テストコードを書くための環境を構築していきます。
+
+=== テスト実行用のパッケージを導入
+
+テストを書くためのパッケージを二つ導入していきましょう
+
+[source,bash]
+----
+spago install spec spec-discovery
+----
+
+この二つのパッケージはそれぞれ次の意味が存在します。
+
+* spec: テスト用の型や `describe` `it` `shouldEqual` といったテストを記述するために必要な関数とそれを実行するための関数の提供
+* spec-discovery: specだけではソースコードからテストコードを探してきて実行する、という機能が存在しないので、それをやってくれるパッケージ
+
+=== 実際にテストを記述してみる
+
+テストを書く用の実装を用意し、テストを書いてみましょう。
+
+[source,purescript]
+----
+-- src/Add.purs
+module Add where
+
+import Prelude
+
+add :: Int -> Int -> Int
+add a b = a + b
+----
+
+続いてテストです。この構造では `src/**` `test/**` のどこのディレクトリに置いてもテストとして実行されるのですが今回は `test/Add.purs` としてテストを作っていきます
+
+
+[source,purescript]
+----
+-- test/Add.purs
+module Test.Add where
+
+import Prelude
+
+import Test.Spec (Spec, describe, it)
+import Test.Spec.Assertions (shouldEqual)
+
+spec :: Spec Unit
+spec = 
+  describe "add" do
+    it "1 + 1 = 2" do
+      add 1 1 `shouldEqual` 2
+----
+
+最後にテスト用のエントリーポイントでspec-discoveryを呼び出す形に修正してテストを実行してみましょう。
+
+[source,purescript]
+----
+-- test/Main.purs
+module Test.Main where
+
+import Prelude
+import Effect (Effect)
+import Test.Spec.Discovery (discoverAndRunSpecs)
+import Test.Spec.Reporter.Console (consoleReporter)
+
+main :: Effect Unit
+main = discoverAndRunSpecs [ consoleReporter ] """Test\.*"""
+----
+
+discoverAndRunSpecsは `Test\.*` の命名規則にマッチするmoduleのテストを実行してくれる関数です。実際に実行してみると次の結果が得られるはずです。
+
+[source,bash]
+----
+$ spago test
+add
+  ✓ 1 + 1 = 2
+
+Summary
+1/1 test passed
+
+[info] Tests succeeded.
+----
+
+== おわりに
+
+基本的なPureScriptプロジェクトのセットアップ方法について解説しました。
+
+身の回りの仲いい人でPureScriptを現在書いている人がいないので皆さん書いてくれると、僕がとても嬉しいです。またうまい設計などができたらこっそり教えてくれると助かります。
+
+明日は https://x.com/mozukichi_0807:[@mozukichi_0807] さんによる PureScriptでパイプライン演算子に相当するapplyFlipped関数と#演算子 です。
