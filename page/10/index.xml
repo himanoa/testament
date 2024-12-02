@@ -9,6 +9,16 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>転職してました</title>
+      <link>https://blog.himanoa.net/46/</link>
+      <pubDate>Fri, 28 Jun 2019 23:28:27 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/46/</guid>
+      <description>Twitterで仕事やめた時ワイワイ騒いでたので今更なんですけど、3月末で株式会社ドワンゴとの契約終了して、株式会社A1Aに転職しました。
+退職理由とかインターネットに書くのは面白くないんで、聞きたい人は酒にでも誘ってください
+最近ライバロリさんの動画にハマってるのでリスペクトして終ろうと思います
+株式会社ドワンゴ、契約　オワオワリでぇ〜〜〜す</description>
+    </item><item>
       <title>aleで.prettierrc.*が存在する時のみprettierをする設定</title>
       <link>https://blog.himanoa.net/45/</link>
       <pubDate>Sun, 14 Apr 2019 11:34:38 +0900</pubDate>
@@ -63,14 +73,6 @@ AetherへのPR 出した
 メール返信 やった
 できなかったこと 飲み会 日付の認識が曖昧で実は違う日だった
 あした(今日)やること Laravel入門 飲み会</description>
-    </item><item>
-      <title>gitの管理対象外のファイルをまとめて消す方法</title>
-      <link>https://blog.himanoa.net/41/</link>
-      <pubDate>Wed, 03 Apr 2019 17:43:01 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/41/</guid>
-      <description>今までは awk を駆使して gst -s | awk &#39;/??/{print $2}&#39; | xargs rm -rf とか書いてたけど実は git clean -fdx で良いということに気づいた。
-git clean を用いるとdry-run的なこともできるのでこちらの方が便利</description>
     </item>
   </channel>
 </rss>

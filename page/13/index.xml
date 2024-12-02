@@ -9,6 +9,20 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Python &#43; Firebase RealtimeDBでDiscordBotを作った感想</title>
+      <link>https://blog.himanoa.net/31/</link>
+      <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/31/</guid>
+      <description>これの話です。
+これの裏側はPython3.6 + Firebase RealtimeDB + GAE(Flexible Enviroment)になっています。
+今回はRealtime Databsaeを使った感想について書いていきます
+そもそもなぜReatimeDBを？ 人間がデプロイしないで自分のサーバーに追加できるDiscordBotを組みたかったので何かしらに永続化する必要がある。 RDBMSで何か遊ぶことには慣れてるので、本当はRDBMSを使いたかったのだが、無料で使える or もしくはコスパがよろしいプランが存在しなかったので、NosqlなFirebase Realtime DBを採用したみたいな経緯でした。
+よかった話 安い 日のデータ通信量がわかれば月のデータ通信量もなんとなくわかるのでわかるんですが、安いのは個人のホビーとしてはポイントがたかい。 僕のユースケースだと無料枠に収まりそうなのでよかった
+見えるものが動くまでのサイクルがはやい。 テーブル設計しなくても適当にDatabaseに実データが入れられたり、リアルタイム同期してくれるため動くものを作るまでのサイクルはめちゃくちゃ簡略化できる。
+しんどかった話 flattenなスキーマ設計 RealtimeDBはスキーマレスだが開発を効率的にやるためにはやはりスキーマはあったほうがいいと思っているのでアプリケーションコード上でやった。 RealtimeDBはあるテーブルのデータを一覧で取得してくるとその子要素も全部取得してしまうため、データが増えてくるとpayloadは巨大化するしコストも増えていくので、flattenに設計していく必要があるのだがそうすると今度は削除や書き込み時に複数のエンドポイントを更新しないといけなくなるため、漏れが発生するとすぐに破綻するのが大変だった。
+そもそもFirestoreを選定しなかった理由 まだベータ版だったのと良さげなAPIClientがなかったため今回は敬遠した。が今度試してみたいですね</description>
+    </item><item>
       <title>Hearthstoneランク15いった</title>
       <link>https://blog.himanoa.net/30/</link>
       <pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
@@ -59,13 +73,6 @@ Mu!What&amp;rsquo;s up! 途中から会話に入る時に咄嗟にボタンを�
 しょうがなしだなぁ… しょうがない事案が発生した時に使いましょう
 最後に さなボタンだけで人間の会話を繋げることができるということがお分かり頂けたと思います。
 DiscordのBotの方ですがさなボタンの更新に追従する機能だったり、Reactionが付いた時に音を出す機能などを実装していきたいと思っております。</description>
-    </item><item>
-      <title>家宝</title>
-      <link>https://blog.himanoa.net/26/</link>
-      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/26/</guid>
-      <description> </description>
     </item>
   </channel>
 </rss>

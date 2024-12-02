@@ -9,6 +9,13 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>家宝</title>
+      <link>https://blog.himanoa.net/26/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.himanoa.net/26/</guid>
+      <description> </description>
+    </item><item>
       <title>夏コミ当選しました</title>
       <link>https://blog.himanoa.net/25/</link>
       <pubDate>Sat, 09 Jun 2018 00:00:00 +0000</pubDate>
@@ -53,18 +60,6 @@ XWindowManagerでやっているので以下のコマンドで解像度を設定
       
       <guid>https://blog.himanoa.net/22/</guid>
       <description>微妙に拗せて終わってしまった心に染みるアニメ ゆるキャン△</description>
-    </item><item>
-      <title>私的TypeScriptいろいろまとめ</title>
-      <link>https://blog.himanoa.net/21/</link>
-      <pubDate>Thu, 22 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.himanoa.net/21/</guid>
-      <description>flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。
-webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。
-筋悪い箇所があったらTwitterかはてブのコメントで頼む
-tsconfig.json {&amp;#34;compilerOptions&amp;#34;: {&amp;#34;target&amp;#34;: &amp;#34;es5&amp;#34;,&amp;#34;module&amp;#34;: &amp;#34;commonjs&amp;#34;,&amp;#34;moduleResolution&amp;#34;: &amp;#34;node&amp;#34;,&amp;#34;emitDecoratorMetadata&amp;#34;: true,&amp;#34;experimentalDecorators&amp;#34;: true,&amp;#34;declaration&amp;#34;: false,&amp;#34;noImplicitAny&amp;#34;: false,&amp;#34;noImplicitReturns&amp;#34;: false,&amp;#34;removeComments&amp;#34;: true,&amp;#34;strictNullChecks&amp;#34;: false,&amp;#34;outDir&amp;#34;: &amp;#34;build&amp;#34;,&amp;#34;lib&amp;#34;: [&amp;#34;es6&amp;#34;,&amp;#34;es7&amp;#34;,&amp;#34;dom&amp;#34;]},&amp;#34;exclude&amp;#34;: [&amp;#34;dist&amp;#34;,&amp;#34;build&amp;#34;,&amp;#34;node_modules&amp;#34;]} moduleをcommonjsにしてしまったけどwebpackでの最適化の都合を考えると esModuleInterop の方がいいかも
-strictNullChecks は依存で壊れがちらしいのでオフにしている…オンにしたい…
-webpack.config.js const path = require(&amp;#34;path&amp;#34;);const ENV = process.env.NODE_ENV || &amp;#34;development&amp;#34;;const DEV_PORT = process.env.PORT || 4444;const webpack = require(&amp;#34;webpack&amp;#34;);const CleanWebpackPlugin = require(&amp;#34;clean-webpack-plugin&amp;#34;);const HtmlWebpackPlugin = require(&amp;#34;html-webpack-plugin&amp;#34;);const ExtractTextPlugin = require(&amp;#34;extract-text-webpack-plugin&amp;#34;);module.</description>
     </item>
   </channel>
 </rss>

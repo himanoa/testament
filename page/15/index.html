@@ -42,6 +42,23 @@
         <h1 class="list-header-title"></h1>
       </header>
       <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
+  href="https://blog.himanoa.net/21/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">私的TypeScriptいろいろまとめ</h2>
+    <p class="card-text lineclamp">flowがすぐ壊れて何も信用できなくなってつらかったのでTypeScript入門することにした。
+webpackでとりあえずproduction用とその他でsourcemapを出し分けできるようにしたのでいろいろメモする。
+筋悪い箇所があったらTwitterかはてブのコメントで頼む
+tsconfig.json {&#34;compilerOptions&#34;: {&#34;target&#34;: &#34;es5&#34;,&#34;module&#34;: &#34;commonjs&#34;,&#34;moduleResolution&#34;: &#34;node&#34;,&#34;emitDecoratorMetadata&#34;: true,&#34;experimentalDecorators&#34;: true,&#34;declaration&#34;: false,&#34;noImplicitAny&#34;: false,&#34;noImplicitReturns&#34;: false,&#34;removeComments&#34;: true,&#34;strictNullChecks&#34;: false,&#34;outDir&#34;: &#34;build&#34;,&#34;lib&#34;: [&#34;es6&#34;,&#34;es7&#34;,&#34;dom&#34;]},&#34;exclude&#34;: [&#34;dist&#34;,&#34;build&#34;,&#34;node_modules&#34;]} moduleをcommonjsにしてしまったけどwebpackでの最適化の都合を考えると esModuleInterop の方がいいかも
+strictNullChecks は依存で壊れがちらしいのでオフにしている…オンにしたい…
+webpack.config.js const path = require(&#34;path&#34;);const ENV = process.env.NODE_ENV || &#34;development&#34;;const DEV_PORT = process.env.PORT || 4444;const webpack = require(&#34;webpack&#34;);const CleanWebpackPlugin = require(&#34;clean-webpack-plugin&#34;);const HtmlWebpackPlugin = require(&#34;html-webpack-plugin&#34;);const ExtractTextPlugin = require(&#34;extract-text-webpack-plugin&#34;);module.</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-02-22">Feb 22, 2018</time></p>
+      
+    </div>
+  </article>
+</a>
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
   href="https://blog.himanoa.net/19/" class="card blog-card" rel="bookmark" >
     
   <article class="card-body">
@@ -118,18 +135,6 @@ vimtutorをやりましょう。vimtutorはvimでの効率的なテキスト操�
 あとガチで悪酔い中にやったゴッドフィールドが面白かったのでゴッドフィールド神ゲーだと思った(本当か？)
 いつもの 飲みにいくぞ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!etcご用があったら Twitter まで。 Twitterもってないマンはさすがにいないと思うけど matsunoappy@gmail.com まで連絡くだしゃい。正直こっちはあんま見てないけど
 誕生日プレゼントマジで頼む!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! http://amzn.asia/5dZqBma</p>
-    <div class="card-subtext muted-text">
-      <p>Posted <time datetime="2018-01-30">Jan 30, 2018</time></p>
-      
-    </div>
-  </article>
-</a>
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)"
-  href="https://blog.himanoa.net/17/" class="card blog-card" rel="bookmark" >
-    
-  <article class="card-body">
-    <h2 class="card-title">asdadsasdasdasd</h2>
-    <p class="card-text lineclamp">飲みに行くぞ!!</p>
     <div class="card-subtext muted-text">
       <p>Posted <time datetime="2018-01-30">Jan 30, 2018</time></p>
       
