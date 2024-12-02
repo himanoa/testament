@@ -9,6 +9,8 @@ author: himanoa
 
 この記事は https://qiita.com/advent-calendar/2024/purescript[PureScript - Qiita Advent Calendar 2024] の2日目の記事です。
 
+前日は toyboot4e さんによる https://zenn.dev/toyboot4e/scraps/32e772877f9bcf[一夜漬け PureScript] でした。
+
 この記事では、TypeScriptでのフロントエンド経験者向けにPureScriptでViteを使ったフロントエンド開発環境を構築を解説していきます。
 
 この記事の手順に従うことでホットリロードが効く開発サーバーの起動、テストの実行、エディタのサポート機能を活用した型補完やエラー表示などが可能な開発環境が実現します。
