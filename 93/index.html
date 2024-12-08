@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>PureScriptでViteのCSSModuleサポートを使う &middot; 遺言書</title>
+  <meta name="description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;この記事は &lt;a href=&#34;https://qiita.com/advent-calendar/2024/purescript&#34;&gt;PureScript - Qiita Advent Calendar 2024&lt;/a&gt; の8日" />
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="PureScriptでViteのCSSModuleサポートを使う &middot; 遺言書" >
+  <meta property="twitter:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;この記事は &lt;a href=&#34;https://qiita.com/advent-calendar/2024/purescript&#34;&gt;PureScript - Qiita Advent Calendar 2024&lt;/a&gt; の8日" />
+  <meta property="twittere:url" content="https://blog.himanoa.net/93/" >
+  <meta property="og:image" content="default.jpg">
+  <meta property="og:url" content="https://blog.himanoa.net/93/" >
+  <meta property="og:title" content="PureScriptでViteのCSSModuleサポートを使う &middot; 遺言書" >
+  <meta property="og:description" content="&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;この記事は &lt;a href=&#34;https://qiita.com/advent-calendar/2024/purescript&#34;&gt;PureScript - Qiita Advent Calendar 2024&lt;/a&gt; の8日" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  <link href="https://blog.himanoa.net/css/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
+  
+  
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <div class="nav-bar-inside">
+    <a href="https://blog.himanoa.net" class="nav-large-text">Testament</a>
+  </div>
+</nav>
+
+    <main class="article side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">PureScriptでViteのCSSModuleサポートを使う</h1>
+          <p class="post-date">Posted <time datetime="2024-12-08">Dec 8, 2024</time></p>
+        </header>
+        
+        <div class="paragraph">
+<p>この記事は <a href="https://qiita.com/advent-calendar/2024/purescript">PureScript - Qiita Advent Calendar 2024</a> の8日目の記事です。</p>
+</div>
+<div class="paragraph">
+<p>PureScriptでViteのCSSModuleを使う方法を解説していきます。</p>
+</div>
+<div class="paragraph">
+<p>ViteでCSSModuleを使うにはJSファイルからimport文を使ってCSSをインポートするコードを書くことによって、CSSModuleを使うことができます。具体的なコードは次の通りです。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-css" data-lang="css">.foo { display: flex; }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">import styles from &#39;./styles.module.css&#39;
+
+export const Foo = () =&gt; {
+  return &lt;div className=`${styles.foo}`&gt;&lt;/div&gt;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>しかし、PureScriptから直接 css ファイルをインポートする方法が存在しないので、このような直接的なアプローチでCSSModuleを使うことはできません。</p>
+</div>
+<div class="paragraph">
+<p>そこで、PureScriptの <a href="https://github.com/purescript/documentation/blob/master/guides/FFI.md">FFI</a> を用いてCSSをインポートするJSコードをPureScriptから呼び出すことでこの問題を回避することができます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">// Styles.js
+import st from &#39;./styles.module.css&#39;
+
+export const styles = (name) =&gt; st[name]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-purescript" data-lang="purescript">-- Styles.Purs
+module Components.Foo.Styles where
+
+foreign import styles :: String -&gt; String</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-purescript" data-lang="purescript">-- 利用側
+module Components.Foo where
+
+import Components.Foo.Styles as Styles
+
+-- | Viteで解決したCSSModuleの加工されたClassNameが取得できる
+style :: String
+style = Styles &#34;foo&#34;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>これで <code>spago build</code> 自体は成功するのですが、viteでのモジュール解決が突破できません。viteはoutputディレクトリのspagoによってビルドされたファイルを見ますが、 <code>spago build</code> がやってくれるのはあくまでPureScriptのコンパイルとFFI用のJSをoutputディレクトリに配置してくれるだけで、CSSファイルは配置してくれないからです。</p>
+</div>
+<div class="paragraph">
+<p>これを解決するためには、実際にCSSファイルを手でoutputディレクトリに配置してあげれば解決するのですが、ビルドの羃等性を破壊していたりCIでは動かすことができません。</p>
+</div>
+<div class="sect1">
+<h2 id="_解決策">解決策</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>冒頭の背景から次の問題が存在することがわかりました。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CSSファイル一つに対して、対応するFFI用のJavaScriptとFFIを使うためのPureScriptの実装を書く必要がある</p>
+</li>
+<li>
+<p><code>spago build</code> ではCSSファイルをoutputディレクトリに配置してくれないので、後続の <code>vite build</code> でCSSへのインポートが解決できずにエラーになってしまう。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>これらの問題を解決するvite-pluginとして <a href="https://github.com/himanoa/vite-plugin-css-class-name-extractor-for-purescript">vite-plugin-css-class-name-extractor-for-purescript</a> を実装しました。</p>
+</div>
+<div class="paragraph">
+<p>このプラグインはこれらの問題をプラギンを読み込むだけで解決してくれます。 <code>npm install vite-plugin-css-class-name-extractor-for-purescript</code> を実行したら次のようなコードを <code>vite.config.ts</code> に記載するだけです。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">import { defineConfig } from &#39;vite&#39;
+import classNameExtractor from &#39;vite-plugin-css-class-name-extractor-for-purescript&#39;
+
+export default defineConfig({
+  plugins: [
+    classNameExtractor()
+  ]
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>このようにプラグインを読み込んだら、 <code>npm run vite</code> で vite-dev-serverを立ち上げてCSSを書くだけです。</p>
+</div>
+<div class="paragraph">
+<p>デフォルトの設定では <code>src/<strong>*/</strong>.module.css</code> が編集される度に同階層のディレクトリにFFI用のJSとPureScriptを配置してくれるようになります。
+また、起動開始時と編集にフックしてsrc/にあるCSSファイルをすべてoutputデイレクトリ内の対応したモジュールのディレクトリにmodule.cssを展開してくれるので、何もしなくても <code>vite build</code> が通るようになりスタイルが解決できるようになります。</p>
+</div>
+<div class="paragraph">
+<p>また、stylesを直接exportせずに class名をPureScriptのAPIに変換することで利用側でクラス名を補完できるようにしました。</p>
+</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eJCCxo8KnX0?si=p-aEYTf4aRv2P1ix" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_まとめ">まとめ</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>PureScriptでViteのCSSModuleを使うためにVitePluginを作りました。</p>
+</div>
+<div class="paragraph">
+<p>PureScriptでCSSModuleを使うためには様々なファイルを作る必要があって、TypeScriptで使う時に比べて面倒がおおかったですがVitePluginを導入することによって手間をTypeScriptでCSSModuleを扱うのと同じくらいにまで省略することに成功しました。</p>
+</div>
+<div class="paragraph">
+<p>また、CSSのクラス名がAPIとして提供されることによって PureScriptファイルからclass名を補完できるようになって、TypeScriptでCSSModuleを使うよりも開発の体験が向上しました。</p>
+</div>
+</div>
+</div>
+
+        <a href="http://clap.webclap.com/clap.php?id=himanoa" target="_blank" onclick="window.open('http://clap.webclap.com/clap.php?id=himanoa','webclap','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes');return false;">拍手ボタン</a>
+      </article>
+    </main>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  </body>
+</html>

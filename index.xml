@@ -9,6 +9,18 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>PureScriptでViteのCSSModuleサポートを使う</title>
+      <link>https://blog.himanoa.net/93/</link>
+      <pubDate>Sun, 08 Dec 2024 15:58:03 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/93/</guid>
+      <description>この記事は PureScript - Qiita Advent Calendar 2024 の8日目の記事です。
+PureScriptでViteのCSSModuleを使う方法を解説していきます。
+ViteでCSSModuleを使うにはJSファイルからimport文を使ってCSSをインポートするコードを書くことによって、CSSModuleを使うことができます。具体的なコードは次の通りです。
+.foo { display: flex; } import styles from &amp;#39;./styles.module.css&amp;#39; export const Foo = () =&amp;gt; { return &amp;lt;div className=`${styles.foo}`&amp;gt;&amp;lt;/div&amp;gt; } しかし、PureScriptから直接 css ファイルをインポートする方法が存在しないので、このような直接的なアプローチでCSSModuleを使うことはできません。
+そこで、PureScriptの FFI を用いてCSSをインポートするJSコードをPureScriptから呼び出すことでこの問題を回避することができます。
+// Styles.js import st from &amp;#39;./styles.module.css&amp;#39; export const styles = (name) =&amp;gt; st[name] -- Styles.Purs module Components.Foo.Styles where foreign import styles :: String -&amp;gt; String -- 利用側 module Components.Foo where import Components.Foo.Styles as Styles -- | Viteで解決したCSSModuleの加工されたClassNameが取得できる style :: String style = Styles &amp;#34;foo&amp;#34; これで spago build 自体は成功するのですが、viteでのモジュール解決が突破できません。viteはoutputディレクトリのspagoによってビルドされたファイルを見ますが、 spago build がやってくれるのはあくまでPureScriptのコンパイルとFFI用のJSをoutputディレクトリに配置してくれるだけで、CSSファイルは配置してくれないからです。</description>
+    </item><item>
       <title>PureScriptでフロントエンド開発を始める</title>
       <link>https://blog.himanoa.net/92/</link>
       <pubDate>Sun, 01 Dec 2024 15:05:02 +0900</pubDate>
@@ -107,14 +119,6 @@ Youtube shortなどもでてきており、動画もフロー情報化してい�
 自分が好きだったpublic communicationがメインな社会というのは幻想だったのかもしれないと思っていること
 などいろいろ書きたいことはあるのですが、まとまりがなさそうなのでまたの機会に書くか、お蔵入りにしようとおもいます。
 去年もつらい1年でしたが今年も好転する兆しがまったく見えないですね。人生はいつも厳しい</description>
-    </item><item>
-      <title>ブログのビルド環境を更新した</title>
-      <link>https://blog.himanoa.net/88/</link>
-      <pubDate>Sat, 03 Feb 2024 07:26:19 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/88/</guid>
-      <description>hugoのversionを最後に上げたのが2年前だったので、そろそろ上げ時かなとおもい更新しました。
-一応何も壊れていないことは手元で確認しているのですが、production buildで壊れるとかもありえるよなとおもっているので、何か発見した場合は連絡をください</description>
     </item>
   </channel>
 </rss>

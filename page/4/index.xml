@@ -9,6 +9,16 @@
         <atom:link href="https://blog.himanoa.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>TypeScriptで集合に対する操作を実装する</title>
+      <link>https://blog.himanoa.net/78/</link>
+      <pubDate>Mon, 26 Sep 2022 20:06:08 +0900</pubDate>
+      
+      <guid>https://blog.himanoa.net/78/</guid>
+      <description>type RegisteredUser = { kind: &amp;#39;registered&amp;#39;, id: string, name: string, } type TentativeUser = { kind: &amp;#39;tentative&amp;#39; id: string, name: string, } type User = TentativeUser | RegisteredUser みたいな構造が存在した時に User[] に対する振舞いを定義したい！みたいなモチベーションが発生することがある。
+例を上げると、登録済みのユーザーのみでfilterしたい！みたいな感じだ。
+フロントエンドのコードを書いたり見たりしたりすると、やりがちなのは User[] で引き回してコンポーネント側で次のようなコードで実装するやつだ。
+import { FC, useMemo } from &amp;#39;react&amp;#39; const UserCard: FC&amp;lt;{ users: User[] }&amp;gt; = ({users}) =&amp;gt; { const registeredUsers = useMemo(() =&amp;gt; { return user.filter((u): u is TentativeUser =&amp;gt; u.kind === &amp;#39;registered&amp;#39;) }, []) return &amp;lt;&amp;gt;.</description>
+    </item><item>
       <title>近況</title>
       <link>https://blog.himanoa.net/77/</link>
       <pubDate>Sun, 05 Jun 2022 08:33:24 +0900</pubDate>
@@ -93,17 +103,6 @@ mdmg generate source fetchGitHubToken
 Markdownでscaffoldの計画書を記述できる rails generate では generatorを自作するためにはRubyスクリプトを書きますが、mdmgはhandlebars templateが使えるmarkdownを採用しました。
 Rubyスクリプトとmarkdownでの計画書記述の優劣は次の通りです - (優) markdownはcodeblockを使えるのでGitHub上でsyntax highlightが効く - (劣) スクリプトではないので環境変数などによってファイルを作ったり作らなかったりみたいな分岐を表現できない
 このmarkdownでscaffoldの計画書を記述することができる、というアイデアは https://github.com/cats-oss/scaffdog で採用されていて、とても良かったので概ねパクってきました。</description>
-    </item><item>
-      <title>やめたい人生2021</title>
-      <link>https://blog.himanoa.net/73/</link>
-      <pubDate>Wed, 06 Oct 2021 01:09:10 +0900</pubDate>
-      
-      <guid>https://blog.himanoa.net/73/</guid>
-      <description>部屋の片付けができない
-ゴミを指定の日に出せない
-床に物を置きがち
-労働のパフォーマンスが不安定
-総括 人生ごとやめたほうが良い</description>
     </item>
   </channel>
 </rss>
