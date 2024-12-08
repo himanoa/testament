@@ -5,7 +5,10 @@ draft: false
 author: himanoa
 ---
 
-この記事では、PureScriptでViteのCSSModuleを使う方法を解説していきます。
+
+この記事は https://qiita.com/advent-calendar/2024/purescript[PureScript - Qiita Advent Calendar 2024] の8日目の記事です。
+
+PureScriptでViteのCSSModuleを使う方法を解説していきます。
 
 ViteでCSSModuleを使うにはJSファイルからimport文を使ってCSSをインポートするコードを書くことによって、CSSModuleを使うことができます。具体的なコードは次の通りです。
 
@@ -67,7 +70,7 @@ style = Styles "foo"
 * CSSファイル一つに対して、対応するFFI用のJavaScriptとFFIを使うためのPureScriptの実装を書く必要がある
 * `spago build` ではCSSファイルをoutputディレクトリに配置してくれないので、後続の `vite build` でCSSへのインポートが解決できずにエラーになってしまう。
 
-これらの問題を解決するvite-pluginとしてhttps://github.com/himanoa/vite-plugin-css-class-name-extractor-for-purescript[vite-plugin-css-class-name-extractor-for-purescript] を実装しました。
+これらの問題を解決するvite-pluginとして https://github.com/himanoa/vite-plugin-css-class-name-extractor-for-purescript[vite-plugin-css-class-name-extractor-for-purescript] を実装しました。
 
 このプラグインはこれらの問題をプラギンを読み込むだけで解決してくれます。 `npm install vite-plugin-css-class-name-extractor-for-purescript` を実行したら次のようなコードを `vite.config.ts` に記載するだけです。
 
@@ -90,7 +93,9 @@ export default defineConfig({
 
 また、stylesを直接exportせずに class名をPureScriptのAPIに変換することで利用側でクラス名を補完できるようにしました。
 
+++++
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eJCCxo8KnX0?si=p-aEYTf4aRv2P1ix" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+++++
 
 == まとめ
 
