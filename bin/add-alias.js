@@ -18,10 +18,10 @@ const metadataRegexp = /^\{[^}]+\}\n/;
 
       console.dir(metadataSection[0])
       const m = JSON.parse(metadataSection[0])
-      const aliases = [`/entries/${basename(fileName, extname(fileName))}`]
-      const metadata = { ...m, aliases }
+      const metadata = { ...m, aliases: undefined}
 
-      const replacedTxt = txt.replace(metadataRegexp, JSON.stringify(metadata))
+      const replacedTxt = txt.replace(metadataRegexp, `${JSON.stringify(metadata)}
+`)
       return await fs.writeFile(`./content/${fileName}`, replacedTxt)
     })
   )
